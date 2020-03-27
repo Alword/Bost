@@ -27,12 +27,34 @@ namespace McAI.Proto
             Console.ReadLine();
         }
 
+        public static int length = 0;
+        public static bool readLength = true;
+        static Queue<byte> buffer = new Queue<byte>();
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
+            int length = message[0];
+            int packetId = message[1];
+            //if (code == 3)
+            //    GameState.State = GameStates.Game;
+            //if (commands.ContainsKey(code))
+            //{
+            //    log = commands[code].Execute(message[1..]);
+            //}
+            //if (GameState.State == GameStates.Game)
+            //{
 
-            int length = message[0].ReadVarInt();
-            var packetId = message[1].ReadVarInt();
-            var Data = message[2..length];
+            //}
+            string log = $"->:{length}:{packetId}:{message[2..].ToHexString()}";
+            Log(log);
+        }
+
+        private static void Proxy_OnReciveMessage(object sender, byte[] message)
+        {
+            //int length = message[0].ReadVarInt();
+            //int messageLength = message.Length;
+            //var packetId = message[1].ReadVarInt();
+            //var Data = message[2..length];
+
             string log = "";
             //if (code == 3)
             //    GameState.State = GameStates.Game;
@@ -44,13 +66,9 @@ namespace McAI.Proto
             //{
             //    message = Ionic.Zlib.ZlibStream.UncompressBuffer(message);
             //}
-            log = $"->:{length}:{packetId}:{Data.ToHexString()}";
-            Log(log);
-        }
-
-        private static void Proxy_OnReciveMessage(object sender, byte[] message)
-        {
-            //throw new NotImplementedException();
+            //log = $"<-:{message[0]}:{message[1..].ToHexString()}";
+            //Console.WriteLine(log);
+            //Log(log);
         }
 
         public static async void Log(string message)
