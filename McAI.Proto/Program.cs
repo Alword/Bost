@@ -28,23 +28,12 @@ namespace McAI.Proto
         }
 
         public static int length = 0;
+        public static int packetId = 0;
         public static bool readLength = true;
         static Queue<byte> buffer = new Queue<byte>();
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
-            int length = message[0];
-            int packetId = message[1];
-            //if (code == 3)
-            //    GameState.State = GameStates.Game;
-            //if (commands.ContainsKey(code))
-            //{
-            //    log = commands[code].Execute(message[1..]);
-            //}
-            //if (GameState.State == GameStates.Game)
-            //{
-
-            //}
-            string log = $"->:{length}:{packetId}:{message[2..].ToHexString()}";
+            string log = $"->{message.ToHexString()}";
             Log(log);
         }
 
