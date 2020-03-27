@@ -9,23 +9,14 @@ namespace McAI.Proxy
         {
             Console.WriteLine("Hello World!");
 
-            Proxy proxy = new Proxy("0.0.0.0", "192.168.1.69", 25565);
+            ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.206.185", 25565);
             proxy.Start();
             while (true)
             {
                 Console.ReadLine();
-                proxy.OnDisconnect(null, null);
+                proxy = new ProxyClient("0.0.0.0", "95.139.206.185", 25565);
+                proxy.Start();
             }
-        }
-
-        public static string ToHex(byte[] ba)
-        {
-            StringBuilder sb = new StringBuilder(ba.Length * 2);
-            foreach (byte b in ba)
-            {
-                sb.AppendFormat("{0:x2}", b);
-            }
-            return sb.ToString();
         }
     }
 }

@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using static McAI.Proxy.ProxyClient;
 
 namespace McAI.Proxy
 {
     public class Proxy2Server
     {
+        public event MessageHandler OnReciveMessage;
+
+
         public Socket game;
         public Socket server;
         public IPAddress host;
-        public int port;
         public bool IsConnected = false;
+
         public Proxy2Server(string host, int port)
         {
             this.host = IPAddress.Parse(host);
-            this.port = port;
             this.server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             this.server.Connect(host, port);
         }
@@ -34,7 +38,7 @@ namespace McAI.Proxy
                     if (size > 0)
                     {
                         var toSend = buffer[0..size];
-                        //Console.WriteLine($"[<-] {Program.ToHex(toSend)}");
+                        OnReciveMessage?.Invoke(this, toSend);
                         game.Send(toSend);
                     }
                 }
