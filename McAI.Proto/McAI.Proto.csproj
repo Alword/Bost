@@ -13,4 +13,8 @@
     <Folder Include="Commands\Server\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>

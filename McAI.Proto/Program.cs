@@ -17,7 +17,7 @@ namespace McAI.Proto
             Log($"[Proto] Start session");
             var parser = new Parser();
             commands = parser.Commands;
-            ProxyClient proxy = new ProxyClient("0.0.0.0", "192.168.1.69", 25565);
+            ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.206.185", 25565);
             proxy.Start();
             proxy.OnReciveMessage += Proxy_OnReciveMessage;
             proxy.OnSendMessage += Proxy_OnSendMessage;
