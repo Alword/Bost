@@ -1,4 +1,5 @@
 ﻿using McAI.Proto.Commands;
+using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
 using McAI.Proxy;
 using System;
@@ -12,8 +13,10 @@ namespace McAI.Proto
     {
         private static Dictionary<int, Command> commands;
         public static readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss}-log.txt");
+        public static GameState GameState { get; set; }
         static void Main(string[] args)
         {
+            GameState = new GameState();
             Log($"[Proto] Start session");
             var parser = new Parser();
             commands = parser.Commands;
@@ -24,18 +27,24 @@ namespace McAI.Proto
             Console.ReadLine();
         }
 
-        private static async void Proxy_OnSendMessage(object sender, byte[] message)
+        private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
+
+            int length = message[0].ReadVarInt();
+            var packetId = message[1].ReadVarInt();
+            var Data = message[2..length];
             string log = "";
-            int code = message[0];
-            if (commands.ContainsKey(code))
-            {
-                log = commands[code].Execute(message[1..]);
-            }
-            else
-            {
-                log = $"->:{code}:{message.ToHexString()}";
-            }
+            //if (code == 3)
+            //    GameState.State = GameStates.Game;
+            ////if (commands.ContainsKey(code))
+            //{
+            //    log = commands[code].Execute(message[1..]);
+            //}
+            //if (GameState.State == GameStates.Game)
+            //{
+            //    message = Ionic.Zlib.ZlibStream.UncompressBuffer(message);
+            //}
+            log = $"->:{length}:{packetId}:{Data.ToHexString()}";
             Log(log);
         }
 
