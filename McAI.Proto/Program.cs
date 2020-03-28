@@ -49,13 +49,27 @@ namespace McAI.Proto
                 var isCompressed = Varint.TryParse(queue[index..], out numread, out int compressedLength);
                 index += numread;
 
+                if (isCompressed && compressedLength != 0)
+                    throw new NotImplementedException();
 
-                var zlibData = queue[(index)..(index + length - numread)];
-                Varint.TryParse(zlibData, out int read, out int compression);
+                var packetIdAnddata = queue[(index)..(index + length - numread)];
+
+                Varint.TryParse(packetIdAnddata, out int read, out int packetId);
                 index += length - numread;
-                Varint.TryParse(zlibData, out read, out int packetId);
-                string log = $"->{length}:{compressedLength}:[{packetId:X02}]:[{zlibData[read..].ToHexString()}]";
-                Log(log);
+
+                var data = packetIdAnddata[read..];
+
+                if (commands.ContainsKey(packetId))
+                {
+                    commands[packetId].Execute(data);
+                }
+                else
+                {
+                    string log = $"->{length}:{compressedLength}:[{packetId:X02}]:[{data.ToHexString()}]";
+                    Log(log);
+                }
+
+
             }
         }
 

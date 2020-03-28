@@ -1,4 +1,5 @@
 ﻿using McAI.Proto.Commands;
+using McAI.Proto.Commands.Client;
 using System.Collections.Generic;
 
 
@@ -11,7 +12,7 @@ namespace McAI.Proto
         {
             Commands = new Dictionary<int, Command>
             {
-                //{ 35, new Effect() }
+                { 0x13, new PlayerRotation() }
             };
         }
     }
