@@ -14,7 +14,7 @@ namespace McAI.Proto.Commands.Client
             float pitch = BitConverter.ToSingle(array[4..8].Reverse().ToArray());
             bool onGround = BitConverter.ToBoolean(array[8..]);
 
-            Debug($"Player Rotation: yaw:{yaw} pitch:{pitch} g:{onGround}");
+            //Debug($"Player Rotation: yaw:{yaw} pitch:{pitch} g:{onGround}");
         }
     }
 }
