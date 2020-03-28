@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace McAI.Proto.Commands.Client
 {
     public class PlayerPositionAndRotation : Command
     {
+        public PlayerPositionAndRotation(bool isLogging = false) : base(isLogging)
+        {
+
+        }
+
         public override void Execute(byte[] array)
         {
             byte[] reverse = array.Reverse().ToArray();
@@ -17,7 +20,7 @@ namespace McAI.Proto.Commands.Client
             float pitch = BitConverter.ToSingle(reverse[1..5]);
             bool onground = reverse[0] == 1;
 
-            //Debug($"x:{x} y:{y} z:{z} yaw:{yaw} pitch:{pitch} onground:{onground}");
+            Debug($"x:{x} y:{y} z:{z} yaw:{yaw} pitch:{pitch} onground:{onground}");
         }
     }
 }

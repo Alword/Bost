@@ -14,7 +14,9 @@ namespace McAI.Proto
             {
                 { 0x11, new PlayerPosition() },
                 { 0x12, new PlayerPositionAndRotation() },
-                { 0x13, new PlayerRotation() }
+                { 0x13, new PlayerRotation() },
+                { 0x15, new VehicleMove()},
+                { 0x1C, new SteerVehicle()},
             };
         }
     }
