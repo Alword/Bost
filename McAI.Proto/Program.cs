@@ -1,9 +1,11 @@
 ﻿using McAI.Proto.Commands;
 using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
+using McAI.Proto.Model;
 using McAI.Proxy;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
@@ -27,14 +29,34 @@ namespace McAI.Proto
             Console.ReadLine();
         }
 
-        public static int length = 0;
-        public static int packetId = 0;
-        public static bool readLength = true;
-        static Queue<byte> buffer = new Queue<byte>();
+        static byte[] queue = new byte[2048];
+
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
-            string log = $"->{message.ToHexString()}";
-            Log(log);
+            int index = 0;
+            Array.Copy(message, 0, queue, index, message.Length);
+
+            while (true)
+            {
+                if (index >= message.Length)
+                {
+                    index = 0;
+                    break;
+                };
+
+                var isLength = Varint.TryParse(queue[index..], out int numread, out int length);
+                index += numread;
+                var isCompressed = Varint.TryParse(queue[index..], out numread, out int compressedLength);
+                index += numread;
+
+
+                var zlibData = queue[(index)..(index + length - numread)];
+                Varint.TryParse(zlibData, out int read, out int compression);
+                index += length - numread;
+                Varint.TryParse(zlibData, out read, out int packetId);
+                string log = $"->{length}:{compressedLength}:[{packetId:X02}]:[{zlibData[read..].ToHexString()}]";
+                Log(log);
+            }
         }
 
         private static void Proxy_OnReciveMessage(object sender, byte[] message)
@@ -63,7 +85,7 @@ namespace McAI.Proto
         public static async void Log(string message)
         {
             Console.WriteLine(message);
-            await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
+            //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }
     }
 }
