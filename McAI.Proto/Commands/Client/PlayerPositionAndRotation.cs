@@ -17,7 +17,7 @@ namespace McAI.Proto.Commands.Client
             float pitch = BitConverter.ToSingle(reverse[1..5]);
             bool onground = reverse[0] == 1;
 
-            Debug($"x:{x} y:{y} z:{z} yaw:{yaw} pitch:{pitch} onground:{onground}");
+            //Debug($"x:{x} y:{y} z:{z} yaw:{yaw} pitch:{pitch} onground:{onground}");
         }
     }
 }

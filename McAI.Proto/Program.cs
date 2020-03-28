@@ -66,7 +66,7 @@ namespace McAI.Proto
                 else
                 {
                     string log = $"->{length}:{compressedLength}:[{packetId:X02}]:[{data.ToHexString()}]";
-                    //Log(log);
+                    Log(log);
                 }
 
 
