@@ -1,4 +1,6 @@
 ﻿using McAI.Proto.Commands;
+using McAI.Proto.Commands.Client;
+using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
 using McAI.Proto.Model;
 using McAI.Proxy;
@@ -26,48 +28,47 @@ namespace McAI.Proto
             Console.ReadLine();
         }
 
-        static byte[] queue = new byte[2048];
-
+        static List<byte> queue = new List<byte>();
+        static bool game = false;
+        static bool handshake = true;
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
-            int index = 0;
-            Array.Copy(message, 0, queue, index, message.Length);
-
-            while (true)
+            queue.AddRange(message);
+            int compressedLength = 0;
+            byte[] packetIdAnddata;
+            while (queue.Count > 0)
             {
-                if (index >= message.Length)
+                var buffer = queue.ToArray();
+                Varint.TryParse(buffer, out int numread, out int length);
+                buffer = buffer[numread..(length + 1)];
+                queue.RemoveRange(0, length + numread);
+
+                if (game)
                 {
-                    index = 0;
-                    break;
-                };
+                    Varint.TryParse(ref buffer, out compressedLength);
+                }
 
-                var isLength = Varint.TryParse(queue[index..], out int numread, out int length);
-                index += numread;
-                var isCompressed = Varint.TryParse(queue[index..], out numread, out int compressedLength);
-                index += numread;
-
-                if (isCompressed && compressedLength != 0)
-                    throw new NotImplementedException();
-
-                var packetIdAnddata = queue[(index)..(index + length - numread)];
-
-                Varint.TryParse(packetIdAnddata, out int read, out int packetId);
-                index += length - numread;
-
-                var data = packetIdAnddata[read..];
+                Varint.TryParse(ref buffer, out int packetId);
 
                 if (commands.ContainsKey(packetId))
                 {
-                    commands[packetId].Execute(data);
+                    if (handshake)
+                    {
+                        handshake = false;
+                        new Handshake(true).Execute(buffer);
+                    }
+                    else
+                    {
+                        commands[packetId].Execute(buffer);
+                    }
                 }
                 else
                 {
-                    string log = $"->{length}:{compressedLength}:[{packetId:X02}]:[{data.ToHexString()}]";
+                    string log = $"->{length}:{compressedLength}:[{packetId:X02}]:[{buffer.ToHexString()}]";
                     Log(log);
                 }
-
-
             }
+            game = true;
         }
 
         private static void Proxy_OnReciveMessage(object sender, byte[] message)

@@ -25,6 +25,7 @@ namespace McAI.BOT
             this.port = port;
             this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(server, port);
+            Receive();
         }
 
         public Task Receive()
@@ -43,17 +44,9 @@ namespace McAI.BOT
             });
         }
 
-        public async Task Send(BasePacket packet)
+        public async Task Send(List<byte> toSend, bool encrypt = true)
         {
-            byte[] data = packet.Write();
-            List<byte> toSend = new List<byte>();
-            toSend.AddRange(Varint.ToBytes(data.Length + 1));
-            toSend.AddRange(Varint.ToBytes(0));
-            toSend.AddRange(Varint.ToBytes(packet.PacketId));
-            toSend.AddRange(data);
-
             StringBuilder stringBuilder = new StringBuilder();
-
             foreach (var b in toSend)
             {
                 stringBuilder.Append($"{b} ");
@@ -67,17 +60,41 @@ namespace McAI.BOT
         {
             HandshakePacket handshakePacket = new HandshakePacket()
             {
-                Address = server,
+                Address = "0.0.0.0",
+                Port = port,
                 LoginState = LoginStates.Login,
-                Port = port
             };
-            await Send(handshakePacket);
+            List<byte> toSend = new List<byte>();
+            Write(handshakePacket, false, toSend);
 
             LoginStartPacket loginStartPacket = new LoginStartPacket
             {
                 Name = nickname
             };
-            await Send(loginStartPacket);
+            Write(loginStartPacket, false, toSend);
+            await Send(toSend);
+        }
+
+        private void Write(BasePacket packet, bool encrypt = true, List<byte> toSend = null)
+        {
+            byte[] data = packet.Write();
+            if (toSend == null)
+            {
+                toSend = new List<byte>();
+            }
+
+            if (encrypt)
+            {
+                toSend.AddRange(Varint.ToBytes(data.Length + 2));
+                toSend.AddRange(Varint.ToBytes(0));
+            }
+            else
+            {
+                toSend.AddRange(Varint.ToBytes(data.Length + 1));
+            }
+
+            toSend.AddRange(Varint.ToBytes(packet.PacketId));
+            toSend.AddRange(data);
         }
     }
 }

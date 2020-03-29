@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McAI.Proto.Extentions;
+using System;
 using System.Threading.Tasks;
 
 namespace McAI.BOT
@@ -21,12 +22,14 @@ namespace McAI.BOT
 
         public static async Task Run(Agent agent)
         {
-            await agent.Login("Test");
+            await agent.Login("Test10");
+            //await agent.Login("Test2");
+            //await agent.Login("Test3");
         }
 
         private static void Agent_OnRecive(object sender, byte[] message)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(message.ToHexString());
         }
     }
 }

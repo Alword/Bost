@@ -27,6 +27,16 @@ namespace McAI.Proto.Model
             return true;
         }
 
+        public static bool TryParse(ref byte[] buffer, out int result)
+        {
+            bool parsed = TryParse(buffer, out int numRead, out result);
+            if (parsed)
+            {
+                buffer = buffer[numRead..];
+            }
+            return parsed;
+        }
+
         public static byte[] ToBytes(int value)
         {
             List<byte> bytes = new List<byte>(1);

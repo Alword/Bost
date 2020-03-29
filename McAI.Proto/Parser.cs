@@ -12,6 +12,7 @@ namespace McAI.Proto
         {
             Commands = new Dictionary<int, Command>
             {
+                { 0x00, new LoginStart(true) },
                 { 0x11, new PlayerPosition() },
                 { 0x12, new PlayerPositionAndRotation() },
                 { 0x13, new PlayerRotation() },
