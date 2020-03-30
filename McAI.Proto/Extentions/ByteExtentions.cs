@@ -6,8 +6,7 @@ namespace McAI.Proto.Extentions
     {
         public static string ToHexString(this byte[] data)
         {
-            string hex = BitConverter.ToString(data);
-            return hex;
+            return BitConverter.ToString(data);
         }
     }
 }

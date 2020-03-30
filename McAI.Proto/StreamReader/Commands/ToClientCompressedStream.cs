@@ -30,7 +30,7 @@ namespace McAI.Proto.StreamReader.Commands
             {
                 if (i++ < 5)
                 {
-                    string log = $"->{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                    string log = $"<-{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
                     Program.Log(log);
                 }
             }
@@ -41,7 +41,10 @@ namespace McAI.Proto.StreamReader.Commands
             return new Dictionary<int, Command>
             {
                 {0x02, new LoginSuccess(true)},
-                {0x26, new JoinGame(true)}
+                {0x26, new JoinGame(true)},
+                {0x19, new PluginMessage(true)},
+                {0x0E, new ServerDifficulty(true) },
+                {0x32, new PlayerAbilities(true) }
             };
         }
     }

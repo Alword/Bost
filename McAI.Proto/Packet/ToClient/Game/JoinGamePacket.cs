@@ -36,9 +36,9 @@ namespace McAI.Proto.Packet.ToClient.Game
 
         public override string ToString()
         {
-            return $"[JoinGame{PacketId}] EntityId: {EntityId} Gamemode: {Gamemode} " +
+            return $"[JoinGame|0x{PacketId:X02}] EntityId: {EntityId} Gamemode: {Gamemode} " +
                 $"Dimension: {Dimension} HashedSeed: {HashedSeed} MaxPlayers: {MaxPlayers} " +
-                $"LevelType: {LevelType} ViewDistance: {ViewDistance} ReducedDebugInfo: {ReducedDebugInfo}" +
+                $"LevelType: {LevelType} ViewDistance: {ViewDistance} ReducedDebugInfo: {ReducedDebugInfo} " +
                 $"EnableRespawnScreen: {EnableRespawnScreen}";
         }
 
