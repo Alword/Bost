@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace McAI.Proto
 {
-    public class Parser
+    public class ToServerParser
     {
         public readonly Dictionary<int, Command> Commands;
-        public Parser()
+        public ToServerParser()
         {
             Commands = new Dictionary<int, Command>
             {
