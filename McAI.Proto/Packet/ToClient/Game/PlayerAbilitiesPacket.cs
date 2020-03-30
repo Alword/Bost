@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Extentions;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,19 +34,19 @@ namespace McAI.Proto.Packet.ToClient.Game
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            if ((Flags >> 1 & 1) == 0)
+            if (Flags.IsChecked(0))
             {
                 stringBuilder.Append("Invulnerable ");
             }
-            if ((Flags >> 2 & 1) == 0)
+            if (Flags.IsChecked(1))
             {
                 stringBuilder.Append("Flying ");
             }
-            if ((Flags >> 4 & 1) == 0)
+            if (Flags.IsChecked(2))
             {
                 stringBuilder.Append("Allow Flying ");
             }
-            if ((Flags >> 8 & 1) == 0)
+            if (Flags.IsChecked(3))
             {
                 stringBuilder.Append("Creative Mode (Instant Break) ");
             }

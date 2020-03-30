@@ -6,6 +6,8 @@ using McAI.Proto.Packet.ToClient.Login;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 namespace McAI.Proto.StreamReader.Commands
 {
@@ -20,6 +22,7 @@ namespace McAI.Proto.StreamReader.Commands
         public void Execute(int length, byte[] array)
         {
             McVarint.TryParse(ref array, out int compressed);
+            array = Uncompress(array, compressed);
             McVarint.TryParse(ref array, out int packetId);
 
             if (commands.ContainsKey(packetId))
@@ -36,6 +39,18 @@ namespace McAI.Proto.StreamReader.Commands
             }
         }
 
+        private byte[] Uncompress(byte[] array, int length)
+        {
+            if (length == 0)
+            {
+                return array;
+            }
+            else
+            {
+                return Ionic.Zlib.ZlibStream.UncompressBuffer(array);
+            }
+        }
+
         private Dictionary<int, Command> InitializeCommand(GameState gameState)
         {
             return new Dictionary<int, Command>
@@ -44,7 +59,9 @@ namespace McAI.Proto.StreamReader.Commands
                 {0x26, new JoinGame(true)},
                 {0x19, new PluginMessage(true)},
                 {0x0E, new ServerDifficulty(true) },
-                {0x32, new PlayerAbilities(true) }
+                {0x32, new PlayerAbilities(true) },
+                {0x40, new HeldItemChange(true)},
+                {0x5B ,new DeclareRecipes(true) }
             };
         }
     }
