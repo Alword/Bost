@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.Proto.Packet
+﻿namespace McAI.Proto.Packet
 {
     public abstract class BasePacket
     {

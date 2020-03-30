@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.Proto.Packet.ToServer.Game
 {

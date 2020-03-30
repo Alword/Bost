@@ -1,23 +1,21 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Commands;
+using McAI.Proto.Commands.ToClient.Login;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.Proto.StreamReader.Commands
 {
-    public class ClientGameStream : ICommand<int, byte[]>
+    public class ToClientLoginStream : ICommand<int, byte[]>
     {
         protected readonly Dictionary<int, Command> commands;
-        public ClientGameStream(Dictionary<int, Command> commands)
+        public ToClientLoginStream(GameState gameState)
         {
-            this.commands = commands;
+            this.commands = InitializeCommands(gameState);
         }
-
         public void Execute(int length, byte[] array)
         {
-            Varint.TryParse(ref array, out int compressed);
             Varint.TryParse(ref array, out int packetId);
 
             if (commands.ContainsKey(packetId))
@@ -26,9 +24,17 @@ namespace McAI.Proto.StreamReader.Commands
             }
             else
             {
-                string log = $"->{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                string log = $"<-{length}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
                 Program.Log(log);
             }
+        }
+
+        private Dictionary<int, Command> InitializeCommands(GameState gameState)
+        {
+            return new Dictionary<int, Command>
+            {
+                {0x03, new SetCompression(gameState,true) }
+            };
         }
     }
 }

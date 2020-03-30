@@ -1,11 +1,5 @@
 ﻿using McAI.Proto.Abstractions;
-using McAI.Proto.Commands;
-using McAI.Proto.Commands.Client;
-using McAI.Proto.Commands.ToClient;
-using McAI.Proto.Commands.ToServer;
 using McAI.Proto.Enum;
-using McAI.Proto.Extentions;
-using McAI.Proto.Model;
 using McAI.Proto.StreamReader;
 using McAI.Proto.StreamReader.Commands;
 using McAI.Proxy;
@@ -38,7 +32,7 @@ namespace McAI.Proto
 
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
-            //SendMessage.Read(message);
+            SendMessage.Read(message);
         }
 
         private static void Proxy_OnReciveMessage(object sender, byte[] message)
@@ -50,8 +44,8 @@ namespace McAI.Proto
         {
             return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
             {
-                {GameStates.Login, new ServerLoginStream(new ToClientParser(gameState).LoginCommands)},
-                {GameStates.Game, new ServerGameStream(new ToClientParser(gameState).GameCommands)}
+                {GameStates.Login, new ToClientLoginStream(gameState)},
+                {GameStates.Game, new ToClientGameStream(gameState)}
             }, () => { return gameState.ServerState; });
         }
 
@@ -59,8 +53,8 @@ namespace McAI.Proto
         {
             return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
             {
-                {GameStates.Login, new ClientLoginStream(gameState,new ToServerParser().Commands)},
-                {GameStates.Game, new ClientGameStream(new ToServerParser().Commands)}
+                {GameStates.Login, new ToServerLoginStream(gameState)},
+                {GameStates.Game, new ToServerGameStream(gameState)}
             }, () => { return gameState.ClientState; });
         }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.Proto.Abstractions
+﻿namespace McAI.Proto.Abstractions
 {
     public interface ICommand<T>
     {

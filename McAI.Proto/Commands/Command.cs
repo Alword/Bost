@@ -5,6 +5,7 @@ namespace McAI.Proto.Commands
 {
     public abstract class Command
     {
+        protected GameState gameState;
         private readonly bool isLogging;
         public Command(bool isLogging = false)
         {

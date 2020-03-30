@@ -1,5 +1,4 @@
-﻿using McAI.Proto.Commands;
-using McAI.Proto.Commands.ToServer.Game;
+﻿using McAI.Proto.Commands.ToServer.Game;
 using McAI.Proto.Commands.ToServer.Login;
 using System.Collections.Generic;
 

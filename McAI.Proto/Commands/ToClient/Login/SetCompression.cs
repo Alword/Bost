@@ -1,23 +1,22 @@
-﻿using McAI.Proto.Model.Packet.ToServer;
+﻿using McAI.Proto.Enum;
 using McAI.Proto.Packet.ToClient.Login;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.Proto.Commands.ToClient.Login
 {
     public class SetCompression : Command
     {
         private readonly SetCompressionPacket compressionPacket;
-        public SetCompression(bool isLogging = false) : base(isLogging)
+        public SetCompression(GameState gameState, bool isLogging = false) : base(isLogging)
         {
+            this.gameState = gameState;
             compressionPacket = new SetCompressionPacket();
         }
 
         public override void Execute(byte[] array)
         {
             compressionPacket.Read(array);
-            //Debug($"[SetCompression] PV:{handshake.ProtocolVersion} {handshake.Address}:{handshake.Port} {handshake.LoginState}");
+            Debug($"[SetCompression] Threshold: {compressionPacket.Threshold}");
+            gameState.ServerState = GameStates.Game;
         }
     }
 }
