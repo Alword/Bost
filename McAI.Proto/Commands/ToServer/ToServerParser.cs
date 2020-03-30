@@ -1,9 +1,10 @@
 ﻿using McAI.Proto.Commands;
-using McAI.Proto.Commands.Client;
+using McAI.Proto.Commands.ToServer.Game;
+using McAI.Proto.Commands.ToServer.Login;
 using System.Collections.Generic;
 
 
-namespace McAI.Proto
+namespace McAI.Proto.Commands.ToServer
 {
     public class ToServerParser
     {

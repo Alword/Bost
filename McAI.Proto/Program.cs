@@ -1,6 +1,8 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Commands;
 using McAI.Proto.Commands.Client;
+using McAI.Proto.Commands.ToClient;
+using McAI.Proto.Commands.ToServer;
 using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
 using McAI.Proto.Model;

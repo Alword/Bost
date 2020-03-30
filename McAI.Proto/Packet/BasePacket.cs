@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Model.Packet
+namespace McAI.Proto.Packet
 {
     public abstract class BasePacket
     {

@@ -1,9 +1,9 @@
 ﻿using McAI.Proto.Commands;
-using McAI.Proto.Commands.Client;
+using McAI.Proto.Commands.ToClient.Login;
 using System.Collections.Generic;
 
 
-namespace McAI.Proto
+namespace McAI.Proto.Commands.ToClient
 {
     public class ToClientParser
     {

@@ -1,11 +1,12 @@
 ﻿using McAI.Proto.Enum;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace McAI.Proto.Model.Packet.ToServer
+namespace McAI.Proto.Packet.ToServer.Login
 {
     public class HandshakePacket : BasePacket
     {
@@ -22,7 +23,7 @@ namespace McAI.Proto.Model.Packet.ToServer
 
             Varint.TryParse(ref array, out int addressLength);
 
-            Address = Encoding.UTF8.GetString(array[0..(addressLength)]);
+            Address = Encoding.UTF8.GetString(array[0..addressLength]);
             array = array[addressLength..];
 
             Port = BitConverter.ToUInt16(array[0..2].Reverse().ToArray());

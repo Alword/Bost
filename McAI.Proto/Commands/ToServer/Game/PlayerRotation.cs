@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace McAI.Proto.Commands.Client
+namespace McAI.Proto.Commands.ToServer.Game
 {
     public class PlayerRotation : Command
     {

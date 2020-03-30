@@ -1,9 +1,9 @@
 ﻿using McAI.Proto;
 using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
-using McAI.Proto.Model;
-using McAI.Proto.Model.Packet;
-using McAI.Proto.Model.Packet.ToServer;
+using McAI.Proto.Packet;
+using McAI.Proto.Packet.ToServer.Login;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;

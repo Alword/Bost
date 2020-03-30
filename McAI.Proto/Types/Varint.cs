@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace McAI.Proto.Model
+namespace McAI.Proto.Types
 {
     public static class Varint
     {
@@ -14,8 +14,8 @@ namespace McAI.Proto.Model
             do
             {
                 read = buffer[numRead];
-                int value = (read & 0b01111111);
-                result |= (value << (7 * numRead));
+                int value = read & 0b01111111;
+                result |= value << 7 * numRead;
 
                 numRead++;
                 if (numRead > 5)

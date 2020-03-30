@@ -1,8 +1,9 @@
-﻿using System;
+﻿using McAI.Proto.Types;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Model.Packet.ToClient
+namespace McAI.Proto.Packet.ToClient.Login
 {
     public class SetCompressionPacket : BasePacket
     {
@@ -16,7 +17,7 @@ namespace McAI.Proto.Model.Packet.ToClient
 
         public override byte[] Write()
         {
-            throw new NotImplementedException();
+            return Varint.ToBytes(Threshold);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Enum;
-using McAI.Proto.Model;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 

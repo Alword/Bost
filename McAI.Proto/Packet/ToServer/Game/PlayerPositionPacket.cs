@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Model.Packet.ToServer
+namespace McAI.Proto.Packet.ToServer.Game
 {
     public class PlayerPositionPacket : BasePacket
     {

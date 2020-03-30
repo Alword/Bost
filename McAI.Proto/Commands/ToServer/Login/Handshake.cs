@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Model.Packet.ToServer;
+﻿using McAI.Proto.Packet.ToServer.Login;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Commands.Client
+namespace McAI.Proto.Commands.ToServer.Login
 {
     public class Handshake : Command
     {

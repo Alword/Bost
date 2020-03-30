@@ -1,10 +1,11 @@
-﻿using System;
+﻿using McAI.Proto.Types;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace McAI.Proto.Model.Packet.ToServer
+namespace McAI.Proto.Packet.ToServer.Login
 {
     public class LoginStartPacket : BasePacket
     {

@@ -1,8 +1,8 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Commands;
-using McAI.Proto.Commands.Client;
+using McAI.Proto.Commands.ToServer.Login;
 using McAI.Proto.Enum;
-using McAI.Proto.Model;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 
