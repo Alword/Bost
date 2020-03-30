@@ -9,6 +9,7 @@ namespace McAI.Proto.Model.Packet.ToServer
     public class LoginStartPacket : BasePacket
     {
         private int length; // Varint length
+
         [MaxLength(16)] public string Name { get; set; } // Player's Username 
         public override int PacketId => 0x00;
 

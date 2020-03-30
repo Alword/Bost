@@ -15,6 +15,7 @@ namespace McAI.Proto.StreamReader.Commands
         protected readonly Dictionary<int, Command> commands;
         public ClientLoginStream(GameState gameState, Dictionary<int, Command> commands)
         {
+            // todo command set state
             this.gameState = gameState;
             this.commands = commands;
         }

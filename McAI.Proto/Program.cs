@@ -36,19 +36,20 @@ namespace McAI.Proto
 
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
-            SendMessage.Read(message);
+            //SendMessage.Read(message);
         }
 
         private static void Proxy_OnReciveMessage(object sender, byte[] message)
         {
-            //ReciveMessage.Read(message);
+            ReciveMessage.Read(message);
         }
 
         public static BaseMcStream InitializeRecive(GameState gameState)
         {
             return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
             {
-
+                {GameStates.Login, new ServerLoginStream(new ToClientParser(gameState).LoginCommands)},
+                {GameStates.Game, new ServerGameStream(new ToClientParser(gameState).GameCommands)}
             }, () => { return gameState.ServerState; });
         }
 

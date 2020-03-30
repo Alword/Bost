@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Enum;
+﻿using McAI.Proto;
+using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
 using McAI.Proto.Model;
 using McAI.Proto.Model.Packet;
@@ -19,8 +20,10 @@ namespace McAI.BOT
         private Socket socket;
         private string server;
         private ushort port;
+        private GameState gameState;
         public Agent(string server, ushort port)
         {
+            this.gameState = new GameState();
             this.server = server;
             this.port = port;
             this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -67,7 +70,7 @@ namespace McAI.BOT
             List<byte> toSend = new List<byte>();
             Write(handshakePacket, false, toSend);
 
-            LoginStartPacket loginStartPacket = new LoginStartPacket
+            LoginStartPacket loginStartPacket = new LoginStartPacket()
             {
                 Name = nickname
             };
