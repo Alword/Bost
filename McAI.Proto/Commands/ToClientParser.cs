@@ -13,11 +13,11 @@ namespace McAI.Proto
         {
             LoginCommands = new Dictionary<int, Command>
             {
-
+                {0x03, new SetCompression(true) }
             };
             GameCommands = new Dictionary<int, Command>
             {
-                
+
             };
         }
     }

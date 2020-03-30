@@ -36,12 +36,12 @@ namespace McAI.Proto
 
         private static void Proxy_OnSendMessage(object sender, byte[] message)
         {
-            SendMessage.Read(message);
+            //SendMessage.Read(message);
         }
 
         private static void Proxy_OnReciveMessage(object sender, byte[] message)
         {
-            //ReciveMessage.Read(message);
+            ReciveMessage.Read(message);
         }
 
         public static BaseMcStream InitializeRecive(GameState gameState)

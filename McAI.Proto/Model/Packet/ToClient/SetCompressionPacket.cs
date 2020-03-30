@@ -7,10 +7,11 @@ namespace McAI.Proto.Model.Packet.ToClient
     public class SetCompressionPacket : BasePacket
     {
         public override int PacketId => 0x03;
-
+        public int Threshold { get; set; }
         public override void Read(byte[] array)
         {
-            throw new NotImplementedException();
+            Varint.TryParse(ref array, out int result);
+            Threshold = result;
         }
 
         public override byte[] Write()
