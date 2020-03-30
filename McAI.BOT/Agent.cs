@@ -88,15 +88,15 @@ namespace McAI.BOT
 
             if (encrypt)
             {
-                toSend.AddRange(Varint.ToBytes(data.Length + 2));
-                toSend.AddRange(Varint.ToBytes(0));
+                toSend.AddRange(McVarint.ToBytes(data.Length + 2));
+                toSend.AddRange(McVarint.ToBytes(0));
             }
             else
             {
-                toSend.AddRange(Varint.ToBytes(data.Length + 1));
+                toSend.AddRange(McVarint.ToBytes(data.Length + 1));
             }
 
-            toSend.AddRange(Varint.ToBytes(packet.PacketId));
+            toSend.AddRange(McVarint.ToBytes(packet.PacketId));
             toSend.AddRange(data);
         }
     }

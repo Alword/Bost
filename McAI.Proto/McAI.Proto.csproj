@@ -14,9 +14,4 @@
     <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\ToClient\Game\" />
-    <Folder Include="Packet\ToClient\Game\" />
-  </ItemGroup>
-
 </Project>

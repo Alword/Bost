@@ -24,7 +24,7 @@ namespace McAI.Proto.StreamReader
             while (length < queue.Count)
             {
                 array = queue.ToArray();
-                Varint.TryParse(array, out int numread, out length);
+                McVarint.TryParse(array, out int numread, out length);
                 if (length > queue.Count - numread) break;
 
                 array = array[numread..(length + 1)];

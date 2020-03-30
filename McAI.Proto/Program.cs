@@ -44,8 +44,8 @@ namespace McAI.Proto
         {
             return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
             {
-                {GameStates.Login, new ToClientLoginStream(gameState)},
-                {GameStates.Game, new ToClientGameStream(gameState)}
+                {GameStates.Login, new ToClientUncompressedStream(gameState)},
+                {GameStates.Game, new ToClientCompressedStream(gameState)}
             }, () => { return gameState.ServerState; });
         }
 
@@ -53,8 +53,8 @@ namespace McAI.Proto
         {
             return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
             {
-                {GameStates.Login, new ToServerLoginStream(gameState)},
-                {GameStates.Game, new ToServerGameStream(gameState)}
+                {GameStates.Login, new ToServerUncompressedStream(gameState)},
+                {GameStates.Game, new ToServerCompressedStream(gameState)}
             }, () => { return gameState.ClientState; });
         }
 

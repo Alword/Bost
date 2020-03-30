@@ -17,10 +17,10 @@ namespace McAI.Proto.Packet.ToServer.Login
 
         public override void Read(byte[] array)
         {
-            Varint.TryParse(ref array, out int protocolVersion);
+            McVarint.TryParse(ref array, out int protocolVersion);
             ProtocolVersion = protocolVersion;
 
-            Varint.TryParse(ref array, out int addressLength);
+            McVarint.TryParse(ref array, out int addressLength);
 
             Address = Encoding.UTF8.GetString(array[0..addressLength]);
             array = array[addressLength..];
@@ -28,18 +28,18 @@ namespace McAI.Proto.Packet.ToServer.Login
             Port = BitConverter.ToUInt16(array[0..2].Reverse().ToArray());
             array = array[2..];
 
-            Varint.TryParse(ref array, out int loginState);
+            McVarint.TryParse(ref array, out int loginState);
             LoginState = (LoginStates)loginState;
         }
 
         public override byte[] Write()
         {
             List<byte> bytes = new List<byte>();
-            bytes.AddRange(Varint.ToBytes(ProtocolVersion));
-            bytes.AddRange(Varint.ToBytes(Address.Length));
+            bytes.AddRange(McVarint.ToBytes(ProtocolVersion));
+            bytes.AddRange(McVarint.ToBytes(Address.Length));
             bytes.AddRange(Encoding.UTF8.GetBytes(Address));
             bytes.AddRange(BitConverter.GetBytes(Port).Reverse());
-            bytes.AddRange(Varint.ToBytes((int)LoginState));
+            bytes.AddRange(McVarint.ToBytes((int)LoginState));
             return bytes.ToArray();
         }
     }

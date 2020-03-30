@@ -7,16 +7,16 @@ using System.Collections.Generic;
 
 namespace McAI.Proto.StreamReader.Commands
 {
-    public class ToClientLoginStream : ICommand<int, byte[]>
+    public class ToClientUncompressedStream : ICommand<int, byte[]>
     {
         protected readonly Dictionary<int, Command> commands;
-        public ToClientLoginStream(GameState gameState)
+        public ToClientUncompressedStream(GameState gameState)
         {
             this.commands = InitializeCommands(gameState);
         }
         public void Execute(int length, byte[] array)
         {
-            Varint.TryParse(ref array, out int packetId);
+            McVarint.TryParse(ref array, out int packetId);
 
             if (commands.ContainsKey(packetId))
             {

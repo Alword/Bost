@@ -8,12 +8,12 @@ using System.Collections.Generic;
 
 namespace McAI.Proto.StreamReader.Commands
 {
-    public class ToServerLoginStream : ICommand<int, byte[]>
+    public class ToServerUncompressedStream : ICommand<int, byte[]>
     {
         private bool handshake = true;
         private readonly GameState gameState;
         protected readonly Dictionary<int, Command> commands;
-        public ToServerLoginStream(GameState gameState)
+        public ToServerUncompressedStream(GameState gameState)
         {
             // todo command set state
             this.gameState = gameState;
@@ -22,7 +22,7 @@ namespace McAI.Proto.StreamReader.Commands
 
         public void Execute(int length, byte[] array)
         {
-            Varint.TryParse(ref array, out int packetId);
+            McVarint.TryParse(ref array, out int packetId);
 
             if (handshake)
             {

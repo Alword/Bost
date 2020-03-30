@@ -7,7 +7,7 @@ namespace McAI.Proto.Commands
     {
         protected GameState gameState;
         private readonly bool isLogging;
-        public Command(bool isLogging = false)
+        public Command(bool isLogging)
         {
             this.isLogging = isLogging;
         }

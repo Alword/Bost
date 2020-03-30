@@ -7,11 +7,6 @@ namespace McAI.Proto.Commands.ToServer.Game
     {
         public PlayerPosition(bool isLogging = false) : base(isLogging) { }
 
-        public PlayerPosition()
-        {
-
-        }
-
         public override void Execute(byte[] array)
         {
             double x = BitConverter.ToDouble(array[0..8].Reverse().ToArray());

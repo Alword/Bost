@@ -2,7 +2,7 @@
 
 namespace McAI.Proto.Types
 {
-    public static class Varint
+    public static class McVarint
     {
         public static bool TryParse(byte[] buffer, out int numRead, out int result)
         {
