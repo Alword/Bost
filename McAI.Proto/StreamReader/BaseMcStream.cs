@@ -25,9 +25,9 @@ namespace McAI.Proto.StreamReader
             {
                 array = queue.ToArray();
                 Varint.TryParse(array, out int numread, out length);
-                array = array[numread..(length + 1)];
-
                 if (length > queue.Count - numread) break;
+
+                array = array[numread..(length + 1)];
 
                 queue.RemoveRange(0, length + numread);
 
