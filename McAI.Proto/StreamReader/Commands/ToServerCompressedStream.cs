@@ -1,6 +1,7 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Commands;
 using McAI.Proto.Commands.ToServer.Game;
+using McAI.Proto.Commands.ToServer.Play;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace McAI.Proto.StreamReader.Commands
             {
                 if (i++ < 5)
                 {
-                    string log = $"->{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                    string log = $"ToServer-{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
                     Program.Log(log);
                 }
             }
@@ -44,6 +45,7 @@ namespace McAI.Proto.StreamReader.Commands
                 { 0x13, new PlayerRotation(false) },
                 { 0x15, new VehicleMove(false)},
                 { 0x1C, new SteerVehicle(false)},
+                { 0x14, new PlayerMovement(false)}
             };
         }
     }

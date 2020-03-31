@@ -38,7 +38,7 @@ namespace McAI.Proto.StreamReader.Commands
             {
                 if (i++ < 5)
                 {
-                    string log = $"<-{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                    string log = $"ToClient-{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
                     Program.Log(log);
                 }
             }
@@ -66,9 +66,9 @@ namespace McAI.Proto.StreamReader.Commands
                 {0x0E, new ServerDifficulty(false) },
                 {0x32, new PlayerAbilities(false) },
                 {0x40, new HeldItemChange(false)},
-                {0x5B ,new DeclareRecipes(false) },
+                {0x5B, new DeclareRecipes(false) },
                 {0x5C, new Tags(false)},
-                {0x1C, new EntityStatus(true) }
+                {0x1C, new EntityStatus(false) }
             };
         }
     }

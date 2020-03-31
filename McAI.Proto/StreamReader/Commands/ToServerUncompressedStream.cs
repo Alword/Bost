@@ -36,7 +36,7 @@ namespace McAI.Proto.StreamReader.Commands
             }
             else
             {
-                string log = $"->{length}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                string log = $"ToServer-{length}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
                 //Program.Log(log);
             }
         }
