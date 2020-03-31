@@ -22,13 +22,13 @@ namespace McAI.Proto.StreamReader
         public virtual void Read(byte[] array)
         {
             queue.AddRange(array);
-            while (queue.Count > length + lengthLength)
+            while (length + lengthLength <= queue.Count)
             {
                 array = queue.ToArray();
                 McVarint.TryParse(array, out lengthLength, out length);
                 if (length + lengthLength > queue.Count) break;
-
                 array = array[lengthLength..(length + lengthLength)];
+
 
                 queue.RemoveRange(0, length + lengthLength);
 
