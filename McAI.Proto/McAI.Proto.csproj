@@ -14,4 +14,9 @@
     <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Packet\Status\Clientbound\" />
+    <Folder Include="Packet\Status\Serverbound\" />
+  </ItemGroup>
+
 </Project>
