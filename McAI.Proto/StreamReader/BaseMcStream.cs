@@ -9,6 +9,7 @@ namespace McAI.Proto.StreamReader
     public class BaseMcStream
     {
         protected int length = 0;
+        protected int lengthLength = 0;
         protected List<byte> queue = new List<byte>();
         protected readonly Func<GameStates> getState;
         protected readonly Dictionary<GameStates, ICommand<int, byte[]>> readers;
@@ -21,15 +22,15 @@ namespace McAI.Proto.StreamReader
         public virtual void Read(byte[] array)
         {
             queue.AddRange(array);
-            while (length < queue.Count)
+            while (queue.Count > length + lengthLength)
             {
                 array = queue.ToArray();
-                McVarint.TryParse(array, out int numread, out length);
-                if (length > queue.Count - numread) break;
+                McVarint.TryParse(array, out lengthLength, out length);
+                if (length + lengthLength > queue.Count) break;
 
-                array = array[numread..(length + 1)];
+                array = array[lengthLength..(length + lengthLength)];
 
-                queue.RemoveRange(0, length + numread);
+                queue.RemoveRange(0, length + lengthLength);
 
                 var state = getState();
                 if (readers.ContainsKey(state))

@@ -35,11 +35,11 @@ namespace McAI.Proto.StreamReader.Commands
         {
             return new Dictionary<int, Command>
             {
-                { 0x11, new PlayerPosition() },
-                { 0x12, new PlayerPositionAndRotation() },
-                { 0x13, new PlayerRotation() },
-                { 0x15, new VehicleMove()},
-                { 0x1C, new SteerVehicle()},
+                { 0x11, new PlayerPosition(true) },
+                { 0x12, new PlayerPositionAndRotation(true) },
+                { 0x13, new PlayerRotation(true) },
+                { 0x15, new VehicleMove(true)},
+                { 0x1C, new SteerVehicle(true)},
             };
         }
     }

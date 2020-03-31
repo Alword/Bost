@@ -21,9 +21,13 @@ namespace McAI.Proto.StreamReader.Commands
         int i = 0;
         public void Execute(int length, byte[] array)
         {
-            McVarint.TryParse(ref array, out int compressed);
+            int compressed;
+            int packetId;
+
+            McVarint.TryParse(ref array, out compressed);
             array = Uncompress(array, compressed);
-            McVarint.TryParse(ref array, out int packetId);
+
+            McVarint.TryParse(ref array, out packetId);
 
             if (commands.ContainsKey(packetId))
             {
@@ -61,7 +65,8 @@ namespace McAI.Proto.StreamReader.Commands
                 {0x0E, new ServerDifficulty(true) },
                 {0x32, new PlayerAbilities(true) },
                 {0x40, new HeldItemChange(true)},
-                {0x5B ,new DeclareRecipes(true) }
+                {0x5B ,new DeclareRecipes(true) },
+                {0x5C, new Tags(true)}
             };
         }
     }
