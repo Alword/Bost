@@ -7,17 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Packet\Status\**" />
-    <EmbeddedResource Remove="Packet\Status\**" />
-    <None Remove="Packet\Status\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\McAI.Proxy\McAI.Proxy.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
+    <PackageReference Include="NbtLib" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Packet\Status\" />
   </ItemGroup>
 
 </Project>

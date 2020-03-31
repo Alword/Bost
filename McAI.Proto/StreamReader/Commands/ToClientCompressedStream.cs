@@ -69,7 +69,8 @@ namespace McAI.Proto.StreamReader.Commands
                 {0x5B, new DeclareRecipes(false) },
                 {0x5C, new Tags(false)},
                 {0x1C, new EntityStatus(false) },
-                {0x37, new UnlockRecipes(false)}
+                {0x37, new UnlockRecipes(false)},
+                {0x22, new ChunkDataCommand(true) }
             };
         }
     }

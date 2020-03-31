@@ -58,7 +58,7 @@ namespace McAI.Proto
             }, () => { return gameState.ClientState; });
         }
 
-        public static async void Log(string message)
+        public static void Log(string message)
         {
             Console.WriteLine(message);
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
