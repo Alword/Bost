@@ -13,7 +13,7 @@ namespace McAI.Proto.Packet.ToClient.Play
         {
         }
 
-        public override int PacketId => throw new NotImplementedException();
+        public override int PacketId => 0x1C;
 
         public override void Read(byte[] array)
         {

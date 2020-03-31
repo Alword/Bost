@@ -2,6 +2,7 @@
 using McAI.Proto.Commands;
 using McAI.Proto.Commands.ToClient.Game;
 using McAI.Proto.Commands.ToClient.Login;
+using McAI.Proto.Commands.ToClient.Play;
 using McAI.Proto.Packet.ToClient.Login;
 using McAI.Proto.Types;
 using System;
@@ -66,7 +67,8 @@ namespace McAI.Proto.StreamReader.Commands
                 {0x32, new PlayerAbilities(false) },
                 {0x40, new HeldItemChange(false)},
                 {0x5B ,new DeclareRecipes(false) },
-                {0x5C, new Tags(false)}
+                {0x5C, new Tags(false)},
+                {0x1C, new EntityStatus(true) }
             };
         }
     }
