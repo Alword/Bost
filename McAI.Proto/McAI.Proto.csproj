@@ -7,16 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Packet\Status\**" />
+    <EmbeddedResource Remove="Packet\Status\**" />
+    <None Remove="Packet\Status\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\McAI.Proxy\McAI.Proxy.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Packet\Status\Clientbound\" />
-    <Folder Include="Packet\Status\Serverbound\" />
   </ItemGroup>
 
 </Project>
