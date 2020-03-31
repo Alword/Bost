@@ -45,7 +45,8 @@ namespace McAI.Proto.StreamReader.Commands
                 { 0x13, new PlayerRotation(false) },
                 { 0x15, new VehicleMove(false)},
                 { 0x1C, new SteerVehicle(false)},
-                { 0x14, new PlayerMovement(false)}
+                { 0x14, new PlayerMovement(false)},
+                { 0x0B, new PluginMessage(true) }
             };
         }
     }

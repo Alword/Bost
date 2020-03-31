@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Extentions;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,12 +10,12 @@ namespace McAI.Proto.Packet.ToServer.Play
     {
         public override int PacketId => 0x0B;
         public string Channel; //Identifier
-        public byte Data; //Byte Array
+        public byte[] Data; //Byte Array
 
         public override void Read(byte[] array)
         {
             McString.TryParse(ref array, out Channel);
-            McUnsignedByte.TryParse(ref array, out Data);
+            McByteArray.TryParse(ref array, out Data);
         }
 
         public override byte[] Write()
@@ -24,7 +25,7 @@ namespace McAI.Proto.Packet.ToServer.Play
 
         public override string ToString()
         {
-            return $"<[PluginMessage{base.ToString()}] Channel: {Channel} Data: {Data}";
+            return $"<[PluginMessage{base.ToString()}] Channel: {Channel} Data: {Data.ToHexString()}";
         }
     }
 }
