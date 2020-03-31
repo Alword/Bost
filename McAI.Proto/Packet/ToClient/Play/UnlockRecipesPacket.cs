@@ -15,21 +15,25 @@ namespace McAI.Proto.Packet.ToClient.Play
         public bool SmeltingRecipeBookFilterActive;
         public int ArraySize1;  //Varint
         public string RecipeIDs;  //Array of Identifier
-        public int Arraysize2;    //Optional VarInt
+        public int ArraySize2;    //Optional VarInt
         public string[] RecipeIDs1;
         public string[] RecipeIDs2;
         // Array size 2  Recipe IDs  Number of elements in the following array, only present if mode is 0 (init)
 
         public override void Read(byte[] array)
         {
-            McInt.TryParse(ref array, out Action);
+            McVarint.TryParse(ref array, out Action);
             McBoolean.TryParse(ref array, out CraftingRecipeBookOpen);
             McBoolean.TryParse(ref array, out CraftingRecipeBookFilterActive);
             McBoolean.TryParse(ref array, out SmeltingRecipeBookOpen);
             McBoolean.TryParse(ref array, out SmeltingRecipeBookFilterActive);
-            McInt.TryParse(ref array, out ArraySize1);
-            McString.TryParse(ref array, out RecipeIDs);
-            McInt.TryParse(ref array, out Arraysize2);
+            McVarint.TryParse(ref array, out ArraySize1);
+            McStringArray.TryParse(ArraySize1, ref array, out RecipeIDs1);
+            if (Action == 0)
+            {
+                McVarint.TryParse(ref array, out ArraySize2);
+                McStringArray.TryParse(ArraySize2, ref array, out RecipeIDs2);
+            }
         }
 
         public override byte[] Write()
@@ -39,7 +43,27 @@ namespace McAI.Proto.Packet.ToClient.Play
 
         public override string ToString()
         {
-            return $"[UnlockRecipes{base.ToString()}] Action:{Action} CraftingRecipeBookOpen:{CraftingRecipeBookOpen} CraftingRecipeBookFilterActive:{CraftingRecipeBookFilterActive} SmeltingRecipeBookOpen:{SmeltingRecipeBookOpen} SmeltingRecipeBookFilterActive:{SmeltingRecipeBookFilterActive} ArraySize1:{ArraySize1} RecipeIDs:{RecipeIDs} Arraysize2:{Arraysize2}";
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"[UnlockRecipes{base.ToString()}] Action:{Action} CraftingRecipeBookOpen:{CraftingRecipeBookOpen}");
+            stringBuilder.AppendLine($" CraftingRecipeBookFilterActive:{CraftingRecipeBookFilterActive} SmeltingRecipeBookOpen:{SmeltingRecipeBookOpen} ");
+            stringBuilder.AppendLine($" SmeltingRecipeBookFilterActive:{SmeltingRecipeBookFilterActive} ");
+
+            stringBuilder.AppendLine($"ArraySize1: {ArraySize1}");
+            AppendRecipeIDs(stringBuilder, ArraySize1, RecipeIDs1);
+            stringBuilder.AppendLine($"ArraySize2: {ArraySize2}");
+            AppendRecipeIDs(stringBuilder, ArraySize2, RecipeIDs2);
+            return stringBuilder.ToString();
+        }
+
+        private void AppendRecipeIDs(StringBuilder stringBuilder, int arraysize, string[] recipeIDs)
+        {
+            if (recipeIDs == null) return;
+
+            foreach (var recipeID in recipeIDs)
+            {
+                stringBuilder.Append($"{recipeID} ");
+            }
+            stringBuilder.Append($"{Environment.NewLine}");
         }
     }
 }
