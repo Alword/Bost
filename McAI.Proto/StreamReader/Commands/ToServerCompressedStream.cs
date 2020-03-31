@@ -46,7 +46,8 @@ namespace McAI.Proto.StreamReader.Commands
                 { 0x15, new VehicleMove(false)},
                 { 0x1C, new SteerVehicle(false)},
                 { 0x14, new PlayerMovement(false)},
-                { 0x0B, new PluginMessage(true) }
+                { 0x0B, new PluginMessage(false) },
+                { 0x23, new HeldItemChange(true)}
             };
         }
     }

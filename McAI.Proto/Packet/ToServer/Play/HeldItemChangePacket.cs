@@ -17,12 +17,12 @@ namespace McAI.Proto.Packet.ToServer.Play
 
         public override byte[] Write()
         {
-            throw new NotImplementedException();
+            return McShort.ToBytes(Slot);
         }
 
         public override string ToString()
         {
-            return $"<[HeldItemChange{base.ToString()}] Slot: {Slot}";
+            return $">[HeldItemChange{base.ToString()}] Slot: {Slot}";
         }
     }
 }

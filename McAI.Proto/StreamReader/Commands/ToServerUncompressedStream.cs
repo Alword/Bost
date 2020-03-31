@@ -1,6 +1,7 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Commands;
 using McAI.Proto.Commands.ToServer.Login;
+using McAI.Proto.Commands.ToServer.Play;
 using McAI.Proto.Enum;
 using McAI.Proto.Types;
 using System;
@@ -45,7 +46,7 @@ namespace McAI.Proto.StreamReader.Commands
         {
             return new Dictionary<int, Command>
             {
-                { 0x00, new LoginStart(true) },
+                { 0x00, new LoginStart(true) }
             };
         }
     }

@@ -32,7 +32,7 @@ namespace McAI.Proto.Packet.ToServer.Play
 
         public override string ToString()
         {
-            return $"<[ClientSettings{base.ToString()}] Locale:{Locale} ViewDistance:{ViewDistance} ChatMode:{ChatMode} ChatColors:{ChatColors} DisplayedSkinParts:{DisplayedSkinParts} MainHand:{MainHand}";
+            return $">[ClientSettings{base.ToString()}] Locale:{Locale} ViewDistance:{ViewDistance} ChatMode:{ChatMode} ChatColors:{ChatColors} DisplayedSkinParts:{DisplayedSkinParts} MainHand:{MainHand}";
         }
     }
 }

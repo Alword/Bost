@@ -65,7 +65,7 @@ namespace McAI.Proto.StreamReader.Commands
                 {0x19, new PluginMessage(false)},
                 {0x0E, new ServerDifficulty(false) },
                 {0x32, new PlayerAbilities(false) },
-                {0x40, new HeldItemChange(false)},
+                {0x40, new HeldItemChange(true)},
                 {0x5B, new DeclareRecipes(false) },
                 {0x5C, new Tags(false)},
                 {0x1C, new EntityStatus(false) },

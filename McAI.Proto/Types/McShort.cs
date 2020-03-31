@@ -13,10 +13,9 @@ namespace McAI.Proto.Types
             buffer = buffer[2..];
             return true;
         }
-        public static byte[] ToBytes(bool value)
+        public static byte[] ToBytes(short value)
         {
-            byte[] result = new byte[] { value ? (byte)1 : (byte)0 };
-            return result;
+            return BitConverter.GetBytes(value).Reverse().ToArray(); ;
         }
     }
 }
