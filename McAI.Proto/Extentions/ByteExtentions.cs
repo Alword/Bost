@@ -9,6 +9,6 @@ namespace McAI.Proto.Extentions
             return BitConverter.ToString(data);
         }
 
-        public static bool IsChecked(this byte data, int index) => (index & 1) != 0;
+        public static bool IsChecked(this byte data, int index) => (data & (1 << index)) != 0;
     }
 }

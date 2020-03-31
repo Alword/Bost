@@ -1,4 +1,6 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Enum;
+using McAI.Proto.Extentions;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,19 +12,22 @@ namespace McAI.Proto.Packet.ToServer.Play
         public override int PacketId => 0x05;
         public string Locale; //string (16)
         public byte ViewDistance;
-        public int ChatMode; //Varint Enum
+        public ChatModes ChatMode; //Varint Enum
         public bool ChatColors;
         public byte DisplayedSkinParts; //Unsigned Byte
-        public int MainHand; //Varint Enum
+        public MainHands MainHand; //Varint Enum
 
         public override void Read(byte[] array)
         {
             McString.TryParse(ref array, out Locale);
             McUnsignedByte.TryParse(ref array, out ViewDistance);
-            McInt.TryParse(ref array, out ChatMode);
+            McVarint.TryParse(ref array, out int chatMode);
+            ChatMode = (ChatModes)chatMode;
             McBoolean.TryParse(ref array, out ChatColors);
             McUnsignedByte.TryParse(ref array, out DisplayedSkinParts);
-            McInt.TryParse(ref array, out MainHand);
+            McVarint.TryParse(ref array, out int mainHand);
+            MainHand = (MainHands)mainHand;
+
         }
 
         public override byte[] Write()
@@ -32,7 +37,28 @@ namespace McAI.Proto.Packet.ToServer.Play
 
         public override string ToString()
         {
-            return $">[ClientSettings{base.ToString()}] Locale:{Locale} ViewDistance:{ViewDistance} ChatMode:{ChatMode} ChatColors:{ChatColors} DisplayedSkinParts:{DisplayedSkinParts} MainHand:{MainHand}";
+            return $">[ClientSettings{base.ToString()}] Locale:{Locale} ViewDistance:{ViewDistance} ChatMode:{ChatMode} " +
+                $"ChatColors:{ChatColors} DisplayedSkinParts:{SkinParts()} MainHand:{MainHand}";
+        }
+
+        private string SkinParts()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine($"[{Enable(0)}] Cape");
+            stringBuilder.AppendLine($"[{Enable(1)}] Jacket");
+            stringBuilder.AppendLine($"[{Enable(2)}] Left Sleeve");
+            stringBuilder.AppendLine($"[{Enable(3)}] Right Sleeve");
+            stringBuilder.AppendLine($"[{Enable(4)}] Left Pants Leg");
+            stringBuilder.AppendLine($"[{Enable(5)}] Right Pants Leg");
+            stringBuilder.AppendLine($"[{Enable(6)}] Hat");
+
+            return stringBuilder.ToString();
+        }
+
+        private string Enable(int number)
+        {
+            return DisplayedSkinParts.IsChecked(number) ? "x" : " ";
         }
     }
 }
