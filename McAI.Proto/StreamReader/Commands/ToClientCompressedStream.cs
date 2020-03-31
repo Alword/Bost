@@ -59,14 +59,14 @@ namespace McAI.Proto.StreamReader.Commands
         {
             return new Dictionary<int, Command>
             {
-                {0x02, new LoginSuccess(true)},
-                {0x26, new JoinGame(true)},
-                {0x19, new PluginMessage(true)},
-                {0x0E, new ServerDifficulty(true) },
-                {0x32, new PlayerAbilities(true) },
-                {0x40, new HeldItemChange(true)},
-                {0x5B ,new DeclareRecipes(true) },
-                {0x5C, new Tags(true)}
+                {0x02, new LoginSuccess(false)},
+                {0x26, new JoinGame(false)},
+                {0x19, new PluginMessage(false)},
+                {0x0E, new ServerDifficulty(false) },
+                {0x32, new PlayerAbilities(false) },
+                {0x40, new HeldItemChange(false)},
+                {0x5B ,new DeclareRecipes(false) },
+                {0x5C, new Tags(false)}
             };
         }
     }

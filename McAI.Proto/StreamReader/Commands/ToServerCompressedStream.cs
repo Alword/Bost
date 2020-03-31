@@ -15,6 +15,7 @@ namespace McAI.Proto.StreamReader.Commands
             this.commands = InitializeCommand(gameState);
         }
 
+        int i = 0;
         public void Execute(int length, byte[] array)
         {
             McVarint.TryParse(ref array, out int compressed);
@@ -26,8 +27,11 @@ namespace McAI.Proto.StreamReader.Commands
             }
             else
             {
-                string log = $"->{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
-                //Program.Log(log);
+                if (i++ < 5)
+                {
+                    string log = $"->{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                    Program.Log(log);
+                }
             }
         }
 
@@ -35,11 +39,11 @@ namespace McAI.Proto.StreamReader.Commands
         {
             return new Dictionary<int, Command>
             {
-                { 0x11, new PlayerPosition(true) },
-                { 0x12, new PlayerPositionAndRotation(true) },
-                { 0x13, new PlayerRotation(true) },
-                { 0x15, new VehicleMove(true)},
-                { 0x1C, new SteerVehicle(true)},
+                { 0x11, new PlayerPosition(false) },
+                { 0x12, new PlayerPositionAndRotation(false) },
+                { 0x13, new PlayerRotation(false) },
+                { 0x15, new VehicleMove(false)},
+                { 0x1C, new SteerVehicle(false)},
             };
         }
     }
