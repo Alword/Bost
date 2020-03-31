@@ -29,7 +29,7 @@ namespace McAI.Proto.StreamReader.Commands
             {
                 if (i++ < 5)
                 {
-                    string log = $"->{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
+                    string log = $"ToServer-{length}:{compressed}:[{packetId:X02}]:[{BitConverter.ToString(array)}]";
                     Program.Log(log);
                 }
             }
