@@ -14,7 +14,7 @@ namespace McAI.Proto.Commands.ToServer.Game
             double z = BitConverter.ToDouble(array[16..24].Reverse().ToArray());
             bool onGound = BitConverter.ToBoolean(array[24..]);
 
-            Debug($"[Player] Position x:{x} y:{y} z:{z} onground:{onGound}");
+            Debug($">[Player] Position x:{x} y:{y} z:{z} onground:{onGound}");
         }
     }
 }
