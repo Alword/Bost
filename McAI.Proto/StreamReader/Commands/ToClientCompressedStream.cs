@@ -3,7 +3,6 @@ using McAI.Proto.Commands;
 using McAI.Proto.Commands.ToClient.Game;
 using McAI.Proto.Commands.ToClient.Login;
 using McAI.Proto.Commands.ToClient.Play;
-using McAI.Proto.Packet.ToClient.Login;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;

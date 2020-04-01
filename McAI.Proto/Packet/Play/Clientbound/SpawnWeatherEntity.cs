@@ -7,7 +7,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 {
     public class SpawnWeatherEntity : BasePacket
     {
-        public override int PacketId => 0x01;
+        public override int PacketId => 0x02;
 
         public int EntityId; // varing
         public byte Type;

@@ -9,7 +9,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 {
     public class ChunkDataPacket : BasePacket
     {
-        public override int PacketId => 0x01;
+        public override int PacketId => 0x22;
 
         public int ChunkX; // ing
         public int ChunkZ; // int

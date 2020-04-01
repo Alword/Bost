@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -33,14 +34,38 @@ namespace McAI.Proto.StreamReader.Middleware
 
         public Dictionary<(int, ConnectionState, Bounds), BasePacket> GetPackets()
         {
-            var q = from t in Assembly.GetExecutingAssembly().GetTypes()
-                    where t.IsClass && t.Namespace == ""
-                    select t;
+            var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
+                     where t.IsClass && t.Namespace.StartsWith("McAI.Proto.Packet")
+                     select t).ToArray();
 
-            return new Dictionary<(int, ConnectionState, Bounds), BasePacket>
+            var dictionary = new Dictionary<(int, ConnectionState, Bounds), BasePacket>();
+
+            foreach (var t in q)
             {
-                {(1,ConnectionState.Handshaking,Bounds.Client),new ChunkDataPacket()},
-            };
+                var packet = (BasePacket)Activator.CreateInstance(t);
+
+
+                ConnectionState connectionState = ConnectionState.Handshaking;
+                Bounds bounds = Bounds.Client;
+                if (t.Namespace.Contains("Serverbound"))
+                    bounds = Bounds.Server;
+                if (t.Namespace.Contains("Packet.Handshaking"))
+                    connectionState = ConnectionState.Handshaking;
+
+                if (t.Namespace.Contains("Packet.Login"))
+                    connectionState = ConnectionState.Login;
+
+                if (t.Namespace.Contains("Packet.Play"))
+                    connectionState = ConnectionState.Play;
+
+                if (t.Namespace.Contains("Packet.Status"))
+                    connectionState = ConnectionState.Status;
+
+                dictionary.Add((packet.PacketId, connectionState, bounds), packet);
+            }
+
+
+            return dictionary;
         }
     }
 }
