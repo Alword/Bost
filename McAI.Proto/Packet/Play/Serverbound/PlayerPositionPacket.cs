@@ -8,7 +8,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override void Read(byte[] array)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override byte[] Write()

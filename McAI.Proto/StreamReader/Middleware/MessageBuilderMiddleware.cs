@@ -15,21 +15,20 @@ namespace McAI.Proto.StreamReader.Middleware
         {
         }
 
-        public override void Invoke(McConnectionContext mcConnectionContext)
+        public override void Invoke(McConnectionContext ctx)
         {
-            var array = mcConnectionContext.Data;
-            queue.AddRange(array);
+            queue.AddRange(ctx.Data);
             while (queue.Count > 0)
             {
-                array = queue.ToArray();
-                McVarint.TryParse(array, out lengthLength, out length);
+                ctx.Data = queue.ToArray();
+                McVarint.TryParse(ctx.Data, out lengthLength, out length);
                 if (length + lengthLength > queue.Count) break;
-                array = array[lengthLength..(length + lengthLength)];
-                queue.RemoveRange(0, length + lengthLength);
 
-                mcConnectionContext.Length = length;
-                mcConnectionContext.Data = array;
-                _next?.Invoke(mcConnectionContext);
+                ctx.Data = ctx.Data[lengthLength..(length + lengthLength)];
+                queue.RemoveRange(0, length + lengthLength);
+                
+                ctx.Length = length;
+                _next?.Invoke(ctx);
             }
         }
     }
