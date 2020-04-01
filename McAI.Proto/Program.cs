@@ -2,7 +2,6 @@
 using McAI.Proto.Enum;
 using McAI.Proto.Packet;
 using McAI.Proto.StreamReader;
-using McAI.Proto.StreamReader.Commands;
 using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
 using McAI.Proxy;
@@ -16,8 +15,6 @@ namespace McAI.Proto
 {
     class Program
     {
-        private static BaseMcStream SendMessage;
-        private static BaseMcStream ReciveMessage;
         public static readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss}-log.txt");
         public static GameState GameState { get; set; }
         static void Main(string[] args)
@@ -47,34 +44,6 @@ namespace McAI.Proto
 
             Console.ReadLine();
         }
-
-        //private static void Proxy_OnSendMessage(object sender, byte[] message)
-        //{
-        //    SendMessage.Read(message);
-        //}
-
-        //private static void Proxy_OnReciveMessage(object sender, byte[] message)
-        //{
-        //    ReciveMessage.Read(message);
-        //}
-
-        //public static BaseMcStream InitializeRecive(GameState gameState)
-        //{
-        //    return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
-        //    {
-        //        {GameStates.Login, new ToClientUncompressedStream(gameState)},
-        //        {GameStates.Game, new ToClientCompressedStream(gameState)}
-        //    }, () => { return gameState.ServerState; });
-        //}
-
-        //public static BaseMcStream InitializeSend(GameState gameState)
-        //{
-        //    return new BaseMcStream(new Dictionary<GameStates, ICommand<int, byte[]>>()
-        //    {
-        //        {GameStates.Login, new ToServerUncompressedStream(gameState)},
-        //        {GameStates.Game, new ToServerCompressedStream(gameState)}
-        //    }, () => { return gameState.ClientState; });
-        //}
 
         public static void Log(string message)
         {
