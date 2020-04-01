@@ -1,4 +1,5 @@
 ﻿using McAI.Proto.Enum;
+using McAI.Proto.Extentions;
 using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.StreamReader.Enum;
@@ -29,16 +30,20 @@ namespace McAI.Proto.StreamReader.Middleware
                 packet.Read(ctx.Data);
                 Program.Log($"{ctx.PacketId} | {ctx.ConnectionState} | {ctx.BoundTo} | {packet}");
             }
+            else
+            {
+                Program.Log($"{ctx.PacketId} | {ctx.ConnectionState} | {ctx.BoundTo} | {ctx.Data.ToHexString()}");
+            }
             _next?.Invoke(ctx);
         }
 
         public Dictionary<(int, ConnectionState, Bounds), BasePacket> GetPackets()
         {
-            var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
-                     where t.IsClass && t.Namespace.StartsWith("McAI.Proto.Packet")
-                     select t).ToArray();
-
             var dictionary = new Dictionary<(int, ConnectionState, Bounds), BasePacket>();
+
+            var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
+                     where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("McAI.Proto.Packet")
+                     select t).ToArray();
 
             foreach (var t in q)
             {
@@ -63,7 +68,6 @@ namespace McAI.Proto.StreamReader.Middleware
 
                 dictionary.Add((packet.PacketId, connectionState, bounds), packet);
             }
-
 
             return dictionary;
         }
