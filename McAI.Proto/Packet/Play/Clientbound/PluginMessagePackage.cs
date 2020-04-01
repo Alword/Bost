@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToClient.Game
+namespace McAI.Proto.Packet.Play.Clientbound
 {
     public class PluginMessagePackage : BasePacket
     {

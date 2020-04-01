@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToServer.Login
+namespace McAI.Proto.Packet.Handshaking.Serverbound
 {
     public class HandshakePacket : BasePacket
     {

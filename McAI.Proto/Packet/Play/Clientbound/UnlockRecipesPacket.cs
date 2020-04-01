@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToClient.Play
+namespace McAI.Proto.Packet.Play.Clientbound
 {
     public class UnlockRecipesPacket : BasePacket
     {

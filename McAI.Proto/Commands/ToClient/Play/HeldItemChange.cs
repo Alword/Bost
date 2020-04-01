@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Packet.ToClient.Game;
+﻿using McAI.Proto.Packet.Play.Clientbound;
+
 namespace McAI.Proto.Commands.ToClient.Game
 {
     class HeldItemChange : Command

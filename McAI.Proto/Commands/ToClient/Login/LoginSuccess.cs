@@ -1,4 +1,4 @@
-﻿using McAI.Proto.Packet.ToClient.Login;
+﻿using McAI.Proto.Packet.Login.Clientbound;
 using System;
 using System.Collections.Generic;
 using System.Text;

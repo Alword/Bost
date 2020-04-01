@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToServer.Play
+namespace McAI.Proto.Packet.Play.Serverbound
 {
     public class ClientSettingsPacket : BasePacket
     {

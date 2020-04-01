@@ -1,6 +1,6 @@
 ﻿using McAI.Proto.Types;
 
-namespace McAI.Proto.Packet.ToClient.Login
+namespace McAI.Proto.Packet.Login.Clientbound
 {
     public class SetCompressionPacket : BasePacket
     {

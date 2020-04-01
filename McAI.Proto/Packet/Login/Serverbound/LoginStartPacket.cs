@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToServer.Login
+namespace McAI.Proto.Packet.Login.Serverbound
 {
     public class LoginStartPacket : BasePacket
     {

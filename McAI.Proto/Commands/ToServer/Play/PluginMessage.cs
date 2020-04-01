@@ -1,4 +1,4 @@
-﻿using McAI.Proto.Packet.ToServer.Play;
+﻿using McAI.Proto.Packet.Play.Serverbound;
 
 namespace McAI.Proto.Commands.ToServer.Play
 {

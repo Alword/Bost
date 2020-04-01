@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToClient.Login
+namespace McAI.Proto.Packet.Login.Clientbound
 {
     public class LoginSuccessPacket : BasePacket
     {

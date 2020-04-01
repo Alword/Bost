@@ -1,5 +1,5 @@
 ﻿using McAI.Proto.Enum;
-using McAI.Proto.Packet.ToClient.Login;
+using McAI.Proto.Packet.Login.Clientbound;
 
 namespace McAI.Proto.Commands.ToClient.Login
 {

@@ -1,4 +1,4 @@
-﻿using McAI.Proto.Packet.ToServer.Play;
+﻿using McAI.Proto.Packet.Play.Serverbound;
 using System;
 using System.Collections.Generic;
 using System.Text;

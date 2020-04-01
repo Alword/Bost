@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Packet.ToServer.Play
+namespace McAI.Proto.Packet.Play.Serverbound
 {
     public class HeldItemChangePacket : BasePacket
     {
@@ -12,7 +12,7 @@ namespace McAI.Proto.Packet.ToServer.Play
 
         public override void Read(byte[] array)
         {
-           McShort.TryParse(ref array, out Slot);
+            McShort.TryParse(ref array, out Slot);
         }
 
         public override byte[] Write()

@@ -2,7 +2,8 @@
 using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
 using McAI.Proto.Packet;
-using McAI.Proto.Packet.ToServer.Login;
+using McAI.Proto.Packet.Handshaking.Serverbound;
+using McAI.Proto.Packet.Login.Serverbound;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using McAI.Proto.Packet.ToServer.Login;
+﻿using McAI.Proto.Packet.Handshaking.Serverbound;
 
 namespace McAI.Proto.Commands.ToServer.Login
 {
