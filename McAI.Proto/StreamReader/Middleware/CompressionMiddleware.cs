@@ -1,4 +1,5 @@
 ﻿using McAI.Proto.StreamReader.Model;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,13 +12,21 @@ namespace McAI.Proto.StreamReader.Middleware
         {
         }
 
-        public override void Invoke(McConnectionContext mcConnectionContext)
+        public override void Invoke(McConnectionContext ctx)
         {
-            if (mcConnectionContext.IsCompressed)
+            if (ctx.IsCompressed)
             {
-                mcConnectionContext.Data = Ionic.Zlib.ZlibStream.UncompressBuffer(mcConnectionContext.Data);
+                var array = ctx.Data;
+                McVarint.TryParse(ref array, out int compressedLength);
+                ctx.CompressionLength = compressedLength;
+
+                if (ctx.CompressionLength > 0)
+                {
+                    array = Ionic.Zlib.ZlibStream.UncompressBuffer(array);
+                }
+                ctx.Data = array;
             }
-            _next?.Invoke(mcConnectionContext);
+            _next?.Invoke(ctx);
         }
     }
 }

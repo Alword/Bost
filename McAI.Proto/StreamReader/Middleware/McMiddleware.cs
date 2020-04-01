@@ -13,7 +13,7 @@ namespace McAI.Proto.StreamReader
 
         public McMiddleware(McRequestDelegate _next)
         {
-
+            this._next = _next;
         }
 
         public abstract void Invoke(McConnectionContext mcConnectionContext);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace McAI.Proto.StreamReader.Enum
 {
-    public enum ConnectionState
+    public enum ConnectionStates
     {
         Handshaking,
         Status,

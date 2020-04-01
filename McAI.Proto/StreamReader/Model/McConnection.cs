@@ -19,7 +19,7 @@ namespace McAI.Proto.StreamReader.Model
             connectionMiddleware = new MessageBuilderMiddleware(compression.Invoke);
         }
 
-        public void Listen(byte[] array)
+        public void Listen(object sender, byte[] array)
         {
             ctx.Data = array;
             connectionMiddleware.Invoke(ctx);

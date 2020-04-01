@@ -9,24 +9,19 @@ namespace McAI.Proto.Packet.Handshaking.Serverbound
 {
     public class HandshakePacket : BasePacket
     {
-        public int ProtocolVersion { get; set; } = 578; // VarInt See protocol version numbers (currently 578 in Minecraft 1.15.2)  
-        public string Address { get; set; } // String (255) Hostname or IP, e.g. localhost or 127.0.0.1 
-        public ushort Port { get; set; } // Unsigned Short 
-        public LoginStates LoginState { get; set; } // VarInt Enum 1 for status, 2 for login
+        public int ProtocolVersion;//578; // VarInt See protocol version numbers (currently 578 in Minecraft 1.15.2)  
+        public string Address; // String (255) Hostname or IP, e.g. localhost or 127.0.0.1 
+        public short Port; // Unsigned Short 
+        public LoginStates LoginState; // VarInt Enum 1 for status, 2 for login
         public override int PacketId => 0x00;
 
         public override void Read(byte[] array)
         {
-            McVarint.TryParse(ref array, out int protocolVersion);
-            ProtocolVersion = protocolVersion;
+            McVarint.TryParse(ref array, out ProtocolVersion);
 
-            McVarint.TryParse(ref array, out int addressLength);
+            McString.TryParse(ref array, out Address);
 
-            Address = Encoding.UTF8.GetString(array[0..addressLength]);
-            array = array[addressLength..];
-
-            Port = BitConverter.ToUInt16(array[0..2].Reverse().ToArray());
-            array = array[2..];
+            McShort.TryParse(ref array, out Port);
 
             McVarint.TryParse(ref array, out int loginState);
             LoginState = (LoginStates)loginState;

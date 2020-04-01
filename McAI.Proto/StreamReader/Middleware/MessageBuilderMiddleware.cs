@@ -18,9 +18,8 @@ namespace McAI.Proto.StreamReader.Middleware
         public override void Invoke(McConnectionContext mcConnectionContext)
         {
             var array = mcConnectionContext.Data;
-
             queue.AddRange(array);
-            while (length + lengthLength <= queue.Count)
+            while (queue.Count > 0)
             {
                 array = queue.ToArray();
                 McVarint.TryParse(array, out lengthLength, out length);
@@ -28,6 +27,7 @@ namespace McAI.Proto.StreamReader.Middleware
                 array = array[lengthLength..(length + lengthLength)];
                 queue.RemoveRange(0, length + lengthLength);
 
+                mcConnectionContext.Length = length;
                 mcConnectionContext.Data = array;
                 _next?.Invoke(mcConnectionContext);
             }
