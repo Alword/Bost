@@ -17,7 +17,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override byte[] Write()
         {
-            throw new NotImplementedException();
+            return McVarint.ToBytes(TeleportID);
         }
 
         public override string ToString()

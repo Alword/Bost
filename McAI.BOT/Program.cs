@@ -17,6 +17,7 @@ namespace McAI.BOT
             agent.OnSend += connectionListner.SendListner;
             connectionListner.Subscribe(new PacketKey(0x21, ConnectionStates.Play, Bounds.Client), new KeepAlive(agent));
             connectionListner.Subscribe(new PacketKey(0x49, ConnectionStates.Play, Bounds.Client), new Respawn(agent));
+            connectionListner.Subscribe(new PacketKey(0x36, ConnectionStates.Play, Bounds.Client), new TeleportConfirm(agent));
 
             Run(agent).GetAwaiter().GetResult();
 
