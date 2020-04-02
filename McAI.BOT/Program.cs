@@ -1,4 +1,7 @@
-﻿using McAI.Proto;
+﻿using McAI.BOT.AgentEventHandlers;
+using McAI.Proto;
+using McAI.Proto.StreamReader.Enum;
+using McAI.Proto.StreamReader.Model;
 using System;
 using System.Threading.Tasks;
 
@@ -12,8 +15,10 @@ namespace McAI.BOT
             Agent agent = new Agent("192.168.1.69", 25565);
             agent.OnRecive += connectionListner.ReciveListner;
             agent.OnSend += connectionListner.SendListner;
+            connectionListner.Subscribe(new PacketKey(0x21, ConnectionStates.Play, Bounds.Client), new KeepAlive(agent));
 
             Run(agent).GetAwaiter().GetResult();
+
             while (true)
             {
                 ConsoleKeyInfo e = Console.ReadKey();
@@ -24,7 +29,7 @@ namespace McAI.BOT
 
         public static async Task Run(Agent agent)
         {
-            await agent.Login("Test10");
+            await agent.Login("NeAlword");
 
         }
     }

@@ -8,10 +8,12 @@ namespace McAI.Proto.StreamReader.Model
 {
     public class McConnectionContext
     {
+        public readonly PacketEventHub packetEventHub;
         public bool IsCompressed { get; set; }
         public bool Encryption { get; set; }
         public string EncryptionPrivatekey { get; set; }
         public string EncryptionPuivatekey { get; set; }
+
 
         public int Length;
         public int CompressionLength;
@@ -19,6 +21,11 @@ namespace McAI.Proto.StreamReader.Model
         public ConnectionStates ConnectionState { get; set; }
         public Bounds BoundTo { get; set; }
         public byte[] Data;
+
+        public McConnectionContext(PacketEventHub packetEventHub)
+        {
+            this.packetEventHub = packetEventHub;
+        }
 
         public override string ToString()
         {

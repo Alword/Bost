@@ -1,13 +1,22 @@
 ﻿using McAI.Proto.Packet;
+using McAI.Proto.StreamReader.Abstractions;
+using McAI.Proto.StreamReader.Enum;
+using McAI.Proto.StreamReader.Model;
+using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class KeepAlive
+    public class KeepAlive : IPacketEventHandler
     {
-        public async void OnPacket(object sender, BasePacket packet)
+        private readonly Agent agent;
+        public KeepAlive(Agent agent)
         {
-            var agent = (Agent)sender;
+            this.agent = agent;
+        }
+        public async void OnPacket(PacketKey state, BasePacket packet)
+        {
             var toclientKeepAlive = (Proto.Packet.Play.Clientbound.KeepAlivePacket)packet;
 
             var toServerKeepAlive = new Proto.Packet.Play.Serverbound.KeepAlivePacket

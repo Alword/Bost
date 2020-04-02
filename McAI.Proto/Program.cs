@@ -22,33 +22,23 @@ namespace McAI.Proto
             GameState = new GameState();
             Log($"[Proto] Start session");
 
-            McConnection read = new McConnection(new McConnectionContext()
-            {
-                ConnectionState = ConnectionStates.Login,
-                BoundTo = Bounds.Client
-            });
-
-            McConnection write = new McConnection(new McConnectionContext()
-            {
-                ConnectionState = ConnectionStates.Handshaking,
-                BoundTo = Bounds.Server
-            });
+            ConnectionListner connectionListner = new ConnectionListner();
 
 
             ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.138.186", 25565);
             proxy.Start();
-            proxy.OnReciveMessage += read.Listen;
-            proxy.OnSendMessage += write.Listen;
+            proxy.OnReciveMessage += connectionListner.ReciveListner;
+            proxy.OnSendMessage += connectionListner.SendListner;
 
             Console.ReadLine();
         }
 
         public static void Log(string message)
         {
-            if (message.Contains("0x0E")) 
-            {
+            //if (message.Contains("0x0E"))
+            //{
                 Console.WriteLine(message);
-            }
+            //}
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }
     }
