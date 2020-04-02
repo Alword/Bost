@@ -1,9 +1,6 @@
 ﻿using McAI.Proto.Types;
 using NbtLib;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace McAI.Proto.Model
 {
@@ -21,9 +18,20 @@ namespace McAI.Proto.Model
             {
                 McVarint.TryParse(ref array, out ItemId);
                 McUnsignedByte.TryParse(ref array, out ItemCount);
+
+                var parser = new NbtParser();
                 Stream nbtStream = new MemoryStream(array);
-                NBT = new NbtParser().ParseNbtStream(nbtStream);
-                array = array[(int)nbtStream.Position..];
+                if (array[0] == 0)
+                {
+                    array = array[1..];
+                    NBT = new NbtCompoundTag();
+                }
+                else
+                {
+                    NBT = new NbtParser().ParseNbtStream(nbtStream);
+                    array = array[(int)nbtStream.Position..];
+                }
+
             }
         }
 
@@ -31,11 +39,11 @@ namespace McAI.Proto.Model
         {
             if (Present)
             {
-                return $"Not present";
+                return $"ItemId: {ItemId} Count: {ItemCount} NBT:{NBT.ToJsonString()}";
             }
             else
             {
-                return $"ItemId: {ItemId} Count: {ItemCount} NBT:{NBT.ToJsonString()}";
+                return $"Not present";
             }
         }
     }

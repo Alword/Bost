@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Model;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,13 +12,17 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public byte WindowID; // Unsigned Byte
         public short Count;
-        // SlotData   Field Type - Array of Slot
+        public Slot[] SlotData; //Field Type - Array of Slot
 
         public override void Read(byte[] array)
         {
             McUnsignedByte.TryParse(ref array, out WindowID);
             McShort.TryParse(ref array, out Count);
-
+            SlotData = new Slot[Count];
+            for (int i = 0; i < Count; i++)
+            {
+                SlotData[i].Parse(ref array);
+            }
         }
 
         public override byte[] Write()
@@ -27,7 +32,21 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"[WindowItems] WindowID:{WindowID} Count:{Count}";
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < SlotData.Length; i++)
+            {
+                if (i % 4 == 0)
+                {
+                    stringBuilder.AppendLine($"[{i}] {SlotData[i]} ");
+                }
+                else
+                {
+                    stringBuilder.Append($"[{i}] {SlotData[i]} ");
+                }
+            }
+
+            return $"[WindowItems] WindowID:{WindowID} Count:{Count} {stringBuilder}";
         }
     }
 }
