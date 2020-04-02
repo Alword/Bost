@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"[UpdateHealthPacket] Health:{Health} Food:{Food} FoodSaturation:{FoodSaturation}";
+            return $"[UpdateHealthPacket] Health:{Health:0.00} Food:{Food} FoodSaturation:{FoodSaturation:0.00}";
         }
 
         public override byte[] Write()

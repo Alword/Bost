@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Enum;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,12 +10,13 @@ namespace McAI.Proto.Packet.Play.Clientbound
     {
         public override int PacketId => 0x1F;
 
-        public byte Reason; //Unsigned Byte
+        public Reasons Reason; //Unsigned Byte
         public float Value;
 
         public override void Read(byte[] array)
         {
-            McUnsignedByte.TryParse(ref array, out Reason);
+            McUnsignedByte.TryParse(ref array, out byte reason);
+            Reason = (Reasons)reason;
             McFloat.TryParse(ref array, out Value);
         }
 
