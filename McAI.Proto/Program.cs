@@ -21,8 +21,6 @@ namespace McAI.Proto
         {
             GameState = new GameState();
             Log($"[Proto] Start session");
-            //SendMessage = InitializeSend(GameState);
-            //ReciveMessage = InitializeRecive(GameState);
 
             McConnection read = new McConnection(new McConnectionContext()
             {

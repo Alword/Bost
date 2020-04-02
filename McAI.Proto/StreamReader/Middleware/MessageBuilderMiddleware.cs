@@ -21,12 +21,22 @@ namespace McAI.Proto.StreamReader.Middleware
             while (queue.Count > 0)
             {
                 ctx.Data = queue.ToArray();
-                McVarint.TryParse(ctx.Data, out lengthLength, out length);
+                try
+                {
+                    McVarint.TryParse(ctx.Data, out lengthLength, out length);
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    if (queue.Count > 5)
+                        throw;
+                    else
+                        break;
+                }
                 if (length + lengthLength > queue.Count) break;
 
                 ctx.Data = ctx.Data[lengthLength..(length + lengthLength)];
                 queue.RemoveRange(0, length + lengthLength);
-                
+
                 ctx.Length = length;
                 _next?.Invoke(ctx);
             }

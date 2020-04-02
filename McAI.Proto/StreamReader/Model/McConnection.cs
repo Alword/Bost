@@ -21,6 +21,7 @@ namespace McAI.Proto.StreamReader.Model
 
         public void Listen(object sender, byte[] array)
         {
+
             ctx.Data = array;
             connectionMiddleware.Invoke(ctx);
         }

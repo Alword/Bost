@@ -1,4 +1,5 @@
-﻿using McAI.Proto.StreamReader.Enum;
+﻿using McAI.Proto.Extentions;
+using McAI.Proto.StreamReader.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,5 +19,10 @@ namespace McAI.Proto.StreamReader.Model
         public ConnectionStates ConnectionState { get; set; }
         public Bounds BoundTo { get; set; }
         public byte[] Data;
+
+        public override string ToString()
+        {
+            return $"Error: 0x{PacketId:X02} |{ConnectionState} | {BoundTo} | {CompressionLength} | {Data.ToHexString()}";
+        }
     }
 }
