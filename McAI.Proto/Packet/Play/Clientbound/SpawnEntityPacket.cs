@@ -53,7 +53,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"SpawnEntity EntityId: {EntityId} UUID: {UUID} Type:{Type} XYZ:{X}:{Y}:{Z} P:{Pitch} Y:{Yaw} " +
+            return $"SpawnEntity EntityId: {EntityId} UUID: {UUID} Type:{Type} XYZ:{X:0.00}:{Y:0.00}:{Z:0.00} P:{Pitch} Y:{Yaw} " +
                 $"Data:{Data} V:{VelocityX}:{VelocityY}:{VelocityZ}";
         }
 
