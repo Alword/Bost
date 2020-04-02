@@ -16,8 +16,8 @@ namespace McAI.BOT
     public class Agent
     {
 
-        public delegate void MessageHandler(object sender, byte[] message);
         public event MessageHandler OnRecive;
+        public delegate void MessageHandler(object sender, byte[] message);
         private Socket socket;
         private string server;
         private ushort port;

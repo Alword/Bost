@@ -44,8 +44,8 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"[UnlockRecipes{base.ToString()}] Action:{Action} CraftingRecipeBookOpen:{CraftingRecipeBookOpen}");
-            stringBuilder.AppendLine($" CraftingRecipeBookFilterActive:{CraftingRecipeBookFilterActive} SmeltingRecipeBookOpen:{SmeltingRecipeBookOpen} ");
+            stringBuilder.AppendLine($"UnlockRecipes Action:{Action} CraftingRecipeBookOpen:{CraftingRecipeBookOpen}");
+            stringBuilder.AppendLine($" CraftingRecipeBookFilterActive: {CraftingRecipeBookFilterActive} SmeltingRecipeBookOpen: {SmeltingRecipeBookOpen} ");
             stringBuilder.AppendLine($" SmeltingRecipeBookFilterActive:{SmeltingRecipeBookFilterActive} ");
 
             stringBuilder.AppendLine($"ArraySize1: {ArraySize1}");

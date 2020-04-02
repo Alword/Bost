@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
         }
         public override string ToString()
         {
-            return $"<[PlayerAbilities|{base.ToString()}] Flags: {GetFlags()} FlyingSpeed: {FlyingSpeed} FOV Modifier: {FieldofViewModifier}";
+            return $"PlayerAbilities Flags: {GetFlags()} FlyingSpeed: {FlyingSpeed} FOV Modifier: {FieldofViewModifier}";
         }
 
         public override byte[] Write()

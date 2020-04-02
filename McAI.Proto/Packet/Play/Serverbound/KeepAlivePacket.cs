@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"<[KeepAlive|{base.ToString()}] KeepAliveID: {KeepAliveID}";
+            return $"KeepAlive KeepAliveID: {KeepAliveID}";
         }
     }
 }

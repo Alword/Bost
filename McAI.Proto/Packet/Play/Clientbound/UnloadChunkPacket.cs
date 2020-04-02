@@ -24,7 +24,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"<[UnloadChunk|{base.ToString()}] ChunkX: {ChunkX} ChunkZ: {ChunkZ}";
+            return $"UnloadChunk ChunkX: {ChunkX} ChunkZ: {ChunkZ}";
         }
     }
 }

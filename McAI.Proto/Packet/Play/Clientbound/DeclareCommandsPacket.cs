@@ -13,6 +13,11 @@ namespace McAI.Proto.Packet.Play.Clientbound
             //throw new NotImplementedException();
         }
 
+        public override string ToString()
+        {
+            return $"DeclareCommands NotImplemented";
+        }
+
         public override byte[] Write()
         {
             throw new NotImplementedException();

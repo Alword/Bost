@@ -23,7 +23,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"<[ServerDifficulty|{base.ToString()}] Difficulty: {GetDifficulty()} Locked: {DifficultyLocked}";
+            return $"ServerDifficulty Difficulty: {GetDifficulty()} Locked: {DifficultyLocked}";
         }
 
         private string GetDifficulty()

@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $">[HeldItemChange{base.ToString()}] Slot: {Slot}";
+            return $"HeldItemChange Slot: {Slot}";
         }
     }
 }

@@ -37,7 +37,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $">[ClientSettings{base.ToString()}] Locale:{Locale} ViewDistance:{ViewDistance} ChatMode:{ChatMode} " +
+            return $"ClientSettings Locale:{Locale} ViewDistance:{ViewDistance} ChatMode:{ChatMode} " +
                 $"ChatColors:{ChatColors} DisplayedSkinParts:{SkinParts()} MainHand:{MainHand}";
         }
 
