@@ -20,10 +20,16 @@ namespace McAI.Proto.Packet.Play.Serverbound
         {
             McVarint.TryParse(ref array, out EntityID);
             McVarint.TryParse(ref array, out Type);
-            McFloat.TryParse(ref array, out TargetX);
-            McFloat.TryParse(ref array, out TargetY);
-            McFloat.TryParse(ref array, out TargetZ);
-            McVarint.TryParse(ref array, out Hand);
+            if (Type == 2)
+            {
+                McFloat.TryParse(ref array, out TargetX);
+                McFloat.TryParse(ref array, out TargetY);
+                McFloat.TryParse(ref array, out TargetZ);
+            }
+            if (Type != 1)
+            {
+                McVarint.TryParse(ref array, out Hand);
+            }
         }
 
         public override byte[] Write()

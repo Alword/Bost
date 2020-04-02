@@ -45,7 +45,7 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            if (message.Contains("Server") && !message.Contains("0x11")) 
+            if (message.Contains("0x0E")) 
             {
                 Console.WriteLine(message);
             }
