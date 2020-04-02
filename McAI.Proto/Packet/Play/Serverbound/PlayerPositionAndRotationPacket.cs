@@ -32,7 +32,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $">[PlayerPositionAndRotation{base.ToString()}] X:{X:0.00} FeetY:{FeetY:0.00} Z:{Z:0.00} " +
+            return $"[PlayerPositionAndRotation] X:{X:0.00} FeetY:{FeetY:0.00} Z:{Z:0.00} " +
                 $"Yaw:{Yaw} Pitch:{Pitch} OnGround:{OnGround}";
         }
     }
