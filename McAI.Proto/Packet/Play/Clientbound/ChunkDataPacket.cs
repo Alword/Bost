@@ -69,7 +69,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"";
+            return $"ChunkData X: {ChunkX} Y: {ChunkZ}";
         }
     }
 }

@@ -21,9 +21,15 @@ namespace McAI.Proto.StreamReader.Model
 
         public void Listen(object sender, byte[] array)
         {
+            try
+            {
+                ctx.Data = array;
+                connectionMiddleware.Invoke(ctx);
+            }
+            catch(Exception e) 
+            {
 
-            ctx.Data = array;
-            connectionMiddleware.Invoke(ctx);
+            }
         }
     }
 }

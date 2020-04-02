@@ -10,7 +10,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override int PacketId => 0x00;
 
         public int EntityId { get; set; } // Varint
-        public string UUID { get; set; } // String
+        public Guid UUID { get; set; } // String
         public int Type { get; set; } // Varint
         public double X { get; set; }
         public double Y { get; set; }
@@ -26,7 +26,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override void Read(byte[] array)
         {
             McVarint.TryParse(ref array, out int entityId);
-            McString.TryParse(ref array, out string uuid);
+            McUUID.TryParse(ref array, out Guid uuid);
             McVarint.TryParse(ref array, out int type);
             McDouble.TryParse(ref array, out double x);
             McDouble.TryParse(ref array, out double y);
@@ -55,7 +55,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
         {
             List<byte> bytes = new List<byte>();
             bytes.AddRange(McVarint.ToBytes(EntityId));
-            bytes.AddRange(McString.ToBytes(UUID));
+            bytes.AddRange(McUUID.ToBytes(UUID));
             bytes.AddRange(McVarint.ToBytes(Type));
             bytes.AddRange(McDouble.ToBytes(X));
             bytes.AddRange(McDouble.ToBytes(Y));
