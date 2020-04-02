@@ -45,7 +45,7 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            if (message.Contains("0x29")) 
+            if (message.Contains("0x2A")) 
             {
                 Console.WriteLine(message);
             }
