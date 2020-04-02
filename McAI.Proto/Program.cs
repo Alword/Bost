@@ -45,7 +45,7 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            if (message.Contains("0x19")) 
+            if (message.Contains("0x1F")) 
             {
                 Console.WriteLine(message);
             }
