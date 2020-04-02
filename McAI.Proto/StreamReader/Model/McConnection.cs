@@ -28,7 +28,8 @@ namespace McAI.Proto.StreamReader.Model
             }
             catch(Exception e) 
             {
-
+                Console.WriteLine(ctx);
+                throw;
             }
         }
     }

@@ -51,6 +51,12 @@ namespace McAI.Proto.Packet.Play.Clientbound
             VelocityZ = velocityZ;
         }
 
+        public override string ToString()
+        {
+            return $"SpawnEntity EntityId: {EntityId} UUID: {UUID} Type:{Type} XYZ:{X}:{Y}:{Z} P:{Pitch} Y:{Yaw} " +
+                $"Data:{Data} V:{VelocityX}:{VelocityY}:{VelocityZ}";
+        }
+
         public override byte[] Write()
         {
             List<byte> bytes = new List<byte>();

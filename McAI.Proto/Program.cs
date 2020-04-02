@@ -45,7 +45,10 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            Console.WriteLine(message);
+            if (message.Contains("0x00")) 
+            {
+                Console.WriteLine(message);
+            }
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }
     }
