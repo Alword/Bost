@@ -35,11 +35,24 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            //if (message.Contains("0x0E"))
-            //{
-            Console.WriteLine(message);
-            //}
+            if (DisableTime(message) && DisableChunkUpdate(message)
+                && !(message.Contains("x22") && message.Contains("Client"))
+                && !(message.Contains("x25") && message.Contains("Client"))
+                && !message.Contains("x3C"))
+            {
+                Console.WriteLine(message);
+            }
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
+        }
+
+        private static bool DisableTime(string message)
+        {
+            return !(message.Contains("x46") && message.Contains("Client"));
+        }
+
+        private static bool DisableChunkUpdate(string message)
+        {
+            return !(message.Contains("x4F") && message.Contains("Client"));
         }
     }
 }
