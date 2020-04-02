@@ -35,7 +35,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"<[Tags|{base.ToString()}]: ");
+            stringBuilder.AppendLine($"Tags: ");
             stringBuilder.AppendLine($"BlockTags: {BlockTags}");
             stringBuilder.AppendLine($"ItemTags: {ItemTags}");
             stringBuilder.AppendLine($"FluidTags: {FluidTags}");

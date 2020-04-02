@@ -26,7 +26,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"<[WindowConfirmation|{base.ToString()}] WindowID:{WindowID} ActionNumber:{ActionNumber} Accepted:{Accepted}";
+            return $"WindowConfirmation WindowID:{WindowID} ActionNumber:{ActionNumber} Accepted:{Accepted}";
         }
     }
 }

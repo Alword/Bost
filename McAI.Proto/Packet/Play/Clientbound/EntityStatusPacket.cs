@@ -28,7 +28,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"<[EntityStatus|{base.ToString()}] EntityID: {EntityID} EntityStatus: {EntityStatus}";
+            return $"EntityStatus EntityID: {EntityID} EntityStatus: {EntityStatus}";
         }
     }
 }

@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"<[TeleportConfirm|{base.ToString()}] TeleportID:{TeleportID}";
+            return $"TeleportConfirm TeleportID:{TeleportID}";
         }
     }
 }

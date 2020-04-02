@@ -37,7 +37,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"<[SpawnExperienceOrb] EntityId:{EntityId} X:{X} Y:{Y} Z:{Z} Count:{Count}";
+            return $"SpawnExperienceOrb EntityId: {EntityId} XYZ:{X} {Y} {Z} Count: {Count}";
         }
     }
 }

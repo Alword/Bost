@@ -18,6 +18,8 @@ namespace McAI.BOT
 
         public delegate void MessageHandler(object sender, byte[] message);
         public event MessageHandler OnRecive;
+        public event MessageHandler OnSend;
+
         private Socket socket;
         private string server;
         private ushort port;
@@ -48,16 +50,10 @@ namespace McAI.BOT
             });
         }
 
-        public async Task Send(List<byte> toSend, bool encrypt = true)
+        public async Task Send(byte[] array)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (var b in toSend)
-            {
-                stringBuilder.Append($"{b} ");
-            }
-            Console.WriteLine(stringBuilder.ToString());
-
-            await socket.SendAsync(toSend.ToArray(), SocketFlags.None);
+            OnSend?.Invoke(this, array);
+            await socket.SendAsync(array, SocketFlags.None);
         }
 
         public async Task Login(string nickname)
@@ -76,7 +72,7 @@ namespace McAI.BOT
                 Name = nickname
             };
             Write(loginStartPacket, false, toSend);
-            await Send(toSend);
+            await Send(toSend.ToArray());
         }
 
         private void Write(BasePacket packet, bool encrypt = true, List<byte> toSend = null)

@@ -34,7 +34,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"<[SpawnPlayer|{base.ToString()}] EntityID:{EntityID} PlayerUUID:{PlayerUUID} X:{X} Y:{Y} Z:{Z} Yaw:{Yaw} Pitch:{Pitch}";
+            return $"SpawnPlayer EntityID: {EntityID} PlayerUUID: {PlayerUUID.ToString().Remove(4)}... XYZ:{X} {Y} {Z} Yaw:{Yaw} Pitch:{Pitch}";
         }
     }
 }

@@ -26,7 +26,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $">[PlayerMovement|{base.ToString()}] OnGround: {OnGround}";
+            return $"PlayerMovement OnGround: {OnGround}";
         }
     }
 }

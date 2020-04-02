@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"<[CloseWindow|{base.ToString()}] WindowID:{WindowID}";
+            return $"CloseWindow WindowID:{WindowID}";
         }
     }
 }

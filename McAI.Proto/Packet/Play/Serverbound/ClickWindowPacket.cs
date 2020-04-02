@@ -31,7 +31,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"<[ClickWindow|{base.ToString()}] WindowID:{WindowID} Slot:{Slot} Button:{Button} ActionNumber:{ActionNumber} Mode:{Mode}";
+            return $"ClickWindow WindowID:{WindowID} Slot:{Slot} Button:{Button} ActionNumber:{ActionNumber} Mode:{Mode}";
         }
     }
 }

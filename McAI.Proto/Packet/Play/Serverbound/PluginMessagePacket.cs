@@ -25,7 +25,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $">[PluginMessage{base.ToString()}] Channel: {Channel} Data: {Data.ToHexString()}";
+            return $"PluginMessage Channel: {Channel} Data: {Data.ToHexString()}";
         }
     }
 }

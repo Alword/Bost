@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"PlayerPosition {base.ToString()} X: {X} FeetY: {FeetY} Z: {Z}";
+            return $"PlayerPosition X: {X:0.00} FeetY: {FeetY:0.00} Z: {Z:0.00}";
         }
 
         public override byte[] Write()

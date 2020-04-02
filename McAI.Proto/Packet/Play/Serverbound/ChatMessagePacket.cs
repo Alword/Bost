@@ -22,7 +22,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"<[ChatMessage|{base.ToString()}] Message: {Message}";
+            return $"ChatMessage Message: {Message}";
         }
     }
 }
