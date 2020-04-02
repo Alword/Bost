@@ -37,7 +37,7 @@ namespace McAI.Proto
 
             ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.138.186", 25565);
             proxy.Start();
-            //proxy.OnReciveMessage += read.Listen;
+            proxy.OnReciveMessage += read.Listen;
             proxy.OnSendMessage += write.Listen;
 
             Console.ReadLine();

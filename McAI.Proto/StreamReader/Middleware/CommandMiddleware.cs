@@ -17,6 +17,7 @@ namespace McAI.Proto.StreamReader.Middleware
 {
     public class CommandMiddleware : McMiddleware
     {
+        private readonly static int MAX_LENGTH = 80;
         public Dictionary<(int, ConnectionStates, Bounds), BasePacket> packets;
         public CommandMiddleware(McRequestDelegate _next) : base(_next)
         {
@@ -39,7 +40,10 @@ namespace McAI.Proto.StreamReader.Middleware
             }
             else
             {
-                Program.Log($"0x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {ctx.Data.ToHexString()}");
+                string packetMessage = ctx.Data.ToHexString();
+                if (packetMessage.Length > MAX_LENGTH)
+                    packetMessage = $"{packetMessage.Remove(MAX_LENGTH)}...";
+                Program.Log($"1x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {packetMessage}");
             }
             _next?.Invoke(ctx);
         }
