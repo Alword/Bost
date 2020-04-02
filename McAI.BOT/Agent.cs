@@ -75,7 +75,7 @@ namespace McAI.BOT
             await Send(toSend.ToArray());
         }
 
-        private void Write(BasePacket packet, bool encrypt = true, List<byte> toSend = null)
+        public void Write(BasePacket packet, bool encrypt = true, List<byte> toSend = null)
         {
             byte[] data = packet.Write();
             if (toSend == null)

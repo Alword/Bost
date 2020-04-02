@@ -1,4 +1,4 @@
-﻿using McAI.Proto.Extentions;
+﻿using McAI.Proto;
 using System;
 using System.Threading.Tasks;
 
@@ -8,9 +8,11 @@ namespace McAI.BOT
     {
         static void Main(string[] args)
         {
+            ConnectionListner connectionListner = new ConnectionListner();
             Agent agent = new Agent("192.168.1.69", 25565);
-            agent.OnRecive += Agent_OnRecive;
-            Console.WriteLine("Hello World!");
+            agent.OnRecive += connectionListner.ReciveListner;
+            agent.OnSend += connectionListner.SendListner;
+
             Run(agent).GetAwaiter().GetResult();
             while (true)
             {
@@ -23,13 +25,7 @@ namespace McAI.BOT
         public static async Task Run(Agent agent)
         {
             await agent.Login("Test10");
-            //await agent.Login("Test2");
-            //await agent.Login("Test3");
-        }
 
-        private static void Agent_OnRecive(object sender, byte[] message)
-        {
-            Console.WriteLine(message.ToHexString());
         }
     }
 }
