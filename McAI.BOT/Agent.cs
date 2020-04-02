@@ -38,7 +38,7 @@ namespace McAI.BOT
         {
             return Task.Run(() =>
             {
-                byte[] array = new byte[1024];
+                byte[] array = new byte[256];
                 while (socket.Connected)
                 {
                     int length = socket.Receive(array);
@@ -60,6 +60,7 @@ namespace McAI.BOT
         {
             HandshakePacket handshakePacket = new HandshakePacket()
             {
+                ProtocolVersion = 578,
                 Address = "0.0.0.0",
                 Port = port,
                 LoginState = LoginStates.Login,

@@ -36,6 +36,9 @@ namespace McAI.Proto.StreamReader.Middleware
             {
                 var packet = packets[key];
                 packet.Read(ctx.Data);
+
+                ctx.packetEventHub.Invoke(new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo),packet);
+
                 Program.Log($"0x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {packet}");
             }
             else

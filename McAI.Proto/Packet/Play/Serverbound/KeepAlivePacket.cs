@@ -17,7 +17,7 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override byte[] Write()
         {
-            throw new NotImplementedException();
+            return McLong.ToBytes(KeepAliveID);
         }
 
         public override string ToString()
