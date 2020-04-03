@@ -1,7 +1,9 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Model;
+using McAI.Proto.Types;
 using NbtLib;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 
@@ -60,6 +62,11 @@ namespace McAI.Proto.Packet.Play.Clientbound
             {
                 BlockEntities[i] = read1.ParseNbtStream(stream1);
             }
+        }
+
+        public Position[] GetHeightmapsPositions() 
+        {
+            throw new NotImplementedException();
         }
 
         public override byte[] Write()

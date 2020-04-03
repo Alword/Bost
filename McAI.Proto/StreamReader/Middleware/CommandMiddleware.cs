@@ -19,9 +19,10 @@ namespace McAI.Proto.StreamReader.Middleware
     {
         private readonly static int MAX_LENGTH = 80;
         public Dictionary<(int, ConnectionStates, Bounds), BasePacket> packets;
+        public Dictionary<PacketKey, Type> keyTypes;
         public CommandMiddleware(McRequestDelegate _next) : base(_next)
         {
-            packets = GetPackets();
+            packets = GetPackets(out keyTypes);
         }
 
         public override void Invoke(McConnectionContext ctx)
@@ -36,8 +37,8 @@ namespace McAI.Proto.StreamReader.Middleware
             {
                 var packet = packets[key];
                 packet.Read(ctx.Data);
+                ctx.packetEventHub.Invoke(new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo), packet);
 
-                ctx.packetEventHub.Invoke(new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo),packet);
 
                 Program.Log($"0x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {packet}");
             }
@@ -51,8 +52,9 @@ namespace McAI.Proto.StreamReader.Middleware
             _next?.Invoke(ctx);
         }
 
-        public Dictionary<(int, ConnectionStates, Bounds), BasePacket> GetPackets()
+        public Dictionary<(int, ConnectionStates, Bounds), BasePacket> GetPackets(out Dictionary<PacketKey, Type> packetTypes)
         {
+            packetTypes = new Dictionary<PacketKey, Type>();
             var dictionary = new Dictionary<(int, ConnectionStates, Bounds), BasePacket>();
 
             var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
@@ -81,6 +83,7 @@ namespace McAI.Proto.StreamReader.Middleware
                     connectionState = ConnectionStates.Status;
 
                 dictionary.Add((packet.PacketId, connectionState, bounds), packet);
+                packetTypes.Add(new PacketKey(packet.PacketId, connectionState, bounds), t);
             }
 
             return dictionary;
