@@ -24,5 +24,10 @@ namespace McAI.Proto.Model
             long val = (((long)X & 0x3FFFFFF) << 38) | (((long)Z & 0x3FFFFFF) << 12) | ((long)Y & 0xFFF);
             return McLong.ToBytes(val);
         }
+
+        public override string ToString()
+        {
+            return $"XYZ:{X} {Y} {Z}";
+        }
     }
 }

@@ -15,8 +15,8 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override void Read(byte[] array)
         {
-            McVarint.TryParse(ref array, out BlocID);
             Location.Read(ref array);
+            McVarint.TryParse(ref array, out BlocID);
         }
 
         public override byte[] Write()

@@ -35,6 +35,7 @@ namespace McAI.Proto
             if (DisableTime(message) && DisableChunkUpdate(message)
                 && !(message.Contains("x22") && message.Contains("Client"))
                 && !(message.Contains("x25") && message.Contains("Client"))
+                && (message.Contains("x0C") && message.Contains("Client"))
                 && !message.Contains("x3C"))
             {
                 Console.WriteLine(message);
