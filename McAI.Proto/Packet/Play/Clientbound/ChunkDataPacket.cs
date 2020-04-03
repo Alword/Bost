@@ -1,4 +1,4 @@
-﻿using McAI.Proto.Model;
+﻿using McAI.Proto.Mapping;
 using McAI.Proto.Types;
 using NbtLib;
 using System;
@@ -31,9 +31,8 @@ namespace McAI.Proto.Packet.Play.Clientbound
             McInt.TryParse(ref array, out ChunkZ);
             McBoolean.TryParse(ref array, out Fullchunk);
             McVarint.TryParse(ref array, out PrimaryBitMask);
+            
             // heightmap
-
-
             var read = new NbtParser();
             Stream stream = new MemoryStream(array);
             Heightmaps = read.ParseNbtStream(stream);
@@ -49,23 +48,35 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
             }
 
+            // chunk data
             McVarint.TryParse(ref array, out Size);
             McByteArray.TryParse(Size, ref array, out Data);
+
+
+            // BlockEntities
             McVarint.TryParse(ref array, out BlockEntitiesCount);
 
             BlockEntities = new NbtCompoundTag[BlockEntitiesCount];
-            
+
             var read1 = new NbtParser();
             Stream stream1 = new MemoryStream(array);
-
             for (int i = 0; i < BlockEntitiesCount; i++)
             {
                 BlockEntities[i] = read1.ParseNbtStream(stream1);
             }
         }
 
-        public Position[] GetHeightmapsPositions() 
+        public ChunkSection[] ReadChunkColumn()
         {
+            //for (int sectionY = 0; sectionY < (Chunk.SizeY / ChunkSection.SizeY); y++)
+            //{
+            //    if ((PrimaryBitMask & (1 << sectionY)) != 0)
+            //    {  // Is the given bit set in the mask?
+            //        byte bitsPerBlock = ReadByte(data);
+            //        Palette palette = ChoosePalette(bitsPerBlock);
+            //        palette.Read(data);
+            //    }
+            //}
             throw new NotImplementedException();
         }
 

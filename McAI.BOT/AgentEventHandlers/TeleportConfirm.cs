@@ -10,14 +10,11 @@ using System.Text;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class TeleportConfirm : IPacketEventHandler
+    public class TeleportConfirm : BaseAgentEvent
     {
-        private readonly Agent agent;
-        public TeleportConfirm(Agent agent)
-        {
-            this.agent = agent;
-        }
-        public async void OnPacket(PacketKey type, BasePacket packet)
+        public TeleportConfirm(Agent agent) : base(agent) { }
+
+        public async override void OnPacket(PacketKey type, BasePacket packet)
         {
             var playerPositionAndLook = (PlayerPositionAndLookPacket)packet;
 

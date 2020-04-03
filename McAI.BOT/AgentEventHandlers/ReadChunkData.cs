@@ -1,4 +1,5 @@
 ﻿using McAI.Proto.Packet;
+using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.StreamReader.Abstractions;
 using McAI.Proto.StreamReader.Model;
 using System;
@@ -7,11 +8,14 @@ using System.Text;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class ReadChunkData : IPacketEventHandler
+    public class ReadChunkData : BaseAgentEvent
     {
-        public void OnPacket(PacketKey type, BasePacket packet)
+        public ReadChunkData(Agent agent) : base(agent) { }
+
+        public override void OnPacket(PacketKey type, BasePacket packet)
         {
-            throw new NotImplementedException();
+            var chunkData = (ChunkDataPacket)packet;
+            //var positions = chunkData.GetHeightmapsPositions();
         }
     }
 }

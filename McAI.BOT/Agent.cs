@@ -69,7 +69,7 @@ namespace McAI.BOT
             HandshakePacket handshakePacket = new HandshakePacket()
             {
                 ProtocolVersion = 578,
-                Address = "0.0.0.0",
+                Address = server,
                 Port = port,
                 LoginState = LoginStates.Login,
             };
