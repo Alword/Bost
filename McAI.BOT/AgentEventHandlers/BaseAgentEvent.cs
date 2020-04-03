@@ -9,7 +9,7 @@ namespace McAI.BOT.AgentEventHandlers
         private readonly Agent agent;
         public BaseAgentEvent(Agent agent)
         {
-
+            this.agent = agent;
         }
     }
 }
