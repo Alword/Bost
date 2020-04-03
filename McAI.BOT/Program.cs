@@ -20,11 +20,12 @@ namespace McAI.BOT
             connectionListner.Subscribe(new PacketKey(0x21, ConnectionStates.Play, Bounds.Client), new KeepAlive(agent));
             connectionListner.Subscribe(new PacketKey(0x49, ConnectionStates.Play, Bounds.Client), new Respawn(agent));
             connectionListner.Subscribe(new PacketKey(0x36, ConnectionStates.Play, Bounds.Client), new TeleportConfirm(agent));
+            connectionListner.Subscribe(new PacketKey(0x22, ConnectionStates.Play, Bounds.Client), new ReadChunkData(agent));
 
-            GoForward goForward = new GoForward(agent);
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
-            goForward.Start(cancelTokenSource.Token);
+            // GoForward goForward = new GoForward(agent);
+            // goForward.Start(cancelTokenSource.Token);
 
             Run(agent).GetAwaiter().GetResult();
             while (true)
