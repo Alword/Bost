@@ -1,5 +1,6 @@
 ﻿using McAI.Proto.Types;
 using System;
+using System.Collections.Generic;
 
 namespace McAI.Proto.Packet.Play.Serverbound
 {
@@ -27,7 +28,12 @@ namespace McAI.Proto.Packet.Play.Serverbound
 
         public override byte[] Write()
         {
-            throw new NotImplementedException();
+            List<byte> tosend = new List<byte>();
+            tosend.AddRange(McDouble.ToBytes(X));
+            tosend.AddRange(McDouble.ToBytes(FeetY));
+            tosend.AddRange(McDouble.ToBytes(Z));
+            tosend.AddRange(McBoolean.ToBytes(OnGround));
+            return tosend.ToArray();
         }
     }
 }

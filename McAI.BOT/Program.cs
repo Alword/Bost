@@ -1,8 +1,10 @@
 ﻿using McAI.BOT.AgentEventHandlers;
+using McAI.BOT.Jobs;
 using McAI.Proto;
 using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace McAI.BOT
@@ -19,13 +21,19 @@ namespace McAI.BOT
             connectionListner.Subscribe(new PacketKey(0x49, ConnectionStates.Play, Bounds.Client), new Respawn(agent));
             connectionListner.Subscribe(new PacketKey(0x36, ConnectionStates.Play, Bounds.Client), new TeleportConfirm(agent));
 
-            Run(agent).GetAwaiter().GetResult();
+            GoForward goForward = new GoForward(agent);
+            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
+            goForward.Start(cancelTokenSource.Token);
+
+            Run(agent).GetAwaiter().GetResult();
             while (true)
             {
                 ConsoleKeyInfo e = Console.ReadKey();
                 if (e.Key == ConsoleKey.Escape)
                     break;
+                if (e.Key == ConsoleKey.S)
+                    cancelTokenSource.Cancel();
             }
         }
 

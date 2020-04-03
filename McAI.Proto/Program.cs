@@ -16,16 +16,14 @@ namespace McAI.Proto
     class Program
     {
         public static readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss}-log.txt");
-        public static GameState GameState { get; set; }
         static void Main(string[] args)
         {
-            GameState = new GameState();
             Log($"[Proto] Start session");
 
             ConnectionListner connectionListner = new ConnectionListner();
 
 
-            ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.138.186", 25565);
+            ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.138.247", 25565);
             proxy.Start();
             proxy.OnReciveMessage += connectionListner.ReciveListner;
             proxy.OnSendMessage += connectionListner.SendListner;

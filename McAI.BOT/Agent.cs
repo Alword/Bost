@@ -1,4 +1,5 @@
-﻿using McAI.Proto;
+﻿using McAI.BOT.State;
+using McAI.Proto;
 using McAI.Proto.Enum;
 using McAI.Proto.Extentions;
 using McAI.Proto.Packet;
@@ -23,7 +24,7 @@ namespace McAI.BOT
         private Socket socket;
         private string server;
         private ushort port;
-        private GameState gameState;
+        public readonly GameState gameState;
         public Agent(string server, ushort port)
         {
             this.gameState = new GameState();
@@ -54,6 +55,13 @@ namespace McAI.BOT
         {
             OnSend?.Invoke(this, array);
             await socket.SendAsync(array, SocketFlags.None);
+        }
+
+        public async Task Send(BasePacket basePacket)
+        {
+            List<byte> toSend = new List<byte>();
+            Write(basePacket, true, toSend);
+            await Send(toSend.ToArray());
         }
 
         public async Task Login(string nickname)
