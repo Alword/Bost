@@ -4,7 +4,7 @@ using System.IO;
 
 namespace McAI.Proto.Model
 {
-    public struct Slot
+    public class Slot
     {
         public bool Present;
         public int ItemId; // varint

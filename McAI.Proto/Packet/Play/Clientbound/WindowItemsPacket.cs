@@ -21,6 +21,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
             SlotData = new Slot[Count];
             for (int i = 0; i < Count; i++)
             {
+                SlotData[i] = new Slot();
                 SlotData[i].Parse(ref array);
             }
         }
