@@ -15,5 +15,10 @@ namespace McAI.Proto.Model
             McVarint.TryParse(ref array, out CateogoryId);
             McVarint.TryParse(ref array, out StatisticId);
         }
+
+        public override string ToString()
+        {
+            return $"CategoryId {CateogoryId} Statistic {StatisticId}";
+        }
     }
 }

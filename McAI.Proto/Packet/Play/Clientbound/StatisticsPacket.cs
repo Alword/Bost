@@ -20,7 +20,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
             McVarint.TryParse(ref array, out Count);
             McVarint.TryParse(ref array, out Value);
             Statistics = new Statistic[Count];
-            for (int i=0; i<Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 Statistics[i].Parse(ref array);
             }
@@ -29,6 +29,17 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override byte[] Write()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"[StatisticsPacket] Count:{Count} Value:{Value}");
+            foreach (Statistic statistic in Statistics)
+            {
+                stringBuilder.Append($"{statistic} ");
+            }
+            return stringBuilder.ToString();
         }
     }
 }
