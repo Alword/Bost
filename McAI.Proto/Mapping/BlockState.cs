@@ -6,6 +6,6 @@ namespace McAI.Proto.Mapping
 {
     public struct BlockState
     {
-        public int StateId { get; set; }
+        public uint StateId { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace McAI.Proto.Mapping.Palettes
 {
-    public class IndirectPalette
+    public class IndirectPalette : IPalette
     {
         Dictionary<uint, BlockState> idToState;
         Dictionary<BlockState, uint> stateToId;
@@ -34,22 +34,28 @@ namespace McAI.Proto.Mapping.Palettes
             // Palette Length
             McVarint.TryParse(ref data, out int length);
             // Palette
-            for (uint id = 0; id < length; id++)
+            for (int id = 0; id < length; id++)
             {
                 McVarint.TryParse(ref data, out int stateId);
-                BlockState state = GetStateFromGlobalPaletteID(stateId);
-                idToState[id] = state;
-                stateToId[state] = id;
+                BlockState state = new BlockState(); //GetStateFromGlobalPaletteID(stateId);
+                idToState[(uint)id] = state;
+                // stateToId[state] = id;
             }
         }
 
         private BlockState GetStateFromGlobalPaletteID(int stateId)
         {
-            BlockState blockState = new BlockState
-            {
-                StateId = stateId
-            };
-            return blockState;
+            throw new NotImplementedException();
+        }
+
+        public BlockState StateForId(uint id)
+        {
+            return idToState[id];
+        }
+
+        public void Write(byte[] data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

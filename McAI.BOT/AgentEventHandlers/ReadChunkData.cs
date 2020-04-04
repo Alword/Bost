@@ -15,7 +15,7 @@ namespace McAI.BOT.AgentEventHandlers
         public override void OnPacket(PacketKey type, BasePacket packet)
         {
             var chunkData = (ChunkDataPacket)packet;
-            //var positions = chunkData.GetHeightmapsPositions();
+            var positions = chunkData.ReadChunkColumn();
         }
     }
 }

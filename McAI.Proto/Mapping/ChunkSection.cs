@@ -1,6 +1,7 @@
 ﻿using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace McAI.Proto.Mapping
@@ -26,6 +27,18 @@ namespace McAI.Proto.Mapping
 
             // Vairnt lentgh
             // long data
+        }
+
+        internal void SetState(int x, int y, int z, BlockState state)
+        {
+            Debug.WriteLine($"Set state {x} {y} {z} {state}");
+            // throw new NotImplementedException();
+        }
+
+        internal void SetBlockLight(int x, int y, int z, int v)
+        {
+            Debug.WriteLine($"Set light {x} {y} {z} {v}");
+            // throw new NotImplementedException();
         }
     }
 }

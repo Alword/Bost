@@ -10,7 +10,7 @@ namespace McAI.Proto.Types
         // 8 
         public static bool TryParse(ref byte[] buffer, out ulong result)
         {
-            result = BitConverter.ToUInt64(buffer[0..8].Reverse().ToArray());
+            result = BitConverter.ToUInt64(buffer[0..8].Reverse().ToArray(), 0);
             buffer = buffer[8..];
             return true;
         }
