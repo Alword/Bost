@@ -18,7 +18,7 @@ namespace McAI.Proto.StreamReader.Middleware
     public class CommandMiddleware : McMiddleware
     {
         private readonly static int MAX_LENGTH = 80;
-        public static Dictionary<(int, ConnectionStates, Bounds), Type> packets;
+        public static Dictionary<PacketKey, Type> packets;
         public CommandMiddleware(McRequestDelegate _next) : base(_next)
         {
             GetPackets();
@@ -31,14 +31,13 @@ namespace McAI.Proto.StreamReader.Middleware
             ctx.PacketId = packetId;
             ctx.Data = array;
 
-            var key = (ctx.PacketId, ctx.ConnectionState, ctx.BoundTo);
+            var key = new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo);
             if (packets.ContainsKey(key))
             {
                 var packet = (BasePacket)Activator.CreateInstance(packets[key]);
 
                 packet.Read(ctx.Data);
-                ctx.packetEventHub.Invoke(new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo), packet);
-
+                ctx.packetEventHub.Invoke(key, packet);
 
                 Program.Log($"0x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {packet}");
             }
@@ -56,7 +55,7 @@ namespace McAI.Proto.StreamReader.Middleware
         {
             if (packets == null)
             {
-                packets = new Dictionary<(int, ConnectionStates, Bounds), Type>();
+                packets = new Dictionary<PacketKey, Type>();
 
                 var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
                          where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("McAI.Proto.Packet")
@@ -82,7 +81,7 @@ namespace McAI.Proto.StreamReader.Middleware
                     if (t.Namespace.Contains("Packet.Status"))
                         connectionState = ConnectionStates.Status;
 
-                    packets.Add((packet.PacketId, connectionState, bounds), t);
+                    packets.Add(new PacketKey(packet.PacketId, connectionState, bounds), t);
                 }
             }
         }

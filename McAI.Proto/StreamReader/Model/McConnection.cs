@@ -26,9 +26,9 @@ namespace McAI.Proto.StreamReader.Model
                 ctx.Data = array;
                 connectionMiddleware.Invoke(ctx);
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
-                Console.WriteLine(ctx);
+                Console.WriteLine($"{ctx} e:{e}");
                 throw;
             }
         }
