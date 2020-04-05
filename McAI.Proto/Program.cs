@@ -1,5 +1,6 @@
 ﻿using McAI.Proto.Abstractions;
 using McAI.Proto.Enum;
+using McAI.Proto.Mapping.Generator;
 using McAI.Proto.Packet;
 using McAI.Proto.StreamReader;
 using McAI.Proto.StreamReader.Enum;
