@@ -18,7 +18,7 @@ namespace McAI.Proto.StreamReader.Middleware
     public class CommandMiddleware : McMiddleware
     {
         private readonly static int MAX_LENGTH = 80;
-        public static Dictionary<(int, ConnectionStates, Bounds), BasePacket> packets;
+        public static Dictionary<(int, ConnectionStates, Bounds), Type> packets;
         public CommandMiddleware(McRequestDelegate _next) : base(_next)
         {
             GetPackets();
@@ -34,7 +34,8 @@ namespace McAI.Proto.StreamReader.Middleware
             var key = (ctx.PacketId, ctx.ConnectionState, ctx.BoundTo);
             if (packets.ContainsKey(key))
             {
-                var packet = packets[key];
+                var packet = (BasePacket)Activator.CreateInstance(packets[key]);
+
                 packet.Read(ctx.Data);
                 ctx.packetEventHub.Invoke(new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo), packet);
 
@@ -55,7 +56,7 @@ namespace McAI.Proto.StreamReader.Middleware
         {
             if (packets == null)
             {
-                packets = new Dictionary<(int, ConnectionStates, Bounds), BasePacket>();
+                packets = new Dictionary<(int, ConnectionStates, Bounds), Type>();
 
                 var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
                          where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("McAI.Proto.Packet")
@@ -81,7 +82,7 @@ namespace McAI.Proto.StreamReader.Middleware
                     if (t.Namespace.Contains("Packet.Status"))
                         connectionState = ConnectionStates.Status;
 
-                    packets.Add((packet.PacketId, connectionState, bounds), packet);
+                    packets.Add((packet.PacketId, connectionState, bounds), t);
                 }
             }
         }
