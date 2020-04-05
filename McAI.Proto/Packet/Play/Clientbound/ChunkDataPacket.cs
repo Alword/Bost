@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Mapping;
+﻿using McAI.Proto.Extentions;
+using McAI.Proto.Mapping;
 using McAI.Proto.Mapping.Palettes;
 using McAI.Proto.Types;
 using NbtLib;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace McAI.Proto.Packet.Play.Clientbound
@@ -49,7 +51,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
             // chunk data
             McVarint.TryParse(ref array, out Size); // size varint
-            McByteArray.TryParse(Size, ref array, out Data);
+            McByteArray.TryParse(Size, ref array, out Data); // Byte array
 
             // BlockEntities
             McVarint.TryParse(ref array, out BlockEntitiesCount);
@@ -67,38 +69,64 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public ChunkSection[] ReadChunkColumn()
         {
             List<ChunkSection> chunkSections = new List<ChunkSection>();
-            var data = Data;
+            byte[] data = new byte[Data.Length];
+            Array.Copy(Data, data, data.Length);
             for (int sectionY = 0; sectionY < (Chunk.SizeY / ChunkSection.SizeY); sectionY++)
             {
                 if ((PrimaryBitMask & (1 << sectionY)) != 0)
                 {
-                    McShort.TryParse(ref data, out short NonAirBlocksCount);
-                    McUnsignedByte.TryParse(ref data, out byte bitsPerBlock);
+                    McShort.TryParse(ref data, out short NonAirBlocksCount); // short
+                    McUnsignedByte.TryParse(ref data, out byte bitsPerBlock); // byte
                     IPalette palette = Palette.ChoosePalette(bitsPerBlock);
                     palette.Read(data);
 
 
                     // A bitmask that contains bitsPerBlock set bits
-                    uint valueMask = (uint)((1 << bitsPerBlock) - 1);
+                    uint individualValueMask = (uint)((1 << bitsPerBlock) - 1);
 
                     McVarint.TryParse(ref data, out int dataArrayLength);
+
                     McULongArray.TryParse(ref data, dataArrayLength, out ulong[] dataArray);
+
+                    var extended = new ulong[dataArray.Length + 16];
+                    Array.Copy(dataArray, extended, dataArray.Length);
+                    dataArray = extended;
 
                     ChunkSection section = new ChunkSection();
 
-                    // теория струнь
-                    List<byte> array = new List<byte>();
-
-                    for (int blockY = 0; blockY < Chunk.SizeY; blockY++)
+                    for (uint blockY = 0; blockY < ChunkSection.SizeY; blockY++)
                     {
-                        for (int blockZ = 0; blockZ < Chunk.SizeZ; blockZ++)
+                        for (uint blockZ = 0; blockZ < ChunkSection.SizeZ; blockZ++)
                         {
-                            for (int blockX = 0; blockX < Chunk.SizeX; blockX++)
+                            for (uint blockX = 0; blockX < ChunkSection.SizeX; blockX++)
                             {
-                                
+                                uint blockNumber = (((blockY * ChunkSection.SizeY) + blockZ) * ChunkSection.SizeZ) + blockX;
+                                uint startLong = (blockNumber * bitsPerBlock) / 64;
+                                uint startOffset = (blockNumber * bitsPerBlock) % 64;
+                                uint endLong = ((blockNumber + 1) * bitsPerBlock - 1) / 64;
 
-                                //BlockState state = palette.StateForId(blockId);
-                                section.SetState(blockX, blockY, blockZ, new BlockState());
+                                uint intdata;
+                                if (startLong == endLong)
+                                {
+                                    intdata = (uint)(dataArray[startLong] >> (int)startOffset);
+                                }
+                                else
+                                {
+                                    uint endOffset = 64 - startOffset;
+                                    intdata = (uint)(dataArray[startLong] >> (int)startOffset | dataArray[endLong] << (int)endOffset);
+                                }
+                                intdata &= individualValueMask;
+
+                                if (intdata > 11)
+                                {
+                                    continue;
+                                }
+                                // data should always be valid for the palette
+                                // If you're reading a power of 2 minus one (15, 31, 63, 127, etc...) that's out of bounds,
+                                // you're probably reading light data instead
+
+                                //BlockState state = palette.StateForId(intdata);
+                                section.SetState((int)blockX, (int)blockY, (int)blockZ, new BlockState());
                             }
                         }
                     }
