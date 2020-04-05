@@ -27,7 +27,7 @@ namespace McAI.Proto.Mapping.Palettes
             return bitsPerBlock;
         }
 
-        public void Read(byte[] data)
+        public void Read(ref byte[] data)
         {
             idToState = new Dictionary<uint, BlockState>();
             stateToId = new Dictionary<BlockState, uint>();

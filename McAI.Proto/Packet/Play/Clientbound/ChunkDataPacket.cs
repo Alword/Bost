@@ -78,73 +78,27 @@ namespace McAI.Proto.Packet.Play.Clientbound
                     McShort.TryParse(ref data, out short NonAirBlocksCount); // short
                     McUnsignedByte.TryParse(ref data, out byte bitsPerBlock); // byte
                     IPalette palette = Palette.ChoosePalette(bitsPerBlock);
-                    palette.Read(data);
-
-
-                    // A bitmask that contains bitsPerBlock set bits
-                    uint individualValueMask = (uint)((1 << bitsPerBlock) - 1);
+                    palette.Read(ref data);
 
                     McVarint.TryParse(ref data, out int dataArrayLength);
-
                     McULongArray.TryParse(ref data, dataArrayLength, out ulong[] dataArray);
 
-                    var extended = new ulong[dataArray.Length + 16];
-                    Array.Copy(dataArray, extended, dataArray.Length);
-                    dataArray = extended;
 
-                    ChunkSection section = new ChunkSection();
 
-                    for (uint blockY = 0; blockY < ChunkSection.SizeY; blockY++)
-                    {
-                        for (uint blockZ = 0; blockZ < ChunkSection.SizeZ; blockZ++)
-                        {
-                            for (uint blockX = 0; blockX < ChunkSection.SizeX; blockX++)
-                            {
-                                uint blockNumber = (((blockY * ChunkSection.SizeY) + blockZ) * ChunkSection.SizeZ) + blockX;
-                                uint startLong = (blockNumber * bitsPerBlock) / 64;
-                                uint startOffset = (blockNumber * bitsPerBlock) % 64;
-                                uint endLong = ((blockNumber + 1) * bitsPerBlock - 1) / 64;
+                    //for (int y = 0; y < ChunkSection.SizeY; y++)
+                    //{
+                    //    for (int z = 0; z < ChunkSection.SizeZ; z++)
+                    //    {
+                    //        for (int x = 0; x < ChunkSection.SizeX; x += 2)
+                    //        {
+                    //            // Note: x += 2 above; we read 2 values along x each time
+                    //            McUnsignedByte.TryParse(ref data, out byte value);
 
-                                uint intdata;
-                                if (startLong == endLong)
-                                {
-                                    intdata = (uint)(dataArray[startLong] >> (int)startOffset);
-                                }
-                                else
-                                {
-                                    uint endOffset = 64 - startOffset;
-                                    intdata = (uint)(dataArray[startLong] >> (int)startOffset | dataArray[endLong] << (int)endOffset);
-                                }
-                                intdata &= individualValueMask;
-
-                                if (intdata > 11)
-                                {
-                                    continue;
-                                }
-                                // data should always be valid for the palette
-                                // If you're reading a power of 2 minus one (15, 31, 63, 127, etc...) that's out of bounds,
-                                // you're probably reading light data instead
-
-                                //BlockState state = palette.StateForId(intdata);
-                                section.SetState((int)blockX, (int)blockY, (int)blockZ, new BlockState());
-                            }
-                        }
-                    }
-
-                    for (int y = 0; y < ChunkSection.SizeY; y++)
-                    {
-                        for (int z = 0; z < ChunkSection.SizeZ; z++)
-                        {
-                            for (int x = 0; x < ChunkSection.SizeX; x += 2)
-                            {
-                                // Note: x += 2 above; we read 2 values along x each time
-                                McUnsignedByte.TryParse(ref data, out byte value);
-
-                                section.SetBlockLight(x, y, z, value & 0xF);
-                                section.SetBlockLight(x + 1, y, z, (value >> 4) & 0xF);
-                            }
-                        }
-                    }
+                    //            section.SetBlockLight(x, y, z, value & 0xF);
+                    //            section.SetBlockLight(x + 1, y, z, (value >> 4) & 0xF);
+                    //        }
+                    //    }
+                    //}
 
                     //if (currentDimension.HasSkylight())
                     //{ // IE, current dimension is overworld / 0
@@ -165,7 +119,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
                     //}
 
                     // May replace an existing section or a null one
-                    chunkSections.Add(section);
+                    // chunkSections.Add(section);
                 }
             }
 

@@ -9,7 +9,7 @@ namespace McAI.Proto.Mapping.Palettes
         uint IdForState(BlockState state);
         BlockState StateForId(uint id);
         byte GetBitsPerBlock();
-        void Read(byte[] data);
+        void Read(ref byte[] data);
         void Write(byte[] data);
     }
 }

@@ -17,7 +17,7 @@ namespace McAI.Proto.Mapping.Palettes
             throw new NotImplementedException();
         }
 
-        public void Read(byte[] data)
+        public void Read(ref byte[] data)
         {
             //throw new NotImplementedException();
         }
