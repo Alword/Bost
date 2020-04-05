@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McAI.Proto.Mapping.Generator;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

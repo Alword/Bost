@@ -1,11 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace McAI.Proto.Mapping
+namespace McAI.Proto.Mapping.Generator
 {
-    public struct BlockState
+    public class BlockState
     {
-        public uint StateId { get; set; }
+        public uint Id { get; set; }
+        public string Name { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is BlockState state &&
+                   Id == state.Id &&
+                   Name == state.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name);
+        }
     }
 }

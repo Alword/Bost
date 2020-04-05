@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McAI.Proto.Mapping.Generator;
+using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
@@ -9,24 +10,22 @@ namespace McAI.Proto.Mapping.Palettes
     {
         public byte GetBitsPerBlock()
         {
-            throw new NotImplementedException();
+            return (byte)Math.Ceiling(Math.Log2(GlobalPalette.TotalNumberOfStates)); // currently 14
         }
 
         public uint IdForState(BlockState state)
         {
-            throw new NotImplementedException();
+            return GlobalPalette.GetId(state).StateId;
         }
 
         public void Read(ref byte[] data)
         {
-            //throw new NotImplementedException();
+            // no data
         }
 
         public BlockState StateForId(uint id)
         {
-            // todo
-            // from global palette
-            return new BlockState() { StateId = 0 };
+            return GlobalPalette.GetState(id);
         }
 
         public void Write(byte[] data)

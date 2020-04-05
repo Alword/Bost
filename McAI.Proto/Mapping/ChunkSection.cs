@@ -16,6 +16,8 @@ namespace McAI.Proto.Mapping
 
         public IPalette palette; // palette
 
+        public BlockId[,,] blockIds = new BlockId[16, 16, 16];
+
         public void Parse(ref byte[] data)
         {
             McShort.TryParse(ref data, out short NonAirBlocksCount); // short
@@ -52,17 +54,16 @@ namespace McAI.Proto.Mapping
                         }
                         intData &= individualValueMask;
 
-                        BlockState state = palette.StateForId(intData);
+                        BlockId state = new BlockId(palette.StateForId(intData).Id);
                         SetState(x, y, z, state);
                     }
                 }
             });
         }
 
-        public void SetState(int x, int y, int z, BlockState state)
+        public void SetState(int x, int y, int z, BlockId state)
         {
-            // Debug.WriteLine($"Set state {x} {y} {z} {state}");
-            // throw new NotImplementedException();
+            blockIds[x, y, z] = state;
         }
 
         public void SetBlockLight(int x, int y, int z, int v)

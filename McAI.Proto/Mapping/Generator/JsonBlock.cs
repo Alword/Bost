@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace McAI.Proto.Mapping.Generator
 {
-    public class JsonBlock
+    public class GeneratedBlock
     {
-
-        public class State
+        public List<GeneratedState> States { get; set; }
+        public class GeneratedState
         {
-            public int Id { get; set; }
+            public uint Id { get; set; }
+            public bool Default { get; set; }
         }
     }
 }

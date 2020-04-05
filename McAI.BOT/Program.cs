@@ -14,9 +14,6 @@ namespace McAI.BOT
     {
         static void Main(string[] args)
         {
-            GlobalPalette.ReadBlocks();
-
-
             ConnectionListner connectionListner = new ConnectionListner();
             Agent agent = new Agent("192.168.1.69", 25565);
             agent.OnRecive += connectionListner.ReciveListner;

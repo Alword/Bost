@@ -1,8 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Mapping.Generator;
+using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace McAI.Proto.Mapping.Palettes
 {
@@ -34,18 +33,13 @@ namespace McAI.Proto.Mapping.Palettes
             // Palette Length
             McVarint.TryParse(ref data, out int length);
             // Palette
-            for (int id = 0; id < length; id++)
+            for (uint id = 0; id < length; id++)
             {
                 McVarint.TryParse(ref data, out int stateId);
-                BlockState state = new BlockState(); //GetStateFromGlobalPaletteID(stateId);
-                idToState[(uint)id] = state;
-                // stateToId[state] = id;
+                BlockState state = GlobalPalette.GetState((uint)stateId);
+                idToState[id] = state;
+                stateToId[state] = id;
             }
-        }
-
-        private BlockState GetStateFromGlobalPaletteID(int stateId)
-        {
-            throw new NotImplementedException();
         }
 
         public BlockState StateForId(uint id)
