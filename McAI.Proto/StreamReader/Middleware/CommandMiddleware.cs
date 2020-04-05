@@ -18,10 +18,10 @@ namespace McAI.Proto.StreamReader.Middleware
     public class CommandMiddleware : McMiddleware
     {
         private readonly static int MAX_LENGTH = 80;
-        public Dictionary<(int, ConnectionStates, Bounds), BasePacket> packets;
+        public static Dictionary<(int, ConnectionStates, Bounds), BasePacket> packets;
         public CommandMiddleware(McRequestDelegate _next) : base(_next)
         {
-            packets = GetPackets();
+            GetPackets();
         }
 
         public override void Invoke(McConnectionContext ctx)
@@ -51,39 +51,39 @@ namespace McAI.Proto.StreamReader.Middleware
             _next?.Invoke(ctx);
         }
 
-        public Dictionary<(int, ConnectionStates, Bounds), BasePacket> GetPackets()
+        public static void GetPackets()
         {
-            var dictionary = new Dictionary<(int, ConnectionStates, Bounds), BasePacket>();
-
-            var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
-                     where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("McAI.Proto.Packet")
-                     select t).ToArray();
-
-            foreach (var t in q)
+            if (packets == null)
             {
-                var packet = (BasePacket)Activator.CreateInstance(t);
+                packets = new Dictionary<(int, ConnectionStates, Bounds), BasePacket>();
 
+                var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
+                         where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("McAI.Proto.Packet")
+                         select t).ToArray();
 
-                ConnectionStates connectionState = ConnectionStates.Handshaking;
-                Bounds bounds = Bounds.Client;
-                if (t.Namespace.Contains("Serverbound"))
-                    bounds = Bounds.Server;
-                if (t.Namespace.Contains("Packet.Handshaking"))
-                    connectionState = ConnectionStates.Handshaking;
+                foreach (var t in q)
+                {
+                    var packet = (BasePacket)Activator.CreateInstance(t);
 
-                if (t.Namespace.Contains("Packet.Login"))
-                    connectionState = ConnectionStates.Login;
+                    ConnectionStates connectionState = ConnectionStates.Handshaking;
+                    Bounds bounds = Bounds.Client;
+                    if (t.Namespace.Contains("Serverbound"))
+                        bounds = Bounds.Server;
+                    if (t.Namespace.Contains("Packet.Handshaking"))
+                        connectionState = ConnectionStates.Handshaking;
 
-                if (t.Namespace.Contains("Packet.Play"))
-                    connectionState = ConnectionStates.Play;
+                    if (t.Namespace.Contains("Packet.Login"))
+                        connectionState = ConnectionStates.Login;
 
-                if (t.Namespace.Contains("Packet.Status"))
-                    connectionState = ConnectionStates.Status;
+                    if (t.Namespace.Contains("Packet.Play"))
+                        connectionState = ConnectionStates.Play;
 
-                dictionary.Add((packet.PacketId, connectionState, bounds), packet);
+                    if (t.Namespace.Contains("Packet.Status"))
+                        connectionState = ConnectionStates.Status;
+
+                    packets.Add((packet.PacketId, connectionState, bounds), packet);
+                }
             }
-
-            return dictionary;
         }
     }
 }
