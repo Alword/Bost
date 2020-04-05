@@ -4,7 +4,7 @@ using System.Text;
 
 namespace McAI.Proto.Types
 {
-    class McUnsignedByte
+    public class McUnsignedByte
     {
         public static bool TryParse(ref byte[] buffer, out byte result)
         {
