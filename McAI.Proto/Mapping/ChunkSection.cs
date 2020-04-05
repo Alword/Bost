@@ -16,8 +16,7 @@ namespace McAI.Proto.Mapping
         public byte BitsPerBlock; // unsigned byte
         public byte Palette;
         public int DataArrayLength; // Varint 
-        public long[] DataArray;
-
+        
         public void Parse(ref byte[] array)
         {
             McShort.TryParse(ref array, out BlockCount);
@@ -31,13 +30,13 @@ namespace McAI.Proto.Mapping
 
         internal void SetState(int x, int y, int z, BlockState state)
         {
-            Debug.WriteLine($"Set state {x} {y} {z} {state}");
+            // Debug.WriteLine($"Set state {x} {y} {z} {state}");
             // throw new NotImplementedException();
         }
 
         internal void SetBlockLight(int x, int y, int z, int v)
         {
-            Debug.WriteLine($"Set light {x} {y} {z} {v}");
+            // Debug.WriteLine($"Set light {x} {y} {z} {v}");
             // throw new NotImplementedException();
         }
     }

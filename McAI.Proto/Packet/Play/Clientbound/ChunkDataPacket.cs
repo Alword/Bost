@@ -1,14 +1,10 @@
-﻿using McAI.Proto.Extentions;
-using McAI.Proto.Mapping;
+﻿using McAI.Proto.Mapping;
 using McAI.Proto.Mapping.Palettes;
 using McAI.Proto.Types;
 using NbtLib;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace McAI.Proto.Packet.Play.Clientbound
 {
@@ -68,60 +64,57 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public ChunkSection[] ReadChunkColumn()
         {
-            List<ChunkSection> chunkSections = new List<ChunkSection>();
             byte[] data = new byte[Data.Length];
             Array.Copy(Data, data, data.Length);
+            List<ChunkSection> chunkSections = new List<ChunkSection>();
             for (int sectionY = 0; sectionY < (Chunk.SizeY / ChunkSection.SizeY); sectionY++)
             {
                 if ((PrimaryBitMask & (1 << sectionY)) != 0)
                 {
                     McShort.TryParse(ref data, out short NonAirBlocksCount); // short
                     McUnsignedByte.TryParse(ref data, out byte bitsPerBlock); // byte
+
                     IPalette palette = Palette.ChoosePalette(bitsPerBlock);
                     palette.Read(ref data);
+                    ChunkSection section = new ChunkSection();
+                    uint individualValueMask = (uint)((1 << bitsPerBlock) - 1);
 
                     McVarint.TryParse(ref data, out int dataArrayLength);
                     McULongArray.TryParse(ref data, dataArrayLength, out ulong[] dataArray);
 
 
+                    for (int y = 0; y < ChunkSection.SizeY; y++)
+                    {
+                        for (int z = 0; z < ChunkSection.SizeZ; z++)
+                        {
+                            for (int x = 0; x < ChunkSection.SizeX; x++)
+                            {
+                                int blockNumber = (((y * ChunkSection.SizeY) + z) * ChunkSection.SizeZ) + x;
+                                int startLong = (blockNumber * bitsPerBlock) / 64;
+                                int startOffset = (blockNumber * bitsPerBlock) % 64;
+                                int endLong = ((blockNumber + 1) * bitsPerBlock - 1) / 64;
 
-                    //for (int y = 0; y < ChunkSection.SizeY; y++)
-                    //{
-                    //    for (int z = 0; z < ChunkSection.SizeZ; z++)
-                    //    {
-                    //        for (int x = 0; x < ChunkSection.SizeX; x += 2)
-                    //        {
-                    //            // Note: x += 2 above; we read 2 values along x each time
-                    //            McUnsignedByte.TryParse(ref data, out byte value);
+                                uint intData;
+                                if (startLong == endLong)
+                                {
+                                    intData = (uint)(dataArray[startLong] >> startOffset);
+                                }
+                                else
+                                {
+                                    int endOffset = 64 - startOffset;
+                                    intData = (uint)(dataArray[startLong] >> startOffset | dataArray[endLong] << endOffset);
+                                }
+                                intData &= individualValueMask;
 
-                    //            section.SetBlockLight(x, y, z, value & 0xF);
-                    //            section.SetBlockLight(x + 1, y, z, (value >> 4) & 0xF);
-                    //        }
-                    //    }
-                    //}
-
-                    //if (currentDimension.HasSkylight())
-                    //{ // IE, current dimension is overworld / 0
-                    //    for (int y = 0; y < SECTION_HEIGHT; y++)
-                    //    {
-                    //        for (int z = 0; z < SECTION_WIDTH; z++)
-                    //        {
-                    //            for (int x = 0; x < SECTION_WIDTH; x += 2)
-                    //            {
-                    //                // Note: x += 2 above; we read 2 values along x each time
-                    //                byte value = ReadByte(data);
-
-                    //                section.SetSkyLight(x, y, z, value & 0xF);
-                    //                section.SetSkyLight(x + 1, y, z, (value >> 4) & 0xF);
-                    //            }
-                    //        }
-                    //    }
-                    //}
-
-                    // May replace an existing section or a null one
-                    // chunkSections.Add(section);
+                                BlockState state = palette.StateForId(intData);
+                                section.SetState(x, y, z, state);
+                            }
+                        }
+                    }
+                    chunkSections.Add(section);
                 }
             }
+
 
             return chunkSections.ToArray();
         }
