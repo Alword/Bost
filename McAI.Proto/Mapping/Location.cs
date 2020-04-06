@@ -32,16 +32,16 @@ namespace McAI.Proto.Mapping
 
         public Location(int chunkX, int chunkZ, int blockX, int blockY, int blockZ)
         {
-            X = chunkX * Chunk.SizeX + blockX;
+            X = chunkX * ChunkColumn.SizeX + blockX;
             Y = blockY;
-            Z = chunkZ * Chunk.SizeZ + blockZ;
+            Z = chunkZ * ChunkColumn.SizeZ + blockZ;
         }
 
         public int ChunkX
         {
             get
             {
-                return (int)Math.Floor(X / Chunk.SizeX);
+                return (int)Math.Floor(X / ChunkColumn.SizeX);
             }
         }
 
@@ -49,7 +49,7 @@ namespace McAI.Proto.Mapping
         {
             get
             {
-                return (int)Math.Floor(Y / Chunk.SizeY);
+                return (int)Math.Floor(Y / ChunkColumn.SizeY);
             }
         }
 
@@ -57,14 +57,14 @@ namespace McAI.Proto.Mapping
         {
             get
             {
-                return (int)Math.Floor(Z / Chunk.SizeZ);
+                return (int)Math.Floor(Z / ChunkColumn.SizeZ);
             }
         }
         public int ChunkBlockX
         {
             get
             {
-                return ((int)Math.Floor(X) % Chunk.SizeX + Chunk.SizeX) % Chunk.SizeX;
+                return ((int)Math.Floor(X) % ChunkColumn.SizeX + ChunkColumn.SizeX) % ChunkColumn.SizeX;
             }
         }
 
@@ -72,7 +72,7 @@ namespace McAI.Proto.Mapping
         {
             get
             {
-                return ((int)Math.Floor(Y) % Chunk.SizeY + Chunk.SizeY) % Chunk.SizeY;
+                return ((int)Math.Floor(Y) % ChunkColumn.SizeY + ChunkColumn.SizeY) % ChunkColumn.SizeY;
             }
         }
 
@@ -80,7 +80,7 @@ namespace McAI.Proto.Mapping
         {
             get
             {
-                return ((int)Math.Floor(Z) % Chunk.SizeZ + Chunk.SizeZ) % Chunk.SizeZ;
+                return ((int)Math.Floor(Z) % ChunkColumn.SizeZ + ChunkColumn.SizeZ) % ChunkColumn.SizeZ;
             }
         }
 
