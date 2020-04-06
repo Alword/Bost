@@ -18,9 +18,9 @@ namespace McAI.BOT.AgentEventHandlers
         {
             var playerPositionAndLook = (PlayerPositionAndLookPacket)packet;
 
-            agent.gameState.X = playerPositionAndLook.X;
-            agent.gameState.Y = playerPositionAndLook.Y;
-            agent.gameState.Z = playerPositionAndLook.Z;
+            agent.gameState.Bot.Position.X = playerPositionAndLook.X;
+            agent.gameState.Bot.Position.Y = playerPositionAndLook.Y;
+            agent.gameState.Bot.Position.Z = playerPositionAndLook.Z;
 
             var confirmTeleport = new TeleportConfirmPacket()
             {

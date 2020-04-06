@@ -25,13 +25,13 @@ namespace McAI.BOT.Jobs
                 while (!cancellationToken.IsCancellationRequested)
                 {
                     await Task.Delay(100);
-                    agent.gameState.Z += 0.5;
+                    agent.gameState.Bot.Position.Z += 0.5;
                     PlayerPositionPacket playerPositionPacket = new PlayerPositionPacket
                     {
-                        X = agent.gameState.X,
-                        FeetY = agent.gameState.Y,
+                        X = agent.gameState.Bot.Position.X,
+                        FeetY = agent.gameState.Bot.Position.Y,
                         OnGround = true,
-                        Z = agent.gameState.Z
+                        Z = agent.gameState.Bot.Position.Z
                     };
                     await agent.Send(playerPositionPacket);
                 }

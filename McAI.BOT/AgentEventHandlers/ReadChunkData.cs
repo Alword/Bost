@@ -22,6 +22,8 @@ namespace McAI.BOT.AgentEventHandlers
             byte[] data = chunkData.Data;
             ChunkColumn chunkColumn = new ChunkColumn();
             chunkColumn.Parse(ref data, chunkData.PrimaryBitMask);
+
+            agent.gameState.World.Chunks.Add((chunkData.ChunkX, chunkData.ChunkZ), chunkColumn);
         }
 
     }

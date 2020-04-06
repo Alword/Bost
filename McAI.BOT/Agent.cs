@@ -32,10 +32,10 @@ namespace McAI.BOT
             this.port = port;
             this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(server, port);
-            Receive();
+            StartRecive();
         }
 
-        public Task Receive()
+        private Task StartRecive()
         {
             return Task.Run(() =>
             {
