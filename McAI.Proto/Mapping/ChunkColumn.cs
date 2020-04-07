@@ -10,18 +10,33 @@ namespace McAI.Proto.Mapping
         public const int SizeY = 256;
         public const int SizeZ = 16;
 
-        List<ChunkSection> chunkSections = new List<ChunkSection>(SizeY / ChunkSection.SizeY);
+        Dictionary<int, ChunkSection> chunkSections;
+
+        public ChunkSection this[int y]
+        {
+            get
+            {
+                if (chunkSections.ContainsKey(y))
+                {
+                    return chunkSections[y];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         public void Parse(ref byte[] data, int PrimaryBitMask)
         {
-            chunkSections = new List<ChunkSection>();
+            chunkSections = new Dictionary<int, ChunkSection>(SizeY / ChunkSection.SizeY);
             for (int sectionY = 0; sectionY < (ChunkColumn.SizeY / ChunkSection.SizeY); sectionY++)
             {
                 if ((PrimaryBitMask & (1 << sectionY)) != 0)
                 {
                     var chunkSection = new ChunkSection();
                     chunkSection.Parse(ref data);
-                    chunkSections.Add(chunkSection);
+                    chunkSections.Add(sectionY, chunkSection);
                 }
             }
         }

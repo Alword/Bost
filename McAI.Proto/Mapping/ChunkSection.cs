@@ -66,6 +66,11 @@ namespace McAI.Proto.Mapping
             blockIds[x, y, z] = state;
         }
 
+        public BlockId GetBlock(int x, int y, int z)
+        {
+            return blockIds[x, y, z];
+        }
+
         public void SetBlockLight(int x, int y, int z, int v)
         {
             // Debug.WriteLine($"Set light {x} {y} {z} {v}");

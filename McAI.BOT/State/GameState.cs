@@ -1,5 +1,4 @@
 ﻿using McAI.BOT.Model;
-using McAI.Proto.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Text;
