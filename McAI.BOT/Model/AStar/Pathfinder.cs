@@ -5,6 +5,8 @@ using McAI.Proto.Mapping.Generator;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace McAI.BOT.Model.AStar
@@ -18,7 +20,7 @@ namespace McAI.BOT.Model.AStar
         private static readonly int maxNodes = 6000;
 
         private List<PathNode> openList;
-        private List<PathNode> closedList;
+        private List<Int3> closedList;
 
         private readonly World world;
         private readonly PathFinderConfig pathFinderConfig;
@@ -33,12 +35,12 @@ namespace McAI.BOT.Model.AStar
             Int3 beginBlock = beginPoint.BlockPosition();
             Int3 targetBlock = targetPoint.BlockPosition();
 
-            var startNode = new PathNode(beginBlock, 0, beginPoint.Distance(targetPoint), MoveActions.Walk);
+            var startNode = new PathNode(beginBlock, 0, (int)beginPoint.Distance(targetPoint), MoveActions.Walk);
             openList = new List<PathNode> { startNode };
-            closedList = new List<PathNode>();
+            closedList = new List<Int3>();
 
-            startNode.LenghtFromStart = 0;
-            startNode.HeuristicPathLenght = CalculateDistanceCost(startNode.Position, targetBlock);
+            startNode.GCost = 0;
+            startNode.HCost = CalculateDistanceCost(startNode.Position, targetBlock);
 
             while (openList.Count > 0)
             {
@@ -49,14 +51,30 @@ namespace McAI.BOT.Model.AStar
                     return CalculatePath(currentNode);
                 }
                 openList.Remove(currentNode);
-                closedList.Add(currentNode);
+                closedList.Add(currentNode.Position);
+
+                foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
+                {
+                    if (closedList.Contains(neighbourNode.Position)) continue;
+
+                    int tententiveGCos = currentNode.GCost + CalculateDistanceCost(currentNode.Position, neighbourNode.Position);
+                    if (tententiveGCos < neighbourNode.GCost)
+                    {
+                        neighbourNode.cameFromNode = currentNode;
+                        neighbourNode.GCost = tententiveGCos;
+                        neighbourNode.HCost = CalculateDistanceCost(neighbourNode.Position, targetBlock);
+                        neighbourNode.CalculateFCost();
+
+                        if (!openList.Contains(neighbourNode))
+                        {
+                            openList.Add(neighbourNode);
+                        }
+                    }
+                }
 
             }
 
-            // "Стоп сигнал" для нашего поиска
-            Console.WriteLine("Nodes created " + closedList.Count.ToString());
-
-            return path;
+            return null;
         }
 
         private int CalculateDistanceCost(Int3 a, Int3 b)
@@ -76,7 +94,7 @@ namespace McAI.BOT.Model.AStar
             PathNode lowestFCostNode = pathNodes[0];
             for (int i = 1; i < pathNodes.Count; i++)
             {
-                if (pathNodes[i].FullPathLenght < lowestFCostNode.FullPathLenght)
+                if (pathNodes[i].FCost < lowestFCostNode.FCost)
                 {
                     lowestFCostNode = pathNodes[i];
                 }
@@ -84,9 +102,17 @@ namespace McAI.BOT.Model.AStar
             return lowestFCostNode;
         }
 
-        public List<PathNode> CalculatePath(PathNode pathNode)
+        public List<PathNode> CalculatePath(PathNode endNode)
         {
-            throw new NotImplementedException();
+            List<PathNode> path = new List<PathNode> { endNode };
+            PathNode currentNode = endNode;
+            while (currentNode.cameFromNode != null)
+            {
+                currentNode = currentNode.cameFromNode;
+                path.Add(currentNode);
+            }
+            path.Reverse();
+            return path;
         }
 
         private List<PathNode> GetNeighbourList(PathNode currentNode)
@@ -98,20 +124,14 @@ namespace McAI.BOT.Model.AStar
                 { currentNode.Position, currentNode }
             };
 
-            BlockState x1 = world[currentNode.Position + Int3.Forward];
-            BlockState x2 = world[currentNode.Position + Int3.Backward];
-            BlockState x3 = world[currentNode.Position + Int3.Right];
-            BlockState x4 = world[currentNode.Position + Int3.Left];
-            BlockState x5 = world[currentNode.Position + Int3.Right + Int3.Forward];
-            BlockState x6 = world[currentNode.Position + Int3.Right + Int3.Backward];
-            BlockState x7 = world[currentNode.Position + Int3.Left + Int3.Forward];
-            BlockState x8 = world[currentNode.Position + Int3.Left + Int3.Backward];
+            Dictionary<Int3, BlockState> dictionary = FindNeighbour(currentNode.Position, new HashSet<Int3>());
+
+            return dictionary.Select(d => new PathNode() { Position = d.Key }).ToList();
         }
 
         private Dictionary<Int3, BlockState> FindNeighbour(Int3 position, HashSet<Int3> chache)
         {
             Dictionary<Int3, BlockState> neigbourNodes = new Dictionary<Int3, BlockState>();
-
             List<Int3> keys = new List<Int3>
             {
                 position + Int3.Forward,
@@ -126,16 +146,12 @@ namespace McAI.BOT.Model.AStar
             List<Int3> notChecked = new List<Int3>();
             foreach (var key in keys)
             {
-                if (chache.Contains(key))
-                {
-                }
-                else
+                if (!chache.Contains(key))
                 {
                     chache.Add(key);
                     notChecked.Add(key);
                 }
             }
-
             foreach (Int3 key in notChecked)
             {
                 NodeState state = IsSuitable(key, out BlockState blockState1);

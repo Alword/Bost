@@ -1,4 +1,6 @@
 ﻿using McAI.BOT.Types;
+using System;
+using System.Collections.Generic;
 
 namespace McAI.BOT.Model.AStar
 {
@@ -7,29 +9,39 @@ namespace McAI.BOT.Model.AStar
     public class PathNode
     {
         public Int3 Position { get; set; }
-        public double LenghtFromStart { get; set; }
-        public double HeuristicPathLenght { get; set; }
-        public double FullPathLenght
+        public int GCost { get; set; }
+        public int HCost { get; set; }
+        public int FCost { get; set; }
+        public void CalculateFCost()
         {
-            get
-            {
-                return this.HeuristicPathLenght + this.LenghtFromStart;
-            }
+            FCost = HCost + GCost;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PathNode node &&
+                   EqualityComparer<Int3>.Default.Equals(Position, node.Position);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Position);
+        }
+
         // способ движения
         public MoveActions moveAction = MoveActions.Walk;
         // точка из которой пришли сюда
-        public PathNode cameFrom;
+        public PathNode cameFromNode;
 
         public PathNode() { }
 
-        public PathNode(Int3 point, double pathLenghtFromStart, double heuristicEstimatePathLenght, MoveActions moveAction, PathNode cameFrom = null)
+        public PathNode(Int3 point, int pathLenghtFromStart, int heuristicEstimatePathLenght, MoveActions moveAction, PathNode cameFrom = null)
         {
             this.Position = point;
-            this.LenghtFromStart = pathLenghtFromStart;
-            this.HeuristicPathLenght = heuristicEstimatePathLenght;
+            this.GCost = pathLenghtFromStart;
+            this.HCost = heuristicEstimatePathLenght;
             this.moveAction = moveAction;
-            this.cameFrom = cameFrom;
+            this.cameFromNode = cameFrom;
         }
     }
 }
