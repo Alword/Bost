@@ -102,7 +102,7 @@ namespace McAI.BOT.Model.AStar
             return lowestFCostNode;
         }
 
-        public List<PathNode> CalculatePath(PathNode endNode)
+        private List<PathNode> CalculatePath(PathNode endNode)
         {
             List<PathNode> path = new List<PathNode> { endNode };
             PathNode currentNode = endNode;
@@ -163,15 +163,16 @@ namespace McAI.BOT.Model.AStar
                 {
                     if (state == NodeState.Blocker)
                     {
-                        Int3 blockVector = key - position;
-
-                        blockVector.AsXZVector();
-
-                        int i = 0;
-                        while (blockVector.X < 5 && blockVector.X < 5 && blockVector.X + blockVector.Y < 8)
+                        Int3 blockVector = (key - position).AsXZVector();
+                        Int3 blockKey = key;
+                        int i = 1;
+                        while (Math.Abs(blockKey.X) < 5 &&
+                            Math.Abs(blockKey.Z) < 5 &&
+                            Math.Abs(blockKey.X + blockKey.Z) < 8)
                         {
-                            chache.Add(key + blockVector * i);
+                            chache.Add(blockVector);
                             i += 1;
+                            blockKey += blockVector * i;
                         }
                     }
                     FindNeighbour(key, chache);

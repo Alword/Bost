@@ -8,14 +8,10 @@ using System.Data;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class KeepAlive : IPacketEventHandler
+    public class KeepAlive : BaseAgentEvent
     {
-        private readonly Agent agent;
-        public KeepAlive(Agent agent)
-        {
-            this.agent = agent;
-        }
-        public async void OnPacket(PacketKey state, BasePacket packet)
+        public KeepAlive(Agent agent) : base(agent) { }
+        public async override void OnPacket(PacketKey state, BasePacket packet)
         {
             var toclientKeepAlive = (Proto.Packet.Play.Clientbound.KeepAlivePacket)packet;
 

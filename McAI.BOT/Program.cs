@@ -22,6 +22,7 @@ namespace McAI.BOT
             connectionListner.Subscribe(new PacketKey(0x49, ConnectionStates.Play, Bounds.Client), new Respawn(agent));
             connectionListner.Subscribe(new PacketKey(0x36, ConnectionStates.Play, Bounds.Client), new TeleportConfirm(agent));
             connectionListner.Subscribe(new PacketKey(0x22, ConnectionStates.Play, Bounds.Client), new ReadChunkData(agent));
+            connectionListner.Subscribe(new PacketKey(0x0F, ConnectionStates.Play, Bounds.Client), new ReadChatMessage(agent));
 
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 

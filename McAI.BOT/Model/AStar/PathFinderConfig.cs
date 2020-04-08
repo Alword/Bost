@@ -17,20 +17,17 @@ namespace McAI.BOT.Model.AStar
 
         public int CharacterHeight;
 
-        public static PathFinderConfig Default()
+        public static PathFinderConfig Default => new PathFinderConfig
         {
-            PathFinderConfig config = new PathFinderConfig
-            {
-                canWalk = true,
-                canJump = true,
-                canFall = true,
-                canSwim = false,
-                MaxFallDistance = 1,
-                JumpHeight = 1,
-                JumpDistance = 3,
-                CharacterHeight = 2
-            };
-            return config;
-        }
+            canWalk = true,
+            canJump = true,
+            canFall = true,
+            canSwim = false,
+            MaxFallDistance = 1,
+            JumpHeight = 1,
+            JumpDistance = 3,
+            CharacterHeight = 2
+        };
+
     }
 }

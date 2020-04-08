@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using McAI.Proto.Model.ChatObject;
+using Newtonsoft.Json;
 
 namespace McAI.Proto.Types
 {
-    public static class McBoolean
+    public static class McChat
     {
-        public static bool TryParse(ref byte[] buffer, out bool result)
+        public static bool TryParse(ref byte[] buffer, out Chat result)
         {
-            result = buffer[0] == 1;
-            buffer = buffer[1..];
+            McString.TryParse(ref buffer, out string chatString);
+            result =JsonConvert.DeserializeObject<Chat>(chatString);
             return true;
         }
-        public static byte[] ToBytes(bool value)
+        public static byte[] ToBytes(Chat value)
         {
-            byte[] result = new byte[] { value ? (byte)1 : (byte)0 };
-            return result;
+            string chatString = JsonConvert.SerializeObject(value);
+            return McString.ToBytes(chatString);
         }
     }
 }

@@ -9,12 +9,12 @@ namespace McAI.BOT.State
     {
         public Player Bot { get; private set; }
         public World World { get; private set; }
-        public Dictionary<Guid, Transform> Entitys { get; private set; }
+        public Dictionary<int, Transform> Entitys { get; private set; }
         public GameState()
         {
             World = new World();
             Bot = new Player();
-            Entitys = new Dictionary<Guid, Transform>();
+            Entitys = new Dictionary<int, Transform>();
         }
     }
 }
