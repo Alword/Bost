@@ -1,4 +1,6 @@
-﻿namespace McAI.BOT.Model
+﻿using System;
+
+namespace McAI.BOT.Model
 {
     public struct Int3
     {
@@ -40,6 +42,19 @@
                 result += Left;
 
             return result;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Int3 @int &&
+                   X == @int.X &&
+                   Y == @int.Y &&
+                   Z == @int.Z;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Z);
         }
 
         public static Int3 operator +(Int3 a, Int3 b)
