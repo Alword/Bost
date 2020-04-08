@@ -26,11 +26,19 @@ namespace McAI.BOT.Extentions
             return new Int3(x, y, z);
         }
 
-        public static Int3 BlockPosition(this Double3 location)
+        public static Int3 InChunkBlock(this Double3 location)
         {
             int x = (int)Math.Floor(location.X % ChunkColumn.SizeX);
             int y = (int)Math.Floor(location.Y % ChunkSection.SizeX);
             int z = (int)Math.Floor(location.Z % ChunkColumn.SizeX);
+            return new Int3(x, y, z);
+        }
+
+        public static Int3 InChunkBlock(this Int3 location)
+        {
+            int x = Math.Abs(location.X % ChunkColumn.SizeX);
+            int y = Math.Abs(location.Y % ChunkSection.SizeY);
+            int z = Math.Abs(location.Z % ChunkColumn.SizeZ);
             return new Int3(x, y, z);
         }
 

@@ -11,7 +11,7 @@ using System.Text;
 
 namespace McAI.BOT.Model.AStar
 {
-    public class Pathfinder
+    public class Pathfinder : IDisposable
     {
         private static readonly int STRAIGHT_COST = 10;
         private static readonly int DIAGONAL_COST = 14;
@@ -19,6 +19,7 @@ namespace McAI.BOT.Model.AStar
         private static readonly int maxEstimatePath = 1500;
         private static readonly int maxNodes = 6000;
 
+        private Dictionary<Int3, PathNode> Discoverd;
         private List<PathNode> openList;
         private List<Int3> closedList;
 
@@ -28,12 +29,13 @@ namespace McAI.BOT.Model.AStar
         {
             this.world = world;
             this.pathFinderConfig = config;
+            this.Discoverd = new Dictionary<Int3, PathNode>();
         }
 
         public List<PathNode> FindPath(Double3 beginPoint, Double3 targetPoint)
         {
-            Int3 beginBlock = beginPoint.BlockPosition();
-            Int3 targetBlock = targetPoint.BlockPosition();
+            Int3 beginBlock = beginPoint.Floor();
+            Int3 targetBlock = targetPoint.Floor();
 
             var startNode = new PathNode(beginBlock, 0, (int)beginPoint.Distance(targetPoint), MoveActions.Walk);
             openList = new List<PathNode> { startNode };
@@ -80,11 +82,10 @@ namespace McAI.BOT.Model.AStar
         private int CalculateDistanceCost(Int3 a, Int3 b)
         {
             double xDistance = Math.Abs(a.X - b.X);
-            double yDistance = Math.Abs(a.Y - b.Y);
             double zDistance = Math.Abs(a.Z - b.Z);
 
-            double remaining = Math.Abs(xDistance - yDistance - zDistance);
-            double minStrait = Math.Min(Math.Min(xDistance, yDistance), zDistance);
+            double remaining = Math.Abs(xDistance - zDistance);
+            double minStrait = Math.Min((xDistance), zDistance);
 
             return (int)Math.Round(minStrait * DIAGONAL_COST + STRAIGHT_COST * remaining);
         }
@@ -126,7 +127,21 @@ namespace McAI.BOT.Model.AStar
 
             Dictionary<Int3, BlockState> dictionary = FindNeighbour(currentNode.Position, new HashSet<Int3>());
 
-            return dictionary.Select(d => new PathNode() { Position = d.Key }).ToList();
+            var pathNode = dictionary.Select(d => new PathNode() { Position = d.Key }).ToList();
+
+            for (int i = 0; i < pathNode.Count; i++)
+            {
+                if (Discoverd.ContainsKey(pathNode[i].Position))
+                {
+                    pathNode[i] = Discoverd[pathNode[i].Position];
+                }
+                else
+                {
+                    pathNode[i].GCost = int.MaxValue;
+                    Discoverd.Add(pathNode[i].Position, pathNode[i]);
+                }
+            }
+            return pathNode;
         }
 
         private Dictionary<Int3, BlockState> FindNeighbour(Int3 position, HashSet<Int3> chache)
@@ -175,7 +190,7 @@ namespace McAI.BOT.Model.AStar
                             blockKey += blockVector * i;
                         }
                     }
-                    FindNeighbour(key, chache);
+                    //FindNeighbour(key, chache);
                 }
             }
             return neigbourNodes;
@@ -192,6 +207,13 @@ namespace McAI.BOT.Model.AStar
                 return NodeState.Suitable;
 
             return NodeState.Blocker;
+        }
+
+        public void Dispose()
+        {
+            Discoverd.Clear();
+            openList.Clear();
+            closedList.Clear();
         }
     }
 }
