@@ -21,13 +21,23 @@ namespace McAI.BOT.AgentEventHandlers
             if (type.PacketId == 0x05)
             {
                 var data = (SpawnPlayerPacket)packet;
-                Transform transform = new Transform();
+
+                bool isExist = Entitys.ContainsKey(data.EntityID);
+
+                Transform transform;
+                if (isExist)
+                    transform = Entitys[data.EntityID];
+                else
+                    transform = new Transform();
+
                 transform.Position.X = data.X;
                 transform.Position.Y = data.Y;
                 transform.Position.Z = data.Z;
                 transform.Rotation.Yaw = data.Yaw;
                 transform.Rotation.Pitch = data.Pitch;
-                Entitys.Add(data.EntityID, transform);
+
+                if (!isExist)
+                    Entitys.Add(data.EntityID, transform);
             }
 
             else if (type.PacketId == 0x29)

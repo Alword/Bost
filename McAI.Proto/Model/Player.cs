@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Model.ChatObject;
+﻿using McAI.Proto.Enum;
+using McAI.Proto.Model.ChatObject;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace McAI.Proto.Model
         public string Name; //string(16)
         public int NumberOfProperties; //Varint
         public Property[] Propertys;
-        public int Gamemode; //Varint
+        public Gamemods Gamemode; //Varint
         public int Ping; //VarInt
         public bool HasDisplayName;
         public Chat DisplayName; //Optional Chat
@@ -34,7 +35,8 @@ namespace McAI.Proto.Model
                     Propertys[i].Read(ref array);
                 }
 
-                McVarint.TryParse(ref array, out Gamemode);
+                McVarint.TryParse(ref array, out int GamemodeId);
+                Gamemode = (Gamemods)GamemodeId;
                 McVarint.TryParse(ref array, out Ping);
                 McBoolean.TryParse(ref array, out HasDisplayName);
                 if (HasDisplayName == true)
@@ -45,7 +47,8 @@ namespace McAI.Proto.Model
 
             if (action == 1)
             {
-                McVarint.TryParse(ref array, out Gamemode);
+                McVarint.TryParse(ref array, out int GamemodeId);
+                Gamemode = (Gamemods)GamemodeId;
             }
             
             if (action == 2)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McAI.Proto.Mapping;
+using System;
 
 namespace McAI.BOT.Model
 {
@@ -89,6 +90,11 @@ namespace McAI.BOT.Model
         public static bool operator !=(Int3 a, Int3 b)
         {
             return !(a == b);
+        }
+
+        public override string ToString()
+        {
+            return $"X:{X} Y:{Y} Z:{Z}";
         }
     }
 }

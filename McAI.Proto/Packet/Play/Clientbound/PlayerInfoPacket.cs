@@ -35,11 +35,17 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            foreach(Player player in Players)
+            stringBuilder.AppendLine($"Action:{Action}");
+            if (Action == 4)
+            {
+                return stringBuilder.ToString(); ;
+            }
+
+            foreach (Player player in Players)
             {
                 stringBuilder.AppendLine(player.ToString());
             }
-            return $"[PlayerInfo] Action:{Action} NumberOfPlayers:{NumberOfPlayers} Players:{stringBuilder}";
+            return $"[PlayerInfo] NumberOfPlayers:{NumberOfPlayers} Players:{stringBuilder}";
         }
     }
 }

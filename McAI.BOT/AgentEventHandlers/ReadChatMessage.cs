@@ -1,11 +1,15 @@
-﻿using McAI.BOT.Model.AStar;
+﻿using McAI.BOT.Jobs;
+using McAI.BOT.Model.AStar;
+using McAI.BOT.Types;
 using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
+using McAI.Proto.Packet.Play.Serverbound;
 using McAI.Proto.StreamReader.Abstractions;
 using McAI.Proto.StreamReader.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace McAI.BOT.AgentEventHandlers
 {
@@ -17,17 +21,32 @@ namespace McAI.BOT.AgentEventHandlers
 
         public override void OnPacket(PacketKey type, BasePacket packet)
         {
-            var chatMessagePacket = (ChatMessagePacket)packet;
-            var chat = chatMessagePacket.Chat;
-
-            var name = chat.GetSenderName();
-            var text = chat.GetText();
-
-            if (text == "сюда")
+            Task.Run(() =>
             {
-                Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default);
-                //pathfinder.FindPath(agent.gameState.Bot.Position)
-            }
+
+                var chatMessagePacket = (Proto.Packet.Play.Clientbound.ChatMessagePacket)packet;
+                var chat = chatMessagePacket.Chat;
+
+                var name = chat.GetSenderName();
+                var text = chat.GetText();
+
+                if (text == "сюда")
+                {
+                    using (Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default))
+                    {
+                        var startPosition = agent.gameState.Bot.Position;
+                        var endPosition = agent.gameState.Players.ContainsNick(name).Position;
+                        Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
+                        from.Y -= 1;
+                        Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);
+                        to.Y -= 1;
+                        var path = pathfinder.FindPath(from, to);
+                        Marshaller marshaller = new Marshaller(agent, path);
+                        marshaller.Start(default);
+                        Console.WriteLine("Иду");
+                    }
+                }
+            });
         }
     }
 }
