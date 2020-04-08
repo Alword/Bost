@@ -24,7 +24,7 @@ namespace McAI.Proto
 
             ConnectionListner connectionListner = new ConnectionListner();
 
-            ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.138.247", 25565);
+            ProxyClient proxy = new ProxyClient("0.0.0.0", "94.28.222.30", 25565);
             proxy.Start();
             proxy.OnReciveMessage += connectionListner.ReciveListner;
             proxy.OnSendMessage += connectionListner.SendListner;
@@ -38,6 +38,7 @@ namespace McAI.Proto
                 && !(message.Contains("x22") && message.Contains("Client"))
                 && !(message.Contains("x25") && message.Contains("Client"))
                 && !(message.Contains("x0C") && message.Contains("Client"))
+                && (message.Contains("x34") && message.Contains("Client"))
                 && !message.Contains("x3C"))
             {
                 Console.WriteLine(message);
