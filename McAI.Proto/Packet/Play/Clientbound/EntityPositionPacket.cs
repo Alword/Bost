@@ -10,8 +10,18 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override int PacketId => 0x29;
 
         public int EntityID; //Varint
+
+        /// <summary>
+        /// Change in X position as (currentX * 32 - prevX * 32) * 128
+        /// </summary>
         public short DeltaX;
+        /// <summary>
+        /// Change in Y position as (currentY * 32 - prevY * 32) * 128
+        /// </summary>
         public short DeltaY;
+        /// <summary>
+        /// Change in Z position as (currentZ * 32 - prevY * 32) * 128
+        /// </summary>
         public short DeltaZ;
         public bool OnGround;
 
@@ -31,8 +41,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"[EntityPosition] EntityID:{EntityID} DeltaX:{DeltaX} DeltaY:{DeltaY}" +
-                $"DeltaZ:{DeltaZ} OnGround:{OnGround}";
+            return $"[EntityPosition] EntityID:{EntityID} DeltaXYZ:{DeltaX} {DeltaY} {DeltaZ} OnGround:{OnGround}";
         }
     }
 }

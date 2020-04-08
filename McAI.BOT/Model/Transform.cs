@@ -10,6 +10,8 @@ namespace McAI.BOT.Model
 
         public Rotation Rotation { get; set; }
 
+        public bool OnGround { get; set; }
+
         public Transform()
         {
             Position = new Position();

@@ -41,7 +41,7 @@ namespace McAI.Proto
                 && (message.Contains("x34") && message.Contains("Client"))
                 && !message.Contains("x3C"))
             {
-                Console.WriteLine(message);
+                //Console.WriteLine(message);
             }
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }

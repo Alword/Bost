@@ -17,5 +17,18 @@ namespace McAI.Proto.StreamReader.Model
             this.ConnectionState = connectionState;
             this.Bound = bounds;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PacketKey key &&
+                   PacketId == key.PacketId &&
+                   ConnectionState == key.ConnectionState &&
+                   Bound == key.Bound;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(PacketId, ConnectionState, Bound);
+        }
     }
 }

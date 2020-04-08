@@ -5,24 +5,24 @@ using System.Text;
 
 namespace McAI.Proto.Packet.Play.Clientbound
 {
-    public class EntityPositionAndRotationPacket : BasePacket
+    public class EntityTeleportPacket : BasePacket
     {
-        public override int PacketId => 0x2A;
+        public override int PacketId => 0x57;
 
-        public int EntityId; //Varint
-        public short DeltaX;
-        public short DeltaY;
-        public short DeltaZ;
-        public byte Yaw; //Angle
-        public byte Pitch; //Angle
+        public int EntityId;// varint
+        public double X;
+        public double Y;
+        public double Z;
+        public byte Yaw;
+        public byte Pitch;
         public bool OnGround;
 
         public override void Read(byte[] array)
         {
             McVarint.TryParse(ref array, out EntityId);
-            McShort.TryParse(ref array, out DeltaX);
-            McShort.TryParse(ref array, out DeltaY);
-            McShort.TryParse(ref array, out DeltaZ);
+            McDouble.TryParse(ref array, out X);
+            McDouble.TryParse(ref array, out Y);
+            McDouble.TryParse(ref array, out Z);
             McUnsignedByte.TryParse(ref array, out Yaw);
             McUnsignedByte.TryParse(ref array, out Pitch);
             McBoolean.TryParse(ref array, out OnGround);
@@ -35,8 +35,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"[EntityPositionAndRotation] EntityID:{EntityId} DeltaX:{DeltaX} DeltaY:{DeltaY} " +
-                $"DeltaZ:{DeltaZ} Yaw:{Yaw} Pitch:{Pitch} OnGround:{OnGround}";
+            return $"[EntityTeleport] EntityId: {EntityId} XYZ: {X} {Y} {Z} Yaw: {Yaw} Pitch: {Pitch} OnGround:{OnGround}";
         }
     }
 }
