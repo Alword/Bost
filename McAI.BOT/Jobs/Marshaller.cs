@@ -18,7 +18,7 @@ namespace McAI.BOT.Jobs
         private readonly Agent agent;
         private readonly List<PathNode> path;
         private static readonly double accuracy = 0.2;
-        private static readonly double groundSpeed = 0.5;
+        private static readonly double groundSpeed = 1;
 
         public Marshaller(Agent agent, List<PathNode> path)
         {
@@ -31,28 +31,26 @@ namespace McAI.BOT.Jobs
             Task.Run(async () =>
             {
                 var currentPosition = agent.gameState.Bot.Position;
-
+                if (path == null)
+                    return;
                 foreach (var node in path)
                 {
-                    while (Math.Abs(currentPosition.X - node.Position.X) > accuracy
-                    || Math.Abs(currentPosition.Z - node.Position.Z) > accuracy)
+                    if (cancellationToken.IsCancellationRequested)
+                        return;
+
+                    currentPosition.X = node.Position.X + 0.5;
+                    currentPosition.Y = node.Position.Y + 1;
+                    currentPosition.Z = node.Position.Z + 0.5;
+
+                    PlayerPositionPacket playerPositionPacket = new PlayerPositionPacket
                     {
-                        if (cancellationToken.IsCancellationRequested)
-                            return;
-
-                        currentPosition.X = node.Position.X;
-                        currentPosition.Z = node.Position.Z;
-
-                        PlayerPositionPacket playerPositionPacket = new PlayerPositionPacket
-                        {
-                            X = currentPosition.X,
-                            FeetY = currentPosition.Y,
-                            OnGround = true,
-                            Z = currentPosition.Z
-                        };
-                        await agent.Send(playerPositionPacket);
-                        await Task.Delay(100);
-                    }
+                        X = currentPosition.X,
+                        FeetY = currentPosition.Y,
+                        OnGround = true,
+                        Z = currentPosition.Z
+                    };
+                    await agent.Send(playerPositionPacket);
+                    await Task.Delay(100);
                 }
             });
         }

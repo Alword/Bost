@@ -156,7 +156,22 @@ namespace McAI.BOT.Model.AStar
                 position + Int3.Forward + Int3.Right,
                 position + Int3.Forward + Int3.Left,
                 position + Int3.Backward + Int3.Right,
-                position + Int3.Backward + Int3.Left
+                position + Int3.Backward + Int3.Left,
+
+                position + Int3.Forward + Int3.Up,
+                position + Int3.Backward + Int3.Up,
+                position + Int3.Right + Int3.Up,
+                position + Int3.Left + Int3.Up,
+
+                position + Int3.Forward + Int3.Up,
+                position + Int3.Backward + Int3.Up,
+                position + Int3.Right + Int3.Up,
+                position + Int3.Left + Int3.Up,
+
+                position + Int3.Forward + Int3.Down,
+                position + Int3.Backward + Int3.Down,
+                position + Int3.Right + Int3.Down,
+                position + Int3.Left + Int3.Down,
             };
             List<Int3> notChecked = new List<Int3>();
             foreach (var key in keys)

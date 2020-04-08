@@ -51,5 +51,21 @@ namespace McAI.BOT.Model
                 }
             }
         }
+
+        public void SetBlockId(Int3 location, BlockId state)
+        {
+            Int3 chunkSectionKey = location.GetChunk();
+            Int2 chunkKey = new Int2(chunkSectionKey.X, chunkSectionKey.Z);
+            if (Chunks.ContainsKey(chunkKey))
+            {
+                ChunkColumn chunk = Chunks[chunkKey];
+                ChunkSection section = chunk[chunkSectionKey.Y];
+                if (section != null)
+                {
+                    Int3 bp = location.InChunkBlock();
+                    section.SetState(bp.X, bp.Y, bp.Z, state);
+                }
+            }
+        }
     }
 }
