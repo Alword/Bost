@@ -16,15 +16,16 @@ namespace McAI.BOT
 {
     public class Agent
     {
-
         public delegate void MessageHandler(object sender, byte[] message);
+        
         public event MessageHandler OnRecive;
         public event MessageHandler OnSend;
+        
+        public readonly GameState gameState;
 
         private Socket socket;
         private string server;
         private ushort port;
-        public readonly GameState gameState;
         public Agent(string server, ushort port)
         {
             this.gameState = new GameState();

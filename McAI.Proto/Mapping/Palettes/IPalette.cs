@@ -1,7 +1,4 @@
 ﻿using McAI.Proto.Mapping.Generator;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.Proto.Mapping.Palettes
 {

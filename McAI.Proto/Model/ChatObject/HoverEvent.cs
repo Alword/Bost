@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.Proto.Model.ChatObject
+﻿namespace McAI.Proto.Model.ChatObject
 {
     public class HoverEvent
     {

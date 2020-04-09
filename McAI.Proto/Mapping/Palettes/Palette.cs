@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.Proto.Mapping.Palettes
+﻿namespace McAI.Proto.Mapping.Palettes
 {
     public class Palette
     {

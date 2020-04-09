@@ -1,9 +1,5 @@
 ﻿using McAI.Proto.Mapping.Palettes;
 using McAI.Proto.Types;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace McAI.Proto.Mapping

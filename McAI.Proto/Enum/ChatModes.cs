@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.Proto.Enum
+﻿namespace McAI.Proto.Enum
 {
     /// <summary>
     ///  See processing chat for more information

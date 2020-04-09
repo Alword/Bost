@@ -1,6 +1,4 @@
-﻿using McAI.Proto.Mapping;
-using McAI.Proto.Mapping.Palettes;
-using McAI.Proto.Types;
+﻿using McAI.Proto.Types;
 using NbtLib;
 using System;
 using System.IO;

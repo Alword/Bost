@@ -1,7 +1,5 @@
 ﻿using McAI.Proto.Types;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace McAI.Proto.Packet.Login.Serverbound
 {

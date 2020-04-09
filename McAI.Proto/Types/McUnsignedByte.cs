@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.Proto.Types
+﻿namespace McAI.Proto.Types
 {
     public class McUnsignedByte
     {

@@ -1,17 +1,12 @@
-﻿using McAI.Proto.Enum;
-using McAI.Proto.Extentions;
+﻿using McAI.Proto.Extentions;
 using McAI.Proto.Packet;
-using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Reflection;
-using System.Text;
 
 namespace McAI.Proto.StreamReader.Middleware
 {

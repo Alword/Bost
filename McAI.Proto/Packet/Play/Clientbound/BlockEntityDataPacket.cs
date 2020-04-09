@@ -1,9 +1,7 @@
 ﻿using McAI.Proto.Model;
 using McAI.Proto.Types;
+using NbtLib;
 using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace McAI.Proto.Packet.Play.Clientbound
 {
@@ -13,7 +11,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public Position Location;
         public byte Action; //Unsigned Byte
-        public Tags NBTData; //NBT Tag
+        public NbtCompoundTag NBTData; //NBT Tag
 
 
         public override void Read(byte[] array)
@@ -21,7 +19,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
             Location = new Position();
             Location.Read(ref array);
             McUnsignedByte.TryParse(ref array, out Action);
-            McTags.TryParse(ref array, out NBTData);
+            McNbtCompoundTag.TryParse(ref array, out NBTData);
         }
 
         public override byte[] Write()

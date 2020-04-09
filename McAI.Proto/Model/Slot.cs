@@ -1,6 +1,5 @@
 ﻿using McAI.Proto.Types;
 using NbtLib;
-using System.IO;
 
 namespace McAI.Proto.Model
 {
@@ -18,20 +17,7 @@ namespace McAI.Proto.Model
             {
                 McVarint.TryParse(ref array, out ItemId);
                 McUnsignedByte.TryParse(ref array, out ItemCount);
-
-                var parser = new NbtParser();
-                Stream nbtStream = new MemoryStream(array);
-                if (array[0] == 0)
-                {
-                    array = array[1..];
-                    NBT = new NbtCompoundTag();
-                }
-                else
-                {
-                    NBT = new NbtParser().ParseNbtStream(nbtStream);
-                    array = array[(int)nbtStream.Position..];
-                }
-
+                McNbtCompoundTag.TryParse(ref array, out NBT);
             }
         }
 

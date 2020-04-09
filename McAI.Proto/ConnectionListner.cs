@@ -1,10 +1,6 @@
 ﻿using McAI.Proto.StreamReader.Abstractions;
 using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace McAI.Proto
 {

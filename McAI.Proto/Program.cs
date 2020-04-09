@@ -1,17 +1,6 @@
-﻿using McAI.Proto.Abstractions;
-using McAI.Proto.Enum;
-using McAI.Proto.Mapping.Generator;
-using McAI.Proto.Packet;
-using McAI.Proto.StreamReader;
-using McAI.Proto.StreamReader.Enum;
-using McAI.Proto.StreamReader.Model;
-using McAI.Proxy;
+﻿using McAI.Proxy;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace McAI.Proto
 {
@@ -34,26 +23,11 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            if (DisableTime(message) && DisableChunkUpdate(message)
-                && !(message.Contains("x22") && message.Contains("Client"))
-                && !(message.Contains("x25") && message.Contains("Client"))
-                && !(message.Contains("x0C") && message.Contains("Client"))
-                && (message.Contains("x34") && message.Contains("Client"))
-                && !message.Contains("x3C"))
+            if ((message.Contains("0x0A") && message.Contains("Client")))
             {
                 Console.WriteLine(message);
             }
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
-        }
-
-        private static bool DisableTime(string message)
-        {
-            return !(message.Contains("x46") && message.Contains("Client"));
-        }
-
-        private static bool DisableChunkUpdate(string message)
-        {
-            return !(message.Contains("x4F") && message.Contains("Client"));
         }
     }
 }

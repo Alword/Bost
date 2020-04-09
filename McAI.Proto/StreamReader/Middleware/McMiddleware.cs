@@ -1,7 +1,4 @@
 ﻿using McAI.Proto.StreamReader.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.Proto.StreamReader
 {

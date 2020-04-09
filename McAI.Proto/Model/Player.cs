@@ -2,7 +2,6 @@
 using McAI.Proto.Model.ChatObject;
 using McAI.Proto.Types;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace McAI.Proto.Model
@@ -50,7 +49,7 @@ namespace McAI.Proto.Model
                 McVarint.TryParse(ref array, out int GamemodeId);
                 Gamemode = (Gamemods)GamemodeId;
             }
-            
+
             if (action == 2)
             {
                 McVarint.TryParse(ref array, out Ping);
