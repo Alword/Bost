@@ -22,18 +22,15 @@ namespace McAI.Proto.StreamReader.Middleware
             while (queue.Count > 0)
             {
                 ctx.Data = queue.ToArray();
-                try
-                {
-                    McVarint.TryParse(ctx.Data, out lengthLength, out length);
-                }
-                catch (IndexOutOfRangeException)
+
+                bool parsed = McVarint.TryParse(ctx.Data, out lengthLength, out length);
+
+                if (!parsed)
                 {
                     Debug.WriteLine("Packet is too small, read next packet");
-                    if (queue.Count > 5)
-                        throw;
-                    else
-                        break;
+                    break;
                 }
+
                 if (length + lengthLength > queue.Count) break;
 
                 ctx.Data = ctx.Data[lengthLength..(length + lengthLength)];

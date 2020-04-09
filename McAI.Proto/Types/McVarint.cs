@@ -12,7 +12,11 @@ namespace McAI.Proto.Types
             byte read;
             do
             {
-                read = buffer[numRead];
+                if (numRead < buffer.Length)
+                    read = buffer[numRead];
+                else
+                    return false;
+
                 int value = read & 0b01111111;
                 result |= value << 7 * numRead;
 
