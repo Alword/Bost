@@ -60,7 +60,7 @@ namespace McAI.BOT.Model.AStar
                     if (closedList.Contains(neighbourNode.Position)) continue;
 
                     int tententiveGCos = currentNode.GCost + CalculateDistanceCost(currentNode.Position, neighbourNode.Position);
-                    if (tententiveGCos < neighbourNode.GCost)
+                    if (tententiveGCos < neighbourNode.GCost && tententiveGCos < maxEstimatePath)
                     {
                         neighbourNode.cameFromNode = currentNode;
                         neighbourNode.GCost = tententiveGCos;
