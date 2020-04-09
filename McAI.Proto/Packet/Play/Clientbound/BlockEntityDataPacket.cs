@@ -13,7 +13,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public Position Location;
         public byte Action; //Unsigned Byte
-        public Tag NBTData; //NBT Tag
+        public Tags NBTData; //NBT Tag
 
 
         public override void Read(byte[] array)
@@ -21,7 +21,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
             Location = new Position();
             Location.Read(ref array);
             McUnsignedByte.TryParse(ref array, out Action);
-
+            McTags.TryParse(ref array, out NBTData);
         }
 
         public override byte[] Write()
