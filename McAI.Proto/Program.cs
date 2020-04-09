@@ -1,6 +1,7 @@
 ﻿using McAI.Proxy;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace McAI.Proto
 {
@@ -23,10 +24,13 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            if ((message.Contains("0x0A") && message.Contains("Client")))
+            Task.Run(() =>
             {
-                Console.WriteLine(message);
-            }
+                if ((message.Contains("0x0A") && message.Contains("Client")))
+                {
+                    Console.WriteLine(message);
+                }
+            });
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }
     }

@@ -2,6 +2,7 @@
 using McAI.Proto.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace McAI.Proto.StreamReader.Middleware
 {
@@ -27,6 +28,7 @@ namespace McAI.Proto.StreamReader.Middleware
                 }
                 catch (IndexOutOfRangeException)
                 {
+                    Debug.WriteLine("Packet is too small, read next packet");
                     if (queue.Count > 5)
                         throw;
                     else
