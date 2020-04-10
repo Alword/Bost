@@ -26,7 +26,11 @@ namespace McAI.Proto
         {
             Task.Run(() =>
             {
-                if ((message.Contains("0x0A") && message.Contains("Client")))
+                if (!message.StartsWith("0"))
+                if (!(message.Contains("1x3C") && message.Contains("Client")))
+                if (!(message.Contains("1x46") && message.Contains("Client")))
+                if (!(message.Contains("1x4F") && message.Contains("Client")))
+                if (!(message.Contains("1x25") && message.Contains("Client")))
                 {
                     Console.WriteLine(message);
                 }
