@@ -50,8 +50,6 @@ namespace McAI.BOT.AgentEventHandlers
                     transform.Position.Y = (transform.Position.Y * 4096 + data.DeltaY) / 4096;
                     transform.Position.Z = (transform.Position.Z * 4096 + data.DeltaZ) / 4096;
                     transform.OnGround = data.OnGround;
-
-                    Console.WriteLine($"{transform.Position}");
                 }
             }
             else if (type.PacketId == 0x2A)
@@ -66,8 +64,6 @@ namespace McAI.BOT.AgentEventHandlers
                     transform.Rotation.Yaw = data.Yaw;
                     transform.Rotation.Pitch = data.Pitch;
                     transform.OnGround = data.OnGround;
-
-                    Console.WriteLine($"{transform.Position}");
                 }
             }
             else if (type.PacketId == 0x57)
