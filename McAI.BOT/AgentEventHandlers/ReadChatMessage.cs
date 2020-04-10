@@ -30,7 +30,7 @@ namespace McAI.BOT.AgentEventHandlers
                 var name = chat.GetSenderName();
                 var text = chat.GetText();
 
-                if (text == "сюда")
+                if (text.Contains("сюда", StringComparison.InvariantCultureIgnoreCase))
                 {
                     using (Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default))
                     {
@@ -43,7 +43,6 @@ namespace McAI.BOT.AgentEventHandlers
                         var path = pathfinder.FindPath(from, to);
                         Marshaller marshaller = new Marshaller(agent, path);
                         marshaller.Start(default);
-                        Console.WriteLine("Иду");
                     }
                 }
             });
