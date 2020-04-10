@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace McAI.Proto.StreamReader.Middleware
 {
@@ -27,13 +28,13 @@ namespace McAI.Proto.StreamReader.Middleware
             ctx.Data = array;
 
             var key = new PacketKey(ctx.PacketId, ctx.ConnectionState, ctx.BoundTo);
+
+
             if (packets.ContainsKey(key))
             {
                 var packet = (BasePacket)Activator.CreateInstance(packets[key]);
-
                 packet.Read(ctx.Data);
                 ctx.packetEventHub.Invoke(key, packet);
-
                 Program.Log($"0x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {packet}");
             }
             else

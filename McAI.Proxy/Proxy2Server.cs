@@ -29,7 +29,7 @@ namespace McAI.Proxy
             {
                 while (IsConnected)
                 {
-                    var buffer = new byte[256];
+                    var buffer = new byte[8192];
                     int size = server.Receive(buffer);
                     if (size > 0)
                     {

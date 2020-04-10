@@ -31,7 +31,7 @@ namespace McAI.Proxy
             {
                 while (true)
                 {
-                    var buffer = new byte[1024];
+                    var buffer = new byte[8192];
                     int size = game.Receive(buffer);
                     if (size > 0)
                     {

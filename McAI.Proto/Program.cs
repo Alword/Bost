@@ -24,17 +24,16 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-            Task.Run(() =>
+
+            if (!message.StartsWith("0")
+                && !(message.Contains("1x3C") && message.Contains("Client"))
+                && !(message.Contains("1x46") && message.Contains("Client"))
+                && !(message.Contains("1x4F") && message.Contains("Client"))
+                && !(message.Contains("1x25") && message.Contains("Client"))
+                && !(message.Contains("1x3C") && message.Contains("Client")))
             {
-                if (!message.StartsWith("0"))
-                if (!(message.Contains("1x3C") && message.Contains("Client")))
-                if (!(message.Contains("1x46") && message.Contains("Client")))
-                if (!(message.Contains("1x4F") && message.Contains("Client")))
-                if (!(message.Contains("1x25") && message.Contains("Client")))
-                {
-                    Console.WriteLine(message);
-                }
-            });
+                Console.WriteLine(message);
+            }
             //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }
     }
