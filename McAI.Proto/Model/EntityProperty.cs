@@ -5,7 +5,7 @@ using System.Text;
 
 namespace McAI.Proto.Model
 {
-    public class Property59
+    public class EntityProperty
     {
         public string Key; //String (64)
         public double Value;
@@ -17,6 +17,7 @@ namespace McAI.Proto.Model
             McString.TryParse(ref array, out Key);
             McDouble.TryParse(ref array, out Value);
             McVarint.TryParse(ref array, out NumberOfModifiers);
+            Modifiers = new ModifierData[NumberOfModifiers];
             for (int i = 0; i < NumberOfModifiers; i++)
             {
                 Modifiers[i] = new ModifierData();
