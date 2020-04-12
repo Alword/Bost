@@ -14,7 +14,7 @@ namespace McAI.Proto
 
             ConnectionListner connectionListner = new ConnectionListner();
 
-            ProxyClient proxy = new ProxyClient("0.0.0.0", "94.28.222.30", 25565);
+            ProxyClient proxy = new ProxyClient("0.0.0.0", "94.28.213.8", 25565);
             proxy.Start();
             proxy.OnReciveMessage += connectionListner.ReciveListner;
             proxy.OnSendMessage += connectionListner.SendListner;
