@@ -35,6 +35,7 @@ namespace McAI.BOT
             connectionListner.Subscribe(new PacketKey(0x57, ConnectionStates.Play, Bounds.Client), updateEntityPosition);
 
             connectionListner.Subscribe(new PacketKey(0x0C, ConnectionStates.Play, Bounds.Client), new BlockChangeUpdate(agent));
+            connectionListner.Subscribe(new PacketKey(0x1E, ConnectionStates.Play, Bounds.Client), new UnloadChunk(agent));
 
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 

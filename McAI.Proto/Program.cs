@@ -1,4 +1,5 @@
-﻿using McAI.Proxy;
+﻿using McAI.Proto.Mapping.Generator;
+using McAI.Proxy;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace McAI.Proto
         public static readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss}-log.txt");
         static void Main(string[] args)
         {
+            RegistriesPalette registriesPalette = new RegistriesPalette();
+            registriesPalette.GenerateScript();
+
             Log($"[Proto] Start session");
 
             ConnectionListner connectionListner = new ConnectionListner();
