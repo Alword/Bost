@@ -25,12 +25,23 @@ namespace McAI.Proto
         public static void Log(string message)
         {
 
-            if (!message.StartsWith("0")
-                && !(message.Contains("1x3C") && message.Contains("Client"))
-                && !(message.Contains("1x46") && message.Contains("Client"))
-                && !(message.Contains("1x4F") && message.Contains("Client"))
-                && !(message.Contains("1x25") && message.Contains("Client"))
-                && !(message.Contains("1x3C") && message.Contains("Client")))
+
+            if (message.StartsWith("0")
+                            && !(message.Contains("0x11") && message.Contains("Server"))
+                            && !(message.Contains("0x12") && message.Contains("Server"))
+                            && !(message.Contains("0x13") && message.Contains("Server"))
+                            && !(message.Contains("0x10") && message.Contains("Client"))
+                            && !(message.Contains("0x11") && message.Contains("Client"))
+                            && !(message.Contains("0x12") && message.Contains("Client"))
+                            && !(message.Contains("0x13") && message.Contains("Client"))
+                            && !(message.Contains("0x1E") && message.Contains("Client"))
+                            && !(message.Contains("0x22") && message.Contains("Client"))
+                            && !(message.Contains("0x29") && message.Contains("Client"))
+                            && !(message.Contains("0x2A") && message.Contains("Client"))
+                            && !(message.Contains("0x37") && message.Contains("Client"))
+                            && !(message.Contains("0x3C") && message.Contains("Client"))
+                            && !(message.Contains("0x4F") && message.Contains("Client"))
+                            && !(message.Contains("0x57") && message.Contains("Client")))
             {
                 Console.WriteLine(message);
             }

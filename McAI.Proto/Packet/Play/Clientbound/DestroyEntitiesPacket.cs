@@ -15,10 +15,11 @@ namespace McAI.Proto.Packet.Play.Clientbound
         public override void Read(byte[] array)
         {
             McVarint.TryParse(ref array, out Count);
-           /* for ( int i = 0; i < Count; i++)
+            EntityIDs = new int[Count];
+            for (int i = 0; i < Count; i++)
             {
                 McVarint.TryParse(ref array, out EntityIDs[i]);
-            }*/
+            }
         }
 
         public override byte[] Write()
@@ -26,14 +27,14 @@ namespace McAI.Proto.Packet.Play.Clientbound
             throw new NotImplementedException();
         }
 
-       /* public override string ToString()
+        public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             foreach (int entity in EntityIDs)
             {
                 stringBuilder.AppendLine(entity.ToString());
             }
-            return $"[PlayerInfo] Count:{Count} EntityIDs:{stringBuilder}";
-        }*/
+            return $"[DestroyEntities] Count:{Count} EntityIDs:{stringBuilder}";
+        }
     }
 }
