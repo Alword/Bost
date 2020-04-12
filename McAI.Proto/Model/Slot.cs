@@ -1,4 +1,5 @@
-﻿using McAI.Proto.Types;
+﻿using McAI.Proto.Mapping.Enum;
+using McAI.Proto.Types;
 using NbtLib;
 
 namespace McAI.Proto.Model
@@ -25,7 +26,7 @@ namespace McAI.Proto.Model
         {
             if (Present)
             {
-                return $"ItemId: {ItemId} Count: {ItemCount} NBT:{NBT.ToJsonString()}";
+                return $"ItemId: {(MinecraftItem)ItemId} Count: {ItemCount} NBT:{NBT.ToJsonString()}";
             }
             else
             {
