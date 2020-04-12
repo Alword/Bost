@@ -8,7 +8,10 @@ namespace McAI.Proto.Model.ChatObject
         public string color { get; set; }
         public string translate { get; set; }
         public List<With> with { get; set; }
-
+        public Chat()
+        {
+            with = new List<With>();
+        }
         public string GetSenderName()
         {
             With name = with.FirstOrDefault(w => w.Insertion != string.Empty);
@@ -23,6 +26,11 @@ namespace McAI.Proto.Model.ChatObject
             if (value != null)
                 return value.Text;
             return string.Empty;
+        }
+
+        public override string ToString()
+        {
+            return $"{translate} {GetSenderName()} {GetText()}";
         }
     }
 }

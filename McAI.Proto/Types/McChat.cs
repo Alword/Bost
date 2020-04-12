@@ -8,8 +8,19 @@ namespace McAI.Proto.Types
         public static bool TryParse(ref byte[] buffer, out Chat result)
         {
             McString.TryParse(ref buffer, out string chatString);
-            result = JsonConvert.DeserializeObject<Chat>(chatString);
-            return true;
+            if (chatString.Contains("chat.type.text"))
+            {
+                result = JsonConvert.DeserializeObject<Chat>(chatString);
+                return true;
+            }
+            else
+            {
+                result = new Chat
+                {
+                    translate = chatString
+                };
+                return false;
+            }
         }
         public static byte[] ToBytes(Chat value)
         {
