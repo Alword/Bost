@@ -27,22 +27,8 @@ namespace McAI.Proto
         {
 
 
-            if (message.StartsWith("0")
-                            && !(message.Contains("0x11") && message.Contains("Server"))
-                            && !(message.Contains("0x12") && message.Contains("Server"))
-                            && !(message.Contains("0x13") && message.Contains("Server"))
-                            && !(message.Contains("0x10") && message.Contains("Client"))
-                            && !(message.Contains("0x11") && message.Contains("Client"))
-                            && !(message.Contains("0x12") && message.Contains("Client"))
-                            && !(message.Contains("0x13") && message.Contains("Client"))
-                            && !(message.Contains("0x1E") && message.Contains("Client"))
-                            && !(message.Contains("0x22") && message.Contains("Client"))
-                            && !(message.Contains("0x29") && message.Contains("Client"))
-                            && !(message.Contains("0x2A") && message.Contains("Client"))
-                            && !(message.Contains("0x37") && message.Contains("Client"))
-                            && !(message.Contains("0x3C") && message.Contains("Client"))
-                            && !(message.Contains("0x4F") && message.Contains("Client"))
-                            && !(message.Contains("0x57") && message.Contains("Client")))
+            if ((message.Contains("0x15") && message.Contains("Client"))
+                || (message.Contains("0x17") && message.Contains("Client")))
             {
                 Console.WriteLine(message);
             }

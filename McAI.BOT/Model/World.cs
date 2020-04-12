@@ -10,6 +10,7 @@ namespace McAI.BOT.Model
 {
     public class World
     {
+        public static HashSet<uint> EmptyBlocks = new HashSet<uint> { 0, 1341 };
         public Dictionary<Int2, ChunkColumn> Chunks { get; private set; }
         public World()
         {

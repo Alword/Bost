@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace McAI.BOT.Model.AStar
@@ -149,64 +150,59 @@ namespace McAI.BOT.Model.AStar
             Dictionary<Int3, BlockState> neigbourNodes = new Dictionary<Int3, BlockState>();
             List<Int3> keys = new List<Int3>
             {
-                position + Int3.Forward,
-                position + Int3.Backward,
-                position + Int3.Right,
-                position + Int3.Left,
-                position + Int3.Forward + Int3.Right,
-                position + Int3.Forward + Int3.Left,
-                position + Int3.Backward + Int3.Right,
-                position + Int3.Backward + Int3.Left,
+                Int3.Forward,
+                Int3.Backward,
+                Int3.Right,
+                Int3.Left,
 
-                position + Int3.Forward + Int3.Up,
-                position + Int3.Backward + Int3.Up,
-                position + Int3.Right + Int3.Up,
-                position + Int3.Left + Int3.Up,
+                Int3.Forward + Int3.Right,
+                Int3.Forward + Int3.Left,
+                Int3.Backward + Int3.Right,
+                Int3.Backward + Int3.Left,
 
-                position + Int3.Forward + Int3.Up,
-                position + Int3.Backward + Int3.Up,
-                position + Int3.Right + Int3.Up,
-                position + Int3.Left + Int3.Up,
+                Int3.Forward + Int3.Up,
+                Int3.Backward + Int3.Up,
+                Int3.Right + Int3.Up,
+                Int3.Left + Int3.Up,
 
-                position + Int3.Forward + Int3.Down,
-                position + Int3.Backward + Int3.Down,
-                position + Int3.Right + Int3.Down,
-                position + Int3.Left + Int3.Down,
+                Int3.Forward + Int3.Up,
+                Int3.Backward + Int3.Up,
+                Int3.Right + Int3.Up,
+                Int3.Left + Int3.Up,
+
+                Int3.Forward + Int3.Down,
+                Int3.Backward + Int3.Down,
+                Int3.Right + Int3.Down,
+                Int3.Left + Int3.Down,
             };
-            List<Int3> notChecked = new List<Int3>();
             foreach (var key in keys)
             {
-                if (!chache.Contains(key))
-                {
-                    chache.Add(key);
-                    notChecked.Add(key);
-                }
-            }
-            foreach (Int3 key in notChecked)
-            {
-                NodeState state = IsSuitable(key, out BlockState blockState1);
+                var checkPosition = key + position;
+                if (chache.Contains(checkPosition)) continue;
+                chache.Add(checkPosition);
+
+                NodeState state = IsSuitable(checkPosition, out BlockState blockState1);
                 if (state == NodeState.Suitable)
                 {
-                    neigbourNodes.Add(key, blockState1);
+                    neigbourNodes.Add(checkPosition, blockState1);
                 }
                 else
                 {
                     if (state == NodeState.Blocker)
                     {
-                        Int3 blockVector = (key - position).AsXZVector();
-                        Int3 blockKey = key;
-                        int i = 1;
-                        while (Math.Abs(blockKey.X) < 5 &&
-                            Math.Abs(blockKey.Z) < 5 &&
-                            Math.Abs(blockKey.X + blockKey.Z) < 8)
+                        if (key.X == 0)
                         {
-                            chache.Add(blockVector);
-                            i += 1;
-                            blockKey += blockVector * i;
+                            chache.EnsureAdd(checkPosition + Int3.Right);
+                            chache.EnsureAdd(checkPosition + Int3.Left);
+                        }
+                        if (key.Z == 0)
+                        {
+                            chache.EnsureAdd(checkPosition + Int3.Backward);
+                            chache.EnsureAdd(checkPosition + Int3.Forward);
                         }
                     }
-                    //FindNeighbour(key, chache);
                 }
+
             }
             return neigbourNodes;
         }
@@ -215,10 +211,11 @@ namespace McAI.BOT.Model.AStar
         {
             blockState = world[position];
 
-            if (blockState.Id == 0) // Block is air
+            if (World.EmptyBlocks.Contains(blockState.Id)) // Block is air
                 return NodeState.Empty;
 
-            if (blockState.Id != 0 && world[position + Int3.Up].Id == 0 && world[position + Int3.Up * 2].Id == 0)
+            if (World.EmptyBlocks.Contains(world[position + Int3.Up].Id)
+                && World.EmptyBlocks.Contains(world[position + Int3.Up * 2].Id))
                 return NodeState.Suitable;
 
             return NodeState.Blocker;
