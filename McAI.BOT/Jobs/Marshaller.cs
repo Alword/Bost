@@ -39,7 +39,7 @@ namespace McAI.BOT.Jobs
                         return;
 
                     currentPosition.X = node.Position.X + 0.5;
-                    currentPosition.Y = node.Position.Y + 1;
+                    currentPosition.Y = node.Position.Y;
                     currentPosition.Z = node.Position.Z + 0.5;
 
                     PlayerPositionPacket playerPositionPacket = new PlayerPositionPacket

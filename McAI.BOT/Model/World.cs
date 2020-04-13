@@ -16,19 +16,11 @@ namespace McAI.BOT.Model
         {
             Chunks = new Dictionary<Int2, ChunkColumn>();
         }
-
-        public BlockState this[Double3 location]
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public BlockState this[Int3 location]
         {
             get
             {
+                location += Int3.Down;
                 Int3 chunkSectionKey = location.GetChunk();
                 Int2 chunkKey = new Int2(chunkSectionKey.X, chunkSectionKey.Z);
                 if (Chunks.ContainsKey(chunkKey))
@@ -67,6 +59,14 @@ namespace McAI.BOT.Model
                     section.SetState(bp.X, bp.Y, bp.Z, state);
                 }
             }
+        }
+
+        public Int3 GetGound(Double3 position)
+        {
+            Int3 block = position.Floor();
+            while (EmptyBlocks.Contains(this[block].Id))
+                block += Int3.Down;
+            return block;
         }
     }
 }

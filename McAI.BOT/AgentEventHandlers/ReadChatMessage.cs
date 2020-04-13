@@ -32,18 +32,17 @@ namespace McAI.BOT.AgentEventHandlers
 
                 if (text.Contains("сюда", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    using (Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default))
-                    {
-                        var startPosition = agent.gameState.Bot.Position;
-                        var endPosition = agent.gameState.Players.ContainsNick(name).Position;
-                        Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
-                        from.Y -= 1;
-                        Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);
-                        to.Y -= 1;
-                        var path = pathfinder.FindPath(from, to);
-                        Marshaller marshaller = new Marshaller(agent, path);
-                        marshaller.Start(default);
-                    }
+                    using Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default);
+                    
+                    var startPosition = agent.gameState.Bot.Position;
+                    var endPosition = agent.gameState.Players.ContainsNick(name).Position;
+
+                    Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
+                    Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);
+
+                    var path = pathfinder.FindPath(from, to);
+                    Marshaller marshaller = new Marshaller(agent, path);
+                    marshaller.Start(default);
                 }
             });
         }

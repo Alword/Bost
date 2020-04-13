@@ -53,6 +53,11 @@ namespace McAI.BOT.Model
                    Z == @int.Z;
         }
 
+        internal int Distance(Int3 b)
+        {
+            return (int)Math.Sqrt(Math.Pow(X - b.X, 2) + Math.Pow(Y - b.Y, 2) + Math.Pow(Z - b.Z, 2));
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(X, Y, Z);

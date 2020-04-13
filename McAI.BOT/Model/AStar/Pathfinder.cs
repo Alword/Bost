@@ -4,9 +4,11 @@ using McAI.BOT.Types;
 using McAI.Proto.Mapping.Generator;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -35,10 +37,10 @@ namespace McAI.BOT.Model.AStar
 
         public List<PathNode> FindPath(Double3 beginPoint, Double3 targetPoint)
         {
-            Int3 beginBlock = beginPoint.Floor();
-            Int3 targetBlock = targetPoint.Floor();
+            Int3 beginBlock = world.GetGound(beginPoint);
+            Int3 targetBlock = world.GetGound(targetPoint);
 
-            var startNode = new PathNode(beginBlock, 0, (int)beginPoint.Distance(targetPoint), MoveActions.Walk);
+            var startNode = new PathNode(beginBlock, 0, beginBlock.Distance(targetBlock), MoveActions.Walk);
             openList = new List<PathNode> { startNode };
             closedList = new List<Int3>();
 
@@ -121,10 +123,7 @@ namespace McAI.BOT.Model.AStar
         {
             List<PathNode> neighbourList = new List<PathNode>();
 
-            Dictionary<Int3, PathNode> located = new Dictionary<Int3, PathNode>(81)
-            {
-                { currentNode.Position, currentNode }
-            };
+            Dictionary<Int3, PathNode> located = new Dictionary<Int3, PathNode>(81) { { currentNode.Position, currentNode } };
 
             Dictionary<Int3, BlockState> dictionary = FindNeighbour(currentNode.Position, new HashSet<Int3>());
 
@@ -165,11 +164,6 @@ namespace McAI.BOT.Model.AStar
                 Int3.Right + Int3.Up,
                 Int3.Left + Int3.Up,
 
-                Int3.Forward + Int3.Up,
-                Int3.Backward + Int3.Up,
-                Int3.Right + Int3.Up,
-                Int3.Left + Int3.Up,
-
                 Int3.Forward + Int3.Down,
                 Int3.Backward + Int3.Down,
                 Int3.Right + Int3.Down,
@@ -178,7 +172,8 @@ namespace McAI.BOT.Model.AStar
             foreach (var key in keys)
             {
                 var checkPosition = key + position;
-                if (chache.Contains(checkPosition)) continue;
+                if (chache.Contains(checkPosition))
+                    continue;
                 chache.Add(checkPosition);
 
                 NodeState state = IsSuitable(checkPosition, out BlockState blockState1);
@@ -190,15 +185,15 @@ namespace McAI.BOT.Model.AStar
                 {
                     if (state == NodeState.Blocker)
                     {
-                        if (key.X == 0)
+                        if (key == Int3.Forward || key == Int3.Backward)
                         {
                             chache.EnsureAdd(checkPosition + Int3.Right);
                             chache.EnsureAdd(checkPosition + Int3.Left);
                         }
-                        if (key.Z == 0)
+                        if (key == Int3.Right || key == Int3.Left)
                         {
-                            chache.EnsureAdd(checkPosition + Int3.Backward);
                             chache.EnsureAdd(checkPosition + Int3.Forward);
+                            chache.EnsureAdd(checkPosition + Int3.Backward);
                         }
                     }
                 }
@@ -210,7 +205,7 @@ namespace McAI.BOT.Model.AStar
         private NodeState IsSuitable(Int3 position, out BlockState blockState)
         {
             blockState = world[position];
-
+                
             if (World.EmptyBlocks.Contains(blockState.Id)) // Block is air
                 return NodeState.Empty;
 
@@ -220,7 +215,6 @@ namespace McAI.BOT.Model.AStar
 
             return NodeState.Blocker;
         }
-
         public void Dispose()
         {
             Discoverd.Clear();
