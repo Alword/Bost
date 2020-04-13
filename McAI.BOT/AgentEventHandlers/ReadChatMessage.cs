@@ -8,6 +8,7 @@ using McAI.Proto.StreamReader.Abstractions;
 using McAI.Proto.StreamReader.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +34,7 @@ namespace McAI.BOT.AgentEventHandlers
                 if (text.Contains("сюда", StringComparison.InvariantCultureIgnoreCase))
                 {
                     using Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default);
-                    
+
                     var startPosition = agent.gameState.Bot.Position;
                     var endPosition = agent.gameState.Players.ContainsNick(name).Position;
 
@@ -41,8 +42,10 @@ namespace McAI.BOT.AgentEventHandlers
                     Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);
 
                     var path = pathfinder.FindPath(from, to);
-                    Marshaller marshaller = new Marshaller(agent, path);
+
+                    Marshaller marshaller = new Marshaller(agent, path.Take(path.Count - 2).ToList());
                     marshaller.Start(default);
+
                 }
             });
         }

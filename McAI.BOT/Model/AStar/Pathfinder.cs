@@ -85,16 +85,18 @@ namespace McAI.BOT.Model.AStar
         private int CalculateDistanceCost(Int3 a, Int3 b)
         {
             double xDistance = Math.Abs(a.X - b.X);
+            //double yDistance = Math.Abs(a.Y - b.Y);
             double zDistance = Math.Abs(a.Z - b.Z);
 
             double remaining = Math.Abs(xDistance - zDistance);
-            double minStrait = Math.Min((xDistance), zDistance);
+            double minStrait = Math.Min(xDistance, zDistance) ;
 
             return (int)Math.Round(minStrait * DIAGONAL_COST + STRAIGHT_COST * remaining);
         }
 
         private PathNode GetLowestFCostNode(List<PathNode> pathNodes)
         {
+            pathNodes.Min(d => d.FCost);
             PathNode lowestFCostNode = pathNodes[0];
             for (int i = 1; i < pathNodes.Count; i++)
             {
@@ -172,32 +174,26 @@ namespace McAI.BOT.Model.AStar
             foreach (var key in keys)
             {
                 var checkPosition = key + position;
-                if (chache.Contains(checkPosition))
-                    continue;
-                chache.Add(checkPosition);
+                if (chache.ContainsOrAdd(checkPosition)) continue;
 
-                NodeState state = IsSuitable(checkPosition, out BlockState blockState1);
+                NodeState state = IsSuitable(checkPosition, out BlockState blockState);
                 if (state == NodeState.Suitable)
                 {
-                    neigbourNodes.Add(checkPosition, blockState1);
+                    neigbourNodes.Add(checkPosition, blockState);
                 }
-                else
+                if (state == NodeState.Blocker)
                 {
-                    if (state == NodeState.Blocker)
+                    if (key == Int3.Forward || key == Int3.Backward)
                     {
-                        if (key == Int3.Forward || key == Int3.Backward)
-                        {
-                            chache.EnsureAdd(checkPosition + Int3.Right);
-                            chache.EnsureAdd(checkPosition + Int3.Left);
-                        }
-                        if (key == Int3.Right || key == Int3.Left)
-                        {
-                            chache.EnsureAdd(checkPosition + Int3.Forward);
-                            chache.EnsureAdd(checkPosition + Int3.Backward);
-                        }
+                        chache.ContainsOrAdd(checkPosition + Int3.Right);
+                        chache.ContainsOrAdd(checkPosition + Int3.Left);
+                    }
+                    if (key == Int3.Right || key == Int3.Left)
+                    {
+                        chache.ContainsOrAdd(checkPosition + Int3.Forward);
+                        chache.ContainsOrAdd(checkPosition + Int3.Backward);
                     }
                 }
-
             }
             return neigbourNodes;
         }
@@ -205,7 +201,7 @@ namespace McAI.BOT.Model.AStar
         private NodeState IsSuitable(Int3 position, out BlockState blockState)
         {
             blockState = world[position];
-                
+
             if (World.EmptyBlocks.Contains(blockState.Id)) // Block is air
                 return NodeState.Empty;
 
