@@ -21,14 +21,14 @@ namespace McAI.BOT.Extentions
 
         public static Int3 GetChunk(this Int3 location)
         {
-            if (location.X < 0)
-                location.X -= 1;
-            if (location.Y < 0)
-                location.Y -= 1;
 
             int x = (location.X / ChunkSection.SizeX);
             int y = (location.Y / ChunkSection.SizeY);
             int z = (location.Z / ChunkSection.SizeZ);
+            if (location.X % ChunkSection.SizeX < 0)
+                x -= 1;
+            if (location.Z % ChunkSection.SizeZ < 0)
+                z -= 1;
             return new Int3(x, y, z);
         }
 
@@ -42,9 +42,13 @@ namespace McAI.BOT.Extentions
 
         public static Int3 InChunkBlock(this Int3 location)
         {
-            int x = Math.Abs(location.X % ChunkSection.SizeX);
-            int y = Math.Abs(location.Y % ChunkSection.SizeY);
-            int z = Math.Abs(location.Z % ChunkSection.SizeZ);
+            int x = location.X % ChunkSection.SizeX;
+            if (x < 0)
+                x = ChunkSection.SizeX + x;
+            int y = location.Y % ChunkSection.SizeY;
+            int z = location.Z % ChunkSection.SizeZ;
+            if (z < 0)
+                z = ChunkSection.SizeZ + z;
             return new Int3(x, y, z);
         }
 

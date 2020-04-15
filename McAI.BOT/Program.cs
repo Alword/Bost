@@ -16,8 +16,6 @@ namespace McAI.BOT
     {
         static void Main(string[] args)
         {
-            Int3 chunkAt1 = new Int3(-17, 74, 96).GetChunk(); // -2 4 6
-
             // rearrange chunk 
             ConnectionListner connectionListner = new ConnectionListner();
             Agent agent = new Agent("192.168.1.69", 25565);

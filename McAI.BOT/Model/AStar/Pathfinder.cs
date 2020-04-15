@@ -47,7 +47,7 @@ namespace McAI.BOT.Model.AStar
             startNode.GCost = 0;
             startNode.HCost = CalculateDistanceCost(startNode.Position, targetBlock);
 
-            while (openList.Count > 0)
+            while (openList.Count > 0 && closedList.Count < maxNodes)
             {
                 PathNode currentNode = GetLowestFCostNode(openList);
                 if (currentNode.Position == targetBlock)
@@ -61,7 +61,6 @@ namespace McAI.BOT.Model.AStar
                 foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
                 {
                     if (closedList.Contains(neighbourNode.Position)) continue;
-
                     int tententiveGCos = currentNode.GCost + CalculateDistanceCost(currentNode.Position, neighbourNode.Position);
                     if (tententiveGCos < neighbourNode.GCost && tententiveGCos < maxEstimatePath)
                     {

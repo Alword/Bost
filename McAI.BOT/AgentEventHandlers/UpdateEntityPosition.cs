@@ -78,8 +78,6 @@ namespace McAI.BOT.AgentEventHandlers
                     transform.Rotation.Yaw = data.Yaw;
                     transform.Rotation.Pitch = data.Pitch;
                     transform.OnGround = data.OnGround;
-
-                    Console.WriteLine($"{transform.Position}");
                 }
             }
         }
