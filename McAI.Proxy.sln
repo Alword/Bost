@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McAI.Proto", "McAI.Proto\Mc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McAI.BOT", "McAI.BOT\McAI.BOT.csproj", "{10E6836C-67D7-4469-BB77-571A3EC1EB94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slen.WebControl", "Slen.WebControl\Slen.WebControl.csproj", "{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slen.WebControl", "Slen.WebControl\Slen.WebControl.csproj", "{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

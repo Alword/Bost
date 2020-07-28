@@ -1,8 +1,4 @@
 ﻿@page "/"
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Index> Loc
 
-<h1>Hello, world!</h1>
-
-Автоматическое обновление.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
+<h1>@Loc["Hello, world!"]</h1>

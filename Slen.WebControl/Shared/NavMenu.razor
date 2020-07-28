@@ -1,5 +1,7 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Slen.WebControl</a>
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<NavMenu> Loc
+
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">@Loc["MineBost"]</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
