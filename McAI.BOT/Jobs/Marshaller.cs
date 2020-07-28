@@ -50,7 +50,7 @@ namespace McAI.BOT.Jobs
                         Z = currentPosition.Z
                     };
                     await agent.Send(playerPositionPacket);
-                    await Task.Delay(100);
+                    await Task.Delay(50);
                 }
             });
         }

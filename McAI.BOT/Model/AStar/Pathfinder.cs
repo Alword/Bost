@@ -47,7 +47,7 @@ namespace McAI.BOT.Model.AStar
             startNode.GCost = 0;
             startNode.HCost = CalculateDistanceCost(startNode.Position, targetBlock);
 
-            while (openList.Count > 0 && closedList.Count < maxNodes)
+            while (openList.Count > 0 && Discoverd.Count < maxNodes)
             {
                 PathNode currentNode = GetLowestFCostNode(openList);
                 if (currentNode.Position == targetBlock)
@@ -88,7 +88,7 @@ namespace McAI.BOT.Model.AStar
             double zDistance = Math.Abs(a.Z - b.Z);
 
             double remaining = Math.Abs(xDistance - zDistance);
-            double minStrait = Math.Min(xDistance, zDistance) ;
+            double minStrait = Math.Min(xDistance, zDistance);
 
             return (int)Math.Round(minStrait * DIAGONAL_COST + STRAIGHT_COST * remaining);
         }

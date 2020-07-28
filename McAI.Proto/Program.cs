@@ -1,6 +1,7 @@
 ﻿using McAI.Proto.Mapping.Generator;
 using McAI.Proxy;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -25,10 +26,7 @@ namespace McAI.Proto
 
         public static void Log(string message)
         {
-
-
-            if ((message.Contains("0x15") && message.Contains("Client"))
-                || (message.Contains("0x17") && message.Contains("Client")))
+            if ((message.Contains("0x11") && message.Contains("Server")))
             {
                 Console.WriteLine(message);
             }
