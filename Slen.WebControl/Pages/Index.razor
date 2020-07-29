@@ -6,7 +6,7 @@
 <div class="card-deck">
     <AgentCard @bind-health="Agent1" />
     <button class="btn btn-primary" @onclick="ChangeTheYear">
-        Hit
+        @Loc["Hit!"]
     </button>
 </div>
 
@@ -17,6 +17,5 @@
     private void ChangeTheYear()
     {
         Agent1 = Agent1 > 0 ? Agent1 - 1 : 20;
-        Console.WriteLine(Agent1);
     }
 }

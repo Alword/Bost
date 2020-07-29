@@ -2,11 +2,10 @@
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Nav
 
-<strong>Language:</strong>
-<select @bind="Culture">
+<select @bind="Culture" class="form-control">
     @foreach (var culture in supportedCultures)
     {
-        <option value="@culture">@culture.DisplayName</option>
+        <option value="@culture">@culture.NativeName</option>
     }
 </select>
 
