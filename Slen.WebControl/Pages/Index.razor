@@ -3,13 +3,22 @@
 
 <h1>@Loc["Hello, world!"]</h1>
 
-<div class="card">
-    <div class="card-header">
-        Featured
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Специальный заголовок</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
-    </div>
+<div class="card-deck">
+    <AgentCard @bind-health="Agent1"/>
+    <button class="btn btn-primary" @onclick="ChangeTheYear">
+        Change Year to 1986
+    </button>
 </div>
+
+@code{
+    [Parameter]
+    public int Agent1 { get; set; } = 10;
+
+    static Random Random = new Random();
+
+    private void ChangeTheYear()
+    {
+        Agent1 = Random.Next(0, 20);
+        Console.WriteLine(Agent1);
+    }
+}

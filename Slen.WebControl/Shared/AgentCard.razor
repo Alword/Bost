@@ -1,0 +1,46 @@
+﻿<div class="card" style="max-width: 18rem; min-width: 18rem; margin: 10px;">
+    <div class="card-header">
+        @nickname
+    </div>
+    <div class="card-body">
+        <div class="container d-xl-flex">
+            @for (int i = 0; i < full; i++)
+            {
+                <AtlasImg width="20" height="20" tx="2" ty="0" src="/img/stats.png"></AtlasImg>
+            }
+            @for (int i = 0; i < half; i++)
+            {
+                <AtlasImg width="20" height="20" tx="1" ty="0" src="/img/stats.png"></AtlasImg>
+            }
+            @for (int i = 0; i < empty; i++)
+            {
+                <AtlasImg width="20" height="20" tx="0" ty="0" src="/img/stats.png"></AtlasImg>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    static int maxHearts = 10;
+
+    [Parameter]
+    public int Health { get; set; }
+
+    [Parameter]
+    public EventCallback<int> HealthChanged { get; set; }
+
+    string nickname = "Vlad_Slender";
+
+    int full;
+    int half;
+    int empty;
+
+    protected override void OnInitialized()
+    {
+        full = Health / 2;
+        half = Health % 2;
+        empty = 10 - full - half;
+    }
+
+
+}

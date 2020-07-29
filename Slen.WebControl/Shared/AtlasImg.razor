@@ -1,0 +1,35 @@
+﻿<div style="        width: @tw;
+        height: @th;
+        background-image: @url;
+        background-position: @backgroundPosition;" />
+
+@code {
+
+    [Parameter]
+    public string src { get; set; }
+    [Parameter]
+    public int width { get; set; }
+    [Parameter]
+    public int height { get; set; }
+    [Parameter]
+    public int tx { get; set; }
+    [Parameter]
+    public int ty { get; set; }
+
+
+    string tw; // Texture Atlas Tile Width (pixels)
+    string th; // Texture Atlas Tile Height (pixels)
+
+    string url;
+    string backgroundPosition;
+
+    protected override void OnInitialized()
+    {
+        tw = $"{width}px";
+        th = $"{height}px";
+        tx *= width; // tile index x (relative) (column)
+        ty *= height; // tile index y (relative) (row)
+        url = $"url('{src}')";
+        backgroundPosition = $"-{tx}px -{ty}px";
+    }
+}
