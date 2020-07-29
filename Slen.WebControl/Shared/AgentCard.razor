@@ -35,12 +35,10 @@
     int half;
     int empty;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         full = Health / 2;
         half = Health % 2;
         empty = 10 - full - half;
     }
-
-
 }
