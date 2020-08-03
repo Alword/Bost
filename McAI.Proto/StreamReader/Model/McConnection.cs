@@ -1,5 +1,6 @@
 ﻿using McAI.Proto.StreamReader.Middleware;
 using System;
+using System.Diagnostics;
 
 namespace McAI.Proto.StreamReader.Model
 {
@@ -19,6 +20,7 @@ namespace McAI.Proto.StreamReader.Model
 
         public void Listen(object sender, byte[] array)
         {
+#if (!DEBUG)
             try
             {
                 ctx.Data = array;
@@ -29,6 +31,10 @@ namespace McAI.Proto.StreamReader.Model
                 Console.WriteLine($"{ctx} e:{e}");
                 throw;
             }
+#else
+            ctx.Data = array;
+            connectionMiddleware.Invoke(ctx);
+#endif
         }
     }
 }

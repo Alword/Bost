@@ -22,6 +22,8 @@ namespace McAI.BOT.State
 
         private void Players_OnLinkPlayer(object sender, Player e)
         {
+            if (Entitys.ContainsKey(e.CurrentEntityId))
+                Entitys.Remove(e.CurrentEntityId);
             Entitys.Add(e.CurrentEntityId, e);
         }
 

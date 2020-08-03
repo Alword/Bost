@@ -19,26 +19,27 @@ namespace McAI.BOT
             agent.OnRecive += connectionListner.ReciveListner;
             agent.OnSend += connectionListner.SendListner;
 
+            connectionListner.Subscribe(new SpawnPlayerHandler(agent));
+            connectionListner.Subscribe(new PlayerInfoHandler(agent));
             connectionListner.Subscribe(new BlockChangeHandler(agent));
             connectionListner.Subscribe(new ChatMessageHandler(agent));
             connectionListner.Subscribe(new ChunkDataHandler(agent));
-            connectionListner.Subscribe(new EntityPositionAndRotationHandler(agent));
-            connectionListner.Subscribe(new EntityPositionHandler(agent));
-            connectionListner.Subscribe(new EntityTeleportHandler(agent));
-            connectionListner.Subscribe(new KeepAliveHandler(agent));
-            connectionListner.Subscribe(new MultiBlockChangeHandler(agent));
-            connectionListner.Subscribe(new PlayerInfoHandler(agent));
             connectionListner.Subscribe(new PlayerPositionAndLookHandler(agent));
-            connectionListner.Subscribe(new SpawnPlayerHandler(agent));
+            connectionListner.Subscribe(new EntityTeleportHandler(agent));
+            connectionListner.Subscribe(new EntityPositionHandler(agent));
+            connectionListner.Subscribe(new EntityPositionAndRotationHandler(agent));
+            connectionListner.Subscribe(new MultiBlockChangeHandler(agent));
             connectionListner.Subscribe(new UnloadChunkHandler(agent));
             connectionListner.Subscribe(new UpdateHealthHandler(agent));
+            connectionListner.Subscribe(new KeepAliveHandler(agent));
 
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
-            // GoForward goForward = new GoForward(agent);
-            // goForward.Start(cancelTokenSource.Token);
+            Task.Run(async () =>
+            {
+                await agent.Login("NeAlword");
+            }).GetAwaiter().GetResult();
 
-            Run(agent).GetAwaiter().GetResult();
             while (true)
             {
                 ConsoleKeyInfo e = Console.ReadKey();
@@ -47,12 +48,6 @@ namespace McAI.BOT
                 if (e.Key == ConsoleKey.S)
                     cancelTokenSource.Cancel();
             }
-        }
-
-        public static async Task Run(Agent agent)
-        {
-            await agent.Login("NeAlword");
-
         }
     }
 }

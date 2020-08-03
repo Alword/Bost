@@ -20,6 +20,8 @@ namespace McAI.BOT.AgentEventHandlers
 
         public override void OnPacket(SpawnPlayerPacket data)
         {
+            players.Link(data.EntityID, data.PlayerUUID);
+            
             bool isExist = Entitys.ContainsKey(data.EntityID);
 
             Transform transform;
@@ -36,8 +38,6 @@ namespace McAI.BOT.AgentEventHandlers
 
             if (!isExist)
                 Entitys.Add(data.EntityID, transform);
-
-            players.Link(data.EntityID, data.PlayerUUID);
         }
     }
 }

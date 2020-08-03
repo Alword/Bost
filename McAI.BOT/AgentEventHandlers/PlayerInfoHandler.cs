@@ -2,6 +2,7 @@
 using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.StreamReader.Model;
+using System;
 
 namespace McAI.BOT.AgentEventHandlers
 {
@@ -15,6 +16,7 @@ namespace McAI.BOT.AgentEventHandlers
 
         public override void OnPacket(PlayerInfoPacket data)
         {
+            Console.WriteLine(data);
             if (data.Players != null)
             {
                 if (data.Action == 0)
