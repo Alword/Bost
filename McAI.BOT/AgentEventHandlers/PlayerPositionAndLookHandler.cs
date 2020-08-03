@@ -6,14 +6,12 @@ using System.Collections.Generic;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class TeleportConfirm : BaseAgentEvent
+    public class PlayerPositionAndLookHandler : BaseAgentEventHandler<PlayerPositionAndLookPacket>
     {
-        public TeleportConfirm(Agent agent) : base(agent) { }
+        public PlayerPositionAndLookHandler(Agent agent) : base(agent) { }
 
-        public async override void OnPacket(PacketKey type, BasePacket packet)
+        public async override void OnPacket(PlayerPositionAndLookPacket playerPositionAndLook)
         {
-            var playerPositionAndLook = (PlayerPositionAndLookPacket)packet;
-
             agent.gameState.Bot.Position.X = playerPositionAndLook.X;
             agent.gameState.Bot.Position.Y = playerPositionAndLook.Y;
             agent.gameState.Bot.Position.Z = playerPositionAndLook.Z;

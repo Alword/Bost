@@ -7,17 +7,16 @@ using McAI.Proto.StreamReader.Model;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class ReadChunkData : BaseAgentEvent
+    public class ChunkDataHandler : BaseAgentEventHandler<ChunkDataPacket>
     {
         private readonly World world;
-        public ReadChunkData(Agent agent) : base(agent)
+        public ChunkDataHandler(Agent agent) : base(agent)
         {
             world = agent.gameState.World;
         }
 
-        public override void OnPacket(PacketKey type, BasePacket packet)
+        public override void OnPacket(ChunkDataPacket chunkData)
         {
-            var chunkData = (ChunkDataPacket)packet;
             byte[] data = chunkData.Data;
             var chunkId = new Int2(chunkData.ChunkX, chunkData.ChunkZ);
             ChunkColumn chunkColumn;

@@ -9,18 +9,14 @@ using System.Threading.Tasks;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class ReadChatMessage : BaseAgentEvent
+    public class ChatMessageHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.ChatMessagePacket>
     {
-        public ReadChatMessage(Agent agent) : base(agent)
-        {
-        }
+        public ChatMessageHandler(Agent agent) : base(agent) { }
 
-        public override void OnPacket(PacketKey type, BasePacket packet)
+        public override void OnPacket(Proto.Packet.Play.Clientbound.ChatMessagePacket chatMessagePacket)
         {
             Task.Run(() =>
             {
-
-                var chatMessagePacket = (Proto.Packet.Play.Clientbound.ChatMessagePacket)packet;
                 var chat = chatMessagePacket.Chat;
 
                 var name = chat.GetSenderName();

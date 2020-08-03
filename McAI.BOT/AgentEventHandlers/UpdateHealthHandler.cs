@@ -8,17 +8,12 @@ using System.Collections.Generic;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    public class Respawn : IPacketEventHandler
+    public class UpdateHealthHandler : BaseAgentEventHandler<UpdateHealthPacket>
     {
-        private readonly Agent agent;
-        public Respawn(Agent agent)
-        {
-            this.agent = agent;
-        }
-        public async void OnPacket(PacketKey state, BasePacket packet)
-        {
-            var health = (UpdateHealthPacket)packet;
+        public UpdateHealthHandler(Agent agent) : base(agent) { }
 
+        public override async void OnPacket(UpdateHealthPacket health)
+        {
             if (health.Health <= 0)
             {
                 var clientStatus = new ClientStatusPacket
