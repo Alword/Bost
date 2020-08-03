@@ -10,6 +10,7 @@ namespace McAI.Proto
         private readonly McConnection read;
         private readonly McConnection write;
         private readonly PacketEventHub packetEventHub;
+        
         public ConnectionListner()
         {
             packetEventHub = new PacketEventHub();

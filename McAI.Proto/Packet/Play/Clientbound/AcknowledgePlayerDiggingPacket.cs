@@ -29,7 +29,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
 
         public override string ToString()
         {
-            return $"[AcknowledgePlayerDigging] Location:{Location} Block:{Block} " +
+            return $"[{nameof(AcknowledgePlayerDiggingPacket)}] Location:{Location} Block:{Block} " +
                 $"Status:{Status} Successful:{Successful}";
         }
     }
