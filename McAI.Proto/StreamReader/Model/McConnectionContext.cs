@@ -6,6 +6,7 @@ namespace McAI.Proto.StreamReader.Model
     public class McConnectionContext
     {
         public readonly PacketEventHub packetEventHub;
+        public readonly GenericEventHub genericEventHub;
         public bool IsCompressed { get; set; }
         public bool Encryption { get; set; }
         public string EncryptionPrivatekey { get; set; }
@@ -19,9 +20,10 @@ namespace McAI.Proto.StreamReader.Model
         public Bounds BoundTo { get; set; }
         public byte[] Data;
 
-        public McConnectionContext(PacketEventHub packetEventHub)
+        public McConnectionContext(PacketEventHub packetEventHub, GenericEventHub genericEventHub)
         {
             this.packetEventHub = packetEventHub;
+            this.genericEventHub = genericEventHub;
         }
 
         public override string ToString()

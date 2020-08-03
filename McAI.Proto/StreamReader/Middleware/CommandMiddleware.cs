@@ -34,6 +34,7 @@ namespace McAI.Proto.StreamReader.Middleware
                 var packet = (BasePacket)Activator.CreateInstance(packets[key]);
                 packet.Read(ctx.Data);
                 ctx.packetEventHub.Invoke(key, packet);
+                ctx.genericEventHub.Invoke(packets[key], packet);
                 Program.Log($"0x{ctx.PacketId:X02} | {ctx.ConnectionState} | {ctx.BoundTo} | {packet}");
             }
             else

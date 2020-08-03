@@ -39,6 +39,8 @@ namespace McAI.BOT
 
             connectionListner.Subscribe(new PacketKey(0x1E, ConnectionStates.Play, Bounds.Client), new UnloadChunk(agent));
 
+            connectionListner.Subscribe(new TestHandler());
+
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
             // GoForward goForward = new GoForward(agent);
