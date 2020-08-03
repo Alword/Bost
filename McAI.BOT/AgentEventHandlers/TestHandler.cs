@@ -6,9 +6,9 @@ using System.Text;
 
 namespace McAI.BOT.AgentEventHandlers
 {
-    class TestHandler : PacketEventHandler<BlockChangePacket>
+    class TestHandler : IPacketEventHandler<BlockChangePacket>
     {
-        public override void OnPacket(BlockChangePacket packet)
+        public void OnPacket(BlockChangePacket packet)
         {
             Console.WriteLine(packet);
         }

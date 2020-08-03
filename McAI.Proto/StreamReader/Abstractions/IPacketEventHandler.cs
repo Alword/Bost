@@ -8,14 +8,14 @@ namespace McAI.Proto.StreamReader.Abstractions
         public void OnPacket(PacketKey type, BasePacket packet);
     }
 
-    public abstract class PacketEventHandler<T> : IPacketEvent where T : BasePacket
+    public interface IPacketEventHandler<T> : IPacketEvent where T : BasePacket
     {
-        public abstract void OnPacket(T packet);
-        public void OnPacket(dynamic x) => OnPacket((T)x);
+        void OnPacket(T packet);
+        void IPacketEvent.OnPacket(dynamic x) => OnPacket((T)x);
     }
 
     public interface IPacketEvent
     {
-        public void OnPacket(dynamic x);
+        void OnPacket(dynamic x);
     }
 }

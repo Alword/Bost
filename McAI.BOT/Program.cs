@@ -1,5 +1,6 @@
 ﻿using McAI.BOT.AgentEventHandlers;
 using McAI.Proto;
+using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
 using System;
@@ -38,9 +39,7 @@ namespace McAI.BOT
             connectionListner.Subscribe(new PacketKey(0x10, ConnectionStates.Play, Bounds.Client), blockChangeUpdate);
 
             connectionListner.Subscribe(new PacketKey(0x1E, ConnectionStates.Play, Bounds.Client), new UnloadChunk(agent));
-
             connectionListner.Subscribe(new TestHandler());
-
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
             // GoForward goForward = new GoForward(agent);

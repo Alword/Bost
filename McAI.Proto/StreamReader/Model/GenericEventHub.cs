@@ -16,7 +16,7 @@ namespace McAI.Proto.StreamReader.Model
             eventHandlers = new Dictionary<Type, List<IPacketEvent>>();
         }
 
-        public void Subscribe<T>(PacketEventHandler<T> packeteventHandeler) where T : BasePacket
+        public void Subscribe<T>(IPacketEventHandler<T> packeteventHandeler) where T : BasePacket
         {
             var type = typeof(T);
             if (eventHandlers.ContainsKey(type))
