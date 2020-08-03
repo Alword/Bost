@@ -1,15 +1,11 @@
 ﻿using McAI.BOT.State;
-using McAI.Proto;
 using McAI.Proto.Enum;
-using McAI.Proto.Extentions;
 using McAI.Proto.Packet;
 using McAI.Proto.Packet.Handshaking.Serverbound;
 using McAI.Proto.Packet.Login.Serverbound;
 using McAI.Proto.Types;
-using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace McAI.BOT
@@ -17,10 +13,10 @@ namespace McAI.BOT
     public class Agent
     {
         public delegate void MessageHandler(object sender, byte[] message);
-        
+
         public event MessageHandler OnRecive;
         public event MessageHandler OnSend;
-        
+
         public readonly GameState gameState;
 
         private Socket socket;

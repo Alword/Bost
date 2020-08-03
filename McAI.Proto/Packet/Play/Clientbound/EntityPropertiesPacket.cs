@@ -1,7 +1,6 @@
 ﻿using McAI.Proto.Model;
 using McAI.Proto.Types;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace McAI.Proto.Packet.Play.Clientbound
@@ -19,7 +18,7 @@ namespace McAI.Proto.Packet.Play.Clientbound
             McVarint.TryParse(ref array, out EntityID);
             McInt.TryParse(ref array, out NumberOfProperties);
 
-            Property = new EntityProperty[NumberOfProperties]; 
+            Property = new EntityProperty[NumberOfProperties];
             for (int i = 0; i < NumberOfProperties; i++)
             {
                 Property[i] = new EntityProperty();

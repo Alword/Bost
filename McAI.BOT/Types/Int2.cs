@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.BOT.Types
+﻿namespace McAI.BOT.Types
 {
     public struct Int2
     {

@@ -1,5 +1,4 @@
-﻿using McAI.Proto.Mapping;
-using System;
+﻿using System;
 
 namespace McAI.BOT.Model
 {

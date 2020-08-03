@@ -1,15 +1,10 @@
-﻿using McAI.Proto.Mapping.Generator;
-using McAI.Proxy;
+﻿using McAI.Proxy;
 using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace McAI.Proto
 {
     class Program
     {
-        public static readonly string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss}-log.txt");
         static void Main(string[] args)
         {
             Log($"[Proto] Start session");
@@ -30,7 +25,6 @@ namespace McAI.Proto
             {
                 Console.WriteLine(message);
             }
-            //await File.AppendAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path), $"{message}{Environment.NewLine}");
         }
     }
 }

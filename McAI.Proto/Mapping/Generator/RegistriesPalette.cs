@@ -1,5 +1,4 @@
 ﻿using McAI.Proto.Extentions;
-using McAI.Proto.Mapping.Enum;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

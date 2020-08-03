@@ -2,14 +2,9 @@
 using McAI.BOT.Model.AStar;
 using McAI.BOT.Types;
 using McAI.Proto.Packet;
-using McAI.Proto.Packet.Play.Clientbound;
-using McAI.Proto.Packet.Play.Serverbound;
-using McAI.Proto.StreamReader.Abstractions;
 using McAI.Proto.StreamReader.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace McAI.BOT.AgentEventHandlers

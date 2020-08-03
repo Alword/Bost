@@ -3,11 +3,8 @@ using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.Packet.Play.Serverbound;
 using McAI.Proto.StreamReader.Abstractions;
-using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
-using System;
 using System.Collections.Generic;
-using System.Data;
 
 namespace McAI.BOT.AgentEventHandlers
 {

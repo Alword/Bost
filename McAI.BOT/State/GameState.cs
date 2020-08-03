@@ -1,8 +1,6 @@
 ﻿using McAI.BOT.Model;
 using McAI.BOT.Model.PlayerContext;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.BOT.State
 {

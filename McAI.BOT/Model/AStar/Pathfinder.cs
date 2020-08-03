@@ -4,13 +4,8 @@ using McAI.BOT.Types;
 using McAI.Proto.Mapping.Generator;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Data;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace McAI.BOT.Model.AStar
 {

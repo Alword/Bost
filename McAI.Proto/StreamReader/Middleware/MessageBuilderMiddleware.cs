@@ -1,6 +1,5 @@
 ﻿using McAI.Proto.StreamReader.Model;
 using McAI.Proto.Types;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 

@@ -2,10 +2,6 @@
 using McAI.BOT.Types;
 using McAI.Proto.Mapping;
 using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace McAI.BOT.Extentions
 {

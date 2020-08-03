@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McAI.BOT.Model.AStar
+﻿namespace McAI.BOT.Model.AStar
 {
     public struct PathFinderConfig
     {

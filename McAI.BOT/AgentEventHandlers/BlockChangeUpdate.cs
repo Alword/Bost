@@ -3,9 +3,6 @@ using McAI.Proto.Mapping;
 using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
 using McAI.Proto.StreamReader.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.BOT.AgentEventHandlers
 {

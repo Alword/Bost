@@ -7,4 +7,9 @@ namespace McAI.Proto.StreamReader.Abstractions
     {
         public void OnPacket(PacketKey type, BasePacket packet);
     }
+
+    public interface IPacketEventHandler<T> where T : BasePacket
+    {
+        public void OnPacket(T packet);
+    }
 }

@@ -1,7 +1,4 @@
-﻿using McAI.BOT.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace McAI.BOT.Types
 {

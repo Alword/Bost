@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace McAI.Proto.Mapping.Generator
 {
@@ -11,7 +9,7 @@ namespace McAI.Proto.Mapping.Generator
         public Dictionary<string, ItemDictionary> Entries { get; set; }
     }
 
-    public class ItemDictionary 
+    public class ItemDictionary
     {
         public int Protocol_id { get; set; }
     }

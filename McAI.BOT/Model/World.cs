@@ -2,9 +2,7 @@
 using McAI.BOT.Types;
 using McAI.Proto.Mapping;
 using McAI.Proto.Mapping.Generator;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace McAI.BOT.Model
 {

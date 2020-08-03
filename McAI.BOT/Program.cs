@@ -1,9 +1,5 @@
 ﻿using McAI.BOT.AgentEventHandlers;
-using McAI.BOT.Extentions;
-using McAI.BOT.Jobs;
-using McAI.BOT.Model;
 using McAI.Proto;
-using McAI.Proto.Mapping.Generator;
 using McAI.Proto.StreamReader.Enum;
 using McAI.Proto.StreamReader.Model;
 using System;

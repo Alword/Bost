@@ -1,13 +1,6 @@
-﻿using McAI.BOT.Model;
-using McAI.BOT.Model.AStar;
-using McAI.Proto.Packet;
+﻿using McAI.BOT.Model.AStar;
 using McAI.Proto.Packet.Play.Serverbound;
-using McAI.Proto.StreamReader.Abstractions;
-using McAI.Proto.StreamReader.Model;
-using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace McAI.Proxy
 {
@@ -6,7 +7,7 @@ namespace McAI.Proxy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine($"Alword Bost Proxy {Assembly.GetExecutingAssembly().GetName().Version}");
 
             ProxyClient proxy = new ProxyClient("0.0.0.0", "95.139.206.185", 25565);
             proxy.Start();
