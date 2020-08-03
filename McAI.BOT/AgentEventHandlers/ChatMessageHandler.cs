@@ -1,8 +1,6 @@
 ﻿using McAI.BOT.Jobs;
 using McAI.BOT.Model.AStar;
 using McAI.BOT.Types;
-using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Model;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

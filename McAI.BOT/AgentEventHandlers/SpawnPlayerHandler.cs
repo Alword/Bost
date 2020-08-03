@@ -1,8 +1,6 @@
 ﻿using McAI.BOT.Model;
 using McAI.BOT.Model.PlayerContext;
-using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
-using McAI.Proto.StreamReader.Model;
 using System.Collections.Generic;
 
 namespace McAI.BOT.AgentEventHandlers
@@ -21,7 +19,7 @@ namespace McAI.BOT.AgentEventHandlers
         public override void OnPacket(SpawnPlayerPacket data)
         {
             players.Link(data.EntityID, data.PlayerUUID);
-            
+
             bool isExist = Entitys.ContainsKey(data.EntityID);
 
             Transform transform;

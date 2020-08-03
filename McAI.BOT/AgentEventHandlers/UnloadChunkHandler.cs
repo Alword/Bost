@@ -1,8 +1,6 @@
 ﻿using McAI.BOT.Model;
 using McAI.BOT.Types;
-using McAI.Proto.Packet;
 using McAI.Proto.Packet.Play.Clientbound;
-using McAI.Proto.StreamReader.Model;
 
 namespace McAI.BOT.AgentEventHandlers
 {

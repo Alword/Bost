@@ -1,6 +1,4 @@
-﻿using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace McAI.BOT.AgentEventHandlers
 {

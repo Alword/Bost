@@ -1,6 +1,5 @@
 ﻿using McAI.Proto.Packet;
 using McAI.Proto.StreamReader.Abstractions;
-using McAI.Proto.StreamReader.Model;
 
 namespace McAI.BOT.AgentEventHandlers
 {

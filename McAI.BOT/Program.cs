@@ -1,8 +1,5 @@
 ﻿using McAI.BOT.AgentEventHandlers;
 using McAI.Proto;
-using McAI.Proto.Packet.Play.Clientbound;
-using McAI.Proto.StreamReader.Enum;
-using McAI.Proto.StreamReader.Model;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
