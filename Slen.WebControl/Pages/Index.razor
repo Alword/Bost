@@ -1,13 +1,15 @@
 ﻿@page "/"
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Index> Loc
 
-<h1>@Loc["Hello, world!"]</h1>
+@*<h1>@Loc["Hello, world!"]</h1>*@
 
 <div class="card-deck">
-    <AgentCard @bind-health="Agent1" />
+    @*<AgentCard @bind-health="Agent1" />
     <button class="btn btn-primary" @onclick="ChangeTheYear">
         @Loc["Hit!"]
-    </button>
+    </button>*@
+
+    <Inventory></Inventory>
 </div>
 
 @code{
