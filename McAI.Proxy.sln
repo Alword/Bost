@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McAI.BOT", "McAI.BOT\McAI.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slen.WebControl", "Slen.WebControl\Slen.WebControl.csproj", "{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bost.Utils", "Bost.Utils\Bost.Utils.csproj", "{50A1EB61-EA42-4B52-A464-FDE04FF809D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50A1EB61-EA42-4B52-A464-FDE04FF809D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A1EB61-EA42-4B52-A464-FDE04FF809D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A1EB61-EA42-4B52-A464-FDE04FF809D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A1EB61-EA42-4B52-A464-FDE04FF809D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
