@@ -1,13 +1,14 @@
 ﻿@page "/"
+@using Slen.WebControl.Data
+@inject HubConnector connector;
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Index> Loc
-
 @*<h1>@Loc["Hello, world!"]</h1>*@
 
 <div class="card-deck">
     @*<AgentCard @bind-health="Agent1" />
-    <button class="btn btn-primary" @onclick="ChangeTheYear">
-        @Loc["Hit!"]
-    </button>*@
+        <button class="btn btn-primary" @onclick="ChangeTheYear">
+            @Loc["Hit!"]
+        </button>*@
 
     <Inventory></Inventory>
 </div>
@@ -15,6 +16,11 @@
 @code{
     [Parameter]
     public int Agent1 { get; set; } = 20;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await connector.EnsureConnected("");
+    }
 
     private void ChangeTheYear()
     {
