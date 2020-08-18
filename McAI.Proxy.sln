@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McAI.Proxy", "McAI.Proxy\McAI.Proxy.csproj", "{6D8BABDB-F302-4274-9463-E5C79BA7DF6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Proxy", "McAI.Proxy\Bost.Proxy.csproj", "{6D8BABDB-F302-4274-9463-E5C79BA7DF6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McAI.Proto", "McAI.Proto\McAI.Proto.csproj", "{816A2ECC-6E50-47FA-B75A-D4B38F74B279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Proto", "McAI.Proto\Bost.Proto.csproj", "{816A2ECC-6E50-47FA-B75A-D4B38F74B279}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McAI.BOT", "McAI.BOT\McAI.BOT.csproj", "{10E6836C-67D7-4469-BB77-571A3EC1EB94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.BOT", "McAI.BOT\Bost.BOT.csproj", "{10E6836C-67D7-4469-BB77-571A3EC1EB94}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slen.WebControl", "Slen.WebControl\Slen.WebControl.csproj", "{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.WebControl", "Slen.WebControl\Bost.WebControl.csproj", "{F9A82C0A-B485-482A-BE0D-D4EEE44E0A2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Utils", "Bost.Utils\Bost.Utils.csproj", "{50A1EB61-EA42-4B52-A464-FDE04FF809D6}"
 EndProject

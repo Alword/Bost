@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public class KeepAliveHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.KeepAlivePacket>
     {

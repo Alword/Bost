@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using NbtLib;
 using System;
 using System.IO;
 
-namespace McAI.Proto.Packet.Play.Clientbound
+namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class ChunkDataPacket : BasePacket
     {

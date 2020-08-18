@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Extentions;
-using McAI.Proto.StreamReader.Enum;
+﻿using Bost.Proto.Extentions;
+using Bost.Proto.StreamReader.Enum;
 
-namespace McAI.Proto.StreamReader.Model
+namespace Bost.Proto.StreamReader.Model
 {
     public class McConnectionContext
     {

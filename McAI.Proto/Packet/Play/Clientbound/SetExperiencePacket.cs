@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Packet.Play.Clientbound
+namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class SetExperiencePacket : BasePacket
     {

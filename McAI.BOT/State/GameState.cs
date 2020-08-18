@@ -1,8 +1,8 @@
-﻿using McAI.BOT.Model;
-using McAI.BOT.Model.PlayerContext;
+﻿using Bost.BOT.Model;
+using Bost.BOT.Model.PlayerContext;
 using System.Collections.Generic;
 
-namespace McAI.BOT.State
+namespace Bost.BOT.State
 {
     public class GameState
     {

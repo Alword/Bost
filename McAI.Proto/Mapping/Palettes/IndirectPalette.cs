@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Mapping.Generator;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Mapping.Generator;
+using Bost.Proto.Types;
 using System;
 using System.Collections.Generic;
 
-namespace McAI.Proto.Mapping.Palettes
+namespace Bost.Proto.Mapping.Palettes
 {
     public class IndirectPalette : IPalette
     {

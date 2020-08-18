@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Enum;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Enum;
+using Bost.Proto.Types;
 using System.Collections.Generic;
 
-namespace McAI.Proto.Packet.Handshaking.Serverbound
+namespace Bost.Proto.Packet.Handshaking.Serverbound
 {
     public class HandshakePacket : BasePacket
     {

@@ -1,9 +1,9 @@
-﻿using McAI.BOT.Model;
-using McAI.BOT.Types;
-using McAI.Proto.Mapping;
+﻿using Bost.BOT.Model;
+using Bost.BOT.Types;
+using Bost.Proto.Mapping;
 using System;
 
-namespace McAI.BOT.Extentions
+namespace Bost.BOT.Extentions
 {
     public static class Vector3Extentions
     {

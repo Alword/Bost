@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Enum
+﻿namespace Bost.Proto.Enum
 {
     public enum LoginStates
     {

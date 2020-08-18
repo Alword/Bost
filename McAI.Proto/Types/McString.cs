@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace McAI.Proto.Types
+namespace Bost.Proto.Types
 {
     public class McString
     {

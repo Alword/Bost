@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Model.ChatObject;
+﻿using Bost.Proto.Model.ChatObject;
 using Newtonsoft.Json;
 
-namespace McAI.Proto.Types
+namespace Bost.Proto.Types
 {
     public static class McChat
     {

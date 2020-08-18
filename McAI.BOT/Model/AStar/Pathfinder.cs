@@ -1,13 +1,13 @@
-﻿using McAI.BOT.Enum;
-using McAI.BOT.Extentions;
-using McAI.BOT.Types;
-using McAI.Proto.Mapping.Generator;
+﻿using Bost.BOT.Enum;
+using Bost.BOT.Extentions;
+using Bost.BOT.Types;
+using Bost.Proto.Mapping.Generator;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace McAI.BOT.Model.AStar
+namespace Bost.BOT.Model.AStar
 {
     public class Pathfinder : IDisposable
     {

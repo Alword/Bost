@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Model;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Model;
+using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Packet.Play.Serverbound
+namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class PlayerDiggingPacket : BasePacket
     {

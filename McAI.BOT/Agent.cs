@@ -1,14 +1,14 @@
-﻿using McAI.BOT.State;
-using McAI.Proto.Enum;
-using McAI.Proto.Packet;
-using McAI.Proto.Packet.Handshaking.Serverbound;
-using McAI.Proto.Packet.Login.Serverbound;
-using McAI.Proto.Types;
+﻿using Bost.BOT.State;
+using Bost.Proto.Enum;
+using Bost.Proto.Packet;
+using Bost.Proto.Packet.Handshaking.Serverbound;
+using Bost.Proto.Packet.Login.Serverbound;
+using Bost.Proto.Types;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-namespace McAI.BOT
+namespace Bost.BOT
 {
     public class Agent
     {

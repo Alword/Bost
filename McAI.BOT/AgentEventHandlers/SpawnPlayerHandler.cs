@@ -1,9 +1,9 @@
-﻿using McAI.BOT.Model;
-using McAI.BOT.Model.PlayerContext;
-using McAI.Proto.Packet.Play.Clientbound;
+﻿using Bost.BOT.Model;
+using Bost.BOT.Model.PlayerContext;
+using Bost.Proto.Packet.Play.Clientbound;
 using System.Collections.Generic;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public class SpawnPlayerHandler : BaseAgentEventHandler<SpawnPlayerPacket>
     {

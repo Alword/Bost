@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace McAI.Proto.Model.ChatObject
+namespace Bost.Proto.Model.ChatObject
 {
     public class Chat
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace McAI.BOT.Types
+namespace Bost.BOT.Types
 {
     public struct Double3
     {

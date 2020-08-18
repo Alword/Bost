@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Packet
+﻿namespace Bost.Proto.Packet
 {
     public abstract class BasePacket
     {

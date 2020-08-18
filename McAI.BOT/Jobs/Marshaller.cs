@@ -1,10 +1,10 @@
-﻿using McAI.BOT.Model.AStar;
-using McAI.Proto.Packet.Play.Serverbound;
+﻿using Bost.BOT.Model.AStar;
+using Bost.Proto.Packet.Play.Serverbound;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace McAI.BOT.Jobs
+namespace Bost.BOT.Jobs
 {
     public class Marshaller
     {

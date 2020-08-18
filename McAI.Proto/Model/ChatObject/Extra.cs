@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Model.ChatObject
+﻿namespace Bost.Proto.Model.ChatObject
 {
     public class Extra
     {

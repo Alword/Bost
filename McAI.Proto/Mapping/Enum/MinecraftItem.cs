@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Mapping.Enum
+﻿namespace Bost.Proto.Mapping.Enum
 {
     public enum MinecraftItem
     {

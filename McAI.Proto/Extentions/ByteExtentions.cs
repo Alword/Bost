@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace McAI.Proto.Extentions
+namespace Bost.Proto.Extentions
 {
     public static class ByteExtentions
     {

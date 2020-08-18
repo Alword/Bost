@@ -1,7 +1,7 @@
-﻿using McAI.Proto.StreamReader.Enum;
+﻿using Bost.Proto.StreamReader.Enum;
 using System;
 
-namespace McAI.Proto.StreamReader.Model
+namespace Bost.Proto.StreamReader.Model
 {
     public struct PacketKey
     {

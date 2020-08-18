@@ -1,9 +1,9 @@
-﻿using McAI.Proto.StreamReader.Enum;
-using McAI.Proto.StreamReader.Model;
+﻿using Bost.Proto.StreamReader.Enum;
+using Bost.Proto.StreamReader.Model;
 using System;
 using System.Collections.Generic;
 
-namespace McAI.Proto.StreamReader.Middleware
+namespace Bost.Proto.StreamReader.Middleware
 {
     public class StateUpdateMiddleware : McMiddleware
     {

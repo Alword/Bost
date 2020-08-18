@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Mapping.Palettes
+﻿namespace Bost.Proto.Mapping.Palettes
 {
     public class Palette
     {

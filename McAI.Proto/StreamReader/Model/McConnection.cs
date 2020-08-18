@@ -1,7 +1,7 @@
-﻿using McAI.Proto.StreamReader.Middleware;
+﻿using Bost.Proto.StreamReader.Middleware;
 using System;
 
-namespace McAI.Proto.StreamReader.Model
+namespace Bost.Proto.StreamReader.Model
 {
     public class McConnection
     {

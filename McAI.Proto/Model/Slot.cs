@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Mapping.Enum;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Mapping.Enum;
+using Bost.Proto.Types;
 using NbtLib;
 
-namespace McAI.Proto.Model
+namespace Bost.Proto.Model
 {
     public class Slot
     {

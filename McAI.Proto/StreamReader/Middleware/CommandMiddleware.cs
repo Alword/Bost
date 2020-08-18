@@ -1,14 +1,14 @@
-﻿using McAI.Proto.Extentions;
-using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Enum;
-using McAI.Proto.StreamReader.Model;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Extentions;
+using Bost.Proto.Packet;
+using Bost.Proto.StreamReader.Enum;
+using Bost.Proto.StreamReader.Model;
+using Bost.Proto.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace McAI.Proto.StreamReader.Middleware
+namespace Bost.Proto.StreamReader.Middleware
 {
     public class CommandMiddleware : McMiddleware
     {
@@ -54,7 +54,7 @@ namespace McAI.Proto.StreamReader.Middleware
                 packets = new Dictionary<PacketKey, Type>();
 
                 var q = (from t in Assembly.GetExecutingAssembly().GetTypes()
-                         where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("McAI.Proto.Packet")
+                         where t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Bost.Proto.Packet")
                          select t).ToArray();
 
                 foreach (var t in q)

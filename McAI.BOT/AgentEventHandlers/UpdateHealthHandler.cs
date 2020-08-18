@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Enum;
-using McAI.Proto.Packet.Play.Clientbound;
-using McAI.Proto.Packet.Play.Serverbound;
+﻿using Bost.Proto.Enum;
+using Bost.Proto.Packet.Play.Clientbound;
+using Bost.Proto.Packet.Play.Serverbound;
 using System.Collections.Generic;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public class UpdateHealthHandler : BaseAgentEventHandler<UpdateHealthPacket>
     {

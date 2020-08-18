@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Abstractions;
+﻿using Bost.Proto.Packet;
+using Bost.Proto.StreamReader.Abstractions;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public abstract class BaseAgentEventHandler<T> : IPacketEventHandler<T> where T : BasePacket
     {

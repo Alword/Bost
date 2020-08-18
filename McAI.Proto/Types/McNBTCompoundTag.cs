@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace McAI.Proto.Types
+namespace Bost.Proto.Types
 {
     public class McNbtCompoundTag
     {

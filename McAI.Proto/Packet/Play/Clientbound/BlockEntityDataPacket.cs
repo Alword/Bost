@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Model;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Model;
+using Bost.Proto.Types;
 using NbtLib;
 using System;
 
-namespace McAI.Proto.Packet.Play.Clientbound
+namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class BlockEntityDataPacket : BasePacket
     {

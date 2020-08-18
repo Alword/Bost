@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace McAI.BOT.Model.PlayerContext
+namespace Bost.BOT.Model.PlayerContext
 {
     public class Players
     {

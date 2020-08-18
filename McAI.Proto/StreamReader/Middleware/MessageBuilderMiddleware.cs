@@ -1,9 +1,9 @@
-﻿using McAI.Proto.StreamReader.Model;
-using McAI.Proto.Types;
+﻿using Bost.Proto.StreamReader.Model;
+using Bost.Proto.Types;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace McAI.Proto.StreamReader.Middleware
+namespace Bost.Proto.StreamReader.Middleware
 {
     public class MessageBuilderMiddleware : McMiddleware
     {

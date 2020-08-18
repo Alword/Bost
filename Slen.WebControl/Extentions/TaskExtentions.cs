@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Slen.WebControl.Extentions
+namespace Bost.WebControl.Extentions
 {
     internal static class TaskExtentions
     {

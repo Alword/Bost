@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Model;
+﻿using Bost.Proto.Model;
 using System;
 
-namespace McAI.Proto.Types
+namespace Bost.Proto.Types
 {
     public static class McTags
     {

@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace McAI.Proto.Packet.Login.Clientbound
+namespace Bost.Proto.Packet.Login.Clientbound
 {
     public class LoginSuccessPacket : BasePacket
     {

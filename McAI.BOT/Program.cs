@@ -1,10 +1,10 @@
-﻿using McAI.BOT.AgentEventHandlers;
-using McAI.Proto;
+﻿using Bost.BOT.AgentEventHandlers;
+using Bost.Proto;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace McAI.BOT
+namespace Bost.BOT
 {
     class Program
     {

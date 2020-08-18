@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace McAI.Proto.Model
+namespace Bost.Proto.Model
 {
     public struct Tags
     {

@@ -1,8 +1,8 @@
-﻿using McAI.BOT.Model.PlayerContext;
-using McAI.Proto.Packet.Play.Clientbound;
+﻿using Bost.BOT.Model.PlayerContext;
+using Bost.Proto.Packet.Play.Clientbound;
 using System;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public class PlayerInfoHandler : BaseAgentEventHandler<PlayerInfoPacket>
     {

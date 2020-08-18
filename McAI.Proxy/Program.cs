@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace McAI.Proxy
+namespace Bost.Proxy
 {
     class Program
     {

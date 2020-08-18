@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Types
+﻿namespace Bost.Proto.Types
 {
     public class McByte
     {

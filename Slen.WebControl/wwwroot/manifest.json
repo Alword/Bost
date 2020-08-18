@@ -1,6 +1,6 @@
 {
-  "name": "Slen.WebControl",
-  "short_name": "Slen.WebControl",
+  "name": "Bost.WebControl",
+  "short_name": "Bost.WebControl",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

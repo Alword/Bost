@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Abstractions;
+﻿using Bost.Proto.Packet;
+using Bost.Proto.StreamReader.Abstractions;
 using System;
 using System.Collections.Generic;
 
-namespace McAI.Proto.StreamReader.Model
+namespace Bost.Proto.StreamReader.Model
 {
     public class GenericEventHub
     {

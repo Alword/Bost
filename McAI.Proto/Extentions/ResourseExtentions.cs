@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace McAI.Proto.Extentions
+namespace Bost.Proto.Extentions
 {
     public static class ResourseExtentions
     {

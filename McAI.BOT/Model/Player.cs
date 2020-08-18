@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Enum;
+﻿using Bost.Proto.Enum;
 using System;
 
-namespace McAI.BOT.Model
+namespace Bost.BOT.Model
 {
     public class Player : Transform
     {

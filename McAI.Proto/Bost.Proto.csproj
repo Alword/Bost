@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>McAI.Proto.Program</StartupObject>
+    <StartupObject>Bost.Proto.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\McAI.Proxy\McAI.Proxy.csproj" />
+    <ProjectReference Include="..\McAI.Proxy\Bost.Proxy.csproj" />
   </ItemGroup>
 
   <ItemGroup>

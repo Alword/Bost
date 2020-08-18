@@ -1,9 +1,9 @@
-﻿using McAI.BOT.Model;
-using McAI.BOT.Types;
-using McAI.Proto.Mapping;
-using McAI.Proto.Packet.Play.Clientbound;
+﻿using Bost.BOT.Model;
+using Bost.BOT.Types;
+using Bost.Proto.Mapping;
+using Bost.Proto.Packet.Play.Clientbound;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public class ChunkDataHandler : BaseAgentEventHandler<ChunkDataPacket>
     {

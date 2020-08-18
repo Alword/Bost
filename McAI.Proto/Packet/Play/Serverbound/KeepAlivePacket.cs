@@ -1,6 +1,6 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 
-namespace McAI.Proto.Packet.Play.Serverbound
+namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class KeepAlivePacket : BasePacket
     {

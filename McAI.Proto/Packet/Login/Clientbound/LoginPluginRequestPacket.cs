@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Packet.Login.Clientbound
+namespace Bost.Proto.Packet.Login.Clientbound
 {
     public class LoginPluginRequestPacket : BasePacket
     {

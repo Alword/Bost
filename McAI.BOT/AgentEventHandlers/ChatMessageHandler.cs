@@ -1,11 +1,11 @@
-﻿using McAI.BOT.Jobs;
-using McAI.BOT.Model.AStar;
-using McAI.BOT.Types;
+﻿using Bost.BOT.Jobs;
+using Bost.BOT.Model.AStar;
+using Bost.BOT.Types;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace McAI.BOT.AgentEventHandlers
+namespace Bost.BOT.AgentEventHandlers
 {
     public class ChatMessageHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.ChatMessagePacket>
     {

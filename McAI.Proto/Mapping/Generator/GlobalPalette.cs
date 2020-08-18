@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Extentions;
+﻿using Bost.Proto.Extentions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 
-namespace McAI.Proto.Mapping.Generator
+namespace Bost.Proto.Mapping.Generator
 {
     public static class GlobalPalette
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McAI.Proto.Types
+namespace Bost.Proto.Types
 {
     public static class McVarlong
     {

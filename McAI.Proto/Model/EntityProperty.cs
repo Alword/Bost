@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System.Text;
 
-namespace McAI.Proto.Model
+namespace Bost.Proto.Model
 {
     public class EntityProperty
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace McAI.Proto.Enum
+namespace Bost.Proto.Enum
 {
 
     [Obsolete]

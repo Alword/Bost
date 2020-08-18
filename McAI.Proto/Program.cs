@@ -1,7 +1,7 @@
-﻿using McAI.Proxy;
+﻿using Bost.Proxy;
 using System;
 
-namespace McAI.Proto
+namespace Bost.Proto
 {
     class Program
     {

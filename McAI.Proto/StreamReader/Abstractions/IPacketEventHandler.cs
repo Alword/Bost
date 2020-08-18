@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Model;
+﻿using Bost.Proto.Packet;
+using Bost.Proto.StreamReader.Model;
 
-namespace McAI.Proto.StreamReader.Abstractions
+namespace Bost.Proto.StreamReader.Abstractions
 {
     public interface IPacketEventHandler
     {

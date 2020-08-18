@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Model.ChatObject;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Model.ChatObject;
+using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Packet.Play.Clientbound
+namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class OpenWindowPacket : BasePacket
     {

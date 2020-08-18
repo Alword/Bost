@@ -1,11 +1,11 @@
-﻿using McAI.Proto.Extentions;
+﻿using Bost.Proto.Extentions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace McAI.Proto.Mapping.Generator
+namespace Bost.Proto.Mapping.Generator
 {
     public class RegistriesPalette
     {

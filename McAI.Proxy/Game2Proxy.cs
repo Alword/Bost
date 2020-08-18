@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using static McAI.Proxy.ProxyClient;
+using static Bost.Proxy.ProxyClient;
 
-namespace McAI.Proxy
+namespace Bost.Proxy
 {
     public class Game2Proxy
     {

@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Enum;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Enum;
+using Bost.Proto.Types;
 
-namespace McAI.Proto.Packet.Play.Serverbound
+namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class ClientStatusPacket : BasePacket
     {

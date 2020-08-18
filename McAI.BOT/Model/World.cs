@@ -1,10 +1,10 @@
-﻿using McAI.BOT.Extentions;
-using McAI.BOT.Types;
-using McAI.Proto.Mapping;
-using McAI.Proto.Mapping.Generator;
+﻿using Bost.BOT.Extentions;
+using Bost.BOT.Types;
+using Bost.Proto.Mapping;
+using Bost.Proto.Mapping.Generator;
 using System.Collections.Generic;
 
-namespace McAI.BOT.Model
+namespace Bost.BOT.Model
 {
     public class World
     {

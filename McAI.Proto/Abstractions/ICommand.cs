@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Abstractions
+﻿namespace Bost.Proto.Abstractions
 {
     public interface ICommand<T>
     {

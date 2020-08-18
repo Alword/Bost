@@ -1,4 +1,4 @@
-﻿namespace McAI.BOT.Model
+﻿namespace Bost.BOT.Model
 {
     public class Position
     {

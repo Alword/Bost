@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Mapping.Generator;
+﻿using Bost.Proto.Mapping.Generator;
 using System;
 
-namespace McAI.Proto.Mapping.Palettes
+namespace Bost.Proto.Mapping.Palettes
 {
     public class DirectPalette : IPalette
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace McAI.Proto.Mapping.Generator
+namespace Bost.Proto.Mapping.Generator
 {
     public class BlockState
     {

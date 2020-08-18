@@ -1,10 +1,10 @@
-﻿using McAI.Proto.Enum;
-using McAI.Proto.Extentions;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Enum;
+using Bost.Proto.Extentions;
+using Bost.Proto.Types;
 using System;
 using System.Text;
 
-namespace McAI.Proto.Packet.Play.Serverbound
+namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class ClientSettingsPacket : BasePacket
     {

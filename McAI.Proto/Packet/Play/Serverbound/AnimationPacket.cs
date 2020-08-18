@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Packet.Play.Serverbound
+namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class AnimationPacket : BasePacket
     {

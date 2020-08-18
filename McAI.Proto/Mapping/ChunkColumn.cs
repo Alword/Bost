@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McAI.Proto.Mapping
+namespace Bost.Proto.Mapping
 {
     public class ChunkColumn
     {

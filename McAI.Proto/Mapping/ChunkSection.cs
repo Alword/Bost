@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Mapping.Palettes;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Mapping.Palettes;
+using Bost.Proto.Types;
 using System.Threading.Tasks;
 
-namespace McAI.Proto.Mapping
+namespace Bost.Proto.Mapping
 {
     public class ChunkSection
     {

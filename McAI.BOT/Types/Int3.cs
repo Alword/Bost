@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace McAI.BOT.Model
+namespace Bost.BOT.Model
 {
     public struct Int3
     {

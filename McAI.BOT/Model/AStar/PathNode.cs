@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace McAI.BOT.Model.AStar
+namespace Bost.BOT.Model.AStar
 {
     public enum MoveActions { Walk, Jump, Fall, Swim, Stairs };
 

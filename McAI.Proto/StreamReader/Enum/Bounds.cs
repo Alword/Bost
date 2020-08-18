@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.StreamReader.Enum
+﻿namespace Bost.Proto.StreamReader.Enum
 {
     public enum Bounds
     {

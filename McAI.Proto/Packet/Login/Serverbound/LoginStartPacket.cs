@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System.ComponentModel.DataAnnotations;
 
-namespace McAI.Proto.Packet.Login.Serverbound
+namespace Bost.Proto.Packet.Login.Serverbound
 {
     public class LoginStartPacket : BasePacket
     {

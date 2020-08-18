@@ -1,6 +1,6 @@
-﻿using McAI.Proto.Mapping.Generator;
+﻿using Bost.Proto.Mapping.Generator;
 
-namespace McAI.Proto.Mapping.Palettes
+namespace Bost.Proto.Mapping.Palettes
 {
     public interface IPalette
     {

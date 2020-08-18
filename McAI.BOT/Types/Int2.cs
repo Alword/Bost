@@ -1,4 +1,4 @@
-﻿namespace McAI.BOT.Types
+﻿namespace Bost.BOT.Types
 {
     public struct Int2
     {

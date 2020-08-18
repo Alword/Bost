@@ -1,8 +1,8 @@
-﻿using McAI.Proto.Extentions;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Extentions;
+using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Packet.Play.Clientbound
+namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class PluginMessagePackage : BasePacket
     {

@@ -1,7 +1,7 @@
-﻿using McAI.Proto.Types;
+﻿using Bost.Proto.Types;
 using System;
 
-namespace McAI.Proto.Model
+namespace Bost.Proto.Model
 {
     public class ModifierData
     {

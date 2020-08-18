@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McAI.BOT.Extentions
+namespace Bost.BOT.Extentions
 {
     public static class DicrionaryExcention
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McAI.Proto.Model.ChatObject
+namespace Bost.Proto.Model.ChatObject
 {
     public class With
     {

@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
-using Slen.WebControl.Data;
+using Bost.WebControl.Data;
 using System;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Slen.WebControl
+namespace Bost.WebControl
 {
     public class Program
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Slen.WebControl.Data
+namespace Bost.WebControl.Data
 {
     public class HubConnector
     {

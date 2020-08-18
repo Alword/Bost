@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace McAI.Proto.Types
+namespace Bost.Proto.Types
 {
     public class McInt
     {

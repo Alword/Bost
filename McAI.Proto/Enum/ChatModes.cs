@@ -1,4 +1,4 @@
-﻿namespace McAI.Proto.Enum
+﻿namespace Bost.Proto.Enum
 {
     /// <summary>
     ///  See processing chat for more information

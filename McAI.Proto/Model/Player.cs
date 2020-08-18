@@ -1,10 +1,10 @@
-﻿using McAI.Proto.Enum;
-using McAI.Proto.Model.ChatObject;
-using McAI.Proto.Types;
+﻿using Bost.Proto.Enum;
+using Bost.Proto.Model.ChatObject;
+using Bost.Proto.Types;
 using System;
 using System.Text;
 
-namespace McAI.Proto.Model
+namespace Bost.Proto.Model
 {
     public class Player
     {

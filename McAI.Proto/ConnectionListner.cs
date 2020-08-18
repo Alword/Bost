@@ -1,9 +1,9 @@
-﻿using McAI.Proto.Packet;
-using McAI.Proto.StreamReader.Abstractions;
-using McAI.Proto.StreamReader.Enum;
-using McAI.Proto.StreamReader.Model;
+﻿using Bost.Proto.Packet;
+using Bost.Proto.StreamReader.Abstractions;
+using Bost.Proto.StreamReader.Enum;
+using Bost.Proto.StreamReader.Model;
 
-namespace McAI.Proto
+namespace Bost.Proto
 {
     public class ConnectionListner
     {

@@ -1,4 +1,4 @@
-﻿namespace McAI.BOT.Enum
+﻿namespace Bost.BOT.Enum
 {
     public enum NodeState
     {

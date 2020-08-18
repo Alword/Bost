@@ -1,6 +1,6 @@
-﻿using McAI.Proto.StreamReader.Model;
+﻿using Bost.Proto.StreamReader.Model;
 
-namespace McAI.Proto.StreamReader
+namespace Bost.Proto.StreamReader
 {
     public abstract class McMiddleware
     {

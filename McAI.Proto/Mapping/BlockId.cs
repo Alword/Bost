@@ -1,6 +1,6 @@
-﻿using McAI.Proto.Mapping.Generator;
+﻿using Bost.Proto.Mapping.Generator;
 
-namespace McAI.Proto.Mapping
+namespace Bost.Proto.Mapping
 {
     public struct BlockId
     {

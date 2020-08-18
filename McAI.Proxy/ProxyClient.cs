@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace McAI.Proxy
+namespace Bost.Proxy
 {
     public class ProxyClient
     {
