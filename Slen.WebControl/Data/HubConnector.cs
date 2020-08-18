@@ -16,10 +16,10 @@ namespace Bost.WebControl.Data
 
         public async Task EnsureConnected(string url)
         {
-            if (hubConnection.State == HubConnectionState.Connected) return;
+            if (hubConnection != null && hubConnection.State != HubConnectionState.Disconnected) return;
 
             hubConnection = new HubConnectionBuilder()
-                .WithUrl("")
+                .WithUrl(url)
                 .Build();
 
             hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
@@ -36,7 +36,6 @@ namespace Bost.WebControl.Data
                 Console.WriteLine(e.Message);
                 throw;
             }
-            await hubConnection.StartAsync();
         }
     }
 }

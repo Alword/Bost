@@ -19,7 +19,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await connector.EnsureConnected("localhost:5000/chathub");
+        await connector.EnsureConnected("https://localhost:5001/chatHub");
     }
 
     private void ChangeTheYear()

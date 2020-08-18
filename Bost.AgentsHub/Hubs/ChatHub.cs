@@ -12,5 +12,10 @@ namespace Bost.AgentsHub.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
+
+        public override async Task OnConnectedAsync()
+        {
+            await Clients.All.SendAsync("ReceiveMessage", "Server", "Hello control center!");
+        }
     }
 }
