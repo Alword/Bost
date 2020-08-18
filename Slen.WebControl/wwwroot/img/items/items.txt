@@ -1,0 +1,721 @@
+32
+28
+Air
+Stone
+Diorite
+Red Mushroom Block
+Oak Fence Gate
+Nether Wart
+Redstone Lamp active
+Cocoa
+Gold Ore
+Quartz Block
+Gray Hardened Clay
+Dark Oak Leaves
+Red Carpet
+Oak Leaves
+Glass
+13 Disc
+Pink Glazed Terracotta
+Red Concrete Powder
+Diamond Shovel
+Iron Leggings
+Book
+Lapis Lazuli
+Oxeye Daisy
+Spawn Mooshroom
+Iron Block
+Iron Nugget
+Cactus
+Granite
+Polished Granite
+Polished Diorite
+Iron Bars
+Brick Stairs
+Enchantment Table
+Double Oak Wood Slab
+Sandstone Stairs
+Flower Pot
+Chiseled Quartz Block
+Light Gray Hardened Clay
+Acacia Wood
+Black Carpet
+Spruce Leaves
+Chorus Flower
+Cat Disc
+Gray Glazed Terracotta
+Black Concrete Powder
+Diamond Pickaxe
+Iron Boots
+Slimeball
+Purple Dye
+Cauldron
+Spawn Ocelot
+Lead
+Knowledge Book
+Clay
+Andesite
+Polished Andesite
+Flowing Lava
+Glass Pane
+Stone Brick Stairs
+Brewing Stand
+Double Spruce Wood Slab
+Emerald Ore
+Carrots
+Pillar Quartz Block
+Cyan Hardened Clay
+Dark Oak Wood
+Magenta Carpet
+Birch Leaves
+Purpur Block
+Blocks Disc
+Light Gray Glazed Terracotta
+Magenta Concrete Powder
+Diamond Axe
+Dead Shrub
+Minecart with Chest
+Cyan Dye
+Eye of Ender
+Bottle o' Enchanting
+Name Tag
+TNT
+Sugar Canes
+Melon Block
+Pumpkin Stem
+Melon Stem
+Vines
+Still Lava
+Cauldron
+Double Birch Wood Slab
+Gravel
+Potatoes
+Quartz Stairs
+Coal Ore
+Acacia Wood Stairs
+Light Blue Carpet
+Jungle Leaves
+Purpur Pillar
+Chirp Disc
+Cyan Glazed Terracotta
+Light Blue Concrete Powder
+Detector Rail
+Grass
+Minecart with Furnace
+Light Gray Dye
+Glistering Melon
+Fire Charge
+Minecart with Command Block
+Bookshelf
+Jukebox
+Mycelium
+Lily Pad
+Nether Brick
+Nether Brick Fence
+Nether Brick Stairs
+End Portal
+Double Jungle Wood Slab
+Ender Chest
+Wooden Button
+Activator Rail
+White Stained Glass Pane
+Dark Oak Wood Stairs
+Yellow Carpet
+Red Sandstone Stairs
+Purpur Stairs
+Gray Shulker Box
+Purple Glazed Terracotta
+Yellow Concrete Powder
+Stick
+Fern
+Egg
+Gray Dye
+Spawn Horse
+Book and Quill
+Raw Mutton
+Moss Stone
+Oak Fence
+Sand
+Red Sand
+End Portal Frame
+End Stone
+Dragon Egg
+Redstone Lamp inactive
+Double Acacia Wood Slab
+Tripwire Hook
+Mob Head
+Dropper
+Orange Stained Glass Pane
+Slime Block
+Lime Carpet
+Double Red Sandstone Slab
+Purpur Double Slab
+Far Disc
+Blue Glazed Terracotta
+Lime Concrete Powder
+Bowl
+Diamond Helmet
+Compass
+Pink Dye
+Spawn Rabbit
+Written Book
+Cooked Mutton
+Obsidian
+Pumpkin
+Double Dark Oak Wood Slab
+Oak Wood Slab
+Spruce Wood Slab
+Birch Wood Slab
+Jungle Wood Slab
+Acacia Wood Slab
+Dark Oak Wood Slab
+Tripwire
+Anvil
+White Hardened Clay
+Purple Stained Glass Pane
+Barrier
+Pink Carpet
+Red Sandstone Slab
+Purpur Slab
+Mall Disc
+Brown Glazed Terracotta
+Pink Concrete Powder
+Mushroom Stew
+Diamond Chestplate
+Fishing Rod
+Bone
+Spawn Polar Bear
+Emerald
+Banner
+Oak Wood Plank
+Netherrack
+Emerald Block
+Spruce Wood Stairs
+Birch Wood Stairs
+Jungle Wood Stairs
+Command Block
+Beacon
+Cobblestone Wall
+Mossy Cobblestone Wall
+Trapped Chest
+Orange Hardened Clay
+Blue Stained Glass Pane
+Iron Trapdoor
+Gray Carpet
+Spruce Fence Gate
+End Stone Bricks
+Mellohi Disc
+Green Glazed Terracotta
+Gray Concrete Powder
+Golden Sword
+Diamond Leggings
+Clock
+Sugar
+Spawn Llama
+Item Frame
+End Crystal
+Spruce Wood Plank
+Soul Sand
+Weighted Pressure Plate light
+Weighted Pressure Plate heavy
+Redstone Comparator inactive
+Iron Ore
+Redstone Comparator active
+Daylight Sensor
+Redstone Block
+Nether Quartz Ore
+Hopper
+Purple Hardened Clay
+Brown Stained Glass Pane
+Prismarine
+Light Gray Carpet
+Birch Fence Gate
+Beetroot Block
+Stal Disc
+Red Glazed Terracotta
+Light Gray Concrete Powder
+Golden Shovel
+Diamond Boots
+Glowstone Dust
+Cake
+Spawn Parrot
+Brown Mushroom
+Spruce Door
+Birch Wood Plank
+Glowstone
+Blue Hardened Clay
+Brown Hardened Clay
+Green Hardened Clay
+Red Hardened Clay
+Black Hardened Clay
+Magenta Hardened Clay
+Light Blue Hardened Clay
+Yellow Hardened Clay
+Lime Hardened Clay
+Pink Hardened Clay
+Green Stained Glass Pane
+Prismarine Bricks
+Cyan Carpet
+Jungle Fence Gate
+Grass Path
+Strad Disc
+Note Block
+Cyan Concrete Powder
+Golden Pickaxe
+Golden Helmet
+Raw Fish
+Bed
+Spawn Villager
+Flower Pot
+Birch Door
+Jungle Wood Plank
+Still Water
+Red Stained Glass Pane
+Black Stained Glass Pane
+Magenta Stained Glass Pane
+Light Blue Stained Glass Pane
+Yellow Stained Glass Pane
+Lime Stained Glass Pane
+Pink Stained Glass Pane
+Gray Stained Glass Pane
+Light Gray Stained Glass Pane
+Cyan Stained Glass Pane
+Acacia Leaves
+Dark Prismarine
+Hardened Clay
+Dark Oak Fence Gate
+End Gateway
+Ward Disc
+Black Glazed Terracotta
+Structure Block
+Golden Axe
+Golden Chestplate
+Raw Salmon
+Redstone Repeater
+Spawn Husk
+Carrot
+Jungle Door
+Acacia Wood Plank
+Nether Portal
+Sea Lantern
+Oak Wood
+Spruce Wood
+Birch Wood
+Jungle Wood
+Hay Bale
+White Carpet
+Orange Carpet
+Purple Carpet
+Blue Carpet
+Brown Carpet
+Green Carpet
+Block of Coal
+Acacia Fence Gate
+Lapis Lazuli Ore
+11 Disc
+White Concrete
+Iron Shovel
+String
+Golden Leggings
+Clownfish
+Cookie
+Spawn Zombie Villager
+Potato
+Double Stone Slab
+Dark Oak Wood Plank
+Jack o'Lantern
+Packed Ice
+Sunflower
+Lilac
+Double Tallgrass
+Large Fern
+Rose Bush
+Peony
+Free-standing Banner
+Wall-mounted Banner
+Inverted Daylight Sensor
+Red Sandstone
+Chiseled Red Sandstone
+Smooth Red Sandstone
+Spruce Fence
+Repeating Command Block
+Wait Disc
+Orange Concrete
+Iron Pickaxe
+Feather
+Golden Boots
+Pufferfish
+Map
+Spawn Skeleton Horse
+Baked Potato
+Double Sandstone Slab
+Torch
+Cake Block
+Birch Fence
+Sponge
+Wet Sponge
+Jungle Fence
+Dark Oak Fence
+Acacia Fence
+Spruce Door Block
+Birch Door Block
+Jungle Door Block
+Acacia Door Block
+Dark Oak Door Block
+End Rod
+Chorus Plant
+Grass
+Chain Command Block
+Light Gray Shulker Box
+Purple Concrete
+Iron Axe
+Gunpowder
+Flint
+White Wool
+Shears
+Spawn Zombie Horse
+Poisonous Potato
+Double Wooden Slab
+Fire
+Redstone Repeater Block off
+Frosted Ice
+Magma Block
+Nether Wart Block
+Red Nether Brick
+Bone Block
+Structure Void
+Observer
+White Shulker Box
+Lapis Lazuli Block
+Orange Shulker Box
+Magenta Shulker Box
+Light Blue Shulker Box
+Yellow Shulker Box
+Lime Shulker Box
+Pink Shulker Box
+Cyan Shulker Box
+Blue Concrete
+Flint and Steel
+Sticky Piston
+Raw Porkchop
+Orange Wool
+Melon
+Spawn Donkey
+Empty Map
+Double Cobblestone Slab
+Monster Spawner
+Redstone Repeater Block on
+Purple Shulker Box
+Dispenser
+Blue Shulker Box
+Brown Shulker Box
+Green Shulker Box
+Red Shulker Box
+Black Shulker Box
+White Glazed Terracotta
+Orange Glazed Terracotta
+Magenta Glazed Terracotta
+Light Blue Glazed Terracotta
+Yellow Glazed Terracotta
+Sandstone
+Chiseled Sandstone
+Smooth Sandstone
+Lime Glazed Terracotta
+Brown Concrete
+Bed
+Wooden Hoe
+Dead Bush
+Purple Wool
+Pumpkin Seeds
+Spawn Mule
+Golden Carrot
+Double Brick Slab
+Oak Wood Stairs
+White Stained Glass
+Green Concrete
+Red Concrete
+Black Concrete
+Magenta Concrete
+Light Blue Concrete
+Yellow Concrete
+Lime Concrete
+Pink Concrete
+Gray Concrete
+Light Gray Concrete
+Cyan Concrete
+White Concrete Powder
+Orange Concrete Powder
+Purple Concrete Powder
+Blue Concrete Powder
+Brown Concrete Powder
+Green Concrete Powder
+Apple
+Stone Hoe
+Cooked Porkchop
+Blue Wool
+Melon Seeds
+Spawn Evoker
+Mob Head Skeleton
+Double Stone Brick Slab
+Chest
+Orange Stained Glass
+Bow
+Arrow
+Coal
+Charcoal
+Diamond
+Iron Ingot
+Gold Ingot
+Iron Sword
+Wooden Sword
+Wooden Shovel
+Powered Rail
+Wooden Pickaxe
+Wooden Axe
+Stone Sword
+Stone Shovel
+Stone Pickaxe
+Stone Axe
+Diamond Sword
+Iron Hoe
+Painting
+Brown Wool
+Raw Beef
+Spawn Vex
+Mob Head Wither Skeleton
+Double Nether Brick Slab
+Redstone Wire
+Purple Stained Glass
+Diamond Hoe
+Golden Hoe
+Wheat Seeds
+Wheat
+Bread
+Leather Helmet
+Leather Tunic
+Dirt
+Coarse Dirt
+Podzol
+Cobweb
+Leather Pants
+Leather Boots
+Chainmail Helmet
+Chainmail Chestplate
+Chainmail Leggings
+Chainmail Boots
+Iron Helmet
+Iron Chestplate
+Golden Apple
+Green Wool
+Steak
+Spawn Vindicator
+Mob Head Zombie
+Double Quartz Slab
+Diamond Ore
+Blue Stained Glass
+Enchanted Golden Apple
+Sign
+Oak Door
+Bucket
+Water Bucket
+Lava Bucket
+Minecart
+Saddle
+Piston
+Iron Door
+Redstone
+Snowball
+Oak Boat
+Leather
+Milk Bucket
+Brick
+Clay
+Sugar Canes
+Paper
+Piston Head
+Red Wool
+Raw Chicken
+Spawn Elder Guardian
+Mob Head Human
+Acacia Door
+Diamond Block
+Brown Stained Glass
+Black Wool
+Magenta Wool
+Light Blue Wool
+Yellow Wool
+Lime Wool
+Pink Wool
+Gray Wool
+Light Gray Wool
+Cyan Wool
+Cooked Fish
+Cooked Salmon
+Ink Sack
+Rose Red
+Lime Dye
+Dandelion Yellow
+Light Blue Dye
+Magenta Dye
+Orange Dye
+Bone Meal
+Cactus Green
+Coco Beans
+Cooked Chicken
+Spawn Wither Skeleton
+Mob Head Creeper
+Dark Oak Door
+Crafting Table
+Green Stained Glass
+Rotten Flesh
+Ender Pearl
+Blaze Rod
+Dandelion
+Ghast Tear
+Gold Nugget
+Nether Wart
+Potion
+Glass Bottle
+Spider Eye
+Fermented Spider Eye
+Blaze Powder
+Magma Cream
+Brewing Stand
+Poppy
+Blue Orchid
+Allium
+Azure Bluet
+Red Tulip
+Orange Tulip
+White Tulip
+Pink Tulip
+Spawn Creeper
+Mob Head Dragon
+Chorus Fruit
+Wheat Crops
+Red Stained Glass
+Spawn Skeleton
+Spawn Spider
+Spawn Zombie
+Spawn Slime
+Spawn Ghast
+Spawn Zombie Pigman
+Spawn Enderman
+Spawn Cave Spider
+Spawn Stray
+Spawn Silverfish
+Spawn Blaze
+Spawn Magma Cube
+Spawn Bat
+Spawn Witch
+Spawn Endermite
+Spawn Guardian
+Spawn Shulker
+Spawn Pig
+Spawn Sheep
+Spawn Cow
+Spawn Chicken
+Spawn Squid
+Spawn Wolf
+Carrot on a Stick
+Popped Chorus Fruit
+Oak Sapling
+Black Stained Glass
+Nether Star
+Cobblestone
+Red Mushroom
+Pumpkin Pie
+Firework Rocket
+Firework Star
+Enchanted Book
+Redstone Comparator
+Nether Brick
+Nether Quartz
+Minecart with TNT
+Minecart with Hopper
+Prismarine Shard
+Gold Block
+Prismarine Crystals
+Raw Rabbit
+Cooked Rabbit
+Rabbit Stew
+Rabbit's Foot
+Rabbit Hide
+Armor Stand
+Iron Horse Armor
+Golden Horse Armor
+Diamond Horse Armor
+Beetroot
+Spruce Sapling
+Magenta Stained Glass
+Beetroot Seeds
+Beetroot Soup
+Dragon's Breath
+Splash Potion
+Spectral Arrow
+Stone Slab
+Sandstone Slab
+Wooden Slab
+Cobblestone Slab
+Brick Slab
+Stone Brick Slab
+Nether Brick Slab
+Quartz Slab
+Tipped Arrow
+Lingering Potion
+Shield
+Elytra
+Spruce Boat
+Birch Boat
+Jungle Boat
+Acacia Boat
+Dark Oak Boat
+Totem of Undying
+Bricks
+Shulker Shell
+Birch Sapling
+Light Blue Stained Glass
+Jungle Sapling
+Acacia Sapling
+Dark Oak Sapling
+Farmland
+Furnace
+Burning Furnace
+Standing Sign Block
+Oak Door Block
+Ladder
+Rail
+Cobblestone Stairs
+Wall-mounted Sign Block
+Lever
+Bedrock
+Stone Pressure Plate
+Iron Door Block
+Wooden Pressure Plate
+Redstone Ore
+Glowing Redstone Ore
+Redstone Torch off
+Redstone Torch on
+Stone Button
+Snow
+Ice
+Flowing Water
+Snow Block
+Yellow Stained Glass
+Lime Stained Glass
+Pink Stained Glass
+Gray Stained Glass
+Light Gray Stained Glass
+Cyan Stained Glass
+Wooden Trapdoor
+Stone Monster Egg
+Cobblestone Monster Egg
+Stone Brick Monster Egg
+Mossy Stone Brick Monster Egg
+Cracked Stone Brick Monster Egg
+Chiseled Stone Brick Monster Egg
+Stone Bricks
+Mossy Stone Bricks
+Cracked Stone Bricks
+Chiseled Stone Bricks
+Brown Mushroom Block
