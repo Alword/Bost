@@ -1,0 +1,75 @@
+﻿@using Bost.Shared;
+
+<div class="container">
+
+    <div class="form-inline justify-content-center">
+        <div class="form-group">
+            <input placeholder="Название" class="form-control" id="inputPassword2">
+        </div>
+        <div class="form-group mx-sm-3">
+            <input placeholder="192.168.1.69:25565" class="form-control" id="inputPassword2">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </div>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+                <th scope="col">Описание сервера</th>
+                <th scope="col">Название ядра</th>
+                <th scope="col">Протокол</th>
+                <th scope="col">Онлайн</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 1; i < servers.Count; ++i)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@servers[i].Name</td>
+                    <td>@servers[i].Description</td>
+                    <td>@servers[i].CoreName</td>
+                    <td>@servers[i].Proto</td>
+                    <td>@servers[i].OnlineMax</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    List<ServerStatusData> servers = new List<ServerStatusData>();
+
+    protected override void OnInitialized()
+    {
+        servers.Add(new ServerStatusData()
+        {
+            CoreName = "Spigot",
+            Proto = 123,
+            Description = "Описание",
+            Name = "Название",
+            Max = 80,
+            Online = 3,
+        });
+        servers.Add(new ServerStatusData()
+        {
+            CoreName = "Spigot",
+            Proto = 123,
+            Description = "Описание",
+            Name = "Название",
+            Max = 80,
+            Online = 3,
+        });
+        servers.Add(new ServerStatusData()
+        {
+            CoreName = "Spigot",
+            Proto = 123,
+            Description = "Описание",
+            Name = "Название",
+            Max = 80,
+            Online = 3,
+        });
+    }
+}

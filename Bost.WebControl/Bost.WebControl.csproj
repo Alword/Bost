@@ -26,4 +26,8 @@
     <Folder Include="wwwroot\img\items\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bost.Shared\Bost.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
