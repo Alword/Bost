@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\McAI.Proto\Bost.Proto.csproj" />
+    <ProjectReference Include="..\Bost.Proto\Bost.Proto.csproj" />
   </ItemGroup>
 
 </Project>
