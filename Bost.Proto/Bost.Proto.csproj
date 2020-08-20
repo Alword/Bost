@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Packet\Status\" />
+    <Folder Include="Status\" />
   </ItemGroup>
 
   <ItemGroup>
