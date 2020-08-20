@@ -12,6 +12,8 @@ namespace Bost.Proto.Packet.Handshaking.Serverbound
         public LoginStates LoginState; // VarInt Enum 1 for status, 2 for login
         public override int PacketId => 0x00;
 
+        public HandshakePacket() { }
+
         public override void Read(byte[] array)
         {
             McVarint.TryParse(ref array, out ProtocolVersion);

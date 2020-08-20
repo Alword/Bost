@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Bost.Proto.Types
 {
@@ -28,6 +29,11 @@ namespace Bost.Proto.Types
             } while ((read & 0b10000000) != 0);
 
             return true;
+        }
+
+        internal static IEnumerable<byte> ToBytes(object packetId)
+        {
+            throw new NotImplementedException();
         }
 
         public static bool TryParse(ref byte[] buffer, out int result)

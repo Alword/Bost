@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Proxy", "Bost.Proxy\Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.WebControl", "Bost.WebControl\Bost.WebControl.csproj", "{77A1D5F1-EF31-4D5D-9FC6-195344A7CCC0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{14F5EB95-A337-4E63-88D0-244DAB14E721}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bost.BOT.Tests", "Bost.BOT.Tests\Bost.BOT.Tests.csproj", "{F4AA555A-EA10-4100-B944-71E103184751}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +49,16 @@ Global
 		{77A1D5F1-EF31-4D5D-9FC6-195344A7CCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77A1D5F1-EF31-4D5D-9FC6-195344A7CCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77A1D5F1-EF31-4D5D-9FC6-195344A7CCC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4AA555A-EA10-4100-B944-71E103184751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AA555A-EA10-4100-B944-71E103184751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AA555A-EA10-4100-B944-71E103184751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AA555A-EA10-4100-B944-71E103184751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F4AA555A-EA10-4100-B944-71E103184751} = {14F5EB95-A337-4E63-88D0-244DAB14E721}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2307B5F1-8D25-49B2-BBFB-B5E7F1A22958}

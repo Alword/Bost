@@ -8,8 +8,11 @@ namespace Bost.BOT
 {
     class Program
     {
+        public static int CurrentProto { get; private set; }
         static void Main(string[] args)
         {
+            CurrentProto = 578; // 1.15.2;
+
             // rearrange chunk 
             ConnectionListner connectionListner = new ConnectionListner();
             Agent agent = new Agent("192.168.1.69", 25565);

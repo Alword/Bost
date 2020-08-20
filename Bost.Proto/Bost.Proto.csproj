@@ -27,10 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Status\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Bost.Proxy\Bost.Proxy.csproj" />
   </ItemGroup>
 

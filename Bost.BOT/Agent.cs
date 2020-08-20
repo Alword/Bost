@@ -65,7 +65,7 @@ namespace Bost.BOT
         {
             HandshakePacket handshakePacket = new HandshakePacket()
             {
-                ProtocolVersion = 578,
+                ProtocolVersion = Program.CurrentProto,
                 Address = server,
                 Port = port,
                 LoginState = LoginStates.Login,
