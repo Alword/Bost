@@ -1,4 +1,5 @@
 ﻿using Bost.AgentsHub.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,16 +19,24 @@ namespace Bost.AgentsHub.Extentions
 
             Directory.CreateDirectory(Path.GetDirectoryName(path));
 
-            var options = new DbContextOptionsBuilder<AgentsContext>()
-                .UseSqlite($"Data Source={path};");
+            services.AddDbContext<AgentsContext>(e => e.UseSqlite($"Data Source={path};"));
 
-            using (var context = new AgentsContext(options.Options))
+            return services;
+        }
+
+        public static IApplicationBuilder ApplyMigrations(this IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+            .GetRequiredService<IServiceScopeFactory>()
+            .CreateScope())
             {
-                context.Database.Migrate();
+                using (var context = serviceScope.ServiceProvider.GetService<AgentsContext>())
+                {
+                    context.Database.Migrate();
+                }
             }
 
-            services.AddDbContext<AgentsContext>(e => e.UseSqlite($"Data Source={path};"));
-            return services;
+            return app;
         }
     }
 }
