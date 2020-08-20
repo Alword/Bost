@@ -23,10 +23,10 @@ namespace Bost.AgentsHub.Extentions
 
             using (var context = new AgentsContext(options.Options))
             {
-                context.Database.EnsureCreated();
+                context.Database.Migrate();
             }
 
-            services.AddDbContext<AgentsContext>(e => e = options);
+            services.AddDbContext<AgentsContext>(e => e.UseSqlite($"Data Source={path};"));
             return services;
         }
     }

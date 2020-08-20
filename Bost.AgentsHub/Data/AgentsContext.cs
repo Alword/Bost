@@ -10,7 +10,7 @@ namespace Bost.AgentsHub.Data
     {
         public DbSet<Server> Servers { get; set; }
 
-        public AgentsContext(DbContextOptions<AgentsContext> options) : base(options)
+        public AgentsContext(DbContextOptions options) : base(options)
         {
 
         }
