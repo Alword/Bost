@@ -29,6 +29,17 @@ namespace Bost.AgentsHub.Hubs
             await PingServer(server);
         }
 
+        public async ValueTask RemoveServer(string ipPort)
+        {
+            var server = context.Servers.FirstOrDefault(d => d.IpPort == ipPort);
+            if (server == null) return;
+
+            context.Remove(server);
+            await context.SaveChangesAsync().ConfigureAwait(false);
+
+            await Clients.All.ReciveServerRemove(ipPort);
+        }
+
         public async override Task OnConnectedAsync()
         {
             var servers = context.Servers.ToArray();
@@ -41,6 +52,14 @@ namespace Bost.AgentsHub.Hubs
 
         private async Task PingServer(Server server)
         {
+            if (server.IpPort == null || !server.IpPort.Contains(":"))
+            {
+                var serverToRemove = context.Servers.SingleOrDefault(s => s.IpPort == server.IpPort);
+                context.Remove(serverToRemove);
+                context.SaveChanges();
+                return;
+            }
+
             var split = server.IpPort.Split(":");
             StatusPing statusPing = new StatusPing(split[0], ushort.Parse(split[1]));
             var ping = await statusPing.RequestStatus();
@@ -51,8 +70,10 @@ namespace Bost.AgentsHub.Hubs
                 Description = ping.Description.Text,
                 Max = ping.Players.Max,
                 Online = ping.Players.Online,
+                Proto = ping.Version.Protocol,
+                IpPort = server.IpPort,
                 Name = server.Name,
-                Proto = ping.Version.Protocol
+                Id = server.Id
             };
 
             await Clients.All.ReciveServerStatus(status);
