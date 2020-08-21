@@ -29,6 +29,15 @@ namespace Bost.AgentsHub.Hubs
             await PingServer(server);
         }
 
+        public async ValueTask RemoveServer(string ipPort)
+        {
+            var server = context.Servers.FirstOrDefault(d => d.IpPort.Equals(ipPort, System.StringComparison.InvariantCultureIgnoreCase));
+            if (server == null) return;
+
+            context.Remove(server);
+            await context.SaveChangesAsync().ConfigureAwait(false);
+        }
+
         public async override Task OnConnectedAsync()
         {
             var servers = context.Servers.ToArray();
