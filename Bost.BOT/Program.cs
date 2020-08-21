@@ -1,10 +1,10 @@
-﻿using Bost.BOT.AgentEventHandlers;
+﻿using Bost.Agent.AgentEventHandlers;
 using Bost.Proto;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bost.BOT
+namespace Bost.Agent
 {
     class Program
     {

@@ -1,9 +1,9 @@
-﻿using Bost.BOT.Model;
-using Bost.BOT.Model.PlayerContext;
+﻿using Bost.Agent.Model;
+using Bost.Agent.Model.PlayerContext;
 using Bost.Proto.Packet.Play.Clientbound;
 using System.Collections.Generic;
 
-namespace Bost.BOT.AgentEventHandlers
+namespace Bost.Agent.AgentEventHandlers
 {
     public class SpawnPlayerHandler : BaseAgentEventHandler<SpawnPlayerPacket>
     {

@@ -1,9 +1,9 @@
-﻿using Bost.BOT.Model;
-using Bost.BOT.Types;
+﻿using Bost.Agent.Model;
+using Bost.Agent.Types;
 using Bost.Proto.Mapping;
 using Bost.Proto.Packet.Play.Clientbound;
 
-namespace Bost.BOT.AgentEventHandlers
+namespace Bost.Agent.AgentEventHandlers
 {
     public class ChunkDataHandler : BaseAgentEventHandler<ChunkDataPacket>
     {

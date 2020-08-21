@@ -1,13 +1,13 @@
-﻿using Bost.BOT.Enum;
-using Bost.BOT.Extentions;
-using Bost.BOT.Types;
+﻿using Bost.Agent.Enum;
+using Bost.Agent.Extentions;
+using Bost.Agent.Types;
 using Bost.Proto.Mapping.Generator;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Bost.BOT.Model.AStar
+namespace Bost.Agent.Model.AStar
 {
     public class Pathfinder : IDisposable
     {

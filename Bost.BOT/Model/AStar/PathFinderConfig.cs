@@ -1,4 +1,4 @@
-﻿namespace Bost.BOT.Model.AStar
+﻿namespace Bost.Agent.Model.AStar
 {
     public struct PathFinderConfig
     {

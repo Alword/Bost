@@ -1,8 +1,8 @@
-﻿using Bost.BOT.Model;
+﻿using Bost.Agent.Model;
 using Bost.Proto.Mapping;
 using Bost.Proto.Packet.Play.Clientbound;
 
-namespace Bost.BOT.AgentEventHandlers
+namespace Bost.Agent.AgentEventHandlers
 {
     public class MultiBlockChangeHandler : BaseAgentEventHandler<MultiBlockChangePacket>
     {

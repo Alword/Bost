@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Utils", "Bost.Utils\Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.AgentsHub", "Bost.AgentsHub\Bost.AgentsHub.csproj", "{538EC0E9-CA4E-4199-9472-17305A3C02B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.BOT", "Bost.BOT\Bost.BOT.csproj", "{08EE9AE7-32C4-4F51-9018-FA05F6661A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Agent", "Bost.BOT\Bost.Agent.csproj", "{08EE9AE7-32C4-4F51-9018-FA05F6661A05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Proto", "Bost.Proto\Bost.Proto.csproj", "{17E0E572-99E0-4409-9A91-FD84A77DCFB7}"
 EndProject
@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.WebControl", "Bost.Web
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{14F5EB95-A337-4E63-88D0-244DAB14E721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bost.BOT.Tests", "Bost.BOT.Tests\Bost.BOT.Tests.csproj", "{F4AA555A-EA10-4100-B944-71E103184751}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.BOT.Tests", "Bost.BOT.Tests\Bost.BOT.Tests.csproj", "{F4AA555A-EA10-4100-B944-71E103184751}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bost.Shared", "Bost.Shared\Bost.Shared.csproj", "{2B889FE2-C418-404F-BE5A-6E21D7138D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Shared", "Bost.Shared\Bost.Shared.csproj", "{2B889FE2-C418-404F-BE5A-6E21D7138D05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

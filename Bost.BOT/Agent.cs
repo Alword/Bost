@@ -1,4 +1,4 @@
-﻿using Bost.BOT.State;
+﻿using Bost.Agent.State;
 using Bost.Proto.Enum;
 using Bost.Proto.Packet;
 using Bost.Proto.Packet.Handshaking.Serverbound;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-namespace Bost.BOT
+namespace Bost.Agent
 {
     public class Agent
     {

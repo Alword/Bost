@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bost.BOT.Model
+namespace Bost.Agent.Model
 {
     public struct Int3
     {

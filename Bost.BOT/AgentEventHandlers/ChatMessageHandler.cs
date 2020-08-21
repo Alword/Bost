@@ -1,11 +1,11 @@
-﻿using Bost.BOT.Jobs;
-using Bost.BOT.Model.AStar;
-using Bost.BOT.Types;
+﻿using Bost.Agent.Jobs;
+using Bost.Agent.Model.AStar;
+using Bost.Agent.Types;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bost.BOT.AgentEventHandlers
+namespace Bost.Agent.AgentEventHandlers
 {
     public class ChatMessageHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.ChatMessagePacket>
     {

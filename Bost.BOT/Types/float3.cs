@@ -1,4 +1,4 @@
-﻿namespace Bost.BOT.Model
+﻿namespace Bost.Agent.Model
 {
     public struct Float3
     {

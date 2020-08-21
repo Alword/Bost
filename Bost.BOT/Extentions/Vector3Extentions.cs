@@ -1,9 +1,9 @@
-﻿using Bost.BOT.Model;
-using Bost.BOT.Types;
+﻿using Bost.Agent.Model;
+using Bost.Agent.Types;
 using Bost.Proto.Mapping;
 using System;
 
-namespace Bost.BOT.Extentions
+namespace Bost.Agent.Extentions
 {
     public static class Vector3Extentions
     {

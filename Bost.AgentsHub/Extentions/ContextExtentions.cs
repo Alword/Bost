@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bost.AgentsHub.Extentions
 {
@@ -30,10 +27,8 @@ namespace Bost.AgentsHub.Extentions
             .GetRequiredService<IServiceScopeFactory>()
             .CreateScope())
             {
-                using (var context = serviceScope.ServiceProvider.GetService<AgentsContext>())
-                {
-                    context.Database.Migrate();
-                }
+                using var context = serviceScope.ServiceProvider.GetService<AgentsContext>();
+                context.Database.Migrate();
             }
 
             return app;

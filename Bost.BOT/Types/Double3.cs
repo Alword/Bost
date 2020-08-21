@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bost.BOT.Types
+namespace Bost.Agent.Types
 {
     public struct Double3
     {

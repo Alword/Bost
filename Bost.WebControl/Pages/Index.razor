@@ -1,6 +1,5 @@
 ﻿@page "/"
 @using Bost.WebControl.Data
-@inject HubConnector connector;
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Index> Loc
 @*<h1>@Loc["Hello, world!"]</h1>*@
 
@@ -18,11 +17,6 @@
 @code{
     [Parameter]
     public int Agent1 { get; set; } = 20;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await connector.EnsureConnected("https://localhost:5001/chatHub");
-    }
 
     private void ChangeTheYear()
     {

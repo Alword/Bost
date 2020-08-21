@@ -1,8 +1,8 @@
-﻿using Bost.BOT.Model;
-using Bost.BOT.Model.PlayerContext;
+﻿using Bost.Agent.Model;
+using Bost.Agent.Model.PlayerContext;
 using System.Collections.Generic;
 
-namespace Bost.BOT.State
+namespace Bost.Agent.State
 {
     public class GameState
     {

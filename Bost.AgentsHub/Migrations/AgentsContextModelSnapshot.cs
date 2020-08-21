@@ -24,8 +24,8 @@ namespace Bost.AgentsHub.Migrations
                     b.Property<string>("IpPort")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

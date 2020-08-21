@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bost.BOT.Jobs
+namespace Bost.Agent.Jobs
 {
     public class StatusPing
     {

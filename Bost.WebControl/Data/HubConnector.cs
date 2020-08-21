@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
+﻿using Bost.Shared;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,9 @@ namespace Bost.WebControl.Data
                 .WithUrl(url)
                 .Build();
 
-            hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+            hubConnection.On<ServerStatusData>("ReciveServerStatus", (ServerStatusData) =>
             {
-                var encodedMsg = $"{user}: {message}";
+                var encodedMsg = $"{ServerStatusData.CoreName}: {ServerStatusData.Description}";
                 Console.WriteLine(encodedMsg);
             });
             try

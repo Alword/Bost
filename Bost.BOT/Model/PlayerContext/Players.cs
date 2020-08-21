@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bost.BOT.Model.PlayerContext
+namespace Bost.Agent.Model.PlayerContext
 {
     public class Players
     {

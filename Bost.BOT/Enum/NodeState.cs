@@ -1,4 +1,4 @@
-﻿namespace Bost.BOT.Enum
+﻿namespace Bost.Agent.Enum
 {
     public enum NodeState
     {

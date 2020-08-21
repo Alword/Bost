@@ -1,4 +1,4 @@
-﻿namespace Bost.BOT.Types
+﻿namespace Bost.Agent.Types
 {
     public struct Int2
     {

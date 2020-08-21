@@ -1,15 +1,16 @@
 ﻿@using Bost.Shared;
-
+@using Microsoft.AspNetCore.SignalR.Client
+@using System.Diagnostics
 <div class="container">
 
     <div class="form-inline justify-content-center">
         <div class="form-group">
-            <input placeholder="Название" class="form-control" id="inputPassword2">
+            <input placeholder="Название" @bind="Name"  @bind:event="oninput" class="form-control">
         </div>
         <div class="form-group mx-sm-3">
-            <input placeholder="192.168.1.69:25565" class="form-control" id="inputPassword2">
+            <input placeholder="192.168.1.69:25565" @bind="IpPassword"  @bind:event="oninput" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Добавить</button>
+        <button @onclick="(()=>AddServer(Name,IpPassword))" class="btn btn-primary">Добавить</button>
     </div>
 
     <table class="table table-bordered mt-3">
@@ -40,28 +41,45 @@
 </div>
 
 @code {
+
+    private string Name { get; set; }
+    private string IpPassword { get; set; }
+
+    private HubConnection hubConnection;
+
     List<ServerStatusData> servers = new List<ServerStatusData>();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        servers.Add(new ServerStatusData()
+        AddDebugData();
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl("https://localhost:5001/servershub")
+            .Build();
+
+        hubConnection.On<ServerStatusData>("ReciveServerStatus", (serverStatusData) =>
         {
-            CoreName = "Spigot",
-            Proto = 123,
-            Description = "Описание",
-            Name = "Название",
-            Max = 80,
-            Online = 3,
+            servers.Add(serverStatusData);
+            StateHasChanged();
         });
-        servers.Add(new ServerStatusData()
+        try
         {
-            CoreName = "Spigot",
-            Proto = 123,
-            Description = "Описание",
-            Name = "Название",
-            Max = 80,
-            Online = 3,
-        });
+            await hubConnection.StartAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            //throw;
+        }
+    }
+
+    protected void AddServer(string name, string ipport)
+    {
+        hubConnection.SendAsync("AddServer", name, ipport);
+    }
+
+    [Conditional("Debug")]
+    private void AddDebugData()
+    {
         servers.Add(new ServerStatusData()
         {
             CoreName = "Spigot",

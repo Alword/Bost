@@ -1,11 +1,11 @@
-﻿using Bost.BOT.Jobs;
+﻿using Bost.Agent.Jobs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Bost.BOT.Tests.Jobs
+namespace Bost.Agent.Tests.Jobs
 {
     public class StatusPingTest
     {

@@ -1,7 +1,7 @@
 ﻿using Bost.Proto.Packet;
 using Bost.Proto.StreamReader.Abstractions;
 
-namespace Bost.BOT.AgentEventHandlers
+namespace Bost.Agent.AgentEventHandlers
 {
     public abstract class BaseAgentEventHandler<T> : IPacketEventHandler<T> where T : BasePacket
     {

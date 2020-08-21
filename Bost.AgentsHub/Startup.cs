@@ -44,7 +44,7 @@ namespace Bost.AgentsHub
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
-                endpoints.MapHub<ChatHub>("/chathub");
+                endpoints.MapHub<ServersHub>("/servershub");
             });
         }
     }

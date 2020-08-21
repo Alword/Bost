@@ -12,7 +12,7 @@ namespace Bost.AgentsHub.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     IpPort = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

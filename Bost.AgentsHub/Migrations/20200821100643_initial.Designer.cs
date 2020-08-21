@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bost.AgentsHub.Migrations
 {
     [DbContext(typeof(AgentsContext))]
-    [Migration("20200820172924_initial")]
+    [Migration("20200821100643_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,8 +26,8 @@ namespace Bost.AgentsHub.Migrations
                     b.Property<string>("IpPort")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

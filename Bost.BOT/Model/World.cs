@@ -1,10 +1,10 @@
-﻿using Bost.BOT.Extentions;
-using Bost.BOT.Types;
+﻿using Bost.Agent.Extentions;
+using Bost.Agent.Types;
 using Bost.Proto.Mapping;
 using Bost.Proto.Mapping.Generator;
 using System.Collections.Generic;
 
-namespace Bost.BOT.Model
+namespace Bost.Agent.Model
 {
     public class World
     {

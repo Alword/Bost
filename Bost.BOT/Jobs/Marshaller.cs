@@ -1,10 +1,10 @@
-﻿using Bost.BOT.Model.AStar;
+﻿using Bost.Agent.Model.AStar;
 using Bost.Proto.Packet.Play.Serverbound;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bost.BOT.Jobs
+namespace Bost.Agent.Jobs
 {
     public class Marshaller
     {
