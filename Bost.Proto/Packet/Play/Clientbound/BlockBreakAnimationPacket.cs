@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class BlockBreakAnimationPacket : BasePacket
     {
-        public override int PacketId => 0x09;
+        public override int PacketId => 0x08;
 
         public int EntityID; //Varint
         public Position Location;

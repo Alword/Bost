@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class AcknowledgePlayerDiggingPacket : BasePacket
     {
-        public override int PacketId => 0x08;
+        public override int PacketId => 0x07;
 
         public Position Location;
         public int Block; //Varint

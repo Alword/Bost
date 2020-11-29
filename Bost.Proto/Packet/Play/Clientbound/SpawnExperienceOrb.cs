@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
     public class SpawnExperienceOrb : BasePacket
     {
         public override int PacketId => 0x01;
-        public int EntityId; // varing
+        public int EntityId; // varint
         public double X;
         public double Y;
         public double Z;

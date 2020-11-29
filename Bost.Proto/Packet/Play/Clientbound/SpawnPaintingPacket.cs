@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class SpawnPaintingPacket : BasePacket
     {
-        public override int PacketId => 0x04;
+        public override int PacketId => 0x03;
 
         public int EntityID; //Varint
         public Guid EntityUUID; //UUID

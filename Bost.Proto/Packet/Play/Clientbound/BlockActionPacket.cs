@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class BlockActionPacket : BasePacket
     {
-        public override int PacketId => 0x0B;
+        public override int PacketId => 0x0A;
 
         public Position Location;
         public byte ActionID; //Unsigned Byte

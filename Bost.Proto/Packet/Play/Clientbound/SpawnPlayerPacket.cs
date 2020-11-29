@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class SpawnPlayerPacket : BasePacket
     {
-        public override int PacketId => 0x05;
+        public override int PacketId => 0x04;
         public int EntityID; //Varint
         public Guid PlayerUUID; //UUID
         public double X;

@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class ServerDifficultyPacket : BasePacket
     {
-        public override int PacketId => 0x0E;
+        public override int PacketId => 0x0D;
         public byte Difficulty;
         public bool DifficultyLocked;
         public override void Read(byte[] array)

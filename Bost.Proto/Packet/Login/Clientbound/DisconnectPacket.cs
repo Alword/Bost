@@ -1,16 +1,17 @@
-﻿using Bost.Proto.Types;
+﻿using Bost.Proto.Model.ChatObject;
+using Bost.Proto.Types;
 using System;
 
 namespace Bost.Proto.Packet.Login.Clientbound
 {
-    public class DisconnectaPacket : BasePacket
+    public class DisconnectPacket : BasePacket
     {
         public override int PacketId => 0x00;
-        public string Reason; //Chat
+        public Chat Reason;
 
         public override void Read(byte[] array)
         {
-            McString.TryParse(ref array, out Reason);
+            McChat.TryParse(ref array, out Reason);
         }
 
         public override byte[] Write()

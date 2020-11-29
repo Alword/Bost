@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class ChatMessagePacket : BasePacket
     {
-        public override int PacketId => 0x0F;
+        public override int PacketId => 0x0E;
 
         public Chat Chat; //Varint
         public byte Position;

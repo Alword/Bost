@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class BlockChangePacket : BasePacket
     {
-        public override int PacketId => 0x0C;
+        public override int PacketId => 0x0B;
 
         public Position Location;
         public int BlocID; //Varint

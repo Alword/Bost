@@ -5,8 +5,8 @@ namespace Bost.Proto.Packet.Login.Serverbound
 {
     public class LoginStartPacket : BasePacket
     {
-        [MaxLength(16)] public string Name { get; set; } // Player's Username 
         public override int PacketId => 0x00;
+        [MaxLength(16)] public string Name { get; set; } // Player's Username 
 
         public override void Read(byte[] array)
         {

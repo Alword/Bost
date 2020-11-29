@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class BlockEntityDataPacket : BasePacket
     {
-        public override int PacketId => 0x0A;
+        public override int PacketId => 0x09;
 
         public Position Location;
         public byte Action; //Unsigned Byte
