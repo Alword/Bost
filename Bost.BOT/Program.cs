@@ -11,11 +11,11 @@ namespace Bost.Agent
         public static int CurrentProto { get; private set; }
         static void Main(string[] args)
         {
-            CurrentProto = 578; // 1.15.2;
+            CurrentProto = 754; // 1.15.2;
 
             // rearrange chunk 
             ConnectionListner connectionListner = new ConnectionListner();
-            Agent agent = new Agent("192.168.1.69", 25565);
+            Agent agent = new Agent("95.217.100.55", 25852);
             agent.OnRecive += connectionListner.ReciveListner;
             agent.OnSend += connectionListner.SendListner;
 
