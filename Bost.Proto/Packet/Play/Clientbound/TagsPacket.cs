@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class TagsPacket : BasePacket
     {
-        public override int PacketId => 0x5C;
+        public override int PacketId => 0x5B;
 
         public Tags BlockTags;
         public Tags ItemTags;

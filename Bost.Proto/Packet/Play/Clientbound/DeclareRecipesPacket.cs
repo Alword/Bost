@@ -4,7 +4,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class DeclareRecipesPacket : BasePacket
     {
-        public override int PacketId => 0x5B;
+        public override int PacketId => 0x5A;
 
         public override void Read(byte[] array)
         {

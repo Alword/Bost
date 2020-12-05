@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityPropertiesPacket : BasePacket
     {
-        public override int PacketId => 0x59;
+        public override int PacketId => 0x58;
 
         public int EntityID; //Varint
         public int NumberOfProperties;
