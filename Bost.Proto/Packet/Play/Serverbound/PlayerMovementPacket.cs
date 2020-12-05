@@ -4,7 +4,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class PlayerMovementPacket : BasePacket
     {
-        public override int PacketId => 0x14;
+        public override int PacketId => 0x15;
 
         /// <summary>
         /// True if the client is on the ground, false otherwise 

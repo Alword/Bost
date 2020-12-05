@@ -1,8 +1,8 @@
 ﻿namespace Bost.Proto.Enum
 {
-    public enum MainHands
-    {
-        Left = 0,
-        Right
-    }
+	public enum MainHands
+	{
+		Left = 0,
+		Right = 1
+	}
 }

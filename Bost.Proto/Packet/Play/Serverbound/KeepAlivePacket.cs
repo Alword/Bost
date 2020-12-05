@@ -4,12 +4,12 @@ namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class KeepAlivePacket : BasePacket
     {
-        public override int PacketId => 0x0F;
+        public override int PacketId => 0x10;
         public long KeepAliveID;
 
         public override void Read(byte[] array)
         {
-            McLong.TryParse(ref array, out KeepAliveID);
+			_ = McLong.TryParse(ref array, out KeepAliveID);
         }
 
         public override byte[] Write()

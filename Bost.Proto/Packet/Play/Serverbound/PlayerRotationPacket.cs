@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 {
     class PlayerRotationPacket : BasePacket
     {
-        public override int PacketId => 0x13;
+        public override int PacketId => 0x14;
         public float Yaw;
         public float Pitch;
         public bool OnGround;

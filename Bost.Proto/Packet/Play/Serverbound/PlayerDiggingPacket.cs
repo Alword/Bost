@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class PlayerDiggingPacket : BasePacket
     {
-        public override int PacketId => 0x1A;
+        public override int PacketId => 0x1B;
 
         public int Status; //Varint Enum
         public Position Location;

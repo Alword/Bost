@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class PickItemPacket : BasePacket
     {
-        public override int PacketId => 0x17;
+        public override int PacketId => 0x18;
         public int SlotToUse; //Varint
 
         public override void Read(byte[] array)

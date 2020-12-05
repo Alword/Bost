@@ -2,6 +2,7 @@
 using Bost.Proto.Extentions;
 using Bost.Proto.Types;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Bost.Proto.Packet.Play.Serverbound
@@ -9,7 +10,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
     public class ClientSettingsPacket : BasePacket
     {
         public override int PacketId => 0x05;
-        public string Locale; //string (16)
+        [MaxLength(16)]public string Locale; //string (16)
         public byte ViewDistance;
         public ChatModes ChatMode; //Varint Enum
         public bool ChatColors;

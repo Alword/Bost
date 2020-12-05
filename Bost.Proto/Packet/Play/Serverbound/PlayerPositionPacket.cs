@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class PlayerPositionPacket : BasePacket
     {
-        public override int PacketId => 0x11;
+        public override int PacketId => 0x12;
 
         public double X;
         public double FeetY; // Absolute feet position, normally Head Y - 1.62 

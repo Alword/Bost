@@ -9,7 +9,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 
         public override void Read(byte[] array)
         {
-            McVarint.TryParse(ref array, out TeleportID);
+			_ = McVarint.TryParse(ref array, out TeleportID);
         }
 
         public override byte[] Write()

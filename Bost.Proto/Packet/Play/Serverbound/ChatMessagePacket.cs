@@ -1,12 +1,13 @@
 ﻿using Bost.Proto.Types;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bost.Proto.Packet.Play.Serverbound
 {
     public class ChatMessagePacket : BasePacket
     {
         public override int PacketId => 0x03;
-        public string Message; //string(256)
+        [MaxLength(256)]public string Message; //string(256)
 
         public override void Read(byte[] array)
         {
