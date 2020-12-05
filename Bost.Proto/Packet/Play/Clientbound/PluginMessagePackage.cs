@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class PluginMessagePackage : BasePacket
     {
-        public override int PacketId => 0x19;
+        public override int PacketId => 0x17;
         public string Channel;
         public byte[] Data;
 

@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class ExplosionPacket : BasePacket
     {
-        public override int PacketId => 0x1D;
+        public override int PacketId => 0x1B;
 
         public float X;
         public float Y;

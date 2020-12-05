@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class UnloadChunkPacket : BasePacket
     {
-        public override int PacketId => 0x1E;
+        public override int PacketId => 0x1C;
         public int ChunkX;
         public int ChunkZ;
 

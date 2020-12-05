@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class VehicleMovePacket : BasePacket
     {
-        public override int PacketId => 0x2D;
+        public override int PacketId => 0x2B;
 
         public double X;
         public double Y;

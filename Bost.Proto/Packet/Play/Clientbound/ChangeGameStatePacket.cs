@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class ChangeGameStatePacket : BasePacket
     {
-        public override int PacketId => 0x1F;
+        public override int PacketId => 0x1D;
 
         public Reasons Reason; //Unsigned Byte
         public float Value;

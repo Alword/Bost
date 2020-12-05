@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class WindowConfirmationPacket : BasePacket
     {
-        public override int PacketId => 0x13;
+        public override int PacketId => 0x11;
 
         public sbyte WindowID;
         public short ActionNumber;

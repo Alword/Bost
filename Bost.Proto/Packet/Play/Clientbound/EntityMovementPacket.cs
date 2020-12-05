@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityMovementPacket : BasePacket
     {
-        public override int PacketId => 0x2C;
+        public override int PacketId => 0x2A;
         public int EntityID; //Varint
 
         public override void Read(byte[] array)

@@ -7,13 +7,14 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class ChunkDataPacket : BasePacket
     {
-        public override int PacketId => 0x22;
+        public override int PacketId => 0x20;
 
-        public int ChunkX; // ing
+        public int ChunkX; // int
         public int ChunkZ; // int
         public bool Fullchunk;
         public int PrimaryBitMask; // varint
         public NbtCompoundTag Heightmaps;
+        public int Biomeslength; //Optional VarInt *
         public int[] Biomes; // Not present if full chunk is false. 
         public int Size; // varint
         public byte[] Data;

@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityPositionAndRotationPacket : BasePacket
     {
-        public override int PacketId => 0x2A;
+        public override int PacketId => 0x28;
 
         public int EntityId; //Varint
         public short DeltaX;

@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class DisconnectPacket : BasePacket
     {
-        public override int PacketId => 0x1B;
+        public override int PacketId => 0x19;
         public Chat Reason;
 
         public override void Read(byte[] array)

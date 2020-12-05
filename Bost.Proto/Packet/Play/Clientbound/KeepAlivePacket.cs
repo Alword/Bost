@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class KeepAlivePacket : BasePacket
     {
-        public override int PacketId => 0x21;
+        public override int PacketId => 0x1F;
         public long KeepAliveID;
 
         public override void Read(byte[] array)

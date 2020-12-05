@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityRotationPacket : BasePacket
     {
-        public override int PacketId => 0x2B;
+        public override int PacketId => 0x29;
 
         public int EntityID; //Varint
         public byte Yaw; //Angle

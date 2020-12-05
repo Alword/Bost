@@ -11,7 +11,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
         {
         }
 
-        public override int PacketId => 0x1C;
+        public override int PacketId => 0x1A;
 
         public override void Read(byte[] array)
         {

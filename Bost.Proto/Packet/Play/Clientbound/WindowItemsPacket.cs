@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class WindowItemsPacket : BasePacket
     {
-        public override int PacketId => 0x15;
+        public override int PacketId => 0x13;
 
         public byte WindowID; // Unsigned Byte
         public short Count;

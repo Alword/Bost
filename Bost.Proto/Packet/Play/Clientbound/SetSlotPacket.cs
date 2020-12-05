@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class SetSlotPacket : BasePacket
     {
-        public override int PacketId => 0x17;
+        public override int PacketId => 0x15;
 
         public sbyte WindowID;
         public short Slot;

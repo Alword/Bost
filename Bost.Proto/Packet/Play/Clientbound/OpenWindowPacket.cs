@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class OpenWindowPacket : BasePacket
     {
-        public override int PacketId => 0x2F;
+        public override int PacketId => 0x2D;
 
         public int WindowID; //Varint
         public int WindowType; //Varint

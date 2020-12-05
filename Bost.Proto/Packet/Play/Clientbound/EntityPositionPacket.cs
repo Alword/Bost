@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityPositionPacket : BasePacket
     {
-        public override int PacketId => 0x29;
+        public override int PacketId => 0x27;
 
         public int EntityID; //Varint
 

@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EffectPacket : BasePacket
     {
-        public override int PacketId => 0x23;
+        public override int PacketId => 0x21;
 
         public int EffectID;
         public Position Positions;

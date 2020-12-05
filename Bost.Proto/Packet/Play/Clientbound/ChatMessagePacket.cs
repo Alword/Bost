@@ -10,11 +10,13 @@ namespace Bost.Proto.Packet.Play.Clientbound
 
         public Chat Chat; //Varint
         public byte Position;
+        public Guid Sender;
 
         public override void Read(byte[] array)
         {
             McChat.TryParse(ref array, out Chat);
             McUnsignedByte.TryParse(ref array, out Position);
+            McUUID.TryParse(ref array, out Sender);
         }
 
         public override byte[] Write()

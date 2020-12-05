@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class CloseWindowPacket : BasePacket
     {
-        public override int PacketId => 0x14;
+        public override int PacketId => 0x12;
         public byte WindowID; //Unsigned Byte
 
         public override void Read(byte[] array)
