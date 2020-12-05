@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class TimeUpdatePacket : BasePacket
     {
-        public override int PacketId => 0x4F;
+        public override int PacketId => 0x4E;
 
         public long WorldAge;
         public long TimeOfDay;

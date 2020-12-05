@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class CollectItemPacket : BasePacket
     {
-        public override int PacketId => 0x56;
+        public override int PacketId => 0x55;
 
         public int CollectedEntityID; //Varint
         public int CollectorEntityID; //Varint

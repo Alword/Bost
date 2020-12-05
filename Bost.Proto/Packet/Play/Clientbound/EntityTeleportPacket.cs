@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityTeleportPacket : BasePacket
     {
-        public override int PacketId => 0x57;
+        public override int PacketId => 0x56;
 
         public int EntityId;// varint
         public double X;

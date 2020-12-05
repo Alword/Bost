@@ -5,19 +5,27 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class RespawnPacket : BasePacket
     {
-        public override int PacketId => 0x3B;
+        public override int PacketId => 0x39;
 
-        public int Dimension; //Int Enum
+        public NbtLib.NbtCompoundTag Dimension; //*NBT Tag Compound
+        public string WorldName; //*
         public long HashedSeed;
         public byte Gamemode; //Unsigned Byte
-        public string LevelType; //String (16)
+        public byte PreviousGamemode; //*
+        public bool IsDebug; //*
+        public bool IsFlat; //*
+        public bool CopyMetadata; //*
 
         public override void Read(byte[] array)
         {
-            McInt.TryParse(ref array, out Dimension);
+            McNbtCompoundTag.TryParse(ref array, out Dimension);
+            McString.TryParse(ref array, out WorldName);
             McLong.TryParse(ref array, out HashedSeed);
             McUnsignedByte.TryParse(ref array, out Gamemode);
-            McString.TryParse(ref array, out LevelType);
+            McUnsignedByte.TryParse(ref array, out PreviousGamemode);
+            McBoolean.TryParse(ref array, out IsDebug);
+            McBoolean.TryParse(ref array, out IsFlat);
+            McBoolean.TryParse(ref array, out CopyMetadata);
         }
 
         public override byte[] Write()
@@ -28,7 +36,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
         public override string ToString()
         {
             return $"[Respawn] Dimension:{Dimension} HashedSeed:{HashedSeed} " +
-                $"Gamemode:{Gamemode} LevelType:{LevelType}";
+                $"Gamemode:{Gamemode}";
         }
     }
 }
