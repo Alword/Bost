@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class PlayerInfoPacket : BasePacket
     {
-        public override int PacketId => 0x34;
+        public override int PacketId => 0x32;
 
         public int Action; //Varint
         public int NumberOfPlayers; //Varint

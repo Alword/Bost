@@ -6,7 +6,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class DestroyEntitiesPacket : BasePacket
     {
-        public override int PacketId => 0x38;
+        public override int PacketId => 0x36;
 
         public int Count; //Varint
         public int[] EntityIDs; //Array of VarInt

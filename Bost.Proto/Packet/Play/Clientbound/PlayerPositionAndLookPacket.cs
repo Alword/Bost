@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class PlayerPositionAndLookPacket : BasePacket
     {
-        public override int PacketId => 0x36;
+        public override int PacketId => 0x34;
 
         public double X;
         public double Y;

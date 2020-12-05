@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class EntityHeadLookPacket : BasePacket
     {
-        public override int PacketId => 0x3C;
+        public override int PacketId => 0x3A;
 
         public int EntityID; //Varint
         public byte HeadYaw; //Angle

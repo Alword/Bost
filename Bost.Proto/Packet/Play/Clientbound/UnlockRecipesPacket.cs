@@ -6,12 +6,16 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class UnlockRecipesPacket : BasePacket
     {
-        public override int PacketId => 0x37;
+        public override int PacketId => 0x35;
         public int Action;   //Varint
         public bool CraftingRecipeBookOpen;
         public bool CraftingRecipeBookFilterActive;
         public bool SmeltingRecipeBookOpen;
         public bool SmeltingRecipeBookFilterActive;
+        public bool BlastFuranceRecipeBookOpen; //*
+        public bool BlastFuranceRecipeBookFilterActive; //*
+        public bool SmokerRecipeBookOpen; //*
+        public bool SmokerRecipeBookFilterActive; //*
         public int ArraySize1;  //Varint
         public string RecipeIDs;  //Array of Identifier
         public int ArraySize2;    //Optional VarInt
@@ -26,6 +30,10 @@ namespace Bost.Proto.Packet.Play.Clientbound
             McBoolean.TryParse(ref array, out CraftingRecipeBookFilterActive);
             McBoolean.TryParse(ref array, out SmeltingRecipeBookOpen);
             McBoolean.TryParse(ref array, out SmeltingRecipeBookFilterActive);
+            McBoolean.TryParse(ref array, out BlastFuranceRecipeBookOpen);
+            McBoolean.TryParse(ref array, out BlastFuranceRecipeBookFilterActive);
+            McBoolean.TryParse(ref array, out SmokerRecipeBookOpen);
+            McBoolean.TryParse(ref array, out SmokerRecipeBookFilterActive);
             McVarint.TryParse(ref array, out ArraySize1);
             McStringArray.TryParse(ArraySize1, ref array, out RecipeIDs1);
             if (Action == 0)

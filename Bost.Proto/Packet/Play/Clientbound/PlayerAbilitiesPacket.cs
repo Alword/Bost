@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class PlayerAbilitiesPacket : BasePacket
     {
-        public override int PacketId => 0x32;
+        public override int PacketId => 0x30;
 
         public byte Flags;
         public float FlyingSpeed;

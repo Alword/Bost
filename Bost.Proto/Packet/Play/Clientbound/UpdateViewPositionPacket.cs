@@ -5,7 +5,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class UpdateViewPositionPacket : BasePacket
     {
-        public override int PacketId => 0x41;
+        public override int PacketId => 0x40;
 
         public int ChunkX; //Varint
         public int ChunkZ; //Varint
