@@ -9,7 +9,6 @@ namespace Bost.Proto.Model
     public class Player
     {
         public Guid UUID; //UUID
-
         public string Name; //string(16)
         public int NumberOfProperties; //Varint
         public Property[] Propertys;
