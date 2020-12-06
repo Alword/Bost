@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\ChunkSectionError1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include=".Jobs\StatusPingTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ChunkSectionError1.txt" />
   </ItemGroup>
 
   <ItemGroup>

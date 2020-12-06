@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
 	public class StatisticsPacket : BasePacket
 	{
-		public override int PacketId => 0x07;
+		public override int PacketId => 0x06;
 
 		public int Count; //Varint
 		public int Value; //Varint

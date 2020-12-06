@@ -3,28 +3,25 @@ using System;
 
 namespace Bost.Proto
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Log($"[Proto] Start session");
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			Log($"[Proto] Start session");
 
-            ConnectionListner connectionListner = new ConnectionListner();
+			ConnectionListner connectionListner = new ConnectionListner();
 
-            ProxyClient proxy = new ProxyClient("0.0.0.0", "94.28.213.8", 25565);
-            proxy.Start();
-            proxy.OnReciveMessage += connectionListner.ReciveListner;
-            proxy.OnSendMessage += connectionListner.SendListner;
+			ProxyClient proxy = new ProxyClient("0.0.0.0", "95.217.100.55", 25852);
+			proxy.Start();
+			proxy.OnReciveMessage += connectionListner.ReciveListner;
+			proxy.OnSendMessage += connectionListner.SendListner;
 
-            Console.ReadLine();
-        }
+			Console.ReadLine();
+		}
 
-        public static void Log(string message)
-        {
-            if ((message.Contains("0x11") && message.Contains("Server")))
-            {
-                Console.WriteLine(message);
-            }
-        }
-    }
+		public static void Log(string message)
+		{
+			Console.WriteLine(message);
+		}
+	}
 }

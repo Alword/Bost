@@ -7,7 +7,7 @@ namespace Bost.Proto.Packet.Play.Clientbound
 {
     public class MultiBlockChangePacket : BasePacket
     {
-        public override int PacketId => 0x10;
+        public override int PacketId => 0x3B;
 
         public int ChunkX;
         public int ChunkZ;

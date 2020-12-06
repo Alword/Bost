@@ -18,40 +18,42 @@ namespace Bost.Proto.Packet.Play.Clientbound
 		public int[] Biomes; // Not present if full chunk is false. 
 		public int Size; // varint
 		public byte[] Data;
-		public int BlockEntitiesCount;
+		public int NumberOfBlockEntities;
 		public NbtCompoundTag[] BlockEntities;
 
 		public override void Read(byte[] array)
 		{
-			_ = McInt.TryParse(ref array, out ChunkX); // int 
-			_ = McInt.TryParse(ref array, out ChunkZ); // int 
-			_ = McBoolean.TryParse(ref array, out Fullchunk); // bool
-			_ = McVarint.TryParse(ref array, out PrimaryBitMask); // var int
+			McInt.TryParse(ref array, out ChunkX); // int 
+			McInt.TryParse(ref array, out ChunkZ); // int 
+			McBoolean.TryParse(ref array, out Fullchunk); // bool
+			McVarint.TryParse(ref array, out PrimaryBitMask); // var int
 
-			_ = McNbtCompoundTag.TryParse(ref array, out Heightmaps);
+			McNbtCompoundTag.TryParse(ref array, out Heightmaps);
 
 			if (Fullchunk)
 			{
-				Biomes = new int[1024];
-				for (int i = 0; i < 1024; i++)
+				McVarint.TryParse(ref array, out Biomeslength);
+				Biomes = new int[Biomeslength];
+				for (int i = 0; i < Biomeslength; i++)
 				{
-					_ = McInt.TryParse(ref array, out Biomes[i]);
+					McVarint.TryParse(ref array, out Biomes[i]);
 				}
 			}
 
 			// chunk data
-			_ = McVarint.TryParse(ref array, out Size); // size varint
-			_ = McByteArray.TryParse(Size, ref array, out Data); // Byte array
+			McVarint.TryParse(ref array, out Size); // size varint
+			McByteArray.TryParse(Size, ref array, out Data); // Byte array
 
 			// BlockEntities
-			_ = McVarint.TryParse(ref array, out BlockEntitiesCount);
+			McVarint.TryParse(ref array, out NumberOfBlockEntities);
 
-			BlockEntities = new NbtCompoundTag[BlockEntitiesCount];
+			BlockEntities = new NbtCompoundTag[NumberOfBlockEntities];
 
-			for (int i = 0; i < BlockEntitiesCount; i++)
+			var read1 = new NbtParser();
+			Stream stream1 = new MemoryStream(array);
+			for (int i = 0; i < NumberOfBlockEntities; i++)
 			{
-				_ = McNbtCompoundTag.TryParse(ref array, out var result);
-				BlockEntities[i] = result;
+				BlockEntities[i] = read1.ParseNbtStream(stream1);
 			}
 		}
 

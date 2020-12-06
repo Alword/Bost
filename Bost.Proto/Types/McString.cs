@@ -8,7 +8,7 @@ namespace Bost.Proto.Types
         public static bool TryParse(ref byte[] buffer, out string result)
         {
             var isParsed = McVarint.TryParse(ref buffer, out int length);
-            result = Encoding.UTF8.GetString(buffer[0..length]);
+            result = Encoding.UTF8.GetString(buffer[0..6]);
             buffer = buffer[length..];
             return isParsed;
         }

@@ -21,7 +21,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 
         public override string ToString()
         {
-            return $"[PlayerAbilities] Flags:{Flags} FlyingSpeed:{FlyingSpeed} WalkingSpeed:{WalkingSpeed}";
+            return $"[PlayerAbilities] Flags:{Flags}";
         }
     }
 }
