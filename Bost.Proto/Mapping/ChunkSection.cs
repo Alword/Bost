@@ -36,20 +36,12 @@ namespace Bost.Proto.Mapping
 					for (int x = 0; x < SizeX; x++)
 					{
 						int blockNumber = (((y * SizeY) + z) * SizeZ) + x;
-						int startLong = (blockNumber * bitsPerBlock) / 64;
-						int startOffset = (blockNumber * bitsPerBlock) % 64;
-						int endLong = ((blockNumber + 1) * bitsPerBlock - 1) / 64;
+						int startLong = blockNumber / (64 / bitsPerBlock);
+						int startOffset = (blockNumber - startLong * (64 / bitsPerBlock)) * bitsPerBlock;
 
 						uint intData;
-						if (startLong == endLong)
-						{
-							intData = (uint)(dataArray[startLong] >> startOffset);
-						}
-						else
-						{
-							int endOffset = 64 - startOffset;
-							intData = (uint)(dataArray[startLong] >> startOffset | dataArray[endLong] << endOffset);
-						}
+						intData = (uint)(dataArray[startLong] >> startOffset);
+
 						intData &= individualValueMask;
 
 						BlockId state = new BlockId(palette.StateForId(intData).Id);
