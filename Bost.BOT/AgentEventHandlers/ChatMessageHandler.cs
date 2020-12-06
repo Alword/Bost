@@ -7,36 +7,34 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.AgentEventHandlers
 {
-    public class ChatMessageHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.ChatMessagePacket>
-    {
-        public ChatMessageHandler(Agent agent) : base(agent) { }
+	public class ChatMessageHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.ChatMessagePacket>
+	{
+		public ChatMessageHandler(Agent agent) : base(agent) { }
 
-        public override void OnPacket(Proto.Packet.Play.Clientbound.ChatMessagePacket chatMessagePacket)
-        {
-            Task.Run(() =>
-            {
-                var chat = chatMessagePacket.Chat;
+		public override void OnPacket(Proto.Packet.Play.Clientbound.ChatMessagePacket chatMessagePacket)
+		{
+			Console.WriteLine(chatMessagePacket.Chat);
+			Task.Run(() =>
+			{
+				Proto.Model.ChatObject.Chat chat = chatMessagePacket.Chat;
+				var text = chat.GetText();
+				if (text.Contains("сюда", StringComparison.InvariantCultureIgnoreCase))
+				{
+					using Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default);
 
-                var name = chat.GetSenderName();
-                var text = chat.GetText();
+					var startPosition = agent.gameState.Bot.Position;
+					var endPosition = agent.gameState.Players.ContainsNick("Dalores").Position;
 
-                if (text.Contains("сюда", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    using Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default);
+					Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
+					Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);
 
-                    var startPosition = agent.gameState.Bot.Position;
-                    var endPosition = agent.gameState.Players.ContainsNick(name).Position;
+					var path = pathfinder.FindPath(from, to);
 
-                    Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
-                    Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);
+					Marshaller marshaller = new Marshaller(agent, path.Take(path.Count - 2).ToList());
+					marshaller.Start(default);
 
-                    var path = pathfinder.FindPath(from, to);
-
-                    Marshaller marshaller = new Marshaller(agent, path.Take(path.Count - 2).ToList());
-                    marshaller.Start(default);
-
-                }
-            });
-        }
-    }
+				}
+			});
+		}
+	}
 }

@@ -14,7 +14,6 @@ namespace Bost.Agent.AgentEventHandlers
 
         public override void OnPacket(PlayerInfoPacket data)
         {
-            Console.WriteLine(data);
             if (data.Players != null)
             {
                 if (data.Action == 0)
