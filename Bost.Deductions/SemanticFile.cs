@@ -6,16 +6,17 @@ namespace Bost.Deductions
 {
 	public class SemanticFile
 	{
-		public static readonly string Path = "https://drive.google.com/u/0/uc?id=1dZbzbNHOM5lDBf0AvkC83qm8fp8C8_jq&export=download";
-		public string XmlString { get; private set; }
+		private static readonly string _path = "https://drive.google.com/u/0/uc?id=1dZbzbNHOM5lDBf0AvkC83qm8fp8C8_jq&export=download";
+		private string _xmlString;
 		public SemanticFile()
 		{
 			var xml = new WebClient();
-			XmlString = xml.DownloadString(Path);
+			_xmlString = xml.DownloadString(_path);
 		}
-		public Graph<object> BuildGraph()
+		public ShapeNetwork BuildGraph()
 		{
-			return new Graph<object>(XmlString);
+			var xml = DiagramsDecompressor.Decompress(ref _xmlString);
+			return new ShapeNetwork(xml);
 		}
 	}
 }

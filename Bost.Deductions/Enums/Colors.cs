@@ -17,4 +17,17 @@ namespace Bost.Deductions.Enums
 		Red,
 		Purple
 	}
+
+	public static class ColorsSwitch
+	{
+		public const string Red = "#f8cecc";
+		public const string Green = "#d5e8d4";
+
+		public static Colors FromRgb(string rgbColorString) => rgbColorString switch
+		{
+			Red => Colors.Red,
+			Green => Colors.Green,
+			_ => Colors.White
+		};
+	}
 }
