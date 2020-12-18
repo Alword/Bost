@@ -20,8 +20,14 @@ namespace Bost.Agent.Service.Handlers
 
 		public async Task<Guid> Handle(CreateAgentQuery request, CancellationToken cancellationToken)
 		{
-			var x = await _agentHub.CreateAgent(request.ServerIp, request.ServerPort);
-			return x.Id;
+			var createAgentTask = _agentHub.CreateAgent(request.ServerIp, request.ServerPort);
+
+			if (string.IsNullOrWhiteSpace(request.NickName))
+				request.NickName = Utils.RandomStringGenerator.RandomString(6, 12);
+
+			var agent = await createAgentTask;
+			await agent.Login(request.NickName);
+			return agent.Id;
 		}
 	}
 }

@@ -23,7 +23,7 @@ namespace Bost.Agent.Jobs
         {
             Task.Run(async () =>
             {
-                var currentPosition = agent.gameState.Bot.Position;
+                var currentPosition = agent.GameState.Bot.Position;
                 if (path == null)
                     return;
                 foreach (var node in path)

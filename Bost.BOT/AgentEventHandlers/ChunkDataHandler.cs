@@ -12,7 +12,7 @@ namespace Bost.Agent.AgentEventHandlers
 		private readonly World world;
 		public ChunkDataHandler(Agent agent) : base(agent)
 		{
-			world = agent.gameState.World;
+			world = agent.GameState.World;
 		}
 
 		public override void OnPacket(ChunkDataPacket chunkData)

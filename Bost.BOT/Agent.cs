@@ -1,4 +1,6 @@
-﻿using Bost.Agent.State;
+﻿using Bost.Agent.AgentEventHandlers;
+using Bost.Agent.State;
+using Bost.Proto;
 using Bost.Proto.Enum;
 using Bost.Proto.Packet;
 using Bost.Proto.Packet.Handshaking.Serverbound;
@@ -15,24 +17,43 @@ namespace Bost.Agent
 	{
 		public Guid Id { get; }
 		public delegate void MessageHandler(object sender, byte[] message);
-
 		public event MessageHandler OnRecive;
 		public event MessageHandler OnSend;
+		public readonly GameState GameState;
+		public readonly ConnectionListner ConnectionListner;
 
-		public readonly GameState gameState;
+
 
 		private readonly Socket _socket;
 		private readonly string _server;
 		private readonly ushort _port;
 		public Agent(string server, ushort port)
 		{
-			gameState = new GameState();
+			Id = Guid.NewGuid();
 			_server = server;
 			_port = port;
 			_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			_socket.Connect(server, port);
+			GameState = new GameState();
+			ConnectionListner = new ConnectionListner();
+			OnRecive += ConnectionListner.ReciveListner;
+			OnSend += ConnectionListner.SendListner;
+
+			ConnectionListner.Subscribe(new SpawnPlayerHandler(this));
+			ConnectionListner.Subscribe(new PlayerInfoHandler(this));
+			ConnectionListner.Subscribe(new BlockChangeHandler(this));
+			ConnectionListner.Subscribe(new ChatMessageHandler(this));
+			ConnectionListner.Subscribe(new ChunkDataHandler(this));
+			ConnectionListner.Subscribe(new PlayerPositionAndLookHandler(this));
+			ConnectionListner.Subscribe(new EntityTeleportHandler(this));
+			ConnectionListner.Subscribe(new EntityPositionHandler(this));
+			ConnectionListner.Subscribe(new EntityPositionAndRotationHandler(this));
+			ConnectionListner.Subscribe(new MultiBlockChangeHandler(this));
+			ConnectionListner.Subscribe(new UnloadChunkHandler(this));
+			ConnectionListner.Subscribe(new UpdateHealthHandler(this));
+			ConnectionListner.Subscribe(new KeepAliveHandler(this));
+
 			StartRecive();
-			Id = Guid.NewGuid();
 		}
 
 		private Task StartRecive()
@@ -64,7 +85,7 @@ namespace Bost.Agent
 			await Send(toSend.ToArray());
 		}
 
-		public async Task Login(string nickname)
+		public Task Login(string nickname)
 		{
 			HandshakePacket handshakePacket = new HandshakePacket()
 			{
@@ -81,7 +102,7 @@ namespace Bost.Agent
 				Name = nickname
 			};
 			Write(loginStartPacket, false, toSend);
-			await Send(toSend.ToArray());
+			return Send(toSend.ToArray());
 		}
 
 		public void Write(BasePacket packet, bool encrypt = true, List<byte> toSend = null)

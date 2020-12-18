@@ -20,10 +20,10 @@ namespace Bost.Agent.AgentEventHandlers
 				var text = chat.GetText();
 				if (text.Contains("сюда", StringComparison.InvariantCultureIgnoreCase))
 				{
-					using Pathfinder pathfinder = new Pathfinder(agent.gameState.World, PathFinderConfig.Default);
+					using Pathfinder pathfinder = new Pathfinder(agent.GameState.World, PathFinderConfig.Default);
 
-					var startPosition = agent.gameState.Bot.Position;
-					var endPosition = agent.gameState.Players.ContainsNick("Dalores").Position;
+					var startPosition = agent.GameState.Bot.Position;
+					var endPosition = agent.GameState.Players.ContainsNick("Dalores").Position;
 
 					Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
 					Double3 to = new Double3(endPosition.X, endPosition.Y, endPosition.Z);

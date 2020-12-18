@@ -9,7 +9,7 @@ namespace Bost.Agent.AgentEventHandlers
         private readonly World world;
         public MultiBlockChangeHandler(Agent agent) : base(agent)
         {
-            world = agent.gameState.World;
+            world = agent.GameState.World;
         }
 
         public override void OnPacket(MultiBlockChangePacket data)

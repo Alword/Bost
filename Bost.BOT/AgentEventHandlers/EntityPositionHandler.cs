@@ -10,7 +10,7 @@ namespace Bost.Agent.AgentEventHandlers
 
         public EntityPositionHandler(Agent agent) : base(agent)
         {
-            Entitys = agent.gameState.Entitys;
+            Entitys = agent.GameState.Entitys;
         }
 
         public override void OnPacket(EntityPositionPacket data)

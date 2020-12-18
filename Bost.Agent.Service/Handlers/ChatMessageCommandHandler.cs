@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Service.Handlers
 {
-	public class RegisterCommandHandler : IRequestHandler<RegisterCommand>
+	public class ChatMessageCommandHandler : IRequestHandler<ChatMessageCommand>
 	{
 		private readonly IAgentHub _agentHub;
 
-		public RegisterCommandHandler(IAgentHub agentHub)
+		public ChatMessageCommandHandler(IAgentHub agentHub)
 		{
 			_agentHub = agentHub;
 		}
 
-		public Task<Unit> Handle(RegisterCommand request, CancellationToken cancellationToken)
+		public Task<Unit> Handle(ChatMessageCommand request, CancellationToken cancellationToken)
 		{
 			var agent = _agentHub[request.AgentId];
 			ChatMessagePacket chanMessagePacket = new ChatMessagePacket()
 			{
-				Message = "/register qwerty123"
+				Message = request.Message
 			};
 			return agent.Send(chanMessagePacket).ContinueWith((e) => Unit.Value);
 		}

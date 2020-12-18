@@ -10,9 +10,9 @@ namespace Bost.Agent.AgentEventHandlers
 
         public async override void OnPacket(PlayerPositionAndLookPacket playerPositionAndLook)
         {
-            agent.gameState.Bot.Position.X = playerPositionAndLook.X;
-            agent.gameState.Bot.Position.Y = playerPositionAndLook.Y;
-            agent.gameState.Bot.Position.Z = playerPositionAndLook.Z;
+            agent.GameState.Bot.Position.X = playerPositionAndLook.X;
+            agent.GameState.Bot.Position.Y = playerPositionAndLook.Y;
+            agent.GameState.Bot.Position.Z = playerPositionAndLook.Z;
 
             var confirmTeleport = new TeleportConfirmPacket()
             {

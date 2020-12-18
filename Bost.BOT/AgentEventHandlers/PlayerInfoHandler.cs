@@ -9,7 +9,7 @@ namespace Bost.Agent.AgentEventHandlers
         private readonly Players players;
         public PlayerInfoHandler(Agent agent) : base(agent)
         {
-            players = agent.gameState.Players;
+            players = agent.GameState.Players;
         }
 
         public override void OnPacket(PlayerInfoPacket data)

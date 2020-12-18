@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Service.Commands
 {
-	public class RegisterCommand : IRequest
+	public class ChatMessageCommand : IRequest
 	{
 		public Guid AgentId { get; set; }
-		public string? Password { get; set; }
+		public string? Message { get; set; }
 	}
 }

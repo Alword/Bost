@@ -10,5 +10,6 @@ namespace Bost.Agent.Service.Queries
 	{
 		public string? ServerIp { get; set; }
 		public ushort ServerPort { get; set; }
+		public string? NickName { get; set; }
 	}
 }
