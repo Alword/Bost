@@ -10,8 +10,8 @@ namespace Bost.Agent.Jobs
     {
         private readonly Agent agent;
         private readonly List<PathNode> path;
-        private static readonly double accuracy = 0.2;
-        private static readonly double groundSpeed = 1;
+        //private static readonly double accuracy = 0.2;
+        //private static readonly double groundSpeed = 1;
 
         public Marshaller(Agent agent, List<PathNode> path)
         {
@@ -45,7 +45,7 @@ namespace Bost.Agent.Jobs
                     await agent.Send(playerPositionPacket);
                     await Task.Delay(50);
                 }
-            });
+            }, cancellationToken);
         }
     }
 }

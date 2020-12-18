@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.BOT.Tests", "Bost.BOT.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.Shared", "Bost.Shared\Bost.Shared.csproj", "{2B889FE2-C418-404F-BE5A-6E21D7138D05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bost.ControlPanel", "Bost.ControlPanel\Bost.ControlPanel.csproj", "{C7CD8139-F736-4106-A947-D155FDAD9DA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bost.Agent.Service", "Bost.Agent.Service\Bost.Agent.Service.csproj", "{DC60AEE8-430B-4F46-B1C7-3AE00D7453D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{2B889FE2-C418-404F-BE5A-6E21D7138D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B889FE2-C418-404F-BE5A-6E21D7138D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B889FE2-C418-404F-BE5A-6E21D7138D05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7CD8139-F736-4106-A947-D155FDAD9DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7CD8139-F736-4106-A947-D155FDAD9DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7CD8139-F736-4106-A947-D155FDAD9DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7CD8139-F736-4106-A947-D155FDAD9DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC60AEE8-430B-4F46-B1C7-3AE00D7453D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC60AEE8-430B-4F46-B1C7-3AE00D7453D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC60AEE8-430B-4F46-B1C7-3AE00D7453D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC60AEE8-430B-4F46-B1C7-3AE00D7453D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
