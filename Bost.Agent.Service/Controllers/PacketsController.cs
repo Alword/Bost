@@ -10,18 +10,24 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Service.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("[controller]")]
 	[ApiController]
-	public class ChatController : ControllerBase
+	public class PacketsController : ControllerBase
 	{
 		private readonly IMediator _mediator;
 
-		public ChatController(IMediator mediator)
+		public PacketsController(IMediator mediator)
 		{
 			_mediator = mediator;
 		}
 
-		[HttpPost("message")]
+		[HttpPost("PlayerDigging")]
+		public Task<Unit> SendMessage(PlayerDiggingCommand chatMessage, CancellationToken cancellationToken)
+		{
+			return _mediator.Send(chatMessage, cancellationToken);
+		}
+
+		[HttpPost("ChatMessage")]
 		public Task<Unit> SendMessage(ChatMessageCommand chatMessage, CancellationToken cancellationToken)
 		{
 			return _mediator.Send(chatMessage, cancellationToken);

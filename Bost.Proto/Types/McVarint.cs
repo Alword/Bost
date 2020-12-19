@@ -31,11 +31,6 @@ namespace Bost.Proto.Types
             return true;
         }
 
-        internal static IEnumerable<byte> ToBytes(object packetId)
-        {
-            throw new NotImplementedException();
-        }
-
         public static bool TryParse(ref byte[] buffer, out int result)
         {
             bool parsed = TryParse(buffer, out int numRead, out result);

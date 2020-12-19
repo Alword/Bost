@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Service.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("[controller]")]
 	[ApiController]
 	public class AgentsController : ControllerBase
 	{
