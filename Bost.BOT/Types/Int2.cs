@@ -1,14 +1,14 @@
 ﻿namespace Bost.Agent.Types
 {
-    public struct Int2
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public static Int2 Zero => new Int2(0, 0);
-        public Int2(int X, int Y)
-        {
-            this.X = X;
-            this.Y = Y;
-        }
-    }
+	public struct Int2
+	{
+		public int X { get; set; }
+		public int Y { get; set; }
+		public static Int2 Zero => new Int2(0, 0);
+		public Int2(int X, int Y)
+		{
+			this.X = X;
+			this.Y = Y;
+		}
+	}
 }

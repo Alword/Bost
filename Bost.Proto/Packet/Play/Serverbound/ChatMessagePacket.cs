@@ -1,5 +1,4 @@
 ﻿using Bost.Proto.Types;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bost.Proto.Packet.Play.Serverbound

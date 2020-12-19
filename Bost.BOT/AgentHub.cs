@@ -1,8 +1,5 @@
-﻿using Bost.Agent.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Bost.Agent.Model
@@ -17,9 +14,9 @@ namespace Bost.Agent.Model
 
 		public Agent this[Guid key] => agents[key];
 
-		public Task<Agent> CreateAgent(string server, ushort port)
+		public Task<Agent> CreateAgent(string server, ushort port, string nickname)
 		{
-			var agent = new Agent(server, port);
+			var agent = new Agent(server, port, nickname);
 			agents.Add(agent.Id, agent);
 			return Task.FromResult(agent);
 		}

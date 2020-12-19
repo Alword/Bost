@@ -5,37 +5,37 @@ using System.Collections.Generic;
 
 namespace Bost.Agent.AgentEventHandlers
 {
-    public class SpawnPlayerHandler : BaseAgentEventHandler<SpawnPlayerPacket>
-    {
+	public class SpawnPlayerHandler : BaseAgentEventHandler<SpawnPlayerPacket>
+	{
 
-        private readonly Players players;
-        private readonly Dictionary<int, Transform> Entitys;
-        public SpawnPlayerHandler(Agent agent) : base(agent)
-        {
-            Entitys = agent.GameState.Entitys;
-            players = agent.GameState.Players;
-        }
+		private readonly Players players;
+		private readonly Dictionary<int, Transform> Entitys;
+		public SpawnPlayerHandler(Agent agent) : base(agent)
+		{
+			Entitys = agent.GameState.Entitys;
+			players = agent.GameState.Players;
+		}
 
-        public override void OnPacket(SpawnPlayerPacket data)
-        {
-            players.Link(data.EntityID, data.PlayerUUID);
+		public override void OnPacket(SpawnPlayerPacket data)
+		{
+			players.Link(data.EntityID, data.PlayerUUID);
 
-            bool isExist = Entitys.ContainsKey(data.EntityID);
+			bool isExist = Entitys.ContainsKey(data.EntityID);
 
-            Transform transform;
-            if (isExist)
-                transform = Entitys[data.EntityID];
-            else
-                transform = new Transform();
+			Transform transform;
+			if (isExist)
+				transform = Entitys[data.EntityID];
+			else
+				transform = new Transform();
 
-            transform.Position.X = data.X;
-            transform.Position.Y = data.Y;
-            transform.Position.Z = data.Z;
-            transform.Rotation.Yaw = data.Yaw;
-            transform.Rotation.Pitch = data.Pitch;
+			transform.Position.X = data.X;
+			transform.Position.Y = data.Y;
+			transform.Position.Z = data.Z;
+			transform.Rotation.Yaw = data.Yaw;
+			transform.Rotation.Pitch = data.Pitch;
 
-            if (!isExist)
-                Entitys.Add(data.EntityID, transform);
-        }
-    }
+			if (!isExist)
+				Entitys.Add(data.EntityID, transform);
+		}
+	}
 }

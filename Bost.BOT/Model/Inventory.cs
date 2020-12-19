@@ -1,7 +1,7 @@
 ﻿namespace Bost.Agent.Model
 {
-    public class Inventory
-    {
+	public class Inventory
+	{
 
-    }
+	}
 }

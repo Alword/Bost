@@ -1,9 +1,9 @@
 ﻿namespace Bost.Agent.Enum
 {
-    public enum NodeState
-    {
-        Suitable,
-        Blocker,
-        Empty
-    }
+	public enum NodeState
+	{
+		Suitable,
+		Blocker,
+		Empty
+	}
 }

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Bost.AgentsHub.Data
 {
-    public class Server
-    {
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string IpPort { get; set; }
-    }
+	public class Server
+	{
+		[Key]
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public string IpPort { get; set; }
+	}
 }

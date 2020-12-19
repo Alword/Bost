@@ -1,10 +1,6 @@
 ﻿using Bost.Agent.Service.Commands;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,15 +18,20 @@ namespace Bost.Agent.Service.Controllers
 		}
 
 		[HttpPost("PlayerDigging")]
-		public Task<Unit> SendMessage(PlayerDiggingCommand chatMessage, CancellationToken cancellationToken)
+		public Task<Unit> SendMessage(PlayerDiggingCommand command, CancellationToken cancellationToken)
 		{
-			return _mediator.Send(chatMessage, cancellationToken);
+			return _mediator.Send(command, cancellationToken);
 		}
 
 		[HttpPost("ChatMessage")]
-		public Task<Unit> SendMessage(ChatMessageCommand chatMessage, CancellationToken cancellationToken)
+		public Task<Unit> SendMessage(ChatMessageCommand command, CancellationToken cancellationToken)
 		{
-			return _mediator.Send(chatMessage, cancellationToken);
+			return _mediator.Send(command, cancellationToken);
+		}
+		[HttpPost("Animation")]
+		public Task<Unit> SendMessage(HandAnimationCommand command, CancellationToken cancellationToken)
+		{
+			return _mediator.Send(command, cancellationToken);
 		}
 	}
 }

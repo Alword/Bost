@@ -1,6 +1,5 @@
 ﻿using Bost.Proto.Enum;
 using Bost.Proto.Types;
-using System;
 
 namespace Bost.Proto.Packet.Play.Serverbound
 {
@@ -16,7 +15,7 @@ namespace Bost.Proto.Packet.Play.Serverbound
 
 		public override byte[] Write()
 		{
-			throw new NotImplementedException();
+			return McVarint.ToBytes((int)Hand);
 		}
 
 		public override string ToString()

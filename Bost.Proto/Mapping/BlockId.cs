@@ -2,18 +2,18 @@
 
 namespace Bost.Proto.Mapping
 {
-    public struct BlockId
-    {
-        public uint StateId { get; set; }
+	public struct BlockId
+	{
+		public uint StateId { get; set; }
 
-        public BlockId(uint id)
-        {
-            StateId = id;
-        }
+		public BlockId(uint id)
+		{
+			StateId = id;
+		}
 
-        public override string ToString()
-        {
-            return $"{StateId} {GlobalPalette.GetState(StateId).Name}";
-        }
-    }
+		public override string ToString()
+		{
+			return $"{StateId} {GlobalPalette.GetState(StateId).Name}";
+		}
+	}
 }

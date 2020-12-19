@@ -1,8 +1,5 @@
-﻿using Bost.Agent.AgentEventHandlers;
-using Bost.Proto;
-using System;
+﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Bost.Agent
 {
@@ -12,14 +9,9 @@ namespace Bost.Agent
 		static void Main(string[] args)
 		{
 			// rearrange chunk 
-			Agent agent = new Agent("95.217.100.55", 25852);
+			Agent agent = new Agent("95.217.100.55", 25852, "NeAlword");
 
 			CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-
-			Task.Run(async () =>
-			{
-				await agent.Login("NeAlword");
-			}).GetAwaiter().GetResult();
 
 			while (true)
 			{

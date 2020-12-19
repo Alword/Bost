@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bost.Agent.Commands
+﻿namespace Bost.Agent.Commands
 {
 	public class RegisterCommand : BaseAgentCommand<string>
 	{
@@ -14,7 +8,7 @@ namespace Bost.Agent.Commands
 
 		public override void Handle(string value)
 		{
-			
+
 		}
 	}
 }

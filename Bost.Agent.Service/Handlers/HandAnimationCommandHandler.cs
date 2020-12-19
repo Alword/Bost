@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Service.Handlers
 {
-	public class PlayerDiggingCommandHandler : IRequestHandler<PlayerDiggingCommand>
+	public class HandAnimationCommandHandler : IRequestHandler<HandAnimationCommand>
 	{
 		private readonly IAgentHub _agentHub;
 
-		public PlayerDiggingCommandHandler(IAgentHub agentHub)
+		public HandAnimationCommandHandler(IAgentHub agentHub)
 		{
 			_agentHub = agentHub;
 		}
 
-		public Task<Unit> Handle(PlayerDiggingCommand request, CancellationToken cancellationToken)
+		public Task<Unit> Handle(HandAnimationCommand request, CancellationToken cancellationToken)
 		{
 			var agent = _agentHub[request.AgentId];
-			PlayerDiggingPacket playerDigging = new PlayerDiggingPacket()
+			AnimationPacket playerDigging = new AnimationPacket()
 			{
-				Face = request.Face,
-				Location = request.Location,
-				Status = request.Status
+				Hand = request.Hand
 			};
 			return agent.Send(playerDigging).ContinueWith((e) => Unit.Value);
 		}

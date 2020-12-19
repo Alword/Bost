@@ -7,26 +7,26 @@ using System.Text;
 
 namespace Bost.Proto.Mapping.Generator
 {
-    public class RegistriesPalette
-    {
-        private readonly Dictionary<string, JsonRegistries> Registres;
-        public RegistriesPalette()
-        {
-            string json = "registries.json".ReadResource();
-            Registres = JsonConvert.DeserializeObject<Dictionary<string, JsonRegistries>>(json);
-        }
+	public class RegistriesPalette
+	{
+		private readonly Dictionary<string, JsonRegistries> Registres;
+		public RegistriesPalette()
+		{
+			string json = "registries.json".ReadResource();
+			Registres = JsonConvert.DeserializeObject<Dictionary<string, JsonRegistries>>(json);
+		}
 
-        public void GenerateScript()
-        {
-            string key = "minecraft:";
-            var intms = Registres["minecraft:item"].Entries.Count;
+		public void GenerateScript()
+		{
+			string key = "minecraft:";
+			var intms = Registres["minecraft:item"].Entries.Count;
 
-            StringBuilder codegenerator = new StringBuilder();
-            foreach (var entity in Registres["minecraft:item"].Entries)
-            {
-                codegenerator.AppendLine($"{entity.Key.Substring(entity.Key.IndexOf(key) + key.Length)} = {entity.Value.Protocol_id},");
-            }
-            File.AppendAllText($"{Environment.CurrentDirectory}\\generatedItems.txt", codegenerator.ToString());
-        }
-    }
+			StringBuilder codegenerator = new StringBuilder();
+			foreach (var entity in Registres["minecraft:item"].Entries)
+			{
+				codegenerator.AppendLine($"{entity.Key.Substring(entity.Key.IndexOf(key) + key.Length)} = {entity.Value.Protocol_id},");
+			}
+			File.AppendAllText($"{Environment.CurrentDirectory}\\generatedItems.txt", codegenerator.ToString());
+		}
+	}
 }

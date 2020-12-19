@@ -2,8 +2,6 @@
 using Bost.Agent.Service.Queries;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,13 +18,12 @@ namespace Bost.Agent.Service.Handlers
 
 		public async Task<Guid> Handle(CreateAgentQuery request, CancellationToken cancellationToken)
 		{
-			var createAgentTask = _agentHub.CreateAgent(request.ServerIp, request.ServerPort);
+			var createAgentTask = _agentHub.CreateAgent(request.ServerIp, request.ServerPort, request.NickName);
 
 			if (string.IsNullOrWhiteSpace(request.NickName))
 				request.NickName = Utils.RandomStringGenerator.RandomString(6, 12);
 
 			var agent = await createAgentTask;
-			await agent.Login(request.NickName);
 			return agent.Id;
 		}
 	}

@@ -1,17 +1,17 @@
 ﻿namespace Bost.Agent.Model
 {
-    public class Transform
-    {
-        public Position Position { get; set; }
+	public class Transform
+	{
+		public Position Position { get; set; }
 
-        public Rotation Rotation { get; set; }
+		public Rotation Rotation { get; set; }
 
-        public bool OnGround { get; set; }
+		public bool OnGround { get; set; }
 
-        public Transform()
-        {
-            Position = new Position();
-            Rotation = new Rotation();
-        }
-    }
+		public Transform()
+		{
+			Position = new Position();
+			Rotation = new Rotation();
+		}
+	}
 }

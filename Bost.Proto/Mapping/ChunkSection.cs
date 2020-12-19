@@ -1,7 +1,5 @@
 ﻿using Bost.Proto.Mapping.Palettes;
 using Bost.Proto.Types;
-using System;
-using System.Threading.Tasks;
 
 namespace Bost.Proto.Mapping
 {

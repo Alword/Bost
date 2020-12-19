@@ -1,28 +1,25 @@
 ﻿using Bost.Proto.Enum;
 using Bost.Proto.Packet.Play.Clientbound;
 using Bost.Proto.Packet.Play.Serverbound;
-using System.Collections.Generic;
 
 namespace Bost.Agent.AgentEventHandlers
 {
-    public class UpdateHealthHandler : BaseAgentEventHandler<UpdateHealthPacket>
-    {
-        public UpdateHealthHandler(Agent agent) : base(agent) { }
+	public class UpdateHealthHandler : BaseAgentEventHandler<UpdateHealthPacket>
+	{
+		public UpdateHealthHandler(Agent agent) : base(agent) { }
 
-        public override async void OnPacket(UpdateHealthPacket health)
-        {
-            if (health.Health <= 0)
-            {
-                var clientStatus = new ClientStatusPacket
-                {
-                    ActionID = ClientStatusActions.PerformPespawn
-                };
+		public override async void OnPacket(UpdateHealthPacket health)
+		{
+			if (health.Health <= 0)
+			{
+				var clientStatus = new ClientStatusPacket
+				{
+					ActionID = ClientStatusActions.PerformPespawn
+				};
 
-                List<byte> send = new List<byte>();
-                agent.Write(clientStatus, true, send);
-                await agent.Send(send.ToArray());
-            }
+				await agent.Send(clientStatus);
+			}
 
-        }
-    }
+		}
+	}
 }

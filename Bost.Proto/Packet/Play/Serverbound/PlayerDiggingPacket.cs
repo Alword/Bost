@@ -1,7 +1,6 @@
 ﻿using Bost.Proto.Enum;
 using Bost.Proto.Model;
 using Bost.Proto.Types;
-using System;
 using System.Collections.Generic;
 
 namespace Bost.Proto.Packet.Play.Serverbound
