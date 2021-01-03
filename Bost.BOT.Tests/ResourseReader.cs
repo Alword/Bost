@@ -6,9 +6,10 @@ namespace Bost.BOT.Tests
 {
 	public class ResourseReader
 	{
-		public static string Read(string name)
+		public static string Read(string name, Assembly assembly = null)
 		{
-			var assembly = Assembly.GetExecutingAssembly();
+			if (assembly == null)
+				assembly = Assembly.GetExecutingAssembly();
 			string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(name));
 			using Stream stream = assembly.GetManifestResourceStream(resourceName);
 			using StreamReader reader = new StreamReader(stream);

@@ -8,7 +8,7 @@ namespace Bost.Agent.Model
 {
 	public class World
 	{
-		public static HashSet<uint> EmptyBlocks = new HashSet<uint> { 0, 1341, 9130 };
+		public static HashSet<uint> EmptyBlocks => new HashSet<uint> { 0, 1341, 9130 };
 		public Dictionary<Int2, ChunkColumn> Chunks { get; private set; }
 		public World()
 		{
@@ -17,7 +17,6 @@ namespace Bost.Agent.Model
 		public BlockState this[Int3 location]
 		{
 			get {
-				location += Int3.Down;
 				Int3 chunkSectionKey = location.GetChunk();
 				Int2 chunkKey = new Int2(chunkSectionKey.X, chunkSectionKey.Z);
 				if (Chunks.ContainsKey(chunkKey))

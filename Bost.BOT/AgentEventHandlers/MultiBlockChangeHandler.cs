@@ -6,10 +6,10 @@ namespace Bost.Agent.AgentEventHandlers
 {
 	public class MultiBlockChangeHandler : BaseAgentEventHandler<MultiBlockChangePacket>
 	{
-		private readonly World world;
+		private readonly World _world;
 		public MultiBlockChangeHandler(Agent agent) : base(agent)
 		{
-			world = agent.GameState.World;
+			_world = agent.GameState.World;
 		}
 
 		public override void OnPacket(MultiBlockChangePacket data)
@@ -20,7 +20,8 @@ namespace Bost.Agent.AgentEventHandlers
 					(record.HorizontalPosition >> 4 & 15) + (data.ChunkX * 16),
 					record.YCoordinate,
 					(record.HorizontalPosition & 15) + (data.ChunkZ * 16));
-				world.SetBlockId(location, new BlockId((uint)record.BlockID));
+				_world.SetBlockId(location, new BlockId((uint)record.BlockID));
+				agent.OnOnBlockChanged(location, _world);
 			}
 		}
 	}

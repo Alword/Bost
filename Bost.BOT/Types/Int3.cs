@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bost.Agent.Types;
+using System;
 
 namespace Bost.Agent.Model
 {
@@ -99,6 +100,30 @@ namespace Bost.Agent.Model
 		public override string ToString()
 		{
 			return $"X:{X} Y:{Y} Z:{Z}";
+		}
+
+		public static implicit operator Proto.Model.Position(Int3 int3)
+		{
+			return new Proto.Model.Position { X = int3.X, Y = int3.Y, Z = int3.Z };
+		}
+		public static implicit operator Int3(Proto.Model.Position position)
+		{
+			return new Int3(position.X, position.Y, position.Z);
+		}
+
+		public static explicit operator Int3(Double3 int3)
+		{
+			return new Int3 { X = (int)int3.X, Y = (int)int3.Y, Z = (int)int3.Z };
+		}
+		public static implicit operator Double3(Int3 position)
+		{
+			return new Double3(position.X, position.Y, position.Z);
+		}
+
+		public static int Volume(Int3 a, Int3 b)
+		{
+			var vector = a - b;
+			return Math.Abs(vector.X * vector.Y * vector.Z);
 		}
 	}
 }

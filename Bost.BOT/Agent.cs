@@ -42,7 +42,6 @@ namespace Bost.Agent
 			ConnectionListner.Subscribe(new SpawnPlayerHandler(this));
 			ConnectionListner.Subscribe(new PlayerInfoHandler(this));
 			ConnectionListner.Subscribe(new BlockChangeHandler(this));
-			ConnectionListner.Subscribe(new ChatMessageHandler(this));
 			ConnectionListner.Subscribe(new ChunkDataHandler(this));
 			ConnectionListner.Subscribe(new PlayerPositionAndLookHandler(this));
 			ConnectionListner.Subscribe(new EntityTeleportHandler(this));

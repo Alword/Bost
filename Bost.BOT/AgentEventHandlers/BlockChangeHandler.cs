@@ -6,16 +6,17 @@ namespace Bost.Agent.AgentEventHandlers
 {
 	public class BlockChangeHandler : BaseAgentEventHandler<BlockChangePacket>
 	{
-		private readonly World world;
+		private readonly World _world;
 		public BlockChangeHandler(Agent agent) : base(agent)
 		{
-			world = agent.GameState.World;
+			_world = agent.GameState.World;
 		}
 
 		public override void OnPacket(BlockChangePacket data)
 		{
 			Int3 location = new Int3(data.Location.X, data.Location.Y, data.Location.Z);
-			world.SetBlockId(location, new BlockId((uint)data.BlocID));
+			_world.SetBlockId(location, new BlockId((uint)data.BlocID));
+			agent.OnOnBlockChanged(location, _world);
 		}
 	}
 }

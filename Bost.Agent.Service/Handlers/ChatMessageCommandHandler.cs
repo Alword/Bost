@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Service.Handlers
 {
-	public class PlayerDiggingCommandHandler : IRequestHandler<PlayerDiggingCommand>
+	public class ChatMessageCommandHandler : IRequestHandler<ChatMessageCommand>
 	{
 		private readonly IAgentHub _agentHub;
 
-		public PlayerDiggingCommandHandler(IAgentHub agentHub)
+		public ChatMessageCommandHandler(IAgentHub agentHub)
 		{
 			_agentHub = agentHub;
 		}
 
-		public Task<Unit> Handle(PlayerDiggingCommand request, CancellationToken cancellationToken)
+		public Task<Unit> Handle(ChatMessageCommand request, CancellationToken cancellationToken)
 		{
 			var agent = _agentHub[request.AgentId];
-			PlayerDiggingPacket playerDigging = new PlayerDiggingPacket()
+			ChatMessagePacket chanMessagePacket = new ChatMessagePacket()
 			{
-				Face = request.Face,
-				Location = request.Location,
-				Status = request.Status
+				Message = request.Message
 			};
-			return agent.Send(playerDigging).ContinueWith((e) => Unit.Value);
+			return agent.Send(chanMessagePacket).ContinueWith((e) => Unit.Value);
 		}
 	}
 }
