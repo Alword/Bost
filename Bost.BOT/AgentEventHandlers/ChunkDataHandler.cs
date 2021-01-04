@@ -12,7 +12,7 @@ namespace Bost.Agent.AgentEventHandlers
 		private readonly World world;
 		public ChunkDataHandler(Agent agent) : base(agent)
 		{
-			world = agent.GameState.World;
+			world = agent.SharedState.World;
 		}
 
 		public override void OnPacket(ChunkDataPacket chunkData)
@@ -40,13 +40,16 @@ namespace Bost.Agent.AgentEventHandlers
 				File.WriteAllText($"{guid}.txt", Convert.ToBase64String(chunkData.Data));
 			}
 
-			if (chunkData.Fullchunk)
+			lock (chunkData)
 			{
-				if (world.Chunks.ContainsKey(chunkId))
+				if (chunkData.Fullchunk)
 				{
-					world.Chunks.Remove(chunkId);
+					if (world.Chunks.ContainsKey(chunkId))
+					{
+						world.Chunks.Remove(chunkId);
+					}
+					world.Chunks.Add(chunkId, chunkColumn);
 				}
-				world.Chunks.Add(chunkId, chunkColumn);
 			}
 		}
 

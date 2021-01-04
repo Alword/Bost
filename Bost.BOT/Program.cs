@@ -10,7 +10,7 @@ namespace Bost.Agent
 		{
 			// rearrange chunk 
 			Agent agent = new Agent("95.217.100.55", 25852, "NeAlword");
-
+			
 			CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
 
 			while (true)

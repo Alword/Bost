@@ -7,7 +7,7 @@ namespace Bost.Agent.Jobs
 	{
 		private readonly Int3 _position;
 
-		public MiningJob(Agent agent, Int3 position) : base(agent)
+		public MiningJob(IAgent agent, Int3 position) : base(agent)
 		{
 			_position = position;
 		}

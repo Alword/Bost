@@ -7,7 +7,7 @@ namespace Bost.Agent.Service.Commands
 {
 	public class MiningCommand : IRequest
 	{
-		public Guid AgentId { get; set; }
+		public string? Server { get; set; }
 		public MiningMode Mode { get; set; }
 		public Int3 Start { get; set; }
 		public Int3 End { get; set; }

@@ -23,7 +23,7 @@ namespace Bost.Agent.Service.Handlers
 			var agent = _agentHub[request.AgentId];
 
 			BreakBlockJob breakBlockJob = new BreakBlockJob(agent, request.Location);
-			agent.HandleJob(breakBlockJob);
+			breakBlockJob.Handle(cancellationToken);
 			return Unit.Task;
 		}
 	}

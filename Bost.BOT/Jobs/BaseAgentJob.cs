@@ -10,13 +10,13 @@ namespace Bost.Agent.Jobs
 	public class BaseAgentJob : IAgentJob, IJobCompleteHandler
 	{
 		private readonly List<IJobCompleteHandler> _subscribers = new List<IJobCompleteHandler>();
-		private readonly Agent _agent;
+		private readonly IAgent _agent;
 		public Guid Id => Guid.NewGuid();
-		public BaseAgentJob(Agent agent)
+		public BaseAgentJob(IAgent agent)
 		{
 			_agent = agent;
 		}
-		public Agent Agent => _agent;
+		public IAgent Agent => _agent;
 
 		public virtual void Handle(CancellationToken cancellationToken)
 		{

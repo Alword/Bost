@@ -1,4 +1,5 @@
-﻿using Bost.Proto.Packet.Play.Clientbound;
+﻿using Bost.Agent.Types;
+using Bost.Proto.Packet.Play.Clientbound;
 using Bost.Proto.Packet.Play.Serverbound;
 
 namespace Bost.Agent.AgentEventHandlers
@@ -7,15 +8,13 @@ namespace Bost.Agent.AgentEventHandlers
 	{
 		public PlayerPositionAndLookHandler(Agent agent) : base(agent) { }
 
-		public async override void OnPacket(PlayerPositionAndLookPacket playerPositionAndLook)
+		public async override void OnPacket(PlayerPositionAndLookPacket postionAndLook)
 		{
-			agent.GameState.Bot.Position.X = playerPositionAndLook.X;
-			agent.GameState.Bot.Position.Y = playerPositionAndLook.Y;
-			agent.GameState.Bot.Position.Z = playerPositionAndLook.Z;
+			agent.Position = new Double3(postionAndLook.X, postionAndLook.Y, postionAndLook.Z);
 
 			var confirmTeleport = new TeleportConfirmPacket()
 			{
-				TeleportID = playerPositionAndLook.TeleportID
+				TeleportID = postionAndLook.TeleportID
 			};
 
 			await agent.Send(confirmTeleport);

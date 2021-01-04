@@ -9,7 +9,7 @@ namespace Bost.Agent.AgentEventHandlers
 		private readonly World world;
 		public UnloadChunkHandler(Agent agent) : base(agent)
 		{
-			world = agent.GameState.World;
+			world = agent.SharedState.World;
 		}
 		public override void OnPacket(UnloadChunkPacket data)
 		{

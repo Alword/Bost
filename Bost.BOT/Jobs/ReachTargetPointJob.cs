@@ -16,7 +16,7 @@ namespace Bost.Agent.Jobs
 		private readonly Double3 _to;
 		private readonly int _skipFromEnd;
 
-		public ReachTargetPointJob(Agent agent, Double3 to, int skipFromEnd = 0) : base(agent)
+		public ReachTargetPointJob(IAgent agent, Double3 to, int skipFromEnd = 0) : base(agent)
 		{
 			_to = to;
 			_skipFromEnd = skipFromEnd;
@@ -25,7 +25,7 @@ namespace Bost.Agent.Jobs
 		public override async void Handle(CancellationToken cancellationToken)
 		{
 			var path = PathFromAgent(Agent);
-			var currentPosition = Agent.GameState.Bot.Position;
+			var currentPosition = Agent.Position;
 
 			if (path == null) return;
 
@@ -51,13 +51,11 @@ namespace Bost.Agent.Jobs
 			OnComplete(this);
 		}
 
-		private PathNode[] PathFromAgent(Agent agent)
+		private PathNode[] PathFromAgent(IAgent agent)
 		{
 			using Pathfinder pathfinder = new Pathfinder(agent.World, PathFinderConfig.Default);
 
-			var startPosition = agent.GameState.Bot.Position;
-
-			Double3 from = new Double3(startPosition.X, startPosition.Y, startPosition.Z);
+			Double3 from = agent.Position;
 
 			return pathfinder.FindPath(from, _to).ToArray();
 		}

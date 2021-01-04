@@ -10,7 +10,7 @@ namespace Bost.Agent.AgentEventHandlers
 
 		public EntityTeleportHandler(Agent agent) : base(agent)
 		{
-			Entitys = agent.GameState.Entitys;
+			Entitys = agent.SharedState.Entitys;
 		}
 
 		public override void OnPacket(EntityTeleportPacket packet)

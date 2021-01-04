@@ -23,12 +23,6 @@ namespace Bost.Agent.Service.Controllers
 		{
 			return _mediator.Send(createAgentQuery, cancellationToken);
 		}
-
-		[HttpPost("Mine")]
-		public Task<Unit> Create(MiningCommand mining, CancellationToken cancellationToken)
-		{
-			return _mediator.Send(mining, cancellationToken);
-		}
 		
 		[HttpPost("ReachTarget")]
 		public Task<Unit> Create(ReachTargetPointJobCommand target, CancellationToken cancellationToken)

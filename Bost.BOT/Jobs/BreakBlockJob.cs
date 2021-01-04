@@ -1,4 +1,5 @@
 ﻿using Bost.Agent.Events;
+using Bost.Agent.Extensions;
 using Bost.Agent.Model;
 using Bost.Proto.Packet.Play.Serverbound;
 using System.Threading;
@@ -11,7 +12,7 @@ namespace Bost.Agent.Jobs
 		private static readonly int _swingDelay = 250;
 		private readonly Int3 _blockPosition;
 		private CancellationTokenSource swingHandTokenSource = new CancellationTokenSource();
-		public BreakBlockJob(Agent agent, Int3 blockPosition) : base(agent)
+		public BreakBlockJob(IAgent agent, Int3 blockPosition) : base(agent)
 		{
 			_blockPosition = blockPosition;
 		}
@@ -51,7 +52,7 @@ namespace Bost.Agent.Jobs
 			sender.UnsubscribeOnBlockChanged(this);
 		}
 
-		public async void SwingHand(Agent agent, CancellationToken jobCancellationToken, CancellationToken swingCancellationToken)
+		public async void SwingHand(IAgent agent, CancellationToken jobCancellationToken, CancellationToken swingCancellationToken)
 		{
 			var playerDigging = new AnimationPacket()
 			{

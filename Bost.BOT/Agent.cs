@@ -1,5 +1,8 @@
 ﻿using Bost.Agent.AgentEventHandlers;
-using Bost.Agent.State;
+using Bost.Agent.GameState;
+using Bost.Agent.Model;
+using Bost.Agent.Server;
+using Bost.Agent.Types;
 using Bost.Proto;
 using Bost.Proto.Packet;
 using Bost.Proto.Types;
@@ -11,34 +14,26 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent
 {
-	public partial class Agent
+	public partial class Agent : MinecraftJavaAgent, IAgent
 	{
-		private readonly string _server;
-		private readonly ushort _port;
-		private readonly string _nickname;
-		private readonly Queue<byte[]> _commandQueue;
-
-		public readonly GameState GameState;
+		public readonly SharedGameState SharedState;
 		public readonly ConnectionListner ConnectionListner;
 		public readonly CancellationToken CancellationToken;
 
 		public Guid Id { get; }
+		public Double3 Position { get; set; }
+		public World World => SharedState.World;
 
-		public delegate void MessageHandler(object sender, byte[] message);
-		public event MessageHandler OnRecive;
-		public event MessageHandler OnSend;
-		public Agent(string server, ushort port, string nickname)
+		public Agent(string server, ushort port, string nickname, SharedGameState shared = null)
+			: base(server, port, nickname)
 		{
 			Id = Guid.NewGuid();
-			_server = server;
-			_port = port;
-			_nickname = nickname;
-			_commandQueue = new Queue<byte[]>();
-			CancellationToken = new CancellationToken();
-			GameState = new GameState();
+			SharedState = shared ?? new SharedGameState();
+			SharedState.Missions.Attach(this);
 			ConnectionListner = new ConnectionListner();
 			OnRecive += ConnectionListner.ReciveListner;
 			OnSend += ConnectionListner.SendListner;
+			Reset += (e, x) => ConnectionListner.Reset();
 			ConnectionListner.Subscribe(new SpawnPlayerHandler(this));
 			ConnectionListner.Subscribe(new PlayerInfoHandler(this));
 			ConnectionListner.Subscribe(new BlockChangeHandler(this));
@@ -51,54 +46,7 @@ namespace Bost.Agent
 			ConnectionListner.Subscribe(new UnloadChunkHandler(this));
 			ConnectionListner.Subscribe(new UpdateHealthHandler(this));
 			ConnectionListner.Subscribe(new KeepAliveHandler(this));
-			StartRecive();
-		}
-
-		public void Write(BasePacket packet, bool encrypt = true, List<byte> toSend = null)
-		{
-			byte[] data = packet.Write();
-			if (toSend == null)
-			{
-				toSend = new List<byte>();
-			}
-
-			if (encrypt)
-			{
-				toSend.AddRange(McVarint.ToBytes(data.Length + 2));
-				toSend.AddRange(McVarint.ToBytes(0));
-			}
-			else
-			{
-				toSend.AddRange(McVarint.ToBytes(data.Length + 1));
-			}
-
-			toSend.AddRange(McVarint.ToBytes(packet.PacketId));
-			toSend.AddRange(data);
-		}
-
-		public async Task Send(BasePacket basePacket)
-		{
-			List<byte> toSend = new List<byte>();
-			Write(basePacket, true, toSend);
-			await Send(toSend.ToArray());
-		}
-
-		private async Task Send(byte[] array)
-		{
-			if (_socket == null || _socket.Connected == false)
-			{
-				_commandQueue.Enqueue(array);
-			}
-			else
-			{
-				await SendArray(array);
-			}
-		}
-
-		private async Task SendArray(byte[] array)
-		{
-			OnSend?.Invoke(this, array);
-			await _socket.SendAsync(array, SocketFlags.None);
+			ConnectionListner.Subscribe(new ChatMessageHandler(this));
 		}
 	}
 }

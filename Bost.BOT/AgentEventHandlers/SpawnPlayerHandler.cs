@@ -12,8 +12,8 @@ namespace Bost.Agent.AgentEventHandlers
 		private readonly Dictionary<int, Transform> Entitys;
 		public SpawnPlayerHandler(Agent agent) : base(agent)
 		{
-			Entitys = agent.GameState.Entitys;
-			players = agent.GameState.Players;
+			Entitys = agent.SharedState.Entitys;
+			players = agent.SharedState.Players;
 		}
 
 		public override void OnPacket(SpawnPlayerPacket data)

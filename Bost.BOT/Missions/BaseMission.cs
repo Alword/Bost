@@ -12,6 +12,6 @@ namespace Bost.Agent.Missions
 		{
 		}
 
-		public abstract void HandleJob(Agent agent);
+		public abstract void SendJob(IAgent agent);
 	}
 }
