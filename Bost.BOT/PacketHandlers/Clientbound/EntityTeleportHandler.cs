@@ -2,7 +2,7 @@
 using Bost.Proto.Packet.Play.Clientbound;
 using System.Collections.Generic;
 
-namespace Bost.Agent.AgentEventHandlers
+namespace Bost.Agent.PacketHandlers.Clientbound
 {
 	public class EntityTeleportHandler : BaseAgentEventHandler<EntityTeleportPacket>
 	{

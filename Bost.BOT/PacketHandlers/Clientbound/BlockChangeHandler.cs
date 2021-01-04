@@ -2,7 +2,7 @@
 using Bost.Proto.Mapping;
 using Bost.Proto.Packet.Play.Clientbound;
 
-namespace Bost.Agent.AgentEventHandlers
+namespace Bost.Agent.PacketHandlers.Clientbound
 {
 	public class BlockChangeHandler : BaseAgentEventHandler<BlockChangePacket>
 	{

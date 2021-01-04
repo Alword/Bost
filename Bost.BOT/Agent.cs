@@ -1,6 +1,7 @@
-﻿using Bost.Agent.AgentEventHandlers;
-using Bost.Agent.GameState;
+﻿using Bost.Agent.GameState;
 using Bost.Agent.Model;
+using Bost.Agent.PacketHandlers.Clientbound;
+using Bost.Agent.PacketHandlers.Serverbound;
 using Bost.Agent.Types;
 using Bost.Proto;
 using System;
@@ -41,6 +42,7 @@ namespace Bost.Agent
 			ConnectionListner.Subscribe(new UpdateHealthHandler(this));
 			ConnectionListner.Subscribe(new KeepAliveHandler(this));
 			ConnectionListner.Subscribe(new ChatMessageHandler(this));
+			ConnectionListner.Subscribe(new PlayerPositionPacketHandler(this));
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace Bost.Agent.AgentEventHandlers
+﻿namespace Bost.Agent.PacketHandlers.Clientbound
 {
 	public class KeepAliveHandler : BaseAgentEventHandler<Proto.Packet.Play.Clientbound.KeepAlivePacket>
 	{

@@ -1,6 +1,6 @@
 ﻿using Bost.Proto.Packet.Play.Serverbound;
 
-namespace Bost.Agent.AgentEventHandlers.Serverbound
+namespace Bost.Agent.PacketHandlers.Serverbound
 {
 	public class PlayerPositionPacketHandler : BaseAgentEventHandler<PlayerPositionPacket>
 	{

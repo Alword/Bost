@@ -2,7 +2,7 @@
 using Bost.Proto.Packet.Play.Clientbound;
 using Bost.Proto.Packet.Play.Serverbound;
 
-namespace Bost.Agent.AgentEventHandlers
+namespace Bost.Agent.PacketHandlers.Clientbound
 {
 	public class UpdateHealthHandler : BaseAgentEventHandler<UpdateHealthPacket>
 	{

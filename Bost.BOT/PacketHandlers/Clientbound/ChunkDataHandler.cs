@@ -5,7 +5,7 @@ using Bost.Proto.Packet.Play.Clientbound;
 using System;
 using System.IO;
 
-namespace Bost.Agent.AgentEventHandlers
+namespace Bost.Agent.PacketHandlers.Clientbound
 {
 	public class ChunkDataHandler : BaseAgentEventHandler<ChunkDataPacket>
 	{
