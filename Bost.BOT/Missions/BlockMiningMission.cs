@@ -1,12 +1,14 @@
-﻿using Bost.Agent.Enum;
+﻿using Bost.Agent.Abstractions;
+using Bost.Agent.Enum;
 using Bost.Agent.Extentions;
 using Bost.Agent.Jobs;
 using Bost.Agent.Model;
+using Serilog;
 using System.Diagnostics;
 
 namespace Bost.Agent.Missions
 {
-	public class BlockMiningMission : BaseMission
+	public class BlockMiningMission : BaseMission, IJobCompleteHandler
 	{
 		private readonly Int3 _start;
 		private readonly Int3 _end;
@@ -38,12 +40,16 @@ namespace Bost.Agent.Missions
 					current.Z += 1;
 				}
 				var job = new MiningJob(agent, mineBlockPosition);
-
+				job.Subscribe(this);
 				// execute job
 				job.Handle(default);
 			}
+		}
 
-
+		public void OnComplete(IAgentJob job)
+		{
+			Log.Information("Mining mission complete");
+			job.Agent.AcceptMissions();
 		}
 	}
 }

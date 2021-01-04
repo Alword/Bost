@@ -29,7 +29,7 @@ namespace Bost.Agent.Jobs
 			}
 			else if (job is BreakBlockJob)
 			{
-				base.OnComplete(job);
+				base.OnComplete(this);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using Bost.Agent.Missions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bost.Agent.Server
 {
@@ -18,8 +19,8 @@ namespace Bost.Agent.Server
 		public void Attach(IAgent agent)
 		{
 			_agents.Add(agent);
-			//var mission = _missions.FirstOrDefault();
-			//if (mission != null) mission.SendJob(agent);
+			var mission = _missions.FirstOrDefault();
+			if (mission != null) mission.SendJob(agent);
 		}
 
 		public void Detach(IAgent agent)
@@ -32,8 +33,8 @@ namespace Bost.Agent.Server
 			_missions.Add(baseMission);
 			foreach (var agent in _agents.ToArray())
 			{
+				Detach(agent);
 				baseMission.SendJob(agent);
-				//Detach(agent);
 			}
 		}
 	}

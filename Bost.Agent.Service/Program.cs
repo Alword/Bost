@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
 
 namespace Bost.Agent.Service
 {
@@ -7,6 +9,10 @@ namespace Bost.Agent.Service
 	{
 		public static void Main(string[] args)
 		{
+			Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Debug) // restricted... is Optional
+				.CreateLogger();
 			CreateHostBuilder(args).Build().Run();
 		}
 
@@ -15,6 +21,6 @@ namespace Bost.Agent.Service
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
-				});
+				}).UseSerilog();
 	}
 }

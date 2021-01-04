@@ -14,5 +14,6 @@ namespace Bost.Agent
 		World World { get; }
 		void SubscribeOnBlockChanged(IBlockChangedEventHandler handler);
 		Task Send<T>(T basePacket) where T : BasePacket;
+		void AcceptMissions();
 	}
 }

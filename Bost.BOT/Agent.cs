@@ -14,7 +14,6 @@ namespace Bost.Agent
 		public readonly SharedGameState SharedState;
 		public readonly ConnectionListner ConnectionListner;
 		public readonly CancellationToken CancellationToken;
-
 		public Guid Id { get; }
 		public Double3 Position { get; set; }
 		public World World => SharedState.World;
@@ -24,11 +23,12 @@ namespace Bost.Agent
 		{
 			Id = Guid.NewGuid();
 			SharedState = shared ?? new SharedGameState();
-			SharedState.Missions.Attach(this);
 			ConnectionListner = new ConnectionListner();
 			OnRecive += ConnectionListner.ReciveListner;
 			OnSend += ConnectionListner.SendListner;
 			Reset += (e, x) => ConnectionListner.Reset();
+			
+			// clientbound
 			ConnectionListner.Subscribe(new SpawnPlayerHandler(this));
 			ConnectionListner.Subscribe(new PlayerInfoHandler(this));
 			ConnectionListner.Subscribe(new BlockChangeHandler(this));
@@ -42,7 +42,16 @@ namespace Bost.Agent
 			ConnectionListner.Subscribe(new UpdateHealthHandler(this));
 			ConnectionListner.Subscribe(new KeepAliveHandler(this));
 			ConnectionListner.Subscribe(new ChatMessageHandler(this));
+
+			// serverbound
 			ConnectionListner.Subscribe(new PlayerPositionPacketHandler(this));
+
+			AcceptMissions();
+		}
+
+		public void AcceptMissions()
+		{
+			SharedState.Missions.Attach(this);
 		}
 	}
 }
