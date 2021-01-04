@@ -20,7 +20,10 @@ namespace Bost.Agent.Server
 		{
 			_agents.Add(agent);
 			var mission = _missions.FirstOrDefault();
-			if (mission != null) mission.SendJob(agent);
+			if (mission != null)
+			{
+				StartMission(agent, mission);
+			}
 		}
 
 		public void Detach(IAgent agent)
@@ -33,9 +36,15 @@ namespace Bost.Agent.Server
 			_missions.Add(baseMission);
 			foreach (var agent in _agents.ToArray())
 			{
-				Detach(agent);
-				baseMission.SendJob(agent);
+				StartMission(agent, baseMission);
 			}
+		}
+
+		private void StartMission(IAgent agent, BaseMission mission)
+		{
+			Detach(agent);
+			bool hasNext = mission.SendJob(agent);
+			if (!hasNext) _missions.Remove(mission);
 		}
 	}
 }

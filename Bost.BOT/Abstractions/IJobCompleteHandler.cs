@@ -2,8 +2,8 @@
 
 namespace Bost.Agent.Abstractions
 {
-	public interface IJobCompleteHandler
+	public interface IJobCompleteHandler<T>
 	{
-		void OnComplete(IAgentJob job);
+		void OnComplete(IAgentJob<T> job);
 	}
 }

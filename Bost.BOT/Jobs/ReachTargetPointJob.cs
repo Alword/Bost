@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Jobs
 {
-	public class ReachTargetPointJob : BaseAgentJob
+	public class ReachTargetPointJob : BaseAgentJob<ReachTargetPointJob>
 	{
 		private readonly Double3 _to;
 		private readonly int _skipFromEnd;

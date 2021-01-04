@@ -1,9 +1,11 @@
-﻿using Bost.Agent.Model;
+﻿using Bost.Agent.Abstractions;
+using Bost.Agent.Model;
+using Serilog;
 using System.Threading;
 
 namespace Bost.Agent.Jobs
 {
-	public class MiningJob : BaseAgentJob
+	public class MiningJob : BaseAgentJob<MiningJob>, IJobCompleteHandler<ReachTargetPointJob>, IJobCompleteHandler<BreakBlockJob>
 	{
 		private readonly Int3 _position;
 
@@ -19,18 +21,16 @@ namespace Bost.Agent.Jobs
 			reachTarget.Handle(cancellationToken);
 		}
 
-		public override void OnComplete(IAgentJob job)
+		public void OnComplete(IAgentJob<ReachTargetPointJob> job)
 		{
-			if (job is ReachTargetPointJob)
-			{
-				var blockBreackJob = new BreakBlockJob(Agent, _position);
-				blockBreackJob.Subscribe(this);
-				blockBreackJob.Handle(default);
-			}
-			else if (job is BreakBlockJob)
-			{
-				base.OnComplete(this);
-			}
+			var blockBreackJob = new BreakBlockJob(Agent, _position);
+			blockBreackJob.Subscribe(this);
+			blockBreackJob.Handle(default);
+		}
+
+		public void OnComplete(IAgentJob<BreakBlockJob> job)
+		{
+			OnComplete(this);
 		}
 	}
 }

@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Bost.Agent.Jobs
 {
-	public interface IAgentJob
+	public interface IAgentJob<T>
 	{
 		/// <summary>
 		///  Идентификатор работы
@@ -12,7 +12,7 @@ namespace Bost.Agent.Jobs
 		public Guid Id { get; }
 		public IAgent Agent { get; }
 		public void Handle(CancellationToken cancellationToken);
-		public void Unsubscribe(IJobCompleteHandler jobCompleteHandler);
-		public void Subscribe(IJobCompleteHandler jobCompleteHandler);
+		public void Unsubscribe(IJobCompleteHandler<T> jobCompleteHandler);
+		public void Subscribe(IJobCompleteHandler<T> jobCompleteHandler);
 	}
 }

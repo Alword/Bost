@@ -6,6 +6,6 @@
 		{
 		}
 
-		public abstract void SendJob(IAgent agent);
+		public abstract bool SendJob(IAgent agent);
 	}
 }

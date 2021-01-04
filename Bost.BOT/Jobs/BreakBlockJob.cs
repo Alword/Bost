@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bost.Agent.Jobs
 {
-	public class BreakBlockJob : BaseAgentJob, IBlockChangedEventHandler
+	public class BreakBlockJob : BaseAgentJob<BreakBlockJob>, IBlockChangedEventHandler
 	{
 		private static readonly int _swingDelay = 250;
 		private readonly Int3 _blockPosition;
@@ -39,8 +39,6 @@ namespace Bost.Agent.Jobs
 			// send block end diggign
 			playerDigging.Status = Proto.Enum.PlayerDiggingStatus.FinishedDigging;
 			await Agent.Send(playerDigging);
-
-			OnComplete(this);
 		}
 
 		public void OnBlockChanged(Agent sender, Int3 position, World world)
