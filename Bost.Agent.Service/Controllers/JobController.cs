@@ -1,8 +1,6 @@
 ﻿using Bost.Agent.Service.Commands;
-using Bost.Agent.Service.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,7 +21,7 @@ namespace Bost.Agent.Service.Controllers
 		{
 			return _mediator.Send(createAgentQuery, cancellationToken);
 		}
-		
+
 		[HttpPost("ReachTarget")]
 		public Task<Unit> Create(ReachTargetPointJobCommand target, CancellationToken cancellationToken)
 		{

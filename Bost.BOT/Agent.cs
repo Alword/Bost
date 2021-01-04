@@ -1,16 +1,10 @@
 ﻿using Bost.Agent.AgentEventHandlers;
 using Bost.Agent.GameState;
 using Bost.Agent.Model;
-using Bost.Agent.Server;
 using Bost.Agent.Types;
 using Bost.Proto;
-using Bost.Proto.Packet;
-using Bost.Proto.Types;
 using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Bost.Agent
 {

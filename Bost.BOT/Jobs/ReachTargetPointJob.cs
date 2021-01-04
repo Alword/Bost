@@ -1,11 +1,6 @@
 ﻿using Bost.Agent.Model.AStar;
 using Bost.Agent.Types;
 using Bost.Proto.Packet.Play.Serverbound;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +20,6 @@ namespace Bost.Agent.Jobs
 		public override async void Handle(CancellationToken cancellationToken)
 		{
 			var path = PathFromAgent(Agent);
-			var currentPosition = Agent.Position;
 
 			if (path == null) return;
 
@@ -33,16 +27,14 @@ namespace Bost.Agent.Jobs
 			{
 				if (cancellationToken.IsCancellationRequested) return;
 
-				currentPosition.X = node.Position.X + 0.5;
-				currentPosition.Y = node.Position.Y;
-				currentPosition.Z = node.Position.Z + 0.5;
+				var nextPossition = new Double3(node.Position.X + 0.5, node.Position.Y, node.Position.Z + 0.5);
 
 				PlayerPositionPacket playerPositionPacket = new PlayerPositionPacket
 				{
-					X = currentPosition.X,
-					FeetY = currentPosition.Y + 1,
+					X = nextPossition.X,
+					FeetY = nextPossition.Y + 1,
 					OnGround = true,
-					Z = currentPosition.Z
+					Z = nextPossition.Z
 				};
 				await Agent.Send(playerPositionPacket);
 				await Task.Delay(50);

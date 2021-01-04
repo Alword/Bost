@@ -1,11 +1,7 @@
-﻿using Bost.Agent.Jobs;
-using Bost.Agent.Missions;
+﻿using Bost.Agent.Missions;
 using Bost.Agent.Model;
 using Bost.Agent.Service.Commands;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

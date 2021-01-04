@@ -13,6 +13,6 @@ namespace Bost.Agent
 		Double3 Position { get; }
 		World World { get; }
 		void SubscribeOnBlockChanged(IBlockChangedEventHandler handler);
-		Task Send(BasePacket basePacket);
+		Task Send<T>(T basePacket) where T : BasePacket;
 	}
 }

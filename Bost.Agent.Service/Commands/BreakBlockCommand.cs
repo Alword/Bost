@@ -1,5 +1,4 @@
 ﻿using Bost.Agent.Model;
-using Bost.Proto.Model;
 using MediatR;
 using System;
 

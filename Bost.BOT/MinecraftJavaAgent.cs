@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -148,7 +147,7 @@ namespace Bost.Agent
 			await _socket.SendAsync(array, SocketFlags.None);
 		}
 
-		public async Task Send(BasePacket basePacket)
+		public async Task Send<T>(T basePacket) where T : BasePacket
 		{
 			List<byte> toSend = new List<byte>();
 			Write(basePacket, true, toSend);

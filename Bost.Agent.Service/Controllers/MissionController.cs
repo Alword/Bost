@@ -1,8 +1,6 @@
 ﻿using Bost.Agent.Service.Commands;
-using Bost.Agent.Service.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
